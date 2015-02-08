@@ -121,3 +121,20 @@ def isAcronym(word, namedEntity):
     return acronym
 ##############################################################################################################################
 
+def readSentences(sentenceFile):
+
+    sentenceStructure = ''
+    sentences = []
+
+    for line in sentenceFile:
+
+        if line.startswith('Sentence #'):
+            if sentenceStructure != '':
+                sentences.append(sentenceStructure)
+            sentenceStructure = ''
+
+        sentenceStructure += line + '\n'
+
+    sentences.append(sentenceStructure)
+
+    return sentences

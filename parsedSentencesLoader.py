@@ -23,12 +23,6 @@ STATE_START, STATE_TEXT, STATE_WORDS, STATE_TREE, STATE_DEPENDENCY, STATE_COREFE
 
 class ParsedSentencesLoader(object):
 
-    def remove_id(self, word):
-        """Removes the numeric suffix from the parsed recognized words: e.g. 'word-2' > 'word' """
-        #return word.count("-") == 0 and word or word[0:word.rindex("-")]
-        return word
-
-
     def parse_bracketed(self, s):
         '''Parse word features [abc=... def = ...]
         Also manages to parse out features that have XML within them
@@ -60,7 +54,7 @@ class ParsedSentencesLoader(object):
                 continue
 
             if line.startswith("Sentence #"):
-                sentence = {'words':[], 'parsetree':[], 'dependencies':[]}
+                sentence = {'words': [], 'parsetree': [], 'dependencies': []}
                 results["sentences"].append(sentence)
                 state = STATE_TEXT
 
@@ -92,7 +86,7 @@ class ParsedSentencesLoader(object):
                 else:
                     split_entry = re.split("\(|,", line[:-1])
                     if len(split_entry) == 3:
-                        rel, left, right = map(lambda x: self.remove_id(x), split_entry)
+                        rel, left, right = split_entry
                         sentence['dependencies'].append(tuple([rel,left,right]))
 
             elif state == STATE_COREFERENCE:

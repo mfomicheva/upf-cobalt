@@ -1,22 +1,10 @@
 from aligner import *
+from util import *
 
-# aligning strings (output indexes start at 1)
-sentence1 = "Four men died in an accident."
-sentence2 = "4 people are dead from a collision."
+sentences = readSentences(open('Data/input.txt'))
+sentences2 = readSentences(open('Data/input2.txt'))
 
-alignments = align(sentence1, sentence2)
-
-print alignments[0]
-print alignments[1]
-print
-
-
-# aligning sets of tokens (output indexes start at 1)
-sentence1 = ['Four', 'men', 'died', 'in', 'an', 'accident', '.']
-sentence2 = ['4', 'people', 'are', 'dead', 'from', 'a', 'collision', '.']
-
-alignments = align(sentence1, sentence2)
-
-print alignments[0]
-print alignments[1]
-
+for i, sentence in enumerate(sentences):
+    alignments = align(sentence, sentences2[i])
+    print alignments[0]
+    print alignments[1]

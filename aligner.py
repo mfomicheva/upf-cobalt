@@ -1528,16 +1528,8 @@ def alignWords(source, target, sourceParseResult, targetParseResult):
     return alignments
 ##############################################################################################################################
 
-
-
-##############################################################################################################################
 def align(sentence1, sentence2):
 
-    if isinstance(sentence1, list):
-        sentence1 = ' '.join(sentence1)
-    if isinstance(sentence2, list):
-        sentence2 = ' '.join(sentence2)
-        
     sentence1ParseResult = parseText(sentence1)
     sentence2ParseResult = parseText(sentence2)
 

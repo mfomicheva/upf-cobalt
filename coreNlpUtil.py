@@ -1,27 +1,10 @@
-import json
-from jsonrpc import ServerProxy, JsonRpc20, TransportTcpIp
-import jsonrpclib
+from parsedSentencesLoader import ParsedSentencesLoader
 
-
-
-
-from config import *
-
-
-
-class StanfordNLP:
-    def __init__(self):
-        self.server = ServerProxy(JsonRpc20(),
-                                  TransportTcpIp(addr=("127.0.0.1", 8080)))
-    
-    def parse(self, text):
-        return json.loads(self.server.parse(text))
-
-
-##############################################################################################################################
 def parseText(sentences):
 
-    parseResult = nlp.parse(sentences)
+    loader = ParsedSentencesLoader()
+
+    parseResult = loader.load(sentences)
 
     if len(parseResult['sentences']) == 1:
         return parseResult
@@ -47,11 +30,11 @@ def parseText(sentences):
                         w = ''
                         for l in xrange(len(tokens)-1):
                             w += tokens[l]
-                            if l<len(tokens)-2:
+                            if l < len(tokens)-2:
                                 w += '-'
                         parseResult['sentences'][i]['dependencies'][j][k] = w + '-' + str(newWordIndex)
 
-        wordOffset +=  len(parseResult['sentences'][i]['words'])
+        wordOffset += len(parseResult['sentences'][i]['words'])
 
 
     # merge information of all sentences into one
@@ -302,7 +285,3 @@ def findChildren(dependencyParse, wordIndex, word):
                 break
         
     return childrenWithRelation
-##############################################################################################################################
-
-
-nlp = StanfordNLP()
