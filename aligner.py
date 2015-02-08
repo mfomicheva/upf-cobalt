@@ -17,17 +17,17 @@ class Aligner(object):
 
         if is_opposite:
             for subgroup in group:
-                if item1 in subgroup and item2 in subgroup:
+                if item1 in subgroup[0] and item2 in subgroup[1]:
                     result = True
         else:
             for subgroup in group:
-                if item1 in subgroup[0] and item2 in subgroup[1]:
+                if item1 in subgroup and item2 in subgroup:
                     result = True
 
         return result
 
     ##############################################################################################################################
-    def alignNouns(self, source, target, sourceParseResult, targetParseResult, existingAlignments):
+    def alignPos(self, pos, posCode, source, target, sourceParseResult, targetParseResult, existingAlignments):
     # source and target:: each is a list of elements of the form:
     # [[character begin offset, character end offset], word index, word, lemma, pos tag]
 
@@ -35,7 +35,7 @@ class Aligner(object):
         global theta1
 
 
-        nounAlignments = []
+        posAlignments = []
 
         sourceWordIndices = [i+1 for i in xrange(len(source))]
         targetWordIndices = [i+1 for i in xrange(len(target))]
@@ -56,25 +56,24 @@ class Aligner(object):
         targetDParse = dependencyParseAndPutOffsets(targetParseResult)
 
 
-        numberOfNounsInSource = 0
+        numberOfPosWordsInSource = 0
 
         evidenceCountsMatrix = {}
         relativeAlignmentsMatrix = {}
         wordSimilarities = {}
 
-
         # construct the two matrices in the following loop
         for i in sourceWordIndices:
-            if i in sourceWordIndicesAlreadyAligned or (sourcePosTags[i-1][0].lower() <> 'n' and sourcePosTags[i-1].lower()<>'prp'):
+            if i in sourceWordIndicesAlreadyAligned or (sourcePosTags[i-1][0].lower() != posCode and sourcePosTags[i-1].lower() != 'prp'):
                 continue
 
-            numberOfNounsInSource += 1
+            numberOfPosWordsInSource += 1
 
             for j in targetWordIndices:
-                if j in targetWordIndicesAlreadyAligned or (targetPosTags[j-1][0].lower() <> 'n' and targetPosTags[j-1].lower()<>'prp'):
+                if j in targetWordIndicesAlreadyAligned or (targetPosTags[j-1][0].lower() != posCode and targetPosTags[j-1].lower() != 'prp'):
                     continue
 
-                if max(wordRelatedness(sourceWords[i-1], sourcePosTags[i-1], targetWords[j-1], targetPosTags[j-1]), wordRelatedness(sourceLemmas[i-1], sourcePosTags[i-1], targetLemmas[j-1], targetPosTags[j-1]))<ppdbSim:
+                if max(wordRelatedness(sourceWords[i-1], sourcePosTags[i-1], targetWords[j-1], targetPosTags[j-1]), wordRelatedness(sourceLemmas[i-1], sourcePosTags[i-1], targetLemmas[j-1], targetPosTags[j-1])) < ppdbSim:
                     continue
 
                 wordSimilarities[(i, j)] = max(wordRelatedness(sourceWords[i-1], sourcePosTags[i-1], targetWords[j-1], targetPosTags[j-1]), wordRelatedness(sourceLemmas[i-1], sourcePosTags[i-1], targetLemmas[j-1], targetPosTags[j-1]))
@@ -87,10 +86,12 @@ class Aligner(object):
                 # search for common or equivalent parents
                 for ktem in sourceWordParents:
                     for ltem in targetWordParents:
-                        if ((ktem[0], ltem[0]) in existingAlignments+nounAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (
+                        if ((ktem[0], ltem[0]) in existingAlignments + posAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (
                             (ktem[2] == ltem[2]) or
-                                self.is_similar(ktem[2], ltem[2], 'noun', 'noun', False, 'parent') or
-                                self.is_similar(ktem[2], ltem[2], 'noun', 'verb', False, 'parent')):
+                                self.is_similar(ktem[2], ltem[2], pos, 'noun', False, 'parent') or
+                                self.is_similar(ktem[2], ltem[2], pos, 'verb', False, 'parent') or
+                                self.is_similar(ktem[2], ltem[2], pos, 'adjective', False, 'parent') or
+                                self.is_similar(ktem[2], ltem[2], pos, 'adverb', False, 'parent')):
 
                             if (i, j) in evidenceCountsMatrix:
                                 evidenceCountsMatrix[(i, j)] += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
@@ -103,16 +104,15 @@ class Aligner(object):
                                 relativeAlignmentsMatrix[(i, j)] = []
                                 relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
 
-
-
                 # search for common or equivalent children
                 for ktem in sourceWordChildren:
                     for ltem in targetWordChildren:
-                        if ((ktem[0], ltem[0]) in existingAlignments+nounAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (
-                                (ktem[2]==ltem[2]) or
-                                self.is_similar(ktem[2], ltem[2], 'noun', 'noun', False, 'child') or
-                                self.is_similar(ktem[2], ltem[2], 'noun', 'verb', False, 'child') or
-                                self.is_similar(ktem[2], ltem[2], 'noun', 'adjective', False, 'child')):
+                        if ((ktem[0], ltem[0]) in existingAlignments + posAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (
+                                (ktem[2] == ltem[2]) or
+                                self.is_similar(ktem[2], ltem[2], pos, 'noun', False, 'child') or
+                                self.is_similar(ktem[2], ltem[2], pos, 'verb', False, 'child') or
+                                self.is_similar(ktem[2], ltem[2], pos, 'adjective', False, 'child') or
+                                self.is_similar(ktem[2], ltem[2], pos, 'adverb', False, 'child')):
 
                             if (i, j) in evidenceCountsMatrix:
                                 evidenceCountsMatrix[(i, j)] += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
@@ -127,11 +127,12 @@ class Aligner(object):
 
                 for ktem in sourceWordParents:
                     for ltem in targetWordChildren:
-                        if ((ktem[0], ltem[0]) in existingAlignments+nounAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (
+                        if ((ktem[0], ltem[0]) in existingAlignments + posAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (
                                 (ktem[2] == ltem[2]) or
-                                self.is_similar(ktem[2], ltem[2], 'noun', 'adjective', True, 'parent_child') or
+                                self.is_similar(ktem[2], ltem[2], 'noun', 'noun', True, 'parent_child') or
                                 self.is_similar(ktem[2], ltem[2], 'noun', 'verb', True, 'parent_child') or
-                                self.is_similar(ktem[2], ltem[2], 'noun', 'noun', True, 'parent_child')):
+                                self.is_similar(ktem[2], ltem[2], 'noun', 'adjective', True, 'parent_child') or
+                                self.is_similar(ktem[2], ltem[2], 'noun', 'adverb', True, 'parent_child')):
 
                             if (i, j) in evidenceCountsMatrix:
                                 evidenceCountsMatrix[(i, j)] += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
@@ -147,11 +148,12 @@ class Aligner(object):
                 # search for equivalent child-parent relations
                 for ktem in sourceWordChildren:
                     for ltem in targetWordParents:
-                        if ((ktem[0], ltem[0]) in existingAlignments+nounAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (
+                        if ((ktem[0], ltem[0]) in existingAlignments + posAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (
                                 (ktem[2] == ltem[2]) or
-                                self.is_similar(ltem[2], ktem[2], 'noun', 'adjective', True, 'child_parent') or
-                                self.is_similar(ltem[2], ktem[2], 'noun', 'verb', True, 'child_parent') or
-                                self.is_similar(ltem[2], ktem[2], 'noun', 'noun', True, 'child_parent')):
+                                self.is_similar(ltem[2], ktem[2], pos, 'noun', True, 'child_parent') or
+                                self.is_similar(ltem[2], ktem[2], pos, 'verb', True, 'child_parent') or
+                                self.is_similar(ltem[2], ktem[2], pos, 'adjective', True, 'child_parent') or
+                                self.is_similar(ltem[2], ktem[2], pos, 'adverb', True, 'child_parent')):
 
                             if (i, j) in evidenceCountsMatrix:
                                 evidenceCountsMatrix[(i, j)] += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
@@ -165,7 +167,7 @@ class Aligner(object):
                                 relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
 
         # now use the collected stats to align
-        for n in xrange(numberOfNounsInSource):
+        for n in xrange(numberOfPosWordsInSource):
 
             maxEvidenceCountForCurrentPass = 0
             maxOverallValueForCurrentPass = 0
@@ -173,11 +175,11 @@ class Aligner(object):
 
 
             for i in sourceWordIndices:
-                if i in sourceWordIndicesAlreadyAligned or sourcePosTags[i-1][0].lower() <> 'n' or sourceLemmas[i-1] in stopwords:
+                if i in sourceWordIndicesAlreadyAligned or sourcePosTags[i-1][0].lower() != posCode or sourceLemmas[i-1] in stopwords:
                     continue
 
                 for j in targetWordIndices:
-                    if j in targetWordIndicesAlreadyAligned or targetPosTags[j-1][0].lower() <> 'n' or targetLemmas[j-1] in stopwords:
+                    if j in targetWordIndicesAlreadyAligned or targetPosTags[j-1][0].lower() != posCode or targetLemmas[j-1] in stopwords:
                         continue
 
                     if (i, j) in evidenceCountsMatrix and theta1*wordSimilarities[(i, j)]+(1-theta1)*evidenceCountsMatrix[(i, j)]>maxOverallValueForCurrentPass:
@@ -186,561 +188,18 @@ class Aligner(object):
                         indexPairWithStrongestTieForCurrentPass = [i, j]
 
             if maxEvidenceCountForCurrentPass > 0:
-                nounAlignments.append(indexPairWithStrongestTieForCurrentPass)
+                posAlignments.append(indexPairWithStrongestTieForCurrentPass)
                 sourceWordIndicesAlreadyAligned.append(indexPairWithStrongestTieForCurrentPass[0])
                 targetWordIndicesAlreadyAligned.append(indexPairWithStrongestTieForCurrentPass[1])
                 for item in relativeAlignmentsMatrix[(indexPairWithStrongestTieForCurrentPass[0], indexPairWithStrongestTieForCurrentPass[1])]:
-                    if item[0] <> 0 and item[1] <> 0 and item[0] not in sourceWordIndicesAlreadyAligned and item[1] not in targetWordIndicesAlreadyAligned:
-                        nounAlignments.append(item)
+                    if item[0] != 0 and item[1] != 0 and item[0] not in sourceWordIndicesAlreadyAligned and item[1] not in targetWordIndicesAlreadyAligned:
+                        posAlignments.append(item)
                         sourceWordIndicesAlreadyAligned.append(item[0])
                         targetWordIndicesAlreadyAligned.append(item[1])
             else:
                 break
 
-
-
-        return nounAlignments
-    ##############################################################################################################################
-
-
-
-
-    ##############################################################################################################################
-    def alignMainVerbs(self, source, target, sourceParseResult, targetParseResult, existingAlignments):
-    # source and target:: each is a list of elements of the form:
-    # [[character begin offset, character end offset], word index, word, lemma, pos tag]
-
-        global ppdbSim
-        global theta1
-
-        mainVerbAlignments = []
-
-        sourceWordIndices = [i+1 for i in xrange(len(source))]
-        targetWordIndices = [i+1 for i in xrange(len(target))]
-
-        sourceWordIndicesAlreadyAligned = sorted(list(set([item[0] for item in existingAlignments])))
-        targetWordIndicesAlreadyAligned = sorted(list(set([item[1] for item in existingAlignments])))
-
-        sourceWords = [item[2] for item in source]
-        targetWords = [item[2] for item in target]
-
-        sourceLemmas = [item[3] for item in source]
-        targetLemmas = [item[3] for item in target]
-
-        sourcePosTags = [item[4] for item in source]
-        targetPosTags = [item[4] for item in target]
-
-        sourceDParse = dependencyParseAndPutOffsets(sourceParseResult)
-        targetDParse = dependencyParseAndPutOffsets(targetParseResult)
-
-
-
-        numberOfMainVerbsInSource = 0
-
-        evidenceCountsMatrix = {}
-        relativeAlignmentsMatrix = {}
-        wordSimilarities = {}
-
-
-
-        # construct the two matrices in the following loop
-        for i in sourceWordIndices:
-            if i in sourceWordIndicesAlreadyAligned or sourcePosTags[i-1][0].lower() <> 'v' or sourceLemmas[i-1] in stopwords:
-                continue
-
-            numberOfMainVerbsInSource += 1
-
-            for j in targetWordIndices:
-                if j in targetWordIndicesAlreadyAligned or targetPosTags[j-1][0].lower() <> 'v' or targetLemmas[j-1] in stopwords:
-                    continue
-
-                if max(wordRelatedness(sourceWords[i-1], sourcePosTags[i-1], targetWords[j-1], targetPosTags[j-1]), wordRelatedness(sourceLemmas[i-1], sourcePosTags[i-1], targetLemmas[j-1], targetPosTags[j-1]))<ppdbSim:
-                    continue
-
-                wordSimilarities[(i, j)] = max(wordRelatedness(sourceWords[i-1], sourcePosTags[i-1], targetWords[j-1], targetPosTags[j-1]), wordRelatedness(sourceLemmas[i-1], sourcePosTags[i-1], targetLemmas[j-1], targetPosTags[j-1]))
-
-
-                sourceWordParents = findParents(sourceDParse, i, sourceWords[i-1])
-                sourceWordChildren = findChildren(sourceDParse, i, sourceWords[i-1])
-                targetWordParents = findParents(targetDParse, j, targetWords[j-1])
-                targetWordChildren = findChildren(targetDParse, j, targetWords[j-1])
-
-                # search for common or equivalent children
-                for ktem in sourceWordChildren:
-                    for ltem in targetWordChildren:
-                        if ((ktem[0], ltem[0]) in existingAlignments+mainVerbAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1])) >= ppdbSim) and (
-                                (ktem[2] == ltem[2]) or
-                                self.is_similar(ktem[2], ltem[2], 'verb', 'noun', False, 'child') or
-                                self.is_similar(ktem[2], ltem[2], 'verb', 'verb', False, 'child')):
-
-                            if (i, j) in evidenceCountsMatrix:
-                                evidenceCountsMatrix[(i, j)] += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
-                            else:
-                                evidenceCountsMatrix[(i, j)] = max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
-
-                            if (i, j) in relativeAlignmentsMatrix:
-                                relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
-                            else:
-                                relativeAlignmentsMatrix[(i, j)] = []
-                                relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
-
-                # search for common or equivalent parents
-                for ktem in sourceWordParents:
-                    for ltem in targetWordParents:
-                        if ((ktem[0], ltem[0]) in existingAlignments + mainVerbAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1])) >= ppdbSim) and (
-                                (ktem[2] == ltem[2]) or
-                                self.is_similar(ktem[2], ltem[2], 'verb', 'noun', False, 'parent') or
-                                self.is_similar(ktem[2], ltem[2], 'verb', 'verb', False, 'parent')):
-
-                            if (i, j) in evidenceCountsMatrix:
-                                evidenceCountsMatrix[(i, j)] += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
-                            else:
-                                evidenceCountsMatrix[(i, j)] = max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
-
-                            if (i, j) in relativeAlignmentsMatrix:
-                                relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
-                            else:
-                                relativeAlignmentsMatrix[(i, j)] = []
-                                relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
-
-                # search for equivalent parent-child pairs
-                for ktem in sourceWordParents:
-                    for ltem in targetWordChildren:
-                        if ((ktem[0], ltem[0]) in existingAlignments+mainVerbAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1])) >= ppdbSim) and (
-                                (ktem[2] == ltem[2]) or
-                                self.is_similar(ktem[2], ltem[2], 'verb', 'adjective', True, 'parent_child') or
-                                self.is_similar(ktem[2], ltem[2], 'verb', 'verb', True, 'parent_child')):
-
-                            if (i, j) in evidenceCountsMatrix:
-                                evidenceCountsMatrix[(i, j)] += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
-                            else:
-                                evidenceCountsMatrix[(i, j)] = max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
-
-                            if (i, j) in relativeAlignmentsMatrix:
-                                relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
-                            else:
-                                relativeAlignmentsMatrix[(i, j)] = []
-                                relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
-
-                # search for equivalent child-parent pairs
-                for ktem in sourceWordChildren:
-                    for ltem in targetWordParents:
-                        if ((ktem[0], ltem[0]) in existingAlignments+mainVerbAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (
-                                (ktem[2] == ltem[2]) or
-                                self.is_similar(ltem[2], ktem[2], 'verb', 'adjective', True, 'child_parent') or
-                                self.is_similar(ltem[2], ktem[2], 'verb', 'verb', True, 'child_parent')):
-
-                            if (i, j) in evidenceCountsMatrix:
-                                evidenceCountsMatrix[(i, j)] += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
-                            else:
-                                evidenceCountsMatrix[(i, j)] = max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
-
-                            if (i, j) in relativeAlignmentsMatrix:
-                                relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
-                            else:
-                                relativeAlignmentsMatrix[(i, j)] = []
-                                relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
-
-
-        # now use the collected stats to align
-        for n in xrange(numberOfMainVerbsInSource):
-
-            maxEvidenceCountForCurrentPass = 0
-            maxOverallValueForCurrentPass = 0
-            indexPairWithStrongestTieForCurrentPass = [-1, -1]
-
-
-            for i in sourceWordIndices:
-                if i in sourceWordIndicesAlreadyAligned or sourcePosTags[i-1][0].lower() <> 'v' or sourceLemmas[i-1] in stopwords:
-                    continue
-
-                for j in targetWordIndices:
-                    if j in targetWordIndicesAlreadyAligned or targetPosTags[j-1][0].lower() <> 'v' or targetLemmas[j-1] in stopwords:
-                        continue
-
-                    if (i, j) in evidenceCountsMatrix and theta1*wordSimilarities[(i, j)]+(1-theta1)*evidenceCountsMatrix[(i, j)]>maxOverallValueForCurrentPass:
-                        maxOverallValueForCurrentPass = theta1*wordSimilarities[(i, j)]+(1-theta1)*evidenceCountsMatrix[(i, j)]
-                        maxEvidenceCountForCurrentPass = evidenceCountsMatrix[(i, j)]
-                        indexPairWithStrongestTieForCurrentPass = [i, j]
-
-            if maxEvidenceCountForCurrentPass > 0:
-                mainVerbAlignments.append(indexPairWithStrongestTieForCurrentPass)
-                sourceWordIndicesAlreadyAligned.append(indexPairWithStrongestTieForCurrentPass[0])
-                targetWordIndicesAlreadyAligned.append(indexPairWithStrongestTieForCurrentPass[1])
-                for item in relativeAlignmentsMatrix[(indexPairWithStrongestTieForCurrentPass[0], indexPairWithStrongestTieForCurrentPass[1])]:
-                    if item[0]<>0 and item[1]<>0 and item[0] not in sourceWordIndicesAlreadyAligned and item[1] not in targetWordIndicesAlreadyAligned:
-                        mainVerbAlignments.append(item)
-                        sourceWordIndicesAlreadyAligned.append(item[0])
-                        targetWordIndicesAlreadyAligned.append(item[1])
-            else:
-                break
-
-
-
-        return mainVerbAlignments
-    ##############################################################################################################################
-
-
-    ##############################################################################################################################
-    def alignAdjectives(self, source, target, sourceParseResult, targetParseResult, existingAlignments):
-    # source and target:: each is a list of elements of the form:
-    # [[character begin offset, character end offset], word index, word, lemma, pos tag]
-
-        global ppdbSim
-        global theta1
-
-
-        adjectiveAlignments = []
-
-        sourceWordIndices = [i+1 for i in xrange(len(source))]
-        targetWordIndices = [i+1 for i in xrange(len(target))]
-
-        sourceWordIndicesAlreadyAligned = sorted(list(set([item[0] for item in existingAlignments])))
-        targetWordIndicesAlreadyAligned = sorted(list(set([item[1] for item in existingAlignments])))
-
-        sourceWords = [item[2] for item in source]
-        targetWords = [item[2] for item in target]
-
-        sourceLemmas = [item[3] for item in source]
-        targetLemmas = [item[3] for item in target]
-
-        sourcePosTags = [item[4] for item in source]
-        targetPosTags = [item[4] for item in target]
-
-        sourceDParse = dependencyParseAndPutOffsets(sourceParseResult)
-        targetDParse = dependencyParseAndPutOffsets(targetParseResult)
-
-
-        numberOfAdjectivesInSource = 0
-
-        evidenceCountsMatrix = {}
-        relativeAlignmentsMatrix = {}
-        wordSimilarities = {}
-
-
-        # construct the two matrices in the following loop
-        for i in sourceWordIndices:
-            if i in sourceWordIndicesAlreadyAligned or sourcePosTags[i-1][0].lower() <> 'j':
-                continue
-
-            numberOfAdjectivesInSource += 1
-
-            for j in targetWordIndices:
-                if j in targetWordIndicesAlreadyAligned or targetPosTags[j-1][0].lower() <> 'j':
-                    continue
-
-
-                if max(wordRelatedness(sourceWords[i-1], sourcePosTags[i-1], targetWords[j-1], targetPosTags[j-1]), wordRelatedness(sourceLemmas[i-1], sourcePosTags[i-1], targetLemmas[j-1], targetPosTags[j-1]))<ppdbSim:
-                    continue
-
-
-                wordSimilarities[(i, j)] = max(wordRelatedness(sourceWords[i-1], sourcePosTags[i-1], targetWords[j-1], targetPosTags[j-1]), wordRelatedness(sourceLemmas[i-1], sourcePosTags[i-1], targetLemmas[j-1], targetPosTags[j-1]))
-
-
-                sourceWordParents = findParents(sourceDParse, i, sourceWords[i-1])
-                sourceWordChildren = findChildren(sourceDParse, i, sourceWords[i-1])
-                targetWordParents = findParents(targetDParse, j, targetWords[j-1])
-                targetWordChildren = findChildren(targetDParse, j, targetWords[j-1])
-
-                # search for common or equivalent parents
-                for ktem in sourceWordParents:
-                    for ltem in targetWordParents:
-                        if ((ktem[0], ltem[0]) in existingAlignments+adjectiveAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (
-                                (ktem[2] == ltem[2]) or
-                                self.is_similar(ktem[2], ltem[2], 'adjective', 'noun', False, 'parent')):
-
-                            if (i, j) in evidenceCountsMatrix:
-                                evidenceCountsMatrix[(i, j)] += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
-                            else:
-                                evidenceCountsMatrix[(i, j)] = max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
-
-                            if (i, j) in relativeAlignmentsMatrix:
-                                relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
-                            else:
-                                relativeAlignmentsMatrix[(i, j)] = []
-                                relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
-
-
-
-
-                # search for common children
-                for ktem in sourceWordChildren:
-                    for ltem in targetWordChildren:
-                        if ((ktem[0], ltem[0]) in existingAlignments + adjectiveAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (ktem[2]==ltem[2]):
-                            if (i, j) in evidenceCountsMatrix:
-                                evidenceCountsMatrix[(i, j)] += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
-                            else:
-                                evidenceCountsMatrix[(i, j)] = max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
-
-                            if (i, j) in relativeAlignmentsMatrix:
-                                relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
-                            else:
-                                relativeAlignmentsMatrix[(i, j)] = []
-                                relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
-
-
-
-                # search for equivalent parent-child pair
-                groupOfSimilarRelationsInOppositeDirectionForNounParentAndChild = [['amod', 'rcmod'], ['nsubj']]
-                groupOfSimilarRelationsInOppositeDirectionForVerbParentAndChild = [['acomp'], ['cop', 'csubj']]
-                group1OfSimilarRelationsInOppositeDirectionForAdjectiveParentAndChild = [['conj_and'], ['conj_and']]
-                group2OfSimilarRelationsInOppositeDirectionForAdjectiveParentAndChild = [['conj_or'], ['conj_or']]
-                group3OfSimilarRelationsInOppositeDirectionForAdjectiveParentAndChild = [['conj_nor'], ['conj_nor']]
-
-
-                for ktem in sourceWordParents:
-                    for ltem in targetWordChildren:
-                        if ((ktem[0], ltem[0]) in existingAlignments + adjectiveAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (
-                                (ktem[2] == ltem[2]) or
-                                self.is_similar(ktem[2], ltem[2], 'adjective', 'noun', True, 'parent_child') or
-                                self.is_similar(ktem[2], ltem[2], 'adjective', 'verb', True, 'parent_child') or
-                                self.is_similar(ktem[2], ltem[2], 'adjective', 'adjective', True, 'parent_child')):
-
-                            if (i, j) in evidenceCountsMatrix:
-                                evidenceCountsMatrix[(i, j)] += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
-                            else:
-                                evidenceCountsMatrix[(i, j)] = max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
-
-                            if (i, j) in relativeAlignmentsMatrix:
-                                relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
-                            else:
-                                relativeAlignmentsMatrix[(i, j)] = []
-                                relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
-
-
-                # search for equivalent child-parent pair
-                for ktem in sourceWordChildren:
-                    for ltem in targetWordParents:
-                        if ((ktem[0], ltem[0]) in existingAlignments+adjectiveAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (
-                                (ktem[2] == ltem[2]) or
-                                self.is_similar(ltem[2], ktem[2], 'adjective', 'noun', True, 'child_parent') or
-                                self.is_similar(ltem[2], ktem[2], 'adjective', 'verb', True, 'child_parent') or
-                                self.is_similar(ltem[2], ktem[2], 'adjective', 'adjective', True, 'child_parent')):
-
-                            if (i, j) in evidenceCountsMatrix:
-                                evidenceCountsMatrix[(i, j)] += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
-                            else:
-                                evidenceCountsMatrix[(i, j)] = max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
-
-                            if (i, j) in relativeAlignmentsMatrix:
-                                relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
-                            else:
-                                relativeAlignmentsMatrix[(i, j)] = []
-                                relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
-
-
-        # now use the collected stats to align
-        for n in xrange(numberOfAdjectivesInSource):
-
-            maxEvidenceCountForCurrentPass = 0
-            maxOverallValueForCurrentPass = 0
-            indexPairWithStrongestTieForCurrentPass = [-1, -1]
-
-
-            for i in sourceWordIndices:
-                if i in sourceWordIndicesAlreadyAligned or sourcePosTags[i-1][0].lower() <> 'j' or sourceLemmas[i-1] in stopwords:
-                    continue
-
-                for j in targetWordIndices:
-                    if j in targetWordIndicesAlreadyAligned or targetPosTags[j-1][0].lower() <> 'j' or targetLemmas[j-1] in stopwords:
-                        continue
-
-                    if (i, j) in evidenceCountsMatrix and theta1*wordSimilarities[(i, j)]+(1-theta1)*evidenceCountsMatrix[(i, j)]>maxOverallValueForCurrentPass:
-                        maxOverallValueForCurrentPass = theta1*wordSimilarities[(i, j)]+(1-theta1)*evidenceCountsMatrix[(i, j)]
-                        maxEvidenceCountForCurrentPass = evidenceCountsMatrix[(i, j)]
-                        indexPairWithStrongestTieForCurrentPass = [i, j]
-
-            if maxEvidenceCountForCurrentPass > 0:
-                adjectiveAlignments.append(indexPairWithStrongestTieForCurrentPass)
-                sourceWordIndicesAlreadyAligned.append(indexPairWithStrongestTieForCurrentPass[0])
-                targetWordIndicesAlreadyAligned.append(indexPairWithStrongestTieForCurrentPass[1])
-                for item in relativeAlignmentsMatrix[(indexPairWithStrongestTieForCurrentPass[0], indexPairWithStrongestTieForCurrentPass[1])]:
-                    if item[0]<>0 and item[1]<>0 and item[0] not in sourceWordIndicesAlreadyAligned and item[1] not in targetWordIndicesAlreadyAligned:
-                        adjectiveAlignments.append(item)
-                        sourceWordIndicesAlreadyAligned.append(item[0])
-                        targetWordIndicesAlreadyAligned.append(item[1])
-            else:
-                break
-
-
-
-        return adjectiveAlignments
-    ##############################################################################################################################
-
-
-
-    ##############################################################################################################################
-    def alignAdverbs(self, source, target, sourceParseResult, targetParseResult, existingAlignments):
-    # source and target:: each is a list of elements of the form:
-    # [[character begin offset, character end offset], word index, word, lemma, pos tag]
-
-        global ppdbSim
-        global theta1
-
-
-        adverbAlignments = []
-
-        sourceWordIndices = [i+1 for i in xrange(len(source))]
-        targetWordIndices = [i+1 for i in xrange(len(target))]
-
-        sourceWordIndicesAlreadyAligned = sorted(list(set([item[0] for item in existingAlignments])))
-        targetWordIndicesAlreadyAligned = sorted(list(set([item[1] for item in existingAlignments])))
-
-        sourceWords = [item[2] for item in source]
-        targetWords = [item[2] for item in target]
-
-        sourceLemmas = [item[3] for item in source]
-        targetLemmas = [item[3] for item in target]
-
-        sourcePosTags = [item[4] for item in source]
-        targetPosTags = [item[4] for item in target]
-
-        sourceDParse = dependencyParseAndPutOffsets(sourceParseResult)
-        targetDParse = dependencyParseAndPutOffsets(targetParseResult)
-
-        numberOfAdverbsInSource = 0
-
-        evidenceCountsMatrix = {}
-        relativeAlignmentsMatrix = {}
-        wordSimilarities = {}
-
-
-        for i in sourceWordIndices:
-            if i in sourceWordIndicesAlreadyAligned or (sourcePosTags[i-1][0].lower() <> 'r'):
-                continue
-
-            numberOfAdverbsInSource += 1
-
-            for j in targetWordIndices:
-                if j in targetWordIndicesAlreadyAligned or (targetPosTags[j-1][0].lower() <> 'r'):
-                    continue
-
-
-                if max(wordRelatedness(sourceWords[i-1], sourcePosTags[i-1], targetWords[j-1], targetPosTags[j-1]), wordRelatedness(sourceLemmas[i-1], sourcePosTags[i-1], targetLemmas[j-1], targetPosTags[j-1]))<ppdbSim:
-                    continue
-
-                wordSimilarities[(i, j)] = max(wordRelatedness(sourceWords[i-1], sourcePosTags[i-1], targetWords[j-1], targetPosTags[j-1]), wordRelatedness(sourceLemmas[i-1], sourcePosTags[i-1], targetLemmas[j-1], targetPosTags[j-1]))
-
-
-                sourceWordParents = findParents(sourceDParse, i, sourceWords[i-1])
-                sourceWordChildren = findChildren(sourceDParse, i, sourceWords[i-1])
-                targetWordParents = findParents(targetDParse, j, targetWords[j-1])
-                targetWordChildren = findChildren(targetDParse, j, targetWords[j-1])
-
-
-                # search for common parents
-                for ktem in sourceWordParents:
-                    for ltem in targetWordParents:
-                        if ((ktem[0], ltem[0]) in existingAlignments+adverbAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (ktem[2]==ltem[2]):
-                            if (i, j) in evidenceCountsMatrix:
-                                evidenceCountsMatrix[(i, j)] += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
-                            else:
-                                evidenceCountsMatrix[(i, j)] = max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
-
-                            if (i, j) in relativeAlignmentsMatrix:
-                                relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
-                            else:
-                                relativeAlignmentsMatrix[(i, j)] = []
-                                relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
-
-
-                # search for common children
-                for ktem in sourceWordChildren:
-                    for ltem in targetWordChildren:
-                        if ((ktem[0], ltem[0]) in existingAlignments+adverbAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (ktem[2]==ltem[2]):
-                            if (i, j) in evidenceCountsMatrix:
-                                evidenceCountsMatrix[(i, j)] += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
-                            else:
-                                evidenceCountsMatrix[(i, j)] = max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
-
-                            if (i, j) in relativeAlignmentsMatrix:
-                                relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
-                            else:
-                                relativeAlignmentsMatrix[(i, j)] = []
-                                relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
-
-
-                # search for equivalent parent-child relationships
-                group1OfSimilarRelationsInOppositeDirectionForAdverbParentAndChild = [['conj_and'], ['conj_and']]
-                group2OfSimilarRelationsInOppositeDirectionForAdverbParentAndChild = [['conj_or'], ['conj_or']]
-                group3OfSimilarRelationsInOppositeDirectionForAdverbParentAndChild = [['conj_nor'], ['conj_nor']]
-
-                for ktem in sourceWordParents:
-                    for ltem in targetWordChildren:
-                        if ((ktem[0], ltem[0]) in existingAlignments+adverbAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (
-                                (ktem[2] == ltem[2]) or
-                                self.is_similar(ktem[2], ltem[2], 'adverb', 'adverb', True, 'parent_child')):
-
-                            if (i, j) in evidenceCountsMatrix:
-                                evidenceCountsMatrix[(i, j)] += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
-                            else:
-                                evidenceCountsMatrix[(i, j)] = max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
-
-                            if (i, j) in relativeAlignmentsMatrix:
-                                relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
-                            else:
-                                relativeAlignmentsMatrix[(i, j)] = []
-                                relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
-
-
-
-                # search for equivalent child-parent relationships
-                for ktem in sourceWordChildren:
-                    for ltem in targetWordParents:
-                        if ((ktem[0], ltem[0]) in existingAlignments+adverbAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (
-                                (ktem[2] == ltem[2]) or
-                                self.is_similar(ltem[2], ktem[2], 'adverb', 'adverb', True, 'child_parent')):
-
-                            if (i, j) in evidenceCountsMatrix:
-                                evidenceCountsMatrix[(i, j)] += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
-                            else:
-                                evidenceCountsMatrix[(i, j)] = max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
-
-                            if (i, j) in relativeAlignmentsMatrix:
-                                relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
-                            else:
-                                relativeAlignmentsMatrix[(i, j)] = []
-                                relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
-
-
-
-        # now use the collected stats to align
-        for n in xrange(numberOfAdverbsInSource):
-
-            maxEvidenceCountForCurrentPass = 0
-            maxOverallValueForCurrentPass = 0
-            indexPairWithStrongestTieForCurrentPass = [-1, -1]
-
-
-            for i in sourceWordIndices:
-                if i in sourceWordIndicesAlreadyAligned or sourcePosTags[i-1][0].lower() <> 'r' or sourceLemmas[i-1] in stopwords:
-                    continue
-
-                for j in targetWordIndices:
-                    if j in targetWordIndicesAlreadyAligned or targetPosTags[j-1][0].lower() <> 'r' or targetLemmas[j-1] in stopwords:
-                        continue
-
-                    if (i, j) in evidenceCountsMatrix and theta1*wordSimilarities[(i, j)]+(1-theta1)*evidenceCountsMatrix[(i, j)]>maxOverallValueForCurrentPass:
-                        maxOverallValueForCurrentPass = theta1*wordSimilarities[(i, j)]+(1-theta1)*evidenceCountsMatrix[(i, j)]
-                        maxEvidenceCountForCurrentPass = evidenceCountsMatrix[(i, j)]
-                        indexPairWithStrongestTieForCurrentPass = [i, j]
-
-            if maxEvidenceCountForCurrentPass > 0:
-                adverbAlignments.append(indexPairWithStrongestTieForCurrentPass)
-                sourceWordIndicesAlreadyAligned.append(indexPairWithStrongestTieForCurrentPass[0])
-                targetWordIndicesAlreadyAligned.append(indexPairWithStrongestTieForCurrentPass[1])
-                for item in relativeAlignmentsMatrix[(indexPairWithStrongestTieForCurrentPass[0], indexPairWithStrongestTieForCurrentPass[1])]:
-                    if item[0]<>0 and item[1]<>0 and item[0] not in sourceWordIndicesAlreadyAligned and item[1] not in targetWordIndicesAlreadyAligned:
-                        adverbAlignments.append(item)
-                        sourceWordIndicesAlreadyAligned.append(item[0])
-                        targetWordIndicesAlreadyAligned.append(item[1])
-            else:
-                break
-
-
-
-        return adverbAlignments
-    ##############################################################################################################################
+        return posAlignments
 
 
     ##############################################################################################################################
@@ -922,7 +381,7 @@ class Aligner(object):
                 if jtem[3] not in ['PERSON', 'ORGANIZATION', 'LOCATION'] or jtem in targetNamedEntitiesAlreadyAligned:
                     continue
 
-                if item[3] <> jtem[3]:
+                if item[3] != jtem[3]:
                     continue
 
                 # do not align if the current target entity is present more than once
@@ -1022,10 +481,6 @@ class Aligner(object):
         targetPosTags = [item[4] for item in target]
 
 
-
-
-
-
         # align the sentence ending punctuation first
         if (sourceWords[len(source)-1] in ['.', '!'] and targetWords[len(target)-1] in ['.', '!']) or sourceWords[len(source)-1]==targetWords[len(target)-1]:
             alignments.append([len(source), len(target)])
@@ -1044,15 +499,8 @@ class Aligner(object):
             sourceWordIndicesAlreadyAligned.append(len(source)-1)
             targetWordIndicesAlreadyAligned.append(len(target)-1)
 
-
-
-
-
-
-
-
         # align all (>=2)-gram matches with at least one content word
-        commonContiguousSublists  = findAllCommonContiguousSublists(sourceWords, targetWords, True)
+        commonContiguousSublists = findAllCommonContiguousSublists(sourceWords, targetWords, True)
         for item in commonContiguousSublists:
             allStopWords = True
             for jtem in item:
@@ -1066,20 +514,11 @@ class Aligner(object):
                         sourceWordIndicesAlreadyAligned.append(item[0][j]+1)
                         targetWordIndicesAlreadyAligned.append(item[1][j]+1)
 
-
-
-
-
-
-
-
-
-
         # align hyphenated word groups
         for i in sourceWordIndices:
             if i in sourceWordIndicesAlreadyAligned:
                 continue
-            if '-' in sourceWords[i-1] and sourceWords[i-1] <> '-':
+            if '-' in sourceWords[i-1] and sourceWords[i-1] != '-':
                 tokens = sourceWords[i-1].split('-')
                 commonContiguousSublists = findAllCommonContiguousSublists(tokens, targetWords)
                 for item in commonContiguousSublists:
@@ -1093,7 +532,7 @@ class Aligner(object):
         for i in targetWordIndices:
             if i in targetWordIndicesAlreadyAligned:
                 continue
-            if '-' in target[i-1][2] and target[i-1][2] <> '-':
+            if '-' in target[i-1][2] and target[i-1][2] != '-':
                 tokens = target[i-1][2].split('-')
                 commonContiguousSublists = findAllCommonContiguousSublists(sourceWords, tokens)
                 for item in commonContiguousSublists:
@@ -1103,16 +542,6 @@ class Aligner(object):
                                 alignments.append([jtem+1, i])
                                 sourceWordIndicesAlreadyAligned.append(jtem+1)
                                 targetWordIndicesAlreadyAligned.append(i)
-
-
-
-
-
-
-
-
-
-
 
         # align named entities
         neAlignments = self.alignNamedEntities(source, target, sourceParseResult, targetParseResult, alignments)
@@ -1124,20 +553,11 @@ class Aligner(object):
                 if item[1] not in targetWordIndicesAlreadyAligned:
                     targetWordIndicesAlreadyAligned.append(item[1])
 
-
-
-
-
-
-
-
-
         # align words based on word and dependency match
         sourceDParse = dependencyParseAndPutOffsets(sourceParseResult)
         targetDParse = dependencyParseAndPutOffsets(targetParseResult)
 
-
-        mainVerbAlignments = self.alignMainVerbs(source, target, sourceParseResult, targetParseResult, alignments)
+        mainVerbAlignments = self.alignPos('verb', 'v', source, target, sourceParseResult, targetParseResult, alignments)
         for item in mainVerbAlignments:
             if item not in alignments:
                 alignments.append(item)
@@ -1146,8 +566,7 @@ class Aligner(object):
                 if item[1] not in targetWordIndicesAlreadyAligned:
                     targetWordIndicesAlreadyAligned.append(item[1])
 
-
-        nounAlignments = self.alignNouns(source, target, sourceParseResult, targetParseResult, alignments)
+        nounAlignments = self.alignPos('noun', 'n', source, target, sourceParseResult, targetParseResult, alignments)
         for item in nounAlignments:
             if item not in alignments:
                 alignments.append(item)
@@ -1156,7 +575,7 @@ class Aligner(object):
                 if item[1] not in targetWordIndicesAlreadyAligned:
                     targetWordIndicesAlreadyAligned.append(item[1])
 
-        adjectiveAlignments = self.alignAdjectives(source, target, sourceParseResult, targetParseResult, alignments)
+        adjectiveAlignments = self.alignPos('adjective', 'j', source,  target, sourceParseResult, targetParseResult, alignments)
         for item in adjectiveAlignments:
             if item not in alignments:
                 alignments.append(item)
@@ -1165,7 +584,7 @@ class Aligner(object):
                 if item[1] not in targetWordIndicesAlreadyAligned:
                     targetWordIndicesAlreadyAligned.append(item[1])
 
-        adverbAlignments = self.alignAdverbs(source, target, sourceParseResult, targetParseResult, alignments)
+        adverbAlignments = self.alignPos('adverb', 'r', source, target, sourceParseResult, targetParseResult, alignments)
         for item in adverbAlignments:
             if item not in alignments:
                 alignments.append(item)
@@ -1173,18 +592,6 @@ class Aligner(object):
                     sourceWordIndicesAlreadyAligned.append(item[0])
                 if item[1] not in targetWordIndicesAlreadyAligned:
                     targetWordIndicesAlreadyAligned.append(item[1])
-
-
-
-
-
-
-
-
-
-
-
-
 
         # collect evidence from textual neighborhood for aligning content words
         wordSimilarities = {}
@@ -1245,7 +652,7 @@ class Aligner(object):
                         bestWordSim = wordSimilarities[(i, j)]
                         bestTextNeighborhoodSim = textualNeighborhoodSimilarities[(i, j)]
 
-            if bestWordSim>=ppdbSim and [bestSourceIndex, bestTargetIndex] not in alignments:
+            if bestWordSim >= ppdbSim and [bestSourceIndex, bestTargetIndex] not in alignments:
                 if sourceLemmas[bestSourceIndex-1] not in stopwords:
                     alignments.append([bestSourceIndex, bestTargetIndex])
                     sourceWordIndicesAlreadyAligned.append(bestSourceIndex)
@@ -1256,21 +663,11 @@ class Aligner(object):
             if bestTargetIndex in targetWordIndicesBeingConsidered:
                 targetWordIndicesBeingConsidered.remove(bestTargetIndex)
 
-
-
-
-
-
-
-
-
-
-
-        # look if any remaining word is a part of a hyphenated word
+         # look if any remaining word is a part of a hyphenated word
         for i in sourceWordIndices:
             if i in sourceWordIndicesAlreadyAligned:
                 continue
-            if '-' in sourceWords[i-1] and sourceWords[i-1] <> '-':
+            if '-' in sourceWords[i-1] and sourceWords[i-1] != '-':
                 tokens = sourceWords[i-1].split('-')
                 commonContiguousSublists = findAllCommonContiguousSublists(tokens, targetWords)
                 for item in commonContiguousSublists:
@@ -1284,7 +681,7 @@ class Aligner(object):
         for i in targetWordIndices:
             if i in targetWordIndicesAlreadyAligned:
                 continue
-            if '-' in target[i-1][2] and target[i-1][2] <> '-':
+            if '-' in target[i-1][2] and target[i-1][2] != '-':
                 tokens = target[i-1][2].split('-')
                 commonContiguousSublists = findAllCommonContiguousSublists(sourceWords, tokens)
                 for item in commonContiguousSublists:
@@ -1294,17 +691,6 @@ class Aligner(object):
                                 alignments.append([jtem+1, i])
                                 sourceWordIndicesAlreadyAligned.append(jtem+1)
                                 targetWordIndicesAlreadyAligned.append(i)
-
-
-
-
-
-
-
-
-
-
-
 
         # collect evidence from dependency neighborhood for aligning stopwords
         wordSimilarities = {}
@@ -1320,7 +706,7 @@ class Aligner(object):
                 if targetLemmas[j-1] not in stopwords or j in targetWordIndicesAlreadyAligned:
                     continue
 
-                if (sourceLemmas[i-1]<>targetLemmas[j-1]) and (wordRelatedness(sourceLemmas[i-1], sourcePosTags[i-1], targetLemmas[j-1], targetPosTags[j-1])<ppdbSim):
+                if (sourceLemmas[i-1]!=targetLemmas[j-1]) and (wordRelatedness(sourceLemmas[i-1], sourcePosTags[i-1], targetLemmas[j-1], targetPosTags[j-1])<ppdbSim):
                     continue
 
                 wordSimilarities[(i, j)] = max(wordRelatedness(sourceWords[i-1], sourcePosTags[i-1], targetWords[j-1], targetPosTags[j-1]), wordRelatedness(sourceLemmas[i-1], sourcePosTags[i-1], targetLemmas[j-1], targetPosTags[j-1]))
@@ -1376,11 +762,6 @@ class Aligner(object):
                 sourceWordIndicesBeingConsidered.remove(bestSourceIndex)
             if bestTargetIndex in targetWordIndicesBeingConsidered:
                 targetWordIndicesBeingConsidered.remove(bestTargetIndex)
-
-
-
-
-
 
         # collect evidence from textual neighborhood for aligning stopwords and punctuations
         wordSimilarities = {}
@@ -1459,9 +840,7 @@ class Aligner(object):
             if bestTargetIndex in targetWordIndicesBeingConsidered:
                 targetWordIndicesBeingConsidered.remove(bestTargetIndex)
 
-
-
-        alignments = [item for item in alignments if item[0]<>0 and item[1]<>0]
+        alignments = [item for item in alignments if item[0]!=0 and item[1]!=0]
 
         return alignments
     ##############################################################################################################################
@@ -1493,11 +872,8 @@ class Aligner(object):
                 sentence2LemmasAndPosTags[i].append(item)
             sentence2LemmasAndPosTags[i].append(sentence2PosTagged[i][3])
 
-
         myWordAlignments = self.alignWords(sentence1LemmasAndPosTags, sentence2LemmasAndPosTags, sentence1ParseResult, sentence2ParseResult)
         myWordAlignmentTokens = [[str(sentence1Lemmatized[item[0]-1][2]), str(sentence2Lemmatized[item[1]-1][2])] for item in myWordAlignments]
 
-
         return [myWordAlignments, myWordAlignmentTokens]
     ##############################################################################################################################
-
