@@ -1,0 +1,14 @@
+Sentence #1 (3 tokens):
+I bought books
+#
+[Text=I CharacterOffsetBegin=0 CharacterOffsetEnd=1 PartOfSpeech=PRP Lemma=I NamedEntityTag=O] [Text=bought CharacterOffsetBegin=2 CharacterOffsetEnd=8 PartOfSpeech=VBD Lemma=buy NamedEntityTag=O] [Text=books CharacterOffsetBegin=9 CharacterOffsetEnd=14 PartOfSpeech=NNS Lemma=book NamedEntityTag=O] 
+#
+(ROOT
+  (S
+    (NP (PRP I))
+    (VP (VBD bought)
+      (NP (NNS books)))))
+#
+root(ROOT-0, bought-2)
+nsubj(bought-2, I-1)
+dobj(bought-2, books-3)

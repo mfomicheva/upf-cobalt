@@ -34,7 +34,6 @@ class Aligner(object):
         global ppdbSim
         global theta1
 
-
         posAlignments = []
 
         sourceWordIndices = [i+1 for i in xrange(len(source))]
@@ -599,7 +598,6 @@ class Aligner(object):
         sourceWordIndicesBeingConsidered = []
         targetWordIndicesBeingConsidered = []
 
-
         for i in sourceWordIndices:
             if i in sourceWordIndicesAlreadyAligned or sourceLemmas[i-1] in stopwords + punctuations + ['\'s', '\'d', '\'ll']:
                 continue
@@ -622,7 +620,6 @@ class Aligner(object):
                           if (sourceNeighborhood[1][k] not in stopwords + punctuations) and ((sourceNeighborhood[0][k], targetNeighborhood[0][l]) in alignments or (wordRelatedness(sourceNeighborhood[1][k], 'none', targetNeighborhood[1][l], 'none')>=ppdbSim)):
                             evidence += wordRelatedness(sourceNeighborhood[1][k], 'none', targetNeighborhood[1][l], 'none')
                 textualNeighborhoodSimilarities[(i, j)] = evidence
-
 
         numOfUnalignedWordsInSource = len(sourceWordIndicesBeingConsidered)
 
