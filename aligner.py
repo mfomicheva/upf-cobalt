@@ -9,7 +9,7 @@ class Aligner(object):
     config = None
 
     def __init__(self, language):
-        config = AlignerConfig(language)
+        self.config = AlignerConfig(language)
 
     def is_similar(self, item1, item2, pos1, pos2, is_opposite, relation):
         result = False
@@ -74,19 +74,15 @@ class Aligner(object):
                 if j in targetWordIndicesAlreadyAligned or (targetPosTags[j-1][0].lower() <> 'n' and targetPosTags[j-1].lower()<>'prp'):
                     continue
 
-
                 if max(wordRelatedness(sourceWords[i-1], sourcePosTags[i-1], targetWords[j-1], targetPosTags[j-1]), wordRelatedness(sourceLemmas[i-1], sourcePosTags[i-1], targetLemmas[j-1], targetPosTags[j-1]))<ppdbSim:
                     continue
 
-
                 wordSimilarities[(i, j)] = max(wordRelatedness(sourceWords[i-1], sourcePosTags[i-1], targetWords[j-1], targetPosTags[j-1]), wordRelatedness(sourceLemmas[i-1], sourcePosTags[i-1], targetLemmas[j-1], targetPosTags[j-1]))
-
 
                 sourceWordParents = findParents(sourceDParse, i, sourceWords[i-1])
                 sourceWordChildren = findChildren(sourceDParse, i, sourceWords[i-1])
                 targetWordParents = findParents(targetDParse, j, targetWords[j-1])
                 targetWordChildren = findChildren(targetDParse, j, targetWords[j-1])
-
 
                 # search for common or equivalent parents
                 for ktem in sourceWordParents:
@@ -194,7 +190,7 @@ class Aligner(object):
                 sourceWordIndicesAlreadyAligned.append(indexPairWithStrongestTieForCurrentPass[0])
                 targetWordIndicesAlreadyAligned.append(indexPairWithStrongestTieForCurrentPass[1])
                 for item in relativeAlignmentsMatrix[(indexPairWithStrongestTieForCurrentPass[0], indexPairWithStrongestTieForCurrentPass[1])]:
-                    if item[0]<>0 and item[1]<>0 and item[0] not in sourceWordIndicesAlreadyAligned and item[1] not in targetWordIndicesAlreadyAligned:
+                    if item[0] <> 0 and item[1] <> 0 and item[0] not in sourceWordIndicesAlreadyAligned and item[1] not in targetWordIndicesAlreadyAligned:
                         nounAlignments.append(item)
                         sourceWordIndicesAlreadyAligned.append(item[0])
                         targetWordIndicesAlreadyAligned.append(item[1])
@@ -288,11 +284,7 @@ class Aligner(object):
                                 relativeAlignmentsMatrix[(i, j)] = []
                                 relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
 
-
                 # search for common or equivalent parents
-                groupOfSimilarRelationsForNounParent = ['infmod', 'partmod', 'rcmod']
-                groupOfSimilarRelationsForVerbParent = ['purpcl', 'xcomp']
-
                 for ktem in sourceWordParents:
                     for ltem in targetWordParents:
                         if ((ktem[0], ltem[0]) in existingAlignments + mainVerbAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1])) >= ppdbSim) and (
