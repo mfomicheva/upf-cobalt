@@ -35,6 +35,8 @@ def presentInPPDB(word1, word2):
 
 ##############################################################################################################################
 def wordRelatedness(word1, pos1, word2, pos2):
+    word1 = word1.decode('UTF-8')
+    word2 = word2.decode('UTF-8')
 
     global stemmer
     global ppdbSim

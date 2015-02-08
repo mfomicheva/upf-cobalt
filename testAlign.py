@@ -1,5 +1,4 @@
 from aligner import *
-from alignerConfig import AlignerConfig
 from util import *
 
 sentences = readSentences(open('Data/input.txt'))

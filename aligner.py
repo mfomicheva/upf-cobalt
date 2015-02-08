@@ -11,8 +11,23 @@ class Aligner(object):
     def __init__(self, language):
         config = AlignerConfig(language)
 
+    def is_similar(self, item1, item2, pos1, pos2, is_opposite, relation):
+        result = False
+        group = self.config.get_similar_group(pos1, pos2, is_opposite, relation)
+
+        if is_opposite:
+            for subgroup in group:
+                if item1 in subgroup and item2 in subgroup:
+                    result = True
+        else:
+            for subgroup in group:
+                if item1 in subgroup[0] and item2 in subgroup[1]:
+                    result = True
+
+        return result
+
     ##############################################################################################################################
-    def alignNouns(sef, source, target, sourceParseResult, targetParseResult, existingAlignments):
+    def alignNouns(self, source, target, sourceParseResult, targetParseResult, existingAlignments):
     # source and target:: each is a list of elements of the form:
     # [[character begin offset, character end offset], word index, word, lemma, pos tag]
 
@@ -74,23 +89,12 @@ class Aligner(object):
 
 
                 # search for common or equivalent parents
-                groupOfSimilarRelationsForNounParent = ['pos', 'nn', 'prep_of', 'prep_in', 'prep_at', 'prep_for']
-                group1OfSimilarRelationsForVerbParent = ['agent', 'nsubj', 'xsubj']
-                group2OfSimilarRelationsForVerbParent = ['ccomp', 'dobj', 'nsubjpass', 'rel', 'partmod']
-                group3OfSimilarRelationsForVerbParent = ['tmod' 'prep_in', 'prep_at', 'prep_on']
-                group4OfSimilarRelationsForVerbParent = ['iobj', 'prep_to']
-
-
-
                 for ktem in sourceWordParents:
                     for ltem in targetWordParents:
                         if ((ktem[0], ltem[0]) in existingAlignments+nounAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (
-                            (ktem[2]==ltem[2]) or
-                                (ktem[2] in groupOfSimilarRelationsForNounParent and ltem[2] in groupOfSimilarRelationsForNounParent) or
-                                (ktem[2] in group1OfSimilarRelationsForVerbParent and ltem[2] in group1OfSimilarRelationsForVerbParent) or
-                                (ktem[2] in group2OfSimilarRelationsForVerbParent and ltem[2] in group2OfSimilarRelationsForVerbParent) or
-                                (ktem[2] in group3OfSimilarRelationsForVerbParent and ltem[2] in group3OfSimilarRelationsForVerbParent) or
-                                (ktem[2] in group4OfSimilarRelationsForVerbParent and ltem[2] in group4OfSimilarRelationsForVerbParent)):
+                            (ktem[2] == ltem[2]) or
+                                self.is_similar(ktem[2], ltem[2], 'noun', 'noun', False, 'parent') or
+                                self.is_similar(ktem[2], ltem[2], 'noun', 'verb', False, 'parent')):
 
                             if (i, j) in evidenceCountsMatrix:
                                 evidenceCountsMatrix[(i, j)] += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
@@ -106,18 +110,13 @@ class Aligner(object):
 
 
                 # search for common or equivalent children
-                groupOfSimilarRelationsForNounChild = ['pos', 'nn' 'prep_of', 'prep_in', 'prep_at', 'prep_for']
-                groupOfSimilarRelationsForVerbChild = ['infmod', 'partmod', 'rcmod']
-                groupOfSimilarRelationsForAdjectiveChild = ['amod', 'rcmod']
-
-
                 for ktem in sourceWordChildren:
                     for ltem in targetWordChildren:
                         if ((ktem[0], ltem[0]) in existingAlignments+nounAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (
                                 (ktem[2]==ltem[2]) or
-                                (ktem[2] in groupOfSimilarRelationsForNounChild and ltem[2] in groupOfSimilarRelationsForNounChild) or
-                                (ktem[2] in groupOfSimilarRelationsForVerbChild and ltem[2] in groupOfSimilarRelationsForVerbChild) or
-                                (ktem[2] in groupOfSimilarRelationsForAdjectiveChild and ltem[2] in groupOfSimilarRelationsForAdjectiveChild)):
+                                self.is_similar(ktem[2], ltem[2], 'noun', 'noun', False, 'child') or
+                                self.is_similar(ktem[2], ltem[2], 'noun', 'verb', False, 'child') or
+                                self.is_similar(ktem[2], ltem[2], 'noun', 'adjective', False, 'child')):
 
                             if (i, j) in evidenceCountsMatrix:
                                 evidenceCountsMatrix[(i, j)] += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
@@ -129,26 +128,14 @@ class Aligner(object):
                             else:
                                 relativeAlignmentsMatrix[(i, j)] = []
                                 relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
-
-
-
-                # search for equivalent parent-child relations
-                groupOfSimilarRelationsInOppositeDirectionForAdjectiveParentAndChild = [['nsubj'], ['amod', 'rcmod']]
-                groupOfSimilarRelationsInOppositeDirectionForVerbParentAndChild = [['ccomp', 'dobj', 'nsubjpass', 'rel', 'partmod'], ['infmod', 'partmod', 'rcmod']]
-                group1OfSimilarRelationsInOppositeDirectionForNounParentAndChild = [['conj_and'], ['conj_and']]
-                group2OfSimilarRelationsInOppositeDirectionForNounParentAndChild = [['conj_or'], ['conj_or']]
-                group3OfSimilarRelationsInOppositeDirectionForNounParentAndChild = [['conj_nor'], ['conj_nor']]
-
 
                 for ktem in sourceWordParents:
                     for ltem in targetWordChildren:
                         if ((ktem[0], ltem[0]) in existingAlignments+nounAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (
-                                (ktem[2]==ltem[2]) or
-                                (ktem[2] in groupOfSimilarRelationsInOppositeDirectionForAdjectiveParentAndChild[0] and ltem[2] in groupOfSimilarRelationsInOppositeDirectionForAdjectiveParentAndChild[1]) or
-                                (ktem[2] in groupOfSimilarRelationsInOppositeDirectionForVerbParentAndChild[0] and ltem[2] in groupOfSimilarRelationsInOppositeDirectionForVerbParentAndChild[1]) or
-                                (ktem[2] in group1OfSimilarRelationsInOppositeDirectionForNounParentAndChild[0] and ltem[2] in group1OfSimilarRelationsInOppositeDirectionForNounParentAndChild[1]) or
-                                (ktem[2] in group2OfSimilarRelationsInOppositeDirectionForNounParentAndChild[0] and ltem[2] in group2OfSimilarRelationsInOppositeDirectionForNounParentAndChild[1]) or
-                                (ktem[2] in group3OfSimilarRelationsInOppositeDirectionForNounParentAndChild[0] and ltem[2] in group3OfSimilarRelationsInOppositeDirectionForNounParentAndChild[1])):
+                                (ktem[2] == ltem[2]) or
+                                self.is_similar(ktem[2], ltem[2], 'noun', 'adjective', True, 'parent_child') or
+                                self.is_similar(ktem[2], ltem[2], 'noun', 'verb', True, 'parent_child') or
+                                self.is_similar(ktem[2], ltem[2], 'noun', 'noun', True, 'parent_child')):
 
                             if (i, j) in evidenceCountsMatrix:
                                 evidenceCountsMatrix[(i, j)] += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
@@ -160,19 +147,15 @@ class Aligner(object):
                             else:
                                 relativeAlignmentsMatrix[(i, j)] = []
                                 relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
-
-
 
                 # search for equivalent child-parent relations
                 for ktem in sourceWordChildren:
                     for ltem in targetWordParents:
                         if ((ktem[0], ltem[0]) in existingAlignments+nounAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (
-                                (ktem[2]==ltem[2]) or
-                                (ktem[2] in groupOfSimilarRelationsInOppositeDirectionForAdjectiveParentAndChild[1] and ltem[2] in groupOfSimilarRelationsInOppositeDirectionForAdjectiveParentAndChild[0]) or
-                                (ktem[2] in groupOfSimilarRelationsInOppositeDirectionForVerbParentAndChild[1] and ltem[2] in groupOfSimilarRelationsInOppositeDirectionForVerbParentAndChild[0]) or
-                                (ktem[2] in group1OfSimilarRelationsInOppositeDirectionForNounParentAndChild[1] and ltem[2] in group1OfSimilarRelationsInOppositeDirectionForNounParentAndChild[0]) or
-                                (ktem[2] in group2OfSimilarRelationsInOppositeDirectionForNounParentAndChild[1] and ltem[2] in group2OfSimilarRelationsInOppositeDirectionForNounParentAndChild[0]) or
-                                (ktem[2] in group3OfSimilarRelationsInOppositeDirectionForNounParentAndChild[1] and ltem[2] in group3OfSimilarRelationsInOppositeDirectionForNounParentAndChild[0])):
+                                (ktem[2] == ltem[2]) or
+                                self.is_similar(ltem[2], ktem[2], 'noun', 'adjective', True, 'child_parent') or
+                                self.is_similar(ltem[2], ktem[2], 'noun', 'verb', True, 'child_parent') or
+                                self.is_similar(ltem[2], ktem[2], 'noun', 'noun', True, 'child_parent')):
 
                             if (i, j) in evidenceCountsMatrix:
                                 evidenceCountsMatrix[(i, j)] += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
@@ -184,10 +167,6 @@ class Aligner(object):
                             else:
                                 relativeAlignmentsMatrix[(i, j)] = []
                                 relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
-
-
-
-
 
         # now use the collected stats to align
         for n in xrange(numberOfNounsInSource):
@@ -290,26 +269,13 @@ class Aligner(object):
                 targetWordParents = findParents(targetDParse, j, targetWords[j-1])
                 targetWordChildren = findChildren(targetDParse, j, targetWords[j-1])
 
-
-
-
                 # search for common or equivalent children
-                group1OfSimilarRelationsForNounChild = ['agent', 'nsubj' 'xsubj']
-                group2OfSimilarRelationsForNounChild = ['ccomp', 'dobj' 'nsubjpass', 'rel', 'partmod']
-                group3OfSimilarRelationsForNounChild = ['tmod', 'prep_in', 'prep_at', 'prep_on']
-                group4OfSimilarRelationsForNounChild = ['iobj', 'prep_to']
-                groupOfSimilarRelationsForVerbChild = ['purpcl', 'xcomp']
-
-
                 for ktem in sourceWordChildren:
                     for ltem in targetWordChildren:
-                        if ((ktem[0], ltem[0]) in existingAlignments+mainVerbAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (
-                                (ktem[2]==ltem[2]) or
-                                (ktem[2] in group1OfSimilarRelationsForNounChild and ltem[2] in group1OfSimilarRelationsForNounChild) or
-                                (ktem[2] in group2OfSimilarRelationsForNounChild and ltem[2] in group2OfSimilarRelationsForNounChild) or
-                                (ktem[2] in group3OfSimilarRelationsForNounChild and ltem[2] in group3OfSimilarRelationsForNounChild) or
-                                (ktem[2] in group4OfSimilarRelationsForNounChild and ltem[2] in group4OfSimilarRelationsForNounChild) or
-                                (ktem[2] in groupOfSimilarRelationsForVerbChild and ltem[2] in groupOfSimilarRelationsForVerbChild)):
+                        if ((ktem[0], ltem[0]) in existingAlignments+mainVerbAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1])) >= ppdbSim) and (
+                                (ktem[2] == ltem[2]) or
+                                self.is_similar(ktem[2], ltem[2], 'verb', 'noun', False, 'child') or
+                                self.is_similar(ktem[2], ltem[2], 'verb', 'verb', False, 'child')):
 
                             if (i, j) in evidenceCountsMatrix:
                                 evidenceCountsMatrix[(i, j)] += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
@@ -329,10 +295,10 @@ class Aligner(object):
 
                 for ktem in sourceWordParents:
                     for ltem in targetWordParents:
-                        if ((ktem[0], ltem[0]) in existingAlignments+mainVerbAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (
-                                (ktem[2]==ltem[2]) or
-                                (ktem[2] in groupOfSimilarRelationsForNounParent and ltem[2] in groupOfSimilarRelationsForNounParent) or
-                                (ktem[2] in groupOfSimilarRelationsForVerbParent and ltem[2] in groupOfSimilarRelationsForVerbParent)):
+                        if ((ktem[0], ltem[0]) in existingAlignments + mainVerbAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1])) >= ppdbSim) and (
+                                (ktem[2] == ltem[2]) or
+                                self.is_similar(ktem[2], ltem[2], 'verb', 'noun', False, 'parent') or
+                                self.is_similar(ktem[2], ltem[2], 'verb', 'verb', False, 'parent')):
 
                             if (i, j) in evidenceCountsMatrix:
                                 evidenceCountsMatrix[(i, j)] += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
@@ -344,27 +310,14 @@ class Aligner(object):
                             else:
                                 relativeAlignmentsMatrix[(i, j)] = []
                                 relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
-
-
-
 
                 # search for equivalent parent-child pairs
-                groupOfSimilarRelationsInOppositeDirectionForAdjectiveParentAndChild = [['cop', 'csubj'], ['acomp']]
-                group1OfSimilarRelationsInOppositeDirectionForVerbParentAndChild = [['csubj'], ['csubjpass']]
-                group2OfSimilarRelationsInOppositeDirectionForVerbParentAndChild = [['conj_and'], ['conj_and']]
-                group3OfSimilarRelationsInOppositeDirectionForVerbParentAndChild = [['conj_or'], ['conj_or']]
-                group4OfSimilarRelationsInOppositeDirectionForVerbParentAndChild = [['conj_nor'], ['conj_nor']]
-
-
                 for ktem in sourceWordParents:
                     for ltem in targetWordChildren:
-                        if ((ktem[0], ltem[0]) in existingAlignments+mainVerbAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (
-                                (ktem[2]==ltem[2]) or
-                                (ktem[2] in groupOfSimilarRelationsInOppositeDirectionForAdjectiveParentAndChild[0] and ltem[2] in groupOfSimilarRelationsInOppositeDirectionForAdjectiveParentAndChild[1]) or
-                                (ktem[2] in group1OfSimilarRelationsInOppositeDirectionForVerbParentAndChild[0] and ltem[2] in group1OfSimilarRelationsInOppositeDirectionForVerbParentAndChild[1]) or
-                                (ktem[2] in group2OfSimilarRelationsInOppositeDirectionForVerbParentAndChild[0] and ltem[2] in group2OfSimilarRelationsInOppositeDirectionForVerbParentAndChild[1]) or
-                                (ktem[2] in group3OfSimilarRelationsInOppositeDirectionForVerbParentAndChild[0] and ltem[2] in group3OfSimilarRelationsInOppositeDirectionForVerbParentAndChild[1]) or
-                                (ktem[2] in group4OfSimilarRelationsInOppositeDirectionForVerbParentAndChild[0] and ltem[2] in group4OfSimilarRelationsInOppositeDirectionForVerbParentAndChild[1])):
+                        if ((ktem[0], ltem[0]) in existingAlignments+mainVerbAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1])) >= ppdbSim) and (
+                                (ktem[2] == ltem[2]) or
+                                self.is_similar(ktem[2], ltem[2], 'verb', 'adjective', True, 'parent_child') or
+                                self.is_similar(ktem[2], ltem[2], 'verb', 'verb', True, 'parent_child')):
 
                             if (i, j) in evidenceCountsMatrix:
                                 evidenceCountsMatrix[(i, j)] += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
@@ -376,19 +329,14 @@ class Aligner(object):
                             else:
                                 relativeAlignmentsMatrix[(i, j)] = []
                                 relativeAlignmentsMatrix[(i, j)].append([ktem[0], ltem[0]])
-
-
 
                 # search for equivalent child-parent pairs
                 for ktem in sourceWordChildren:
                     for ltem in targetWordParents:
                         if ((ktem[0], ltem[0]) in existingAlignments+mainVerbAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (
-                                (ktem[2]==ltem[2]) or
-                                (ktem[2] in groupOfSimilarRelationsInOppositeDirectionForAdjectiveParentAndChild[1] and ltem[2] in groupOfSimilarRelationsInOppositeDirectionForAdjectiveParentAndChild[0]) or
-                                (ktem[2] in group1OfSimilarRelationsInOppositeDirectionForVerbParentAndChild[1] and ltem[2] in group1OfSimilarRelationsInOppositeDirectionForVerbParentAndChild[0]) or
-                                (ktem[2] in group2OfSimilarRelationsInOppositeDirectionForVerbParentAndChild[1] and ltem[2] in group2OfSimilarRelationsInOppositeDirectionForVerbParentAndChild[0]) or
-                                (ktem[2] in group3OfSimilarRelationsInOppositeDirectionForVerbParentAndChild[1] and ltem[2] in group3OfSimilarRelationsInOppositeDirectionForVerbParentAndChild[0]) or
-                                (ktem[2] in group4OfSimilarRelationsInOppositeDirectionForVerbParentAndChild[1] and ltem[2] in group4OfSimilarRelationsInOppositeDirectionForVerbParentAndChild[0])):
+                                (ktem[2] == ltem[2]) or
+                                self.is_similar(ltem[2], ktem[2], 'verb', 'adjective', True, 'child_parent') or
+                                self.is_similar(ltem[2], ktem[2], 'verb', 'verb', True, 'child_parent')):
 
                             if (i, j) in evidenceCountsMatrix:
                                 evidenceCountsMatrix[(i, j)] += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
@@ -502,13 +450,12 @@ class Aligner(object):
                 targetWordParents = findParents(targetDParse, j, targetWords[j-1])
                 targetWordChildren = findChildren(targetDParse, j, targetWords[j-1])
 
-
                 # search for common or equivalent parents
-                groupOfSimilarRelationsForNounParent = ['amod', 'rcmod']
-
                 for ktem in sourceWordParents:
                     for ltem in targetWordParents:
-                        if ((ktem[0], ltem[0]) in existingAlignments+adjectiveAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and ((ktem[2]==ltem[2]) or (ktem[2] in groupOfSimilarRelationsForNounParent and ltem[2] in groupOfSimilarRelationsForNounParent)):
+                        if ((ktem[0], ltem[0]) in existingAlignments+adjectiveAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (
+                                (ktem[2] == ltem[2]) or
+                                self.is_similar(ktem[2], ltem[2], 'adjective', 'noun', False, 'parent')):
 
                             if (i, j) in evidenceCountsMatrix:
                                 evidenceCountsMatrix[(i, j)] += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
@@ -527,7 +474,7 @@ class Aligner(object):
                 # search for common children
                 for ktem in sourceWordChildren:
                     for ltem in targetWordChildren:
-                        if ((ktem[0], ltem[0]) in existingAlignments+adjectiveAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (ktem[2]==ltem[2]):
+                        if ((ktem[0], ltem[0]) in existingAlignments + adjectiveAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (ktem[2]==ltem[2]):
                             if (i, j) in evidenceCountsMatrix:
                                 evidenceCountsMatrix[(i, j)] += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
                             else:
@@ -551,13 +498,11 @@ class Aligner(object):
 
                 for ktem in sourceWordParents:
                     for ltem in targetWordChildren:
-                        if ((ktem[0], ltem[0]) in existingAlignments+adjectiveAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (
-                                (ktem[2]==ltem[2]) or
-                                (ktem[2] in groupOfSimilarRelationsInOppositeDirectionForNounParentAndChild[0] and ltem[2] in groupOfSimilarRelationsInOppositeDirectionForNounParentAndChild[1]) or
-                                (ktem[2] in groupOfSimilarRelationsInOppositeDirectionForVerbParentAndChild[0] and ltem[2] in groupOfSimilarRelationsInOppositeDirectionForVerbParentAndChild[1]) or
-                                (ktem[2] in group1OfSimilarRelationsInOppositeDirectionForAdjectiveParentAndChild[0] and ltem[2] in group1OfSimilarRelationsInOppositeDirectionForAdjectiveParentAndChild[1]) or
-                                (ktem[2] in group2OfSimilarRelationsInOppositeDirectionForAdjectiveParentAndChild[0] and ltem[2] in group2OfSimilarRelationsInOppositeDirectionForAdjectiveParentAndChild[1]) or
-                                (ktem[2] in group3OfSimilarRelationsInOppositeDirectionForAdjectiveParentAndChild[0] and ltem[2] in group3OfSimilarRelationsInOppositeDirectionForAdjectiveParentAndChild[1])):
+                        if ((ktem[0], ltem[0]) in existingAlignments + adjectiveAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (
+                                (ktem[2] == ltem[2]) or
+                                self.is_similar(ktem[2], ltem[2], 'adjective', 'noun', True, 'parent_child') or
+                                self.is_similar(ktem[2], ltem[2], 'adjective', 'verb', True, 'parent_child') or
+                                self.is_similar(ktem[2], ltem[2], 'adjective', 'adjective', True, 'parent_child')):
 
                             if (i, j) in evidenceCountsMatrix:
                                 evidenceCountsMatrix[(i, j)] += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
@@ -575,12 +520,10 @@ class Aligner(object):
                 for ktem in sourceWordChildren:
                     for ltem in targetWordParents:
                         if ((ktem[0], ltem[0]) in existingAlignments+adjectiveAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (
-                                (ktem[2]==ltem[2]) or
-                                (ktem[2] in groupOfSimilarRelationsInOppositeDirectionForNounParentAndChild[1] and ltem[2] in groupOfSimilarRelationsInOppositeDirectionForNounParentAndChild[0]) or
-                                (ktem[2] in groupOfSimilarRelationsInOppositeDirectionForVerbParentAndChild[1] and ltem[2] in groupOfSimilarRelationsInOppositeDirectionForVerbParentAndChild[0]) or
-                                (ktem[2] in group1OfSimilarRelationsInOppositeDirectionForAdjectiveParentAndChild[1] and ltem[2] in group1OfSimilarRelationsInOppositeDirectionForAdjectiveParentAndChild[0]) or
-                                (ktem[2] in group2OfSimilarRelationsInOppositeDirectionForAdjectiveParentAndChild[1] and ltem[2] in group2OfSimilarRelationsInOppositeDirectionForAdjectiveParentAndChild[0]) or
-                                (ktem[2] in group3OfSimilarRelationsInOppositeDirectionForAdjectiveParentAndChild[1] and ltem[2] in group3OfSimilarRelationsInOppositeDirectionForAdjectiveParentAndChild[0])):
+                                (ktem[2] == ltem[2]) or
+                                self.is_similar(ltem[2], ktem[2], 'adjective', 'noun', True, 'child_parent') or
+                                self.is_similar(ltem[2], ktem[2], 'adjective', 'verb', True, 'child_parent') or
+                                self.is_similar(ltem[2], ktem[2], 'adjective', 'adjective', True, 'child_parent')):
 
                             if (i, j) in evidenceCountsMatrix:
                                 evidenceCountsMatrix[(i, j)] += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
@@ -733,10 +676,8 @@ class Aligner(object):
                 for ktem in sourceWordParents:
                     for ltem in targetWordChildren:
                         if ((ktem[0], ltem[0]) in existingAlignments+adverbAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (
-                                (ktem[2]==ltem[2]) or
-                                (ktem[2] in group1OfSimilarRelationsInOppositeDirectionForAdverbParentAndChild[0] and ltem[2] in group1OfSimilarRelationsInOppositeDirectionForAdverbParentAndChild[1]) or
-                                (ktem[2] in group2OfSimilarRelationsInOppositeDirectionForAdverbParentAndChild[0] and ltem[2] in group2OfSimilarRelationsInOppositeDirectionForAdverbParentAndChild[1]) or
-                                (ktem[2] in group3OfSimilarRelationsInOppositeDirectionForAdverbParentAndChild[0] and ltem[2] in group3OfSimilarRelationsInOppositeDirectionForAdverbParentAndChild[1])):
+                                (ktem[2] == ltem[2]) or
+                                self.is_similar(ktem[2], ltem[2], 'adverb', 'adverb', True, 'parent_child')):
 
                             if (i, j) in evidenceCountsMatrix:
                                 evidenceCountsMatrix[(i, j)] += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
@@ -755,10 +696,8 @@ class Aligner(object):
                 for ktem in sourceWordChildren:
                     for ltem in targetWordParents:
                         if ((ktem[0], ltem[0]) in existingAlignments+adverbAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=ppdbSim) and (
-                                (ktem[2]==ltem[2]) or
-                                (ktem[2] in group1OfSimilarRelationsInOppositeDirectionForAdverbParentAndChild[1] and ltem[2] in group1OfSimilarRelationsInOppositeDirectionForAdverbParentAndChild[0]) or
-                                (ktem[2] in group2OfSimilarRelationsInOppositeDirectionForAdverbParentAndChild[1] and ltem[2] in group2OfSimilarRelationsInOppositeDirectionForAdverbParentAndChild[0]) or
-                                (ktem[2] in group3OfSimilarRelationsInOppositeDirectionForAdverbParentAndChild[1] and ltem[2] in group3OfSimilarRelationsInOppositeDirectionForAdverbParentAndChild[0])):
+                                (ktem[2] == ltem[2]) or
+                                self.is_similar(ltem[2], ktem[2], 'adverb', 'adverb', True, 'child_parent')):
 
                             if (i, j) in evidenceCountsMatrix:
                                 evidenceCountsMatrix[(i, j)] += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
