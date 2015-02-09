@@ -74,8 +74,8 @@ def findAllCommonContiguousSublists(A, B, turnToLowerCases=True): # this is a ve
             item[0] = item[1]
             item[1] = temp
 
-                        
-    return commonContiguousSublists
+    return []
+    #return commonContiguousSublists
 ##############################################################################################################################
 
 

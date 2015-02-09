@@ -9,3 +9,4 @@ for i, sentence in enumerate(sentences):
     alignments = aligner.align(sentence, sentences2[i])
     print alignments[0]
     print alignments[1]
+    print alignments[2]
