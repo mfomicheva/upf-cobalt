@@ -151,6 +151,26 @@ def lemmatize(parseResult):
 
 
 
+def prepareSentence(sentence):
+    sentenceParseResult = parseText(sentence)
+
+    sentenceLemmatized = lemmatize(sentenceParseResult)
+
+    sentencePosTagged = posTag(sentenceParseResult)
+
+    sentenceLemmasAndPosTags = []
+
+    for i in xrange(len(sentenceLemmatized)):
+        sentenceLemmasAndPosTags.append([])
+
+    for i in xrange(len(sentenceLemmatized)):
+        for item in sentenceLemmatized[i]:
+            sentenceLemmasAndPosTags[i].append(item)
+        sentenceLemmasAndPosTags[i].append(sentencePosTagged[i][3])
+
+    return sentenceLemmasAndPosTags
+
+
 
 ##############################################################################################################################
 def dependencyParseAndPutOffsets(parseResult):

@@ -802,34 +802,14 @@ class Aligner(object):
     ##############################################################################################################################
 
     def align(self, sentence1, sentence2):
-
         sentence1ParseResult = parseText(sentence1)
         sentence2ParseResult = parseText(sentence2)
 
-        sentence1Lemmatized = lemmatize(sentence1ParseResult)
-        sentence2Lemmatized = lemmatize(sentence2ParseResult)
-
-        sentence1PosTagged = posTag(sentence1ParseResult)
-        sentence2PosTagged = posTag(sentence2ParseResult)
-
-        sentence1LemmasAndPosTags = []
-        for i in xrange(len(sentence1Lemmatized)):
-            sentence1LemmasAndPosTags.append([])
-        for i in xrange(len(sentence1Lemmatized)):
-            for item in sentence1Lemmatized[i]:
-                sentence1LemmasAndPosTags[i].append(item)
-            sentence1LemmasAndPosTags[i].append(sentence1PosTagged[i][3])
-
-        sentence2LemmasAndPosTags = []
-        for i in xrange(len(sentence2Lemmatized)):
-            sentence2LemmasAndPosTags.append([])
-        for i in xrange(len(sentence2Lemmatized)):
-            for item in sentence2Lemmatized[i]:
-                sentence2LemmasAndPosTags[i].append(item)
-            sentence2LemmasAndPosTags[i].append(sentence2PosTagged[i][3])
+        sentence1LemmasAndPosTags = prepareSentence(sentence1)
+        sentence2LemmasAndPosTags = prepareSentence(sentence2)
 
         myWordAlignments = self.alignWords(sentence1LemmasAndPosTags, sentence2LemmasAndPosTags, sentence1ParseResult, sentence2ParseResult)
-        myWordAlignmentTokens = [[str(sentence1Lemmatized[item[0]-1][2]), str(sentence2Lemmatized[item[1]-1][2])] for item in myWordAlignments]
+        myWordAlignmentTokens = [[str(sentence1LemmasAndPosTags[item[0]-1][2]), str(sentence2LemmasAndPosTags[item[1]-1][2])] for item in myWordAlignments]
         myWordDependencySimilarity = []
 
         for pair in myWordAlignments:

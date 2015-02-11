@@ -1,25 +1,39 @@
-Sentence #1 (9 tokens):
-he books a flight to buy a book .
+Sentence #1 (8 tokens):
+
+A Republican strategy to counter Obama's re-election
 #
-[Text=he CharacterOffsetBegin=0 CharacterOffsetEnd=2 PartOfSpeech=PRP Lemma=he NamedEntityTag=O] [Text=books CharacterOffsetBegin=3 CharacterOffsetEnd=8 PartOfSpeech=NNS Lemma=book NamedEntityTag=O] [Text=a CharacterOffsetBegin=9 CharacterOffsetEnd=10 PartOfSpeech=DT Lemma=a NamedEntityTag=O] [Text=flight CharacterOffsetBegin=11 CharacterOffsetEnd=17 PartOfSpeech=NN Lemma=flight NamedEntityTag=O] [Text=to CharacterOffsetBegin=18 CharacterOffsetEnd=20 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=buy CharacterOffsetBegin=21 CharacterOffsetEnd=24 PartOfSpeech=VB Lemma=buy NamedEntityTag=O] [Text=a CharacterOffsetBegin=25 CharacterOffsetEnd=26 PartOfSpeech=DT Lemma=a NamedEntityTag=O] [Text=book CharacterOffsetBegin=27 CharacterOffsetEnd=31 PartOfSpeech=NN Lemma=book NamedEntityTag=O] [Text=. CharacterOffsetBegin=32 CharacterOffsetEnd=33 PartOfSpeech=. Lemma=. NamedEntityTag=O]
+[Text=A CharacterOffsetBegin=0 CharacterOffsetEnd=1 PartOfSpeech=DT Lemma=a NamedEntityTag=O] [Text=Republican CharacterOffsetBegin=2 CharacterOffsetEnd=12 PartOfSpeech=JJ Lemma=republican NamedEntityTag=MISC] [Text=strategy CharacterOffsetBegin=13 CharacterOffsetEnd=21 PartOfSpeech=NN Lemma=strategy NamedEntityTag=O] [Text=to CharacterOffsetBegin=22 CharacterOffsetEnd=24 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=counter CharacterOffsetBegin=25 CharacterOffsetEnd=32 PartOfSpeech=VB Lemma=counter NamedEntityTag=O] [Text=Obama CharacterOffsetBegin=33 CharacterOffsetEnd=38 PartOfSpeech=NNP Lemma=Obama NamedEntityTag=PERSON] [Text='s CharacterOffsetBegin=38 CharacterOffsetEnd=40 PartOfSpeech=POS Lemma='s NamedEntityTag=O] [Text=re-election CharacterOffsetBegin=41 CharacterOffsetEnd=52 PartOfSpeech=NN Lemma=re-election NamedEntityTag=O] 
 #
 (ROOT
-  (NP
-    (NP
-      (NP (PRP he) (NNS books))
-      (NP (DT a) (NN flight)))
-    (SBAR
-      (S
-        (VP (TO to)
-          (VP (VB buy)
-            (NP (DT a) (NN book))))))
-    (. .)))
+
+  (FRAG
+
+    (NP (DT A) (JJ Republican) (NN strategy))
+
+    (S
+
+      (VP (TO to)
+
+        (VP (VB counter)
+
+          (NP
+
+            (NP (NNP Obama) (POS 's))
+
+            (NN re-election)))))))
+
+
 #
-root(ROOT-0, books-2)
-dep(books-2, he-1)
-det(flight-4, a-3)
-dep(books-2, flight-4)
-aux(buy-6, to-5)
-vmod(books-2, buy-6)
-det(book-8, a-7)
-dobj(buy-6, book-8)
+root(ROOT-0, strategy-3)
+
+det(strategy-3, A-1)
+
+amod(strategy-3, Republican-2)
+
+aux(counter-5, to-4)
+
+dep(strategy-3, counter-5)
+
+poss(re-election-8, Obama-6)
+
+dobj(counter-5, re-election-8)

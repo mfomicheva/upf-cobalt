@@ -7,8 +7,8 @@ import nltk
 from nltk.corpus import stopwords
 
 from nltk import SnowballStemmer
-stemmer = SnowballStemmer('spanish')
+stemmer = SnowballStemmer('english')
 
 punctuations = ['(','-lrb-','.',',','-','?','!',';','_',':','{','}','[','/',']','...','"','\'',')', '-rrb-']
-stopwords = stopwords.words('spanish')
+stopwords = stopwords.words('english')
 
