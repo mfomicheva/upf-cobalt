@@ -742,13 +742,41 @@ class Aligner(object):
                 sourceWordIndicesBeingConsidered.append(i)
                 targetWordIndicesBeingConsidered.append(j)
 
-                # textual neighborhood evidence
+                # textual neighborhood evidence, increasing evidence if content words around this stop word are aligned
                 evidence = 0
 
-                if [i-1, j-1] in alignments:
+                k = i
+                l = j
+
+                while k > 0:
+                    if sourceLemmas[k] in stopwords + punctuations + ['\'s', '\'d', '\'ll']:
+                        k -= 1
+                    else:
+                        break
+                while l > 0:
+                    if targetLemmas[l] in stopwords + punctuations + ['\'s', '\'d', '\'ll']:
+                        l -= 1
+                    else:
+                        break
+
+                m = i
+                n = j
+
+                while m < len(sourceLemmas) - 1:
+                    if sourceLemmas[m] in stopwords + punctuations + ['\'s', '\'d', '\'ll']:
+                        m += 1
+                    else:
+                        break
+                while n < len(targetLemmas) - 1:
+                    if targetLemmas[n] in stopwords + punctuations + ['\'s', '\'d', '\'ll']:
+                        n += 1
+                    else:
+                        break
+
+                if [k-1, l-1] in alignments:
                     evidence += 1
 
-                if [i+1, j+1] in alignments:
+                if [m+1, n+1] in alignments:
                     evidence += 1
 
                 try:
