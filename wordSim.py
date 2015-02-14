@@ -1,9 +1,10 @@
+import re
 from config import *
 
 ################################################################################
 def loadPPDB(ppdbFileName = 'Resources/ppdb-1.0-xxxl-lexical.extended.synonyms.uniquepairs'):
 
-    global ppdbSim
+    global synonymSimilarity
     global ppdbDict
 
     count = 0
@@ -14,7 +15,7 @@ def loadPPDB(ppdbFileName = 'Resources/ppdb-1.0-xxxl-lexical.extended.synonyms.u
             continue
         tokens = line.split()
         tokens[1] = tokens[1].strip()
-        ppdbDict[(tokens[0], tokens[1])] = ppdbSim
+        ppdbDict[(tokens[0], tokens[1])] = synonymSimilarity
         count += 1
 
 ################################################################################
@@ -39,7 +40,7 @@ def wordRelatedness(word1, pos1, word2, pos2):
     word2 = word2.decode('UTF-8')
 
     global stemmer
-    global ppdbSim
+    global synonymSimilarity
     global punctuations
 
     if len(word1) > 1:
@@ -77,8 +78,12 @@ def wordRelatedness(word1, pos1, word2, pos2):
     if word1 in punctuations or word2 in punctuations:
         return 0
 
-    if presentInPPDB(word1.lower(), word2.lower()):
-        return ppdbSim
+    word1Cleaned = re.sub(r'u\'(.+)\'', r'\1', word1).lower()
+    word2Cleaned = re.sub(r'u\'(.+)\'', r'\1', word2).lower()
+
+    if synonymDictionary.checkSynonymByLemma(word1Cleaned, word2Cleaned):
+    #if presentInPPDB(word1Cleaned, word2Cleaned):
+        return synonymSimilarity
     else:
         return 0
 ##############################################################################################################################
@@ -92,7 +97,7 @@ def weightedWordRelatedness(word1, word2, exact, stem, synonym):
     #word2[2] = word2[2].decode('UTF-8')
 
     global stemmer
-    global ppdbSim
+    global synonymSimilarity
     global punctuations
 
     if len(word1[2]) > 1:
@@ -133,7 +138,9 @@ def weightedWordRelatedness(word1, word2, exact, stem, synonym):
     if word1[2] in punctuations or word2[2] in punctuations:
         return 0
 
-    if presentInPPDB(word1[2].lower(), word2[2].lower()):
+    word1Cleaned = re.sub(r'u\'(.+)\'', r'\1', word1[3]).lower()
+    word2Cleaned = re.sub(r'u\'(.+)\'', r'\1', word2[3]).lower()
+    if synonymDictionary.checkSynonymByLemma(word1Cleaned, word2Cleaned):
         return synonym
     else:
         return 0

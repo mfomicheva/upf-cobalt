@@ -1,46 +1,49 @@
-Sentence #1 (9 tokens):
-
-A Republican strategy to counter the re-election of Obama
+Sentence #1 (24 tokens):
+No special payments must be made for products for which there is no demand, and the latter must not be advertised.
 #
-[Text=A CharacterOffsetBegin=0 CharacterOffsetEnd=1 PartOfSpeech=DT Lemma=a NamedEntityTag=O] [Text=Republican CharacterOffsetBegin=2 CharacterOffsetEnd=12 PartOfSpeech=JJ Lemma=republican NamedEntityTag=MISC] [Text=strategy CharacterOffsetBegin=13 CharacterOffsetEnd=21 PartOfSpeech=NN Lemma=strategy NamedEntityTag=O] [Text=to CharacterOffsetBegin=22 CharacterOffsetEnd=24 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=counter CharacterOffsetBegin=25 CharacterOffsetEnd=32 PartOfSpeech=VB Lemma=counter NamedEntityTag=O] [Text=the CharacterOffsetBegin=33 CharacterOffsetEnd=36 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=re-election CharacterOffsetBegin=37 CharacterOffsetEnd=48 PartOfSpeech=NN Lemma=re-election NamedEntityTag=O] [Text=of CharacterOffsetBegin=49 CharacterOffsetEnd=51 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=Obama CharacterOffsetBegin=52 CharacterOffsetEnd=57 PartOfSpeech=NNP Lemma=Obama NamedEntityTag=PERSON] 
+[Text=No CharacterOffsetBegin=0 CharacterOffsetEnd=2 PartOfSpeech=DT Lemma=no NamedEntityTag=O] [Text=special CharacterOffsetBegin=3 CharacterOffsetEnd=10 PartOfSpeech=JJ Lemma=special NamedEntityTag=O] [Text=payments CharacterOffsetBegin=11 CharacterOffsetEnd=19 PartOfSpeech=NNS Lemma=payment NamedEntityTag=O] [Text=must CharacterOffsetBegin=20 CharacterOffsetEnd=24 PartOfSpeech=MD Lemma=must NamedEntityTag=O] [Text=be CharacterOffsetBegin=25 CharacterOffsetEnd=27 PartOfSpeech=VB Lemma=be NamedEntityTag=O] [Text=made CharacterOffsetBegin=28 CharacterOffsetEnd=32 PartOfSpeech=VBN Lemma=make NamedEntityTag=O] [Text=for CharacterOffsetBegin=33 CharacterOffsetEnd=36 PartOfSpeech=IN Lemma=for NamedEntityTag=O] [Text=products CharacterOffsetBegin=37 CharacterOffsetEnd=45 PartOfSpeech=NNS Lemma=product NamedEntityTag=O] [Text=for CharacterOffsetBegin=46 CharacterOffsetEnd=49 PartOfSpeech=IN Lemma=for NamedEntityTag=O] [Text=which CharacterOffsetBegin=50 CharacterOffsetEnd=55 PartOfSpeech=WDT Lemma=which NamedEntityTag=O] [Text=there CharacterOffsetBegin=56 CharacterOffsetEnd=61 PartOfSpeech=EX Lemma=there NamedEntityTag=O] [Text=is CharacterOffsetBegin=62 CharacterOffsetEnd=64 PartOfSpeech=VBZ Lemma=be NamedEntityTag=O] [Text=no CharacterOffsetBegin=65 CharacterOffsetEnd=67 PartOfSpeech=DT Lemma=no NamedEntityTag=O] [Text=demand CharacterOffsetBegin=68 CharacterOffsetEnd=74 PartOfSpeech=NN Lemma=demand NamedEntityTag=O] [Text=, CharacterOffsetBegin=74 CharacterOffsetEnd=75 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=and CharacterOffsetBegin=76 CharacterOffsetEnd=79 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=the CharacterOffsetBegin=80 CharacterOffsetEnd=83 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=latter CharacterOffsetBegin=84 CharacterOffsetEnd=90 PartOfSpeech=JJ Lemma=latter NamedEntityTag=O] [Text=must CharacterOffsetBegin=91 CharacterOffsetEnd=95 PartOfSpeech=MD Lemma=must NamedEntityTag=O] [Text=not CharacterOffsetBegin=96 CharacterOffsetEnd=99 PartOfSpeech=RB Lemma=not NamedEntityTag=O] [Text=be CharacterOffsetBegin=100 CharacterOffsetEnd=102 PartOfSpeech=VB Lemma=be NamedEntityTag=O] [Text=advertised CharacterOffsetBegin=103 CharacterOffsetEnd=113 PartOfSpeech=VBN Lemma=advertise NamedEntityTag=O] [Text=. CharacterOffsetBegin=113 CharacterOffsetEnd=114 PartOfSpeech=. Lemma=. NamedEntityTag=O]
 #
 (ROOT
-
-  (FRAG
-
-    (NP (DT A) (JJ Republican) (NN strategy))
-
+  (S
     (S
-
-      (VP (TO to)
-
-        (VP (VB counter)
-
-          (NP
-
-            (NP (DT the) (NN re-election))
-
-            (PP (IN of)
-
-              (NP (NNP Obama)))))))))
+      (NP (DT No) (JJ special) (NNS payments))
+      (VP (MD must)
+        (VP (VB be)
+          (VP (VBN made)
+            (PP (IN for)
+              (NP
+                (NP (NNS products))
+                (SBAR
+                  (WHPP (IN for)
+                    (WHNP (WDT which)))
+                  (S
+                    (NP (EX there))
+                    (VP (VBZ is)
+                      (NP (DT no) (NN demand)))))))))))
+    (, ,)
+    (CC and)
+    (S
+      (NP (DT the) (JJ latter))
+      (VP (MD must) (RB not)
+        (VP (VB be)
+          (VP (VBN advertised)))))
+    (. .)))
 #
-
-
-root(ROOT-0, strategy-3)
-
-det(strategy-3, A-1)
-
-amod(strategy-3, Republican-2)
-
-aux(counter-5, to-4)
-
-dep(strategy-3, counter-5)
-
-det(re-election-7, the-6)
-
-dobj(counter-5, re-election-7)
-
-prep_of(re-election-7, Obama-9)
-
-
-
+root(ROOT-0, made-6)
+neg(payments-3, No-1)
+amod(payments-3, special-2)
+nsubjpass(made-6, payments-3)
+aux(made-6, must-4)
+auxpass(made-6, be-5)
+prep_for(made-6, products-8)
+prep_for(is-12, which-10)
+expl(is-12, there-11)
+rcmod(products-8, is-12)
+neg(demand-14, no-13)
+nsubj(is-12, demand-14)
+det(latter-18, the-17)
+nsubjpass(advertised-22, latter-18)
+aux(advertised-22, must-19)
+neg(advertised-22, not-20)
+auxpass(advertised-22, be-21)
+conj_and(made-6, advertised-22)
