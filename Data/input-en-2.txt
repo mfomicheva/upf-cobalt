@@ -1,45 +1,45 @@
-Sentence #1 (20 tokens):
-It is not necessary to pay for certain products which are not required, or do propaganda to them.
+Sentence #1 (9 tokens):
+I love the napalm smell in the morning .
 #
-[Text=It CharacterOffsetBegin=0 CharacterOffsetEnd=2 PartOfSpeech=PRP Lemma=it NamedEntityTag=O] [Text=is CharacterOffsetBegin=3 CharacterOffsetEnd=5 PartOfSpeech=VBZ Lemma=be NamedEntityTag=O] [Text=not CharacterOffsetBegin=6 CharacterOffsetEnd=9 PartOfSpeech=RB Lemma=not NamedEntityTag=O] [Text=necessary CharacterOffsetBegin=10 CharacterOffsetEnd=19 PartOfSpeech=JJ Lemma=necessary NamedEntityTag=O] [Text=to CharacterOffsetBegin=20 CharacterOffsetEnd=22 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=pay CharacterOffsetBegin=23 CharacterOffsetEnd=26 PartOfSpeech=VB Lemma=pay NamedEntityTag=O] [Text=for CharacterOffsetBegin=27 CharacterOffsetEnd=30 PartOfSpeech=IN Lemma=for NamedEntityTag=O] [Text=certain CharacterOffsetBegin=31 CharacterOffsetEnd=38 PartOfSpeech=JJ Lemma=certain NamedEntityTag=O] [Text=products CharacterOffsetBegin=39 CharacterOffsetEnd=47 PartOfSpeech=NNS Lemma=product NamedEntityTag=O] [Text=which CharacterOffsetBegin=48 CharacterOffsetEnd=53 PartOfSpeech=WDT Lemma=which NamedEntityTag=O] [Text=are CharacterOffsetBegin=54 CharacterOffsetEnd=57 PartOfSpeech=VBP Lemma=be NamedEntityTag=O] [Text=not CharacterOffsetBegin=58 CharacterOffsetEnd=61 PartOfSpeech=RB Lemma=not NamedEntityTag=O] [Text=required CharacterOffsetBegin=62 CharacterOffsetEnd=71 PartOfSpeech=VBN Lemma=require NamedEntityTag=O] [Text=, CharacterOffsetBegin=71 CharacterOffsetEnd=72 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=or CharacterOffsetBegin=73 CharacterOffsetEnd=75 PartOfSpeech=CC Lemma=or NamedEntityTag=O] [Text=do CharacterOffsetBegin=76 CharacterOffsetEnd=78 PartOfSpeech=VB Lemma=do NamedEntityTag=O] [Text=propaganda CharacterOffsetBegin=79 CharacterOffsetEnd=89 PartOfSpeech=NN Lemma=propaganda NamedEntityTag=O] [Text=to CharacterOffsetBegin=90 CharacterOffsetEnd=92 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=them CharacterOffsetBegin=93 CharacterOffsetEnd=97 PartOfSpeech=PRP Lemma=they NamedEntityTag=O] [Text=. CharacterOffsetBegin=97 CharacterOffsetEnd=98 PartOfSpeech=. Lemma=. NamedEntityTag=O]
+[Text=I CharacterOffsetBegin=0 CharacterOffsetEnd=1 PartOfSpeech=PRP Lemma=I NamedEntityTag=O] [Text=love CharacterOffsetBegin=2 CharacterOffsetEnd=6 PartOfSpeech=VBP Lemma=love NamedEntityTag=O] [Text=the CharacterOffsetBegin=7 CharacterOffsetEnd=10 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=napalm CharacterOffsetBegin=11 CharacterOffsetEnd=17 PartOfSpeech=NN Lemma=napalm NamedEntityTag=O] [Text=smell CharacterOffsetBegin=18 CharacterOffsetEnd=23 PartOfSpeech=NN Lemma=smell NamedEntityTag=O] [Text=in CharacterOffsetBegin=24 CharacterOffsetEnd=26 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=the CharacterOffsetBegin=27 CharacterOffsetEnd=30 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=morning CharacterOffsetBegin=31 CharacterOffsetEnd=38 PartOfSpeech=NN Lemma=morning NamedEntityTag=TIME NormalizedNamedEntityTag=TMO Timex=<TIMEX3 tid="t1" type="TIME" value="TMO">morning</TIMEX3>] [Text=. CharacterOffsetBegin=39 CharacterOffsetEnd=40 PartOfSpeech=. Lemma=. NamedEntityTag=O]
 #
 (ROOT
   (S
-    (NP (PRP It))
-    (VP (VBZ is) (RB not)
-      (ADJP (JJ necessary)
-        (S
-          (VP (TO to)
-            (VP
-              (VP (VB pay)
-                (PP (IN for)
-                  (NP
-                    (NP (JJ certain) (NNS products))
-                    (SBAR
-                      (WHNP (WDT which))
-                      (S
-                        (VP (VBP are) (RB not)
-                          (VP (VBN requiered))))))))
-              (, ,)
-              (CC or)
-              (VP (VB do)
-                (NP (NN propaganda))
-                (PP (TO to)
-                  (NP (PRP them)))))))))
+    (NP (PRP I))
+    (VP (VBP love)
+      (NP
+        (NP (DT the) (NN napalm) (NN smell))
+        (PP (IN in)
+          (NP (DT the) (NN morning)))))
     (. .)))
 #
-root(ROOT-0, necessary-4)
-nsubj(necessary-4, It-1)
-cop(necessary-4, is-2)
-neg(necessary-4, not-3)
-aux(pay-6, to-5)
-xcomp(necessary-4, pay-6)
-amod(products-9, certain-8)
-prep_for(pay-6, products-9)
-nsubjpass(required-13, which-10)
-auxpass(required-13, are-11)
-neg(required-13, not-12)
-rcmod(products-9, required-13)
-conj_or(pay-6, do-16)
-dobj(do-16, propaganda-17)
-prep_to(do-16, them-19)
+root(ROOT-0, love-2)
+nsubj(love-2, I-1)
+det(smell-5, the-3)
+nn(smell-5, napalm-4)
+dobj(love-2, smell-5)
+det(morning-8, the-7)
+prep_in(smell-5, morning-8)
+
+Sentence #2 (9 tokens):
+I love the napalm smell in the morning .
+#
+[Text=I CharacterOffsetBegin=0 CharacterOffsetEnd=1 PartOfSpeech=PRP Lemma=I NamedEntityTag=O] [Text=love CharacterOffsetBegin=2 CharacterOffsetEnd=6 PartOfSpeech=VBP Lemma=love NamedEntityTag=O] [Text=the CharacterOffsetBegin=7 CharacterOffsetEnd=10 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=napalm CharacterOffsetBegin=11 CharacterOffsetEnd=17 PartOfSpeech=NN Lemma=napalm NamedEntityTag=O] [Text=smell CharacterOffsetBegin=18 CharacterOffsetEnd=23 PartOfSpeech=NN Lemma=smell NamedEntityTag=O] [Text=in CharacterOffsetBegin=24 CharacterOffsetEnd=26 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=the CharacterOffsetBegin=27 CharacterOffsetEnd=30 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=morning CharacterOffsetBegin=31 CharacterOffsetEnd=38 PartOfSpeech=NN Lemma=morning NamedEntityTag=TIME NormalizedNamedEntityTag=TMO Timex=<TIMEX3 tid="t1" type="TIME" value="TMO">morning</TIMEX3>] [Text=. CharacterOffsetBegin=39 CharacterOffsetEnd=40 PartOfSpeech=. Lemma=. NamedEntityTag=O]
+#
+(ROOT
+  (S
+    (NP (PRP I))
+    (VP (VBP love)
+      (NP
+        (NP (DT the) (NN napalm) (NN smell))
+        (PP (IN in)
+          (NP (DT the) (NN morning)))))
+    (. .)))
+#
+root(ROOT-0, love-2)
+nsubj(love-2, I-1)
+det(smell-5, the-3)
+nn(smell-5, napalm-4)
+dobj(love-2, smell-5)
+det(morning-8, the-7)
+prep_in(smell-5, morning-8)

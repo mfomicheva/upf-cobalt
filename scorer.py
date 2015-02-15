@@ -34,13 +34,25 @@ class Scorer(object):
         self.synonym = config.getfloat('Scorer', 'synonym')
         self.paraphrase = config.getfloat('Scorer', 'paraphrase')
 
+    def __calculateChuncks(self, sentence1, sentence2, alignments):
+        sortedAlignments = sorted(alignments, key=lambda alignment: alignment[0])
+
+        chunks = 0
+
+        previousPair = None
+
+        for pair in sortedAlignments:
+            if previousPair == None or previousPair[0] != pair[0] - 1 or previousPair[1] != pair[1] - 1:
+                chunks += 1
+
+            previousPair = pair
+
+        return chunks
 
     def calculateScore(self, sentence1, sentence2, alignments):
         sentence1 = prepareSentence(sentence1)
         sentence2 = prepareSentence(sentence2)
 
-        contentWords1 = filter(lambda x: not functionWord(x), sentence1)
-        contentWords2 = filter(lambda x: not functionWord(x), sentence2)
         functionalWords1 = filter(lambda x: functionWord(x), sentence1)
         functionalWords2 = filter(lambda x: functionWord(x), sentence2)
 
@@ -63,24 +75,17 @@ class Scorer(object):
 
         precision = weightedMatches1 / weightedLength1
         recall = weightedMatches2 / weightedLength2
+
         f1 = (2 * precision * recall) / (precision + recall)
 
-        fMean = 1.0 / (((1.0 - self.alpha) / precision) + (self.alpha /recall))
+        fMean = 1.0 / (((1.0 - self.alpha) / precision) + (self.alpha / recall))
 
         fragPenalty = 0
 
-		# // Fragmentation
-		# double frag;
-		# // Case if test = ref
-		# if (stats.testTotalMatches == stats.testLength
-		# 		&& stats.referenceTotalMatches == stats.referenceLength
-		# 		&& stats.chunks == 1)
-		# 	frag = 0;
-		# else
-		# 	frag = ((double) stats.chunks)
-		# 			/ (((double) (stats.testWordMatches + stats.referenceWordMatches)) / 2);
-		# // Fragmentation penalty
-		# stats.fragPenalty = gamma * Math.pow(frag, beta);
+        chunckNumber = self.__calculateChuncks(sentence1, sentence2, alignments)
+
+        if chunckNumber > 1:
+            fragPenalty = self.gamma * pow(float(chunckNumber) / len(alignments), self.beta)
 
         score = fMean * (1.0 - fragPenalty)
 

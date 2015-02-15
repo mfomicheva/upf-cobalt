@@ -1,7 +1,6 @@
 from aligner import *
 from util import *
 from scorer import *
-from synonymDictionary import *
 
 sentences = readSentences(open('Data/input-en-1.txt'))
 sentences2 = readSentences(open('Data/input-en-2.txt'))
