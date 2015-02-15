@@ -47,6 +47,14 @@ class ParsedSentencesLoader(object):
         return (word, attrs)
 
 
+    def __parse_dependency_entry(self, line):
+        split_entry = re.split("\(|,", line[:-1])
+        if len(split_entry) == 3:
+            rel, left, right = split_entry
+            return tuple([rel,left,right])
+        else:
+            return None
+
     def parse_parser_results(self, text):
         results = {"sentences": []}
         state = STATE_START
@@ -61,35 +69,28 @@ class ParsedSentencesLoader(object):
                 state = STATE_TEXT
 
             elif state == STATE_TEXT:
-                if line.startswith('#'):
-                    state = STATE_WORDS
-                else:
-                    sentence['text'] = line
+                sentence['text'] = line
+                state = STATE_WORDS
 
             elif state == STATE_WORDS:
-                if line.startswith('#'):
-                    state = STATE_TREE
-                else:
-                    if not line.startswith("[Text="):
-                        raise Exception('Parse error. Could not find "[Text=" in: %s' % line)
-                    for s in WORD_PATTERN.findall(line):
-                        sentence['words'].append(self.parse_bracketed(s))
+                for s in WORD_PATTERN.findall(line):
+                    sentence['words'].append(self.parse_bracketed(s))
+                state = STATE_TREE
 
             elif state == STATE_TREE:
-                if line.startswith('#'):
+                if line.startswith('root'):
                     state = STATE_DEPENDENCY
                     sentence['parsetree'] = " ".join(sentence['parsetree'])
+                    sentence['dependencies'].append(self.__parse_dependency_entry(line))
                 else:
                     sentence['parsetree'].append(line)
 
             elif state == STATE_DEPENDENCY:
-                if line.startswith('#'):
+                entry = self.__parse_dependency_entry(line)
+                if entry == None:
                     state = STATE_COREFERENCE
                 else:
-                    split_entry = re.split("\(|,", line[:-1])
-                    if len(split_entry) == 3:
-                        rel, left, right = split_entry
-                        sentence['dependencies'].append(tuple([rel,left,right]))
+                    sentence['dependencies'].append(entry)
 
             elif state == STATE_COREFERENCE:
                 if "Coreference set" in line:

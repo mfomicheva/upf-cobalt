@@ -1,8 +1,6 @@
 Sentence #1 (10 tokens):
 I like the smell of napalm in the morning .
-#
 [Text=I CharacterOffsetBegin=0 CharacterOffsetEnd=1 PartOfSpeech=PRP Lemma=I NamedEntityTag=O] [Text=like CharacterOffsetBegin=2 CharacterOffsetEnd=6 PartOfSpeech=VBP Lemma=like NamedEntityTag=O] [Text=the CharacterOffsetBegin=7 CharacterOffsetEnd=10 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=smell CharacterOffsetBegin=11 CharacterOffsetEnd=16 PartOfSpeech=NN Lemma=smell NamedEntityTag=O] [Text=of CharacterOffsetBegin=17 CharacterOffsetEnd=19 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=napalm CharacterOffsetBegin=20 CharacterOffsetEnd=26 PartOfSpeech=NN Lemma=napalm NamedEntityTag=O] [Text=in CharacterOffsetBegin=27 CharacterOffsetEnd=29 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=the CharacterOffsetBegin=30 CharacterOffsetEnd=33 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=morning CharacterOffsetBegin=34 CharacterOffsetEnd=41 PartOfSpeech=NN Lemma=morning NamedEntityTag=TIME NormalizedNamedEntityTag=TMO Timex=<TIMEX3 tid="t1" type="TIME" value="TMO">morning</TIMEX3>] [Text=. CharacterOffsetBegin=42 CharacterOffsetEnd=43 PartOfSpeech=. Lemma=. NamedEntityTag=O]
-#
 (ROOT
   (S
     (NP (PRP I))
@@ -15,7 +13,7 @@ I like the smell of napalm in the morning .
             (PP (IN in)
               (NP (DT the) (NN morning)))))))
     (. .)))
-#
+
 root(ROOT-0, like-2)
 nsubj(like-2, I-1)
 det(smell-4, the-3)
@@ -26,9 +24,7 @@ prep_in(napalm-6, morning-9)
 
 Sentence #2 (10 tokens):
 I like the smell of napalm in the morning .
-#
 [Text=I CharacterOffsetBegin=0 CharacterOffsetEnd=1 PartOfSpeech=PRP Lemma=I NamedEntityTag=O] [Text=like CharacterOffsetBegin=2 CharacterOffsetEnd=6 PartOfSpeech=VBP Lemma=like NamedEntityTag=O] [Text=the CharacterOffsetBegin=7 CharacterOffsetEnd=10 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=smell CharacterOffsetBegin=11 CharacterOffsetEnd=16 PartOfSpeech=NN Lemma=smell NamedEntityTag=O] [Text=of CharacterOffsetBegin=17 CharacterOffsetEnd=19 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=napalm CharacterOffsetBegin=20 CharacterOffsetEnd=26 PartOfSpeech=NN Lemma=napalm NamedEntityTag=O] [Text=in CharacterOffsetBegin=27 CharacterOffsetEnd=29 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=the CharacterOffsetBegin=30 CharacterOffsetEnd=33 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=morning CharacterOffsetBegin=34 CharacterOffsetEnd=41 PartOfSpeech=NN Lemma=morning NamedEntityTag=TIME NormalizedNamedEntityTag=TMO Timex=<TIMEX3 tid="t1" type="TIME" value="TMO">morning</TIMEX3>] [Text=. CharacterOffsetBegin=42 CharacterOffsetEnd=43 PartOfSpeech=. Lemma=. NamedEntityTag=O]
-#
 (ROOT
   (S
     (NP (PRP I))
@@ -41,7 +37,7 @@ I like the smell of napalm in the morning .
             (PP (IN in)
               (NP (DT the) (NN morning)))))))
     (. .)))
-#
+
 root(ROOT-0, like-2)
 nsubj(like-2, I-1)
 det(smell-4, the-3)
