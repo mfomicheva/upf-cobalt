@@ -250,9 +250,12 @@ def findParents(dependencyParse, wordIndex, word):
                    pos = i
                    break
         for i in xrange(pos, len(dependencyParse)):
-            if '_' in dependencyParse[i][0] and word in dependencyParse[i][0]:
-                parent = [int(dependencyParse[i][1].split('{')[1].split('}')[0].split(' ')[2]), dependencyParse[i][1].split('{')[0], dependencyParse[i][0]]
-                parentsWithRelation.append(parent)
+            try:
+                if '_' in dependencyParse[i][0] and word in dependencyParse[i][0]:
+                    parent = [int(dependencyParse[i][1].split('{')[1].split('}')[0].split(' ')[2]), dependencyParse[i][1].split('{')[0], dependencyParse[i][0]]
+                    parentsWithRelation.append(parent)
+                    break
+            except:
                 break
         
     return parentsWithRelation
@@ -299,9 +302,12 @@ def findChildren(dependencyParse, wordIndex, word):
                    pos = i
                    break
         for i in xrange(pos, len(dependencyParse)):
-            if '_' in dependencyParse[i][0] and word in dependencyParse[i][0]:
-                child = [int(dependencyParse[i][2].split('{')[1].split('}')[0].split(' ')[2]), dependencyParse[i][2].split('{')[0], dependencyParse[i][0]]
-                childrenWithRelation.append(child)
+            try:
+                if '_' in dependencyParse[i][0] and word in dependencyParse[i][0]:
+                    child = [int(dependencyParse[i][2].split('{')[1].split('}')[0].split(' ')[2]), dependencyParse[i][2].split('{')[0], dependencyParse[i][0]]
+                    childrenWithRelation.append(child)
+                    break
+            except:
                 break
-        
+
     return childrenWithRelation

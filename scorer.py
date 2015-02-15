@@ -49,6 +49,8 @@ class Scorer(object):
 
         return chunks
 
+    # receives alignments structure as an input - alignments[0] is the aligned pair indexes,
+    # alignments[1] is the aligned pair words, alignments[3] is the aligned pair dependency similarity score
     def calculateScore(self, sentence1, sentence2, alignments):
         sentence1 = prepareSentence(sentence1)
         sentence2 = prepareSentence(sentence2)
@@ -62,16 +64,16 @@ class Scorer(object):
         weightedMatches1 = 0
         weightedMatches2 = 0
 
-        for pair in alignments:
-            if not functionWord(sentence1[pair[0] - 1]):
-                weightedMatches1 += self.delta * weightedWordRelatedness(sentence1[pair[0] - 1], sentence2[pair[1] - 1], self.exact, self.stem, self.synonym)
+        for i, a in enumerate(alignments[0]):
+            if not functionWord(sentence1[a[0] - 1]):
+                weightedMatches1 += self.delta * weightedWordRelatedness(sentence1[a[0] - 1], sentence2[a[1] - 1], self.exact, self.stem, self.synonym, alignments[2][i])
             else:
-                weightedMatches1 += (1 - self.delta) * weightedWordRelatedness(sentence1[pair[0] - 1], sentence2[pair[1] - 1], self.exact, self.stem, self.synonym)
+                weightedMatches1 += (1 - self.delta) * weightedWordRelatedness(sentence1[a[0] - 1], sentence2[a[1] - 1], self.exact, self.stem, self.synonym, alignments[2][i])
 
-            if not functionWord(sentence2[pair[1] - 1]):
-                weightedMatches2 += self.delta * weightedWordRelatedness(sentence1[pair[0] - 1], sentence2[pair[1] - 1], self.exact, self.stem, self.synonym)
+            if not functionWord(sentence2[a[1] - 1]):
+                weightedMatches2 += self.delta * weightedWordRelatedness(sentence1[a[0] - 1], sentence2[a[1] - 1], self.exact, self.stem, self.synonym, alignments[2][i])
             else:
-                weightedMatches2 += (1 - self.delta) * weightedWordRelatedness(sentence1[pair[0] - 1], sentence2[pair[1] - 1], self.exact, self.stem, self.synonym)
+                weightedMatches2 += (1 - self.delta) * weightedWordRelatedness(sentence1[a[0] - 1], sentence2[a[1] - 1], self.exact, self.stem, self.synonym, alignments[2][i])
 
         precision = weightedMatches1 / weightedLength1
         recall = weightedMatches2 / weightedLength2
@@ -82,10 +84,10 @@ class Scorer(object):
 
         fragPenalty = 0
 
-        chunckNumber = self.__calculateChuncks(sentence1, sentence2, alignments)
+        chunckNumber = self.__calculateChuncks(sentence1, sentence2, alignments[0])
 
         if chunckNumber > 1:
-            fragPenalty = self.gamma * pow(float(chunckNumber) / len(alignments), self.beta)
+            fragPenalty = self.gamma * pow(float(chunckNumber) / len(alignments[0]), self.beta)
 
         score = fMean * (1.0 - fragPenalty)
 

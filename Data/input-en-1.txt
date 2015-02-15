@@ -1,47 +1,82 @@
-Sentence #1 (10 tokens):
-I like the smell of napalm in the morning .
-[Text=I CharacterOffsetBegin=0 CharacterOffsetEnd=1 PartOfSpeech=PRP Lemma=I NamedEntityTag=O] [Text=like CharacterOffsetBegin=2 CharacterOffsetEnd=6 PartOfSpeech=VBP Lemma=like NamedEntityTag=O] [Text=the CharacterOffsetBegin=7 CharacterOffsetEnd=10 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=smell CharacterOffsetBegin=11 CharacterOffsetEnd=16 PartOfSpeech=NN Lemma=smell NamedEntityTag=O] [Text=of CharacterOffsetBegin=17 CharacterOffsetEnd=19 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=napalm CharacterOffsetBegin=20 CharacterOffsetEnd=26 PartOfSpeech=NN Lemma=napalm NamedEntityTag=O] [Text=in CharacterOffsetBegin=27 CharacterOffsetEnd=29 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=the CharacterOffsetBegin=30 CharacterOffsetEnd=33 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=morning CharacterOffsetBegin=34 CharacterOffsetEnd=41 PartOfSpeech=NN Lemma=morning NamedEntityTag=TIME NormalizedNamedEntityTag=TMO Timex=<TIMEX3 tid="t1" type="TIME" value="TMO">morning</TIMEX3>] [Text=. CharacterOffsetBegin=42 CharacterOffsetEnd=43 PartOfSpeech=. Lemma=. NamedEntityTag=O]
+Sentence #60 (43 tokens):
+On the one hand, the most important producers, or those who are part of the production companies, would not participate in this mechanism, to favour the systems that have already: individual savings bank loans, compensation fund.
+[Text=On CharacterOffsetBegin=9632 CharacterOffsetEnd=9634 PartOfSpeech=IN Lemma=on NamedEntityTag=O] [Text=the CharacterOffsetBegin=9635 CharacterOffsetEnd=9638 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=one CharacterOffsetBegin=9639 CharacterOffsetEnd=9642 PartOfSpeech=CD Lemma=one NamedEntityTag=NUMBER NormalizedNamedEntityTag=1.0] [Text=hand CharacterOffsetBegin=9643 CharacterOffsetEnd=9647 PartOfSpeech=NN Lemma=hand NamedEntityTag=O] [Text=, CharacterOffsetBegin=9647 CharacterOffsetEnd=9648 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=the CharacterOffsetBegin=9649 CharacterOffsetEnd=9652 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=most CharacterOffsetBegin=9653 CharacterOffsetEnd=9657 PartOfSpeech=RBS Lemma=most NamedEntityTag=O] [Text=important CharacterOffsetBegin=9658 CharacterOffsetEnd=9667 PartOfSpeech=JJ Lemma=important NamedEntityTag=O] [Text=producers CharacterOffsetBegin=9668 CharacterOffsetEnd=9677 PartOfSpeech=NNS Lemma=producer NamedEntityTag=O] [Text=, CharacterOffsetBegin=9677 CharacterOffsetEnd=9678 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=or CharacterOffsetBegin=9679 CharacterOffsetEnd=9681 PartOfSpeech=CC Lemma=or NamedEntityTag=O] [Text=those CharacterOffsetBegin=9682 CharacterOffsetEnd=9687 PartOfSpeech=DT Lemma=those NamedEntityTag=O] [Text=who CharacterOffsetBegin=9688 CharacterOffsetEnd=9691 PartOfSpeech=WP Lemma=who NamedEntityTag=O] [Text=are CharacterOffsetBegin=9692 CharacterOffsetEnd=9695 PartOfSpeech=VBP Lemma=be NamedEntityTag=O] [Text=part CharacterOffsetBegin=9696 CharacterOffsetEnd=9700 PartOfSpeech=NN Lemma=part NamedEntityTag=O] [Text=of CharacterOffsetBegin=9701 CharacterOffsetEnd=9703 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=the CharacterOffsetBegin=9704 CharacterOffsetEnd=9707 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=production CharacterOffsetBegin=9708 CharacterOffsetEnd=9718 PartOfSpeech=NN Lemma=production NamedEntityTag=O] [Text=companies CharacterOffsetBegin=9719 CharacterOffsetEnd=9728 PartOfSpeech=NNS Lemma=company NamedEntityTag=O] [Text=, CharacterOffsetBegin=9728 CharacterOffsetEnd=9729 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=would CharacterOffsetBegin=9730 CharacterOffsetEnd=9735 PartOfSpeech=MD Lemma=would NamedEntityTag=O] [Text=not CharacterOffsetBegin=9736 CharacterOffsetEnd=9739 PartOfSpeech=RB Lemma=not NamedEntityTag=O] [Text=participate CharacterOffsetBegin=9740 CharacterOffsetEnd=9751 PartOfSpeech=VB Lemma=participate NamedEntityTag=O] [Text=in CharacterOffsetBegin=9752 CharacterOffsetEnd=9754 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=this CharacterOffsetBegin=9755 CharacterOffsetEnd=9759 PartOfSpeech=DT Lemma=this NamedEntityTag=O] [Text=mechanism CharacterOffsetBegin=9760 CharacterOffsetEnd=9769 PartOfSpeech=NN Lemma=mechanism NamedEntityTag=O] [Text=, CharacterOffsetBegin=9769 CharacterOffsetEnd=9770 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=to CharacterOffsetBegin=9771 CharacterOffsetEnd=9773 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=favour CharacterOffsetBegin=9774 CharacterOffsetEnd=9780 PartOfSpeech=VB Lemma=favour NamedEntityTag=O] [Text=the CharacterOffsetBegin=9781 CharacterOffsetEnd=9784 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=systems CharacterOffsetBegin=9785 CharacterOffsetEnd=9792 PartOfSpeech=NNS Lemma=system NamedEntityTag=O] [Text=that CharacterOffsetBegin=9793 CharacterOffsetEnd=9797 PartOfSpeech=WDT Lemma=that NamedEntityTag=O] [Text=have CharacterOffsetBegin=9798 CharacterOffsetEnd=9802 PartOfSpeech=VBP Lemma=have NamedEntityTag=O] [Text=already CharacterOffsetBegin=9803 CharacterOffsetEnd=9810 PartOfSpeech=RB Lemma=already NamedEntityTag=O] [Text=: CharacterOffsetBegin=9810 CharacterOffsetEnd=9811 PartOfSpeech=: Lemma=: NamedEntityTag=O] [Text=individual CharacterOffsetBegin=9812 CharacterOffsetEnd=9822 PartOfSpeech=JJ Lemma=individual NamedEntityTag=O] [Text=savings CharacterOffsetBegin=9823 CharacterOffsetEnd=9830 PartOfSpeech=NNS Lemma=savings NamedEntityTag=O] [Text=bank CharacterOffsetBegin=9831 CharacterOffsetEnd=9835 PartOfSpeech=NN Lemma=bank NamedEntityTag=O] [Text=loans CharacterOffsetBegin=9836 CharacterOffsetEnd=9841 PartOfSpeech=NNS Lemma=loan NamedEntityTag=O] [Text=, CharacterOffsetBegin=9841 CharacterOffsetEnd=9842 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=compensation CharacterOffsetBegin=9843 CharacterOffsetEnd=9855 PartOfSpeech=NN Lemma=compensation NamedEntityTag=O] [Text=fund CharacterOffsetBegin=9856 CharacterOffsetEnd=9860 PartOfSpeech=NN Lemma=fund NamedEntityTag=O] [Text=. CharacterOffsetBegin=9860 CharacterOffsetEnd=9861 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
 (ROOT
   (S
-    (NP (PRP I))
-    (VP (VBP like)
+    (PP (IN On)
+      (NP (DT the) (CD one) (NN hand)))
+    (, ,)
+    (NP
+      (NP (DT the)
+        (ADJP (RBS most) (JJ important))
+        (NNS producers))
+      (, ,)
+      (CC or)
       (NP
-        (NP (DT the) (NN smell))
-        (PP (IN of)
-          (NP
-            (NP (NN napalm))
-            (PP (IN in)
-              (NP (DT the) (NN morning)))))))
+        (NP (DT those))
+        (SBAR
+          (WHNP (WP who))
+          (S
+            (VP (VBP are)
+              (NP
+                (NP (NN part))
+                (PP (IN of)
+                  (NP (DT the) (NN production) (NNS companies))))))))
+      (, ,))
+    (VP (MD would) (RB not)
+      (VP (VB participate)
+        (PP (IN in)
+          (NP (DT this) (NN mechanism)))
+        (, ,)
+        (S
+          (VP (TO to)
+            (VP (VB favour)
+              (NP
+                (NP
+                  (NP (DT the) (NNS systems))
+                  (SBAR
+                    (WHNP (WDT that))
+                    (S
+                      (VP (VBP have)
+                        (ADVP (RB already))))))
+                (: :)
+                (NP
+                  (NP (JJ individual) (NNS savings))
+                  (NP
+                    (NP (NN bank) (NNS loans))
+                    (, ,)
+                    (NP (NN compensation) (NN fund))))))))))
     (. .)))
 
-root(ROOT-0, like-2)
-nsubj(like-2, I-1)
-det(smell-4, the-3)
-dobj(like-2, smell-4)
-prep_of(smell-4, napalm-6)
-det(morning-9, the-8)
-prep_in(napalm-6, morning-9)
-
-Sentence #2 (10 tokens):
-I like the smell of napalm in the morning .
-[Text=I CharacterOffsetBegin=0 CharacterOffsetEnd=1 PartOfSpeech=PRP Lemma=I NamedEntityTag=O] [Text=like CharacterOffsetBegin=2 CharacterOffsetEnd=6 PartOfSpeech=VBP Lemma=like NamedEntityTag=O] [Text=the CharacterOffsetBegin=7 CharacterOffsetEnd=10 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=smell CharacterOffsetBegin=11 CharacterOffsetEnd=16 PartOfSpeech=NN Lemma=smell NamedEntityTag=O] [Text=of CharacterOffsetBegin=17 CharacterOffsetEnd=19 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=napalm CharacterOffsetBegin=20 CharacterOffsetEnd=26 PartOfSpeech=NN Lemma=napalm NamedEntityTag=O] [Text=in CharacterOffsetBegin=27 CharacterOffsetEnd=29 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=the CharacterOffsetBegin=30 CharacterOffsetEnd=33 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=morning CharacterOffsetBegin=34 CharacterOffsetEnd=41 PartOfSpeech=NN Lemma=morning NamedEntityTag=TIME NormalizedNamedEntityTag=TMO Timex=<TIMEX3 tid="t1" type="TIME" value="TMO">morning</TIMEX3>] [Text=. CharacterOffsetBegin=42 CharacterOffsetEnd=43 PartOfSpeech=. Lemma=. NamedEntityTag=O]
-(ROOT
-  (S
-    (NP (PRP I))
-    (VP (VBP like)
-      (NP
-        (NP (DT the) (NN smell))
-        (PP (IN of)
-          (NP
-            (NP (NN napalm))
-            (PP (IN in)
-              (NP (DT the) (NN morning)))))))
-    (. .)))
-
-root(ROOT-0, like-2)
-nsubj(like-2, I-1)
-det(smell-4, the-3)
-dobj(like-2, smell-4)
-prep_of(smell-4, napalm-6)
-det(morning-9, the-8)
-prep_in(napalm-6, morning-9)
+root(ROOT-0, participate-23)
+det(hand-4, the-2)
+num(hand-4, one-3)
+prep_on(participate-23, hand-4)
+det(producers-9, the-6)
+advmod(important-8, most-7)
+amod(producers-9, important-8)
+nsubj(participate-23, producers-9)
+conj_or(producers-9, those-12)
+nsubj(part-15, who-13)
+cop(part-15, are-14)
+rcmod(those-12, part-15)
+det(companies-19, the-17)
+nn(companies-19, production-18)
+prep_of(part-15, companies-19)
+aux(participate-23, would-21)
+neg(participate-23, not-22)
+det(mechanism-26, this-25)
+prep_in(participate-23, mechanism-26)
+aux(favour-29, to-28)
+xcomp(participate-23, favour-29)
+det(systems-31, the-30)
+dobj(favour-29, systems-31)
+nsubj(have-33, that-32)
+rcmod(systems-31, have-33)
+advmod(have-33, already-34)
+amod(savings-37, individual-36)
+dep(systems-31, savings-37)
+nn(loans-39, bank-38)
+dep(savings-37, loans-39)
+nn(fund-42, compensation-41)
+appos(loans-39, fund-42)

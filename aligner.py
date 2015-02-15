@@ -580,7 +580,7 @@ class Aligner(object):
                             evidence += wordRelatedness(sourceNeighborhood[1][k], 'none', targetNeighborhood[1][l], 'none')
                 textualNeighborhoodSimilarities[(i, j)] = evidence
 
-        numOfUnalignedWordsInSource = len(sourceWordIndicesBeingConsidered)
+        numOfUnalignedWordsInSource = len(set(sourceWordIndicesBeingConsidered))
 
         # now align: find the best alignment in each iteration of the following loop and include in alignments if good enough
         for item in xrange(numOfUnalignedWordsInSource):
@@ -688,7 +688,7 @@ class Aligner(object):
 
                 dependencyNeighborhoodSimilarities[(i, j)] = evidence
 
-        numOfUnalignedWordsInSource = len(sourceWordIndicesBeingConsidered)
+        numOfUnalignedWordsInSource = len(set(sourceWordIndicesBeingConsidered))
 
         # now align: find the best alignment in each iteration of the following loop and include in alignments if good enough
         for item in xrange(numOfUnalignedWordsInSource):
@@ -784,7 +784,7 @@ class Aligner(object):
                 except ZeroDivisionError:
                     textualNeighborhoodSimilarities[(i, j)] = 0
 
-        numOfUnalignedWordsInSource = len(sourceWordIndicesBeingConsidered)
+        numOfUnalignedWordsInSource = len(set(sourceWordIndicesBeingConsidered))
 
         # now align: find the best alignment in each iteration of the following loop and include in alignments if good enough
         for item in xrange(numOfUnalignedWordsInSource):
@@ -871,4 +871,20 @@ class Aligner(object):
         if len(pos) > 0:
             return self.findDependencySimilarity(pos, sourceWord[2], sourceIndex, targetWord[2], targetIndex, sourceDParse, targetDParse, alignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)[0]
         else:
-            return 0
+            sourceWordParents = findParents(sourceDParse, sourceIndex, sourceWord[2])
+            sourceWordChildren = findChildren(sourceDParse, sourceIndex, sourceWord[2])
+            targetWordParents = findParents(targetDParse, targetIndex, targetWord[2])
+            targetWordChildren = findChildren(targetDParse, targetIndex, targetWord[2])
+
+            evidence = 0
+
+            for item in sourceWordParents:
+                for jtem in targetWordParents:
+                    if [item[0], jtem[0]] in alignments:
+                        evidence += 1
+            for item in sourceWordChildren:
+                for jtem in targetWordChildren:
+                    if [item[0], jtem[0]] in alignments:
+                        evidence += 1
+
+            return evidence
