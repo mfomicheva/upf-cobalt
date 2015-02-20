@@ -23,7 +23,6 @@ class Aligner(object):
             for subgroup in group:
                 if item1 in subgroup and item2 in subgroup:
                     result = True
-
         return result
 
     def compareNodes(self, sourceNodes, targetNodes, pos, opposite, relationDirection, existingAlignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas):
@@ -457,7 +456,7 @@ class Aligner(object):
             sourceWordIndicesAlreadyAligned.append(len(source)-1)
             targetWordIndicesAlreadyAligned.append(len(target)-1)
 
-        # align all (>=2)-gram matches with at least one content word
+        # align all (>=3)-gram matches with at least one content word
         commonContiguousSublists = findAllCommonContiguousSublists(sourceWords, targetWords, True)
         for item in commonContiguousSublists:
             allStopWords = True

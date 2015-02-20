@@ -1,82 +1,54 @@
-Sentence #60 (43 tokens):
-On the one hand, the most important producers, or those who are part of the production companies, would not participate in this mechanism, to favour the systems that have already: individual savings bank loans, compensation fund.
-[Text=On CharacterOffsetBegin=9632 CharacterOffsetEnd=9634 PartOfSpeech=IN Lemma=on NamedEntityTag=O] [Text=the CharacterOffsetBegin=9635 CharacterOffsetEnd=9638 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=one CharacterOffsetBegin=9639 CharacterOffsetEnd=9642 PartOfSpeech=CD Lemma=one NamedEntityTag=NUMBER NormalizedNamedEntityTag=1.0] [Text=hand CharacterOffsetBegin=9643 CharacterOffsetEnd=9647 PartOfSpeech=NN Lemma=hand NamedEntityTag=O] [Text=, CharacterOffsetBegin=9647 CharacterOffsetEnd=9648 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=the CharacterOffsetBegin=9649 CharacterOffsetEnd=9652 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=most CharacterOffsetBegin=9653 CharacterOffsetEnd=9657 PartOfSpeech=RBS Lemma=most NamedEntityTag=O] [Text=important CharacterOffsetBegin=9658 CharacterOffsetEnd=9667 PartOfSpeech=JJ Lemma=important NamedEntityTag=O] [Text=producers CharacterOffsetBegin=9668 CharacterOffsetEnd=9677 PartOfSpeech=NNS Lemma=producer NamedEntityTag=O] [Text=, CharacterOffsetBegin=9677 CharacterOffsetEnd=9678 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=or CharacterOffsetBegin=9679 CharacterOffsetEnd=9681 PartOfSpeech=CC Lemma=or NamedEntityTag=O] [Text=those CharacterOffsetBegin=9682 CharacterOffsetEnd=9687 PartOfSpeech=DT Lemma=those NamedEntityTag=O] [Text=who CharacterOffsetBegin=9688 CharacterOffsetEnd=9691 PartOfSpeech=WP Lemma=who NamedEntityTag=O] [Text=are CharacterOffsetBegin=9692 CharacterOffsetEnd=9695 PartOfSpeech=VBP Lemma=be NamedEntityTag=O] [Text=part CharacterOffsetBegin=9696 CharacterOffsetEnd=9700 PartOfSpeech=NN Lemma=part NamedEntityTag=O] [Text=of CharacterOffsetBegin=9701 CharacterOffsetEnd=9703 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=the CharacterOffsetBegin=9704 CharacterOffsetEnd=9707 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=production CharacterOffsetBegin=9708 CharacterOffsetEnd=9718 PartOfSpeech=NN Lemma=production NamedEntityTag=O] [Text=companies CharacterOffsetBegin=9719 CharacterOffsetEnd=9728 PartOfSpeech=NNS Lemma=company NamedEntityTag=O] [Text=, CharacterOffsetBegin=9728 CharacterOffsetEnd=9729 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=would CharacterOffsetBegin=9730 CharacterOffsetEnd=9735 PartOfSpeech=MD Lemma=would NamedEntityTag=O] [Text=not CharacterOffsetBegin=9736 CharacterOffsetEnd=9739 PartOfSpeech=RB Lemma=not NamedEntityTag=O] [Text=participate CharacterOffsetBegin=9740 CharacterOffsetEnd=9751 PartOfSpeech=VB Lemma=participate NamedEntityTag=O] [Text=in CharacterOffsetBegin=9752 CharacterOffsetEnd=9754 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=this CharacterOffsetBegin=9755 CharacterOffsetEnd=9759 PartOfSpeech=DT Lemma=this NamedEntityTag=O] [Text=mechanism CharacterOffsetBegin=9760 CharacterOffsetEnd=9769 PartOfSpeech=NN Lemma=mechanism NamedEntityTag=O] [Text=, CharacterOffsetBegin=9769 CharacterOffsetEnd=9770 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=to CharacterOffsetBegin=9771 CharacterOffsetEnd=9773 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=favour CharacterOffsetBegin=9774 CharacterOffsetEnd=9780 PartOfSpeech=VB Lemma=favour NamedEntityTag=O] [Text=the CharacterOffsetBegin=9781 CharacterOffsetEnd=9784 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=systems CharacterOffsetBegin=9785 CharacterOffsetEnd=9792 PartOfSpeech=NNS Lemma=system NamedEntityTag=O] [Text=that CharacterOffsetBegin=9793 CharacterOffsetEnd=9797 PartOfSpeech=WDT Lemma=that NamedEntityTag=O] [Text=have CharacterOffsetBegin=9798 CharacterOffsetEnd=9802 PartOfSpeech=VBP Lemma=have NamedEntityTag=O] [Text=already CharacterOffsetBegin=9803 CharacterOffsetEnd=9810 PartOfSpeech=RB Lemma=already NamedEntityTag=O] [Text=: CharacterOffsetBegin=9810 CharacterOffsetEnd=9811 PartOfSpeech=: Lemma=: NamedEntityTag=O] [Text=individual CharacterOffsetBegin=9812 CharacterOffsetEnd=9822 PartOfSpeech=JJ Lemma=individual NamedEntityTag=O] [Text=savings CharacterOffsetBegin=9823 CharacterOffsetEnd=9830 PartOfSpeech=NNS Lemma=savings NamedEntityTag=O] [Text=bank CharacterOffsetBegin=9831 CharacterOffsetEnd=9835 PartOfSpeech=NN Lemma=bank NamedEntityTag=O] [Text=loans CharacterOffsetBegin=9836 CharacterOffsetEnd=9841 PartOfSpeech=NNS Lemma=loan NamedEntityTag=O] [Text=, CharacterOffsetBegin=9841 CharacterOffsetEnd=9842 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=compensation CharacterOffsetBegin=9843 CharacterOffsetEnd=9855 PartOfSpeech=NN Lemma=compensation NamedEntityTag=O] [Text=fund CharacterOffsetBegin=9856 CharacterOffsetEnd=9860 PartOfSpeech=NN Lemma=fund NamedEntityTag=O] [Text=. CharacterOffsetBegin=9860 CharacterOffsetEnd=9861 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+Sentence #3 (31 tokens):
+The acute poverty has been a fundamental problem of Romania since 1990, and with the present government of the economy, finally, is a real signs of improvement.
+[Text=The CharacterOffsetBegin=109 CharacterOffsetEnd=112 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=acute CharacterOffsetBegin=113 CharacterOffsetEnd=118 PartOfSpeech=JJ Lemma=acute NamedEntityTag=O] [Text=poverty CharacterOffsetBegin=119 CharacterOffsetEnd=126 PartOfSpeech=NN Lemma=poverty NamedEntityTag=O] [Text=has CharacterOffsetBegin=127 CharacterOffsetEnd=130 PartOfSpeech=VBZ Lemma=have NamedEntityTag=O] [Text=been CharacterOffsetBegin=131 CharacterOffsetEnd=135 PartOfSpeech=VBN Lemma=be NamedEntityTag=O] [Text=a CharacterOffsetBegin=136 CharacterOffsetEnd=137 PartOfSpeech=DT Lemma=a NamedEntityTag=O] [Text=fundamental CharacterOffsetBegin=138 CharacterOffsetEnd=149 PartOfSpeech=JJ Lemma=fundamental NamedEntityTag=O] [Text=problem CharacterOffsetBegin=150 CharacterOffsetEnd=157 PartOfSpeech=NN Lemma=problem NamedEntityTag=O] [Text=of CharacterOffsetBegin=158 CharacterOffsetEnd=160 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=Romania CharacterOffsetBegin=161 CharacterOffsetEnd=168 PartOfSpeech=NNP Lemma=Romania NamedEntityTag=LOCATION] [Text=since CharacterOffsetBegin=169 CharacterOffsetEnd=174 PartOfSpeech=IN Lemma=since NamedEntityTag=O] [Text=1990 CharacterOffsetBegin=175 CharacterOffsetEnd=179 PartOfSpeech=CD Lemma=1990 NamedEntityTag=DATE NormalizedNamedEntityTag=1990 Timex=<TIMEX3 tid="t2" type="DATE" value="1990">1990</TIMEX3>] [Text=, CharacterOffsetBegin=179 CharacterOffsetEnd=180 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=and CharacterOffsetBegin=181 CharacterOffsetEnd=184 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=with CharacterOffsetBegin=185 CharacterOffsetEnd=189 PartOfSpeech=IN Lemma=with NamedEntityTag=O] [Text=the CharacterOffsetBegin=190 CharacterOffsetEnd=193 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=present CharacterOffsetBegin=194 CharacterOffsetEnd=201 PartOfSpeech=JJ Lemma=present NamedEntityTag=DATE NormalizedNamedEntityTag=PRESENT_REF Timex=<TIMEX3 tid="t3" type="DATE" value="PRESENT_REF">present</TIMEX3>] [Text=government CharacterOffsetBegin=202 CharacterOffsetEnd=212 PartOfSpeech=NN Lemma=government NamedEntityTag=O] [Text=of CharacterOffsetBegin=213 CharacterOffsetEnd=215 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=the CharacterOffsetBegin=216 CharacterOffsetEnd=219 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=economy CharacterOffsetBegin=220 CharacterOffsetEnd=227 PartOfSpeech=NN Lemma=economy NamedEntityTag=O] [Text=, CharacterOffsetBegin=227 CharacterOffsetEnd=228 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=finally CharacterOffsetBegin=229 CharacterOffsetEnd=236 PartOfSpeech=RB Lemma=finally NamedEntityTag=O] [Text=, CharacterOffsetBegin=236 CharacterOffsetEnd=237 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=is CharacterOffsetBegin=238 CharacterOffsetEnd=240 PartOfSpeech=VBZ Lemma=be NamedEntityTag=O] [Text=a CharacterOffsetBegin=241 CharacterOffsetEnd=242 PartOfSpeech=DT Lemma=a NamedEntityTag=O] [Text=real CharacterOffsetBegin=243 CharacterOffsetEnd=247 PartOfSpeech=JJ Lemma=real NamedEntityTag=O] [Text=signs CharacterOffsetBegin=248 CharacterOffsetEnd=253 PartOfSpeech=NNS Lemma=sign NamedEntityTag=O] [Text=of CharacterOffsetBegin=254 CharacterOffsetEnd=256 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=improvement CharacterOffsetBegin=257 CharacterOffsetEnd=268 PartOfSpeech=NN Lemma=improvement NamedEntityTag=O] [Text=. CharacterOffsetBegin=268 CharacterOffsetEnd=269 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
 (ROOT
   (S
-    (PP (IN On)
-      (NP (DT the) (CD one) (NN hand)))
+    (S
+      (NP (DT The) (JJ acute) (NN poverty))
+      (VP (VBZ has)
+        (VP (VBN been)
+          (NP
+            (NP (DT a) (JJ fundamental) (NN problem))
+            (PP (IN of)
+              (NP (NNP Romania))))
+          (PP (IN since)
+            (NP (CD 1990))))))
     (, ,)
-    (NP
-      (NP (DT the)
-        (ADJP (RBS most) (JJ important))
-        (NNS producers))
+    (CC and)
+    (S
+      (PP (IN with)
+        (NP
+          (NP (DT the) (JJ present) (NN government))
+          (PP (IN of)
+            (NP (DT the) (NN economy)))))
       (, ,)
-      (CC or)
-      (NP
-        (NP (DT those))
-        (SBAR
-          (WHNP (WP who))
-          (S
-            (VP (VBP are)
-              (NP
-                (NP (NN part))
-                (PP (IN of)
-                  (NP (DT the) (NN production) (NNS companies))))))))
-      (, ,))
-    (VP (MD would) (RB not)
-      (VP (VB participate)
-        (PP (IN in)
-          (NP (DT this) (NN mechanism)))
-        (, ,)
-        (S
-          (VP (TO to)
-            (VP (VB favour)
-              (NP
-                (NP
-                  (NP (DT the) (NNS systems))
-                  (SBAR
-                    (WHNP (WDT that))
-                    (S
-                      (VP (VBP have)
-                        (ADVP (RB already))))))
-                (: :)
-                (NP
-                  (NP (JJ individual) (NNS savings))
-                  (NP
-                    (NP (NN bank) (NNS loans))
-                    (, ,)
-                    (NP (NN compensation) (NN fund))))))))))
+      (ADVP (RB finally))
+      (, ,)
+      (VP (VBZ is)
+        (NP
+          (NP (DT a) (JJ real) (NNS signs))
+          (PP (IN of)
+            (NP (NN improvement))))))
     (. .)))
 
-root(ROOT-0, participate-23)
-det(hand-4, the-2)
-num(hand-4, one-3)
-prep_on(participate-23, hand-4)
-det(producers-9, the-6)
-advmod(important-8, most-7)
-amod(producers-9, important-8)
-nsubj(participate-23, producers-9)
-conj_or(producers-9, those-12)
-nsubj(part-15, who-13)
-cop(part-15, are-14)
-rcmod(those-12, part-15)
-det(companies-19, the-17)
-nn(companies-19, production-18)
-prep_of(part-15, companies-19)
-aux(participate-23, would-21)
-neg(participate-23, not-22)
-det(mechanism-26, this-25)
-prep_in(participate-23, mechanism-26)
-aux(favour-29, to-28)
-xcomp(participate-23, favour-29)
-det(systems-31, the-30)
-dobj(favour-29, systems-31)
-nsubj(have-33, that-32)
-rcmod(systems-31, have-33)
-advmod(have-33, already-34)
-amod(savings-37, individual-36)
-dep(systems-31, savings-37)
-nn(loans-39, bank-38)
-dep(savings-37, loans-39)
-nn(fund-42, compensation-41)
-appos(loans-39, fund-42)
+root(ROOT-0, problem-8)
+det(poverty-3, The-1)
+amod(poverty-3, acute-2)
+nsubj(problem-8, poverty-3)
+aux(problem-8, has-4)
+cop(problem-8, been-5)
+det(problem-8, a-6)
+amod(problem-8, fundamental-7)
+prep_of(problem-8, Romania-10)
+prep_since(problem-8, 1990-12)
+det(government-18, the-16)
+amod(government-18, present-17)
+prep_with(signs-28, government-18)
+det(economy-21, the-20)
+prep_of(government-18, economy-21)
+advmod(signs-28, finally-23)
+cop(signs-28, is-25)
+det(signs-28, a-26)
+amod(signs-28, real-27)
+conj_and(problem-8, signs-28)
+prep_of(signs-28, improvement-30)

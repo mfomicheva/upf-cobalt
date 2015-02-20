@@ -1,5 +1,5 @@
-Sentence #1 (6 tokens):
 El arquitecto construyó la casa.
+Sentence #1 (6 tokens):
 #
 [Text=El CharacterOffsetBegin=0 CharacterOffsetEnd=2 PartOfSpeech=DA0MS0 Lemma=el NamedEntityTag=0] [Text=arquitecto CharacterOffsetBegin=3 CharacterOffsetEnd=13 PartOfSpeech=NCMS000 Lemma=arquitecto NamedEntityTag=0] [Text=construyó CharacterOffsetBegin=14 CharacterOffsetEnd=23 PartOfSpeech=VMIS3S0 Lemma=construir NamedEntityTag=0] [Text=la CharacterOffsetBegin=24 CharacterOffsetEnd=26 PartOfSpeech=DA0FS0 Lemma=el NamedEntityTag=0] [Text=casa CharacterOffsetBegin=27 CharacterOffsetEnd=31 PartOfSpeech=NCFS000 Lemma=casa NamedEntityTag=0] [Text=. CharacterOffsetBegin=31 CharacterOffsetEnd=32 PartOfSpeech=Fp Lemma=. NamedEntityTag=0]
 #

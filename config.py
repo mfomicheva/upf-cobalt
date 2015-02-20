@@ -2,6 +2,7 @@ from synonymDictionary import SynonymDictionary
 
 ppdbDict = {}
 synonymSimilarity = 0.9
+paraphraseSimilarity = 0.7
 theta1 = 0.9
 
 

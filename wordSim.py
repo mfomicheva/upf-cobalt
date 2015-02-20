@@ -5,6 +5,7 @@ from config import *
 def loadPPDB(ppdbFileName = 'Resources/ppdb-1.0-xxxl-lexical.extended.synonyms.uniquepairs'):
 
     global synonymSimilarity
+    global paraphraseSimilarity
     global ppdbDict
 
     count = 0
@@ -15,7 +16,7 @@ def loadPPDB(ppdbFileName = 'Resources/ppdb-1.0-xxxl-lexical.extended.synonyms.u
             continue
         tokens = line.split()
         tokens[1] = tokens[1].strip()
-        ppdbDict[(tokens[0], tokens[1])] = synonymSimilarity
+        ppdbDict[(tokens[0], tokens[1])] = paraphraseSimilarity
         count += 1
 
 ################################################################################
@@ -38,6 +39,7 @@ def presentInPPDB(word1, word2):
 def wordRelatedness(word1, pos1, word2, pos2):
     global stemmer
     global synonymSimilarity
+    global paraphraseSimilarity
     global punctuations
 
     if len(word1) > 1:
@@ -78,19 +80,24 @@ def wordRelatedness(word1, pos1, word2, pos2):
     word1Cleaned = re.sub(r'u\'(.+)\'', r'\1', word1).lower()
     word2Cleaned = re.sub(r'u\'(.+)\'', r'\1', word2).lower()
 
+    ## use synonymDictionary or ppDB
     if synonymDictionary.checkSynonymByLemma(word1Cleaned, word2Cleaned):
         return synonymSimilarity
+    elif presentInPPDB(word1Cleaned, word2Cleaned):
+        return paraphraseSimilarity
     else:
-        return 0
+       return 0
+
 ##############################################################################################################################
 def functionWord(word):
     global punctuations
 
     return (word[2].lower() in stopwords) or (word[2].lower() in punctuations)
 
-def weightedWordRelatedness(word1, word2, exact, stem, synonym, contextSimilarity):
+def weightedWordRelatedness(word1, word2, exact, stem, synonym, paraphrase, contextSimilarity):
     global stemmer
     global synonymSimilarity
+    global paraphraseSimilarity
     global punctuations
 
     result = 0
@@ -121,9 +128,21 @@ def weightedWordRelatedness(word1, word2, exact, stem, synonym, contextSimilarit
 
     word1Cleaned = re.sub(r'u\'(.+)\'', r'\1', word1[3]).lower()
     word2Cleaned = re.sub(r'u\'(.+)\'', r'\1', word2[3]).lower()
-    if synonymDictionary.checkSynonymByLemma(word1Cleaned, word2Cleaned) and result == 0:
-       result = synonym
 
+
+    ## use synonymDictionary and ppDB
+
+    if synonymDictionary.checkSynonymByLemma(word1Cleaned, word2Cleaned) and result == 0:
+      result = synonym
+
+    if presentInPPDB(word1Cleaned, word2Cleaned) and result == 0:
+      result = paraphrase
+
+    ## use contextSimilarity to calculate match score
     result += result * contextSimilarity / 5.0
 
+    # result *= (contextSimilarity+1.0)/5.0
+
     return result
+
+loadPPDB()
