@@ -1,52 +1,24 @@
-Sentence #3 (28 tokens):
-Acute poverty has been a key problem in Romania since 1990 and under the present government, the economy is at last showing real signs of improvement.
-[Text=Acute CharacterOffsetBegin=113 CharacterOffsetEnd=118 PartOfSpeech=JJ Lemma=acute NamedEntityTag=O] [Text=poverty CharacterOffsetBegin=119 CharacterOffsetEnd=126 PartOfSpeech=NN Lemma=poverty NamedEntityTag=O] [Text=has CharacterOffsetBegin=127 CharacterOffsetEnd=130 PartOfSpeech=VBZ Lemma=have NamedEntityTag=O] [Text=been CharacterOffsetBegin=131 CharacterOffsetEnd=135 PartOfSpeech=VBN Lemma=be NamedEntityTag=O] [Text=a CharacterOffsetBegin=136 CharacterOffsetEnd=137 PartOfSpeech=DT Lemma=a NamedEntityTag=O] [Text=key CharacterOffsetBegin=138 CharacterOffsetEnd=141 PartOfSpeech=JJ Lemma=key NamedEntityTag=O] [Text=problem CharacterOffsetBegin=142 CharacterOffsetEnd=149 PartOfSpeech=NN Lemma=problem NamedEntityTag=O] [Text=in CharacterOffsetBegin=150 CharacterOffsetEnd=152 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=Romania CharacterOffsetBegin=153 CharacterOffsetEnd=160 PartOfSpeech=NNP Lemma=Romania NamedEntityTag=LOCATION] [Text=since CharacterOffsetBegin=161 CharacterOffsetEnd=166 PartOfSpeech=IN Lemma=since NamedEntityTag=O] [Text=1990 CharacterOffsetBegin=167 CharacterOffsetEnd=171 PartOfSpeech=CD Lemma=1990 NamedEntityTag=DATE NormalizedNamedEntityTag=1990 Timex=<TIMEX3 tid="t2" type="DATE" value="1990">1990</TIMEX3>] [Text=and CharacterOffsetBegin=172 CharacterOffsetEnd=175 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=under CharacterOffsetBegin=176 CharacterOffsetEnd=181 PartOfSpeech=IN Lemma=under NamedEntityTag=O] [Text=the CharacterOffsetBegin=182 CharacterOffsetEnd=185 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=present CharacterOffsetBegin=186 CharacterOffsetEnd=193 PartOfSpeech=JJ Lemma=present NamedEntityTag=DATE NormalizedNamedEntityTag=PRESENT_REF Timex=<TIMEX3 tid="t3" type="DATE" value="PRESENT_REF">present</TIMEX3>] [Text=government CharacterOffsetBegin=194 CharacterOffsetEnd=204 PartOfSpeech=NN Lemma=government NamedEntityTag=O] [Text=, CharacterOffsetBegin=204 CharacterOffsetEnd=205 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=the CharacterOffsetBegin=206 CharacterOffsetEnd=209 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=economy CharacterOffsetBegin=210 CharacterOffsetEnd=217 PartOfSpeech=NN Lemma=economy NamedEntityTag=O] [Text=is CharacterOffsetBegin=218 CharacterOffsetEnd=220 PartOfSpeech=VBZ Lemma=be NamedEntityTag=O] [Text=at CharacterOffsetBegin=221 CharacterOffsetEnd=223 PartOfSpeech=IN Lemma=at NamedEntityTag=O] [Text=last CharacterOffsetBegin=224 CharacterOffsetEnd=228 PartOfSpeech=JJ Lemma=last NamedEntityTag=O] [Text=showing CharacterOffsetBegin=229 CharacterOffsetEnd=236 PartOfSpeech=VBG Lemma=show NamedEntityTag=O] [Text=real CharacterOffsetBegin=237 CharacterOffsetEnd=241 PartOfSpeech=JJ Lemma=real NamedEntityTag=O] [Text=signs CharacterOffsetBegin=242 CharacterOffsetEnd=247 PartOfSpeech=NNS Lemma=sign NamedEntityTag=O] [Text=of CharacterOffsetBegin=248 CharacterOffsetEnd=250 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=improvement CharacterOffsetBegin=251 CharacterOffsetEnd=262 PartOfSpeech=NN Lemma=improvement NamedEntityTag=O] [Text=. CharacterOffsetBegin=262 CharacterOffsetEnd=263 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+Sentence #1 (11 tokens):
+Our declaration of rights is the first of this millennium.
+[Text=Our CharacterOffsetBegin=0 CharacterOffsetEnd=3 PartOfSpeech=PRP$ Lemma=we NamedEntityTag=O] [Text=declaration CharacterOffsetBegin=4 CharacterOffsetEnd=15 PartOfSpeech=NN Lemma=declaration NamedEntityTag=O] [Text=of CharacterOffsetBegin=16 CharacterOffsetEnd=18 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=rights CharacterOffsetBegin=19 CharacterOffsetEnd=25 PartOfSpeech=NNS Lemma=rights NamedEntityTag=O] [Text=is CharacterOffsetBegin=26 CharacterOffsetEnd=28 PartOfSpeech=VBZ Lemma=be NamedEntityTag=O] [Text=the CharacterOffsetBegin=29 CharacterOffsetEnd=32 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=first CharacterOffsetBegin=33 CharacterOffsetEnd=38 PartOfSpeech=JJ Lemma=first NamedEntityTag=ORDINAL NormalizedNamedEntityTag=1.0] [Text=of CharacterOffsetBegin=39 CharacterOffsetEnd=41 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=this CharacterOffsetBegin=42 CharacterOffsetEnd=46 PartOfSpeech=DT Lemma=this NamedEntityTag=DATE NormalizedNamedEntityTag=THIS P1000Y Timex=<TIMEX3 alt_value="THIS P1000Y" anchorTimeID="t0" temporalFunction="true" tid="t1" type="DATE" valueFromFunction="tf0">this millennium</TIMEX3>] [Text=millennium CharacterOffsetBegin=47 CharacterOffsetEnd=57 PartOfSpeech=JJ Lemma=millennium NamedEntityTag=DATE NormalizedNamedEntityTag=THIS P1000Y Timex=<TIMEX3 alt_value="THIS P1000Y" anchorTimeID="t0" temporalFunction="true" tid="t1" type="DATE" valueFromFunction="tf0">this millennium</TIMEX3>] [Text=. CharacterOffsetBegin=57 CharacterOffsetEnd=58 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
 (ROOT
   (S
-    (S
-      (NP (JJ Acute) (NN poverty))
-      (VP (VBZ has)
-        (VP (VBN been)
-          (NP
-            (NP (DT a) (JJ key) (NN problem))
-            (PP (IN in)
-              (NP (NNP Romania))))
-          (PP (IN since)
-            (NP (CD 1990))))))
-    (CC and)
-    (S
-      (PP (IN under)
-        (NP (DT the) (JJ present) (NN government)))
-      (, ,)
-      (NP (DT the) (NN economy))
-      (VP (VBZ is)
-        (PP (IN at)
-          (NP
-            (NP (JJ last))
-            (VP (VBG showing)
-              (NP
-                (NP (JJ real) (NNS signs))
-                (PP (IN of)
-                  (NP (NN improvement)))))))))
+    (NP
+      (NP (PRP$ Our) (NN declaration))
+      (PP (IN of)
+        (NP (NNS rights))))
+    (VP (VBZ is)
+      (NP
+        (NP (DT the) (JJ first))
+        (PP (IN of)
+          (NP (DT this) (JJ millennium)))))
     (. .)))
 
-root(ROOT-0, problem-7)
-amod(poverty-2, Acute-1)
-nsubj(problem-7, poverty-2)
-aux(problem-7, 1-3)
-cop(problem-7, been-4)
-det(problem-7, a-5)
-amod(problem-7, key-6)
-prep_in(problem-7, Romania-9)
-prep_since(problem-7, 1990-11)
-det(government-16, the-14)
-amod(government-16, present-15)
-prep_under(is-20, government-16)
-det(economy-19, the-18)
-nsubj(is-20, economy-19)
-conj_and(problem-7, is-20)
-prep_at(is-20, last-22)
-vmod(last-22, showing-23)
-amod(signs-25, real-24)
-dobj(showing-23, signs-25)
-prep_of(signs-25, improvement-27)
+root(ROOT-0, first-7)
+det(declaration-2, Our-1)
+nsubj(first-7, declaration-2)
+prep_of(declaration-2, rights-4)
+cop(first-7, is-5)
+det(first-7, the-6)
+det(millennium-10, this-9)
+prep_of(first-7, millennium-10)

@@ -94,7 +94,7 @@ def functionWord(word):
 
     return (word[2].lower() in stopwords) or (word[2].lower() in punctuations)
 
-def weightedWordRelatedness(word1, word2, exact, stem, synonym, paraphrase, contextSimilarity):
+def weightedWordRelatedness(word1, word2, exact, stem, synonym, paraphrase, contextPenalty):
     global stemmer
     global synonymSimilarity
     global paraphraseSimilarity
@@ -129,9 +129,6 @@ def weightedWordRelatedness(word1, word2, exact, stem, synonym, paraphrase, cont
     word1Cleaned = re.sub(r'u\'(.+)\'', r'\1', word1[3]).lower()
     word2Cleaned = re.sub(r'u\'(.+)\'', r'\1', word2[3]).lower()
 
-
-    ## use synonymDictionary and ppDB
-
     if synonymDictionary.checkSynonymByLemma(word1Cleaned, word2Cleaned) and result == 0:
       result = synonym
 
@@ -139,9 +136,11 @@ def weightedWordRelatedness(word1, word2, exact, stem, synonym, paraphrase, cont
       result = paraphrase
 
     ## use contextSimilarity to calculate match score
-    result += result * contextSimilarity / 5.0
-
+    # result += result * contextSimilarity / 5.0
     # result *= (contextSimilarity+1.0)/5.0
+    # result += (contextSimilarity-1.0)
+
+    result += contextPenalty
 
     return result
 

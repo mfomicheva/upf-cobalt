@@ -78,9 +78,13 @@ class Scorer(object):
         precision = weightedMatches1 / weightedLength1
         recall = weightedMatches2 / weightedLength2
 
-        f1 = (2 * precision * recall) / (precision + recall)
+        #f1 = (2 * precision * recall) / (precision + recall)
 
-        fMean = 1.0 / (((1.0 - self.alpha) / precision) + (self.alpha / recall))
+        if precision == 0 or recall == 0:
+            fMean = 0
+        else:
+            fMean = 1.0 / (((1.0 - self.alpha) / precision) + (self.alpha / recall))
+
 
         fragPenalty = 0
 

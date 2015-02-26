@@ -1,3 +1,4 @@
+import math
 from alignerConfig import AlignerConfig
 from wordSim import *
 from util import *
@@ -27,12 +28,14 @@ class Aligner(object):
 
     def compareNodes(self, sourceNodes, targetNodes, pos, opposite, relationDirection, existingAlignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas):
         # search for nodes in common or equivalent function
+
         relatedness = 0
         relativeAlignments = []
+        weightedRelatedness = 0
 
         for ktem in sourceNodes:
             for ltem in targetNodes:
-                if ((ktem[0], ltem[0]) in existingAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=synonymSimilarity) and (
+                if ((ktem[0], ltem[0]) in existingAlignments or max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))>=paraphraseSimilarity) and (
                     (ktem[2] == ltem[2]) or
                         ((relationDirection != 'child_parent') and (
                             self.is_similar(ktem[2], ltem[2], pos, 'noun', opposite, relationDirection) or
@@ -45,9 +48,21 @@ class Aligner(object):
                             self.is_similar(ltem[2], ktem[2], pos, 'adjective', opposite, relationDirection) or
                             self.is_similar(ltem[2], ktem[2], pos, 'adverb', opposite, relationDirection)))):
 
+                    # if ltem[2] == 'det' or ktem[2] == 'det':
+                    #     #weightOnFunction = 0.0
+                    #     weightOnFunction = 1.0
+                    # else:
+                    #     weightOnFunction = 1.0
+
                     relatedness += max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1]))
                     relativeAlignments.append([ktem[0], ltem[0]])
+                    #weightedRelatedness +=max(wordRelatedness(ktem[1], sourcePosTags[ktem[0]-1], ltem[1], targetPosTags[ltem[0]-1]), wordRelatedness(sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1])) * weightOnFunction
+
+
+
+        #return [relatedness, relativeAlignments, weightedRelatedness]
         return [relatedness, relativeAlignments]
+
 
     def findDependencySimilarity(self, pos, source, sourceIndex, target, targetIndex, sourceDParse, targetDParse, existingAlignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas):
         sourceWordParents = findParents(sourceDParse, sourceIndex, source)
@@ -62,7 +77,9 @@ class Aligner(object):
 
         relatedness = compareParents[0] + compareChildren[0] + compareParentChildren[0] + compareChildrenParent[0]
         relativeAlignments = compareParents[1] + compareChildren[1] + compareParentChildren[1] + compareChildrenParent[1]
+        #weightedRelatedness = compareParents[2] + compareChildren[2] + compareParentChildren[2] + compareChildrenParent[2]
 
+        #return [relatedness, relativeAlignments, weightedRelatedness]
         return [relatedness, relativeAlignments]
 
 
@@ -72,6 +89,7 @@ class Aligner(object):
     # [[character begin offset, character end offset], word index, word, lemma, pos tag]
 
         global synonymSimilarity
+        global paraphraseSimilarity
         global theta1
 
         posAlignments = []
@@ -112,14 +130,14 @@ class Aligner(object):
                 if j in targetWordIndicesAlreadyAligned or (targetPosTags[j-1][0].lower() != posCode and targetPosTags[j-1].lower() != 'prp'):
                     continue
 
-                if max(wordRelatedness(sourceWords[i-1], sourcePosTags[i-1], targetWords[j-1], targetPosTags[j-1]), wordRelatedness(sourceLemmas[i-1], sourcePosTags[i-1], targetLemmas[j-1], targetPosTags[j-1])) < synonymSimilarity:
+                if max(wordRelatedness(sourceWords[i-1], sourcePosTags[i-1], targetWords[j-1], targetPosTags[j-1]), wordRelatedness(sourceLemmas[i-1], sourcePosTags[i-1], targetLemmas[j-1], targetPosTags[j-1])) < paraphraseSimilarity:
                     continue
 
                 wordSimilarities[(i, j)] = max(wordRelatedness(sourceWords[i-1], sourcePosTags[i-1], targetWords[j-1], targetPosTags[j-1]), wordRelatedness(sourceLemmas[i-1], sourcePosTags[i-1], targetLemmas[j-1], targetPosTags[j-1]))
 
                 dependencySimilarity = self.findDependencySimilarity(pos, source, i, target, j, sourceDParse, targetDParse, existingAlignments + posAlignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)
 
-                if dependencySimilarity[0] > synonymSimilarity:
+                if dependencySimilarity[0] > paraphraseSimilarity:
                     evidenceCountsMatrix[(i, j)] = dependencySimilarity[0]
                     relativeAlignmentsMatrix[(i, j)] = dependencySimilarity[1]
 
@@ -575,7 +593,7 @@ class Aligner(object):
                 evidence = 0
                 for k in xrange(len(sourceNeighborhood[0])):
                     for l in xrange(len(targetNeighborhood[0])):
-                          if (sourceNeighborhood[1][k] not in stopwords + punctuations) and ((sourceNeighborhood[0][k], targetNeighborhood[0][l]) in alignments or (wordRelatedness(sourceNeighborhood[1][k], 'none', targetNeighborhood[1][l], 'none')>=synonymSimilarity)):
+                          if (sourceNeighborhood[1][k] not in stopwords + punctuations) and ((sourceNeighborhood[0][k], targetNeighborhood[0][l]) in alignments or (wordRelatedness(sourceNeighborhood[1][k], 'none', targetNeighborhood[1][l], 'none')>=paraphraseSimilarity)):
                             evidence += wordRelatedness(sourceNeighborhood[1][k], 'none', targetNeighborhood[1][l], 'none')
                 textualNeighborhoodSimilarities[(i, j)] = evidence
 
@@ -607,7 +625,8 @@ class Aligner(object):
                         bestWordSim = wordSimilarities[(i, j)]
                         bestTextNeighborhoodSim = textualNeighborhoodSimilarities[(i, j)]
 
-            if bestWordSim >= synonymSimilarity and [bestSourceIndex, bestTargetIndex] not in alignments:
+            #if bestWordSim >= paraphraseSimilarity and [bestSourceIndex, bestTargetIndex] not in alignments:
+            if bestWordSim>=paraphraseSimilarity and [bestSourceIndex, bestTargetIndex] not in alignments and bestSourceIndex not in sourceWordIndicesAlreadyAligned and bestTargetIndex not in targetWordIndicesAlreadyAligned:
                 if sourceLemmas[bestSourceIndex-1] not in stopwords:
                     alignments.append([bestSourceIndex, bestTargetIndex])
                     sourceWordIndicesAlreadyAligned.append(bestSourceIndex)
@@ -661,7 +680,7 @@ class Aligner(object):
                 if targetLemmas[j-1] not in stopwords or j in targetWordIndicesAlreadyAligned:
                     continue
 
-                if (sourceLemmas[i-1]!=targetLemmas[j-1]) and (wordRelatedness(sourceLemmas[i-1], sourcePosTags[i-1], targetLemmas[j-1], targetPosTags[j-1])<synonymSimilarity):
+                if (sourceLemmas[i-1]!=targetLemmas[j-1]) and (wordRelatedness(sourceLemmas[i-1], sourcePosTags[i-1], targetLemmas[j-1], targetPosTags[j-1])<paraphraseSimilarity):
                     continue
 
                 wordSimilarities[(i, j)] = max(wordRelatedness(sourceWords[i-1], sourcePosTags[i-1], targetWords[j-1], targetPosTags[j-1]), wordRelatedness(sourceLemmas[i-1], sourcePosTags[i-1], targetLemmas[j-1], targetPosTags[j-1]))
@@ -708,7 +727,8 @@ class Aligner(object):
                         bestWordSim = wordSimilarities[(i, j)]
                         bestDependencyNeighborhoodSim = dependencyNeighborhoodSimilarities[(i, j)]
 
-            if bestWordSim>=synonymSimilarity and bestDependencyNeighborhoodSim>0 and [bestSourceIndex, bestTargetIndex] not in alignments:
+            #if bestWordSim>=paraphraseSimilarity and bestDependencyNeighborhoodSim>0 and [bestSourceIndex, bestTargetIndex] not in alignments:
+            if bestWordSim>=paraphraseSimilarity and bestDependencyNeighborhoodSim>0 and [bestSourceIndex, bestTargetIndex] not in alignments and bestSourceIndex not in sourceWordIndicesAlreadyAligned and bestTargetIndex not in targetWordIndicesAlreadyAligned:
                 alignments.append([bestSourceIndex, bestTargetIndex])
                 sourceWordIndicesAlreadyAligned.append(bestSourceIndex)
                 targetWordIndicesAlreadyAligned.append(bestTargetIndex)
@@ -732,7 +752,7 @@ class Aligner(object):
                 if (targetLemmas[j-1] not in stopwords + punctuations + ['\'s', '\'d', '\'ll']) or j in targetWordIndicesAlreadyAligned:
                     continue
 
-                if wordRelatedness(sourceLemmas[i-1], sourcePosTags[i-1], targetLemmas[j-1], targetPosTags[j-1]) < synonymSimilarity:
+                if wordRelatedness(sourceLemmas[i-1], sourcePosTags[i-1], targetLemmas[j-1], targetPosTags[j-1]) < paraphraseSimilarity:
                     continue
 
 
@@ -813,7 +833,8 @@ class Aligner(object):
                         bestTextNeighborhoodSim = textualNeighborhoodSimilarities[(i, j)]
 
 
-            if bestWordSim>=synonymSimilarity and bestTextNeighborhoodSim>0 and [bestSourceIndex, bestTargetIndex] not in alignments:
+            #if bestWordSim>=paraphraseSimilarity and bestTextNeighborhoodSim>0 and [bestSourceIndex, bestTargetIndex] not in alignments:
+            if bestWordSim>=paraphraseSimilarity and bestTextNeighborhoodSim>0 and [bestSourceIndex, bestTargetIndex] not in alignments and bestSourceIndex not in sourceWordIndicesAlreadyAligned and bestTargetIndex not in targetWordIndicesAlreadyAligned:
                 alignments.append([bestSourceIndex, bestTargetIndex])
                 sourceWordIndicesAlreadyAligned.append(bestSourceIndex)
                 targetWordIndicesAlreadyAligned.append(bestTargetIndex)
@@ -847,6 +868,47 @@ class Aligner(object):
         return [myWordAlignments, myWordAlignmentTokens, myWordDependencySimilarity]
     ##############################################################################################################################
 
+    # def calculateDependencySimilarity(self, sourceWord, sourceIndex, targetWord, targetIndex, sourceSentence, targetSentence, sourceParseResult, targetParseResult, alignments):
+    #     sourceLemmas = [item[3] for item in sourceSentence]
+    #     targetLemmas = [item[3] for item in targetSentence]
+    #
+    #     sourcePosTags = [item[4] for item in sourceSentence]
+    #     targetPosTags = [item[4] for item in targetSentence]
+    #
+    #     sourceDParse = dependencyParseAndPutOffsets(sourceParseResult)
+    #     targetDParse = dependencyParseAndPutOffsets(targetParseResult)
+    #
+    #     pos = ''
+    #     if sourceWord[4].lower().startswith('v'):
+    #         pos = 'verb'
+    #     if sourceWord[4].lower().startswith('n'):
+    #         pos = 'noun'
+    #     if sourceWord[4].lower().startswith('j'):
+    #         pos = 'adjective'
+    #     if sourceWord[4].lower().startswith('r'):
+    #         pos = 'adverb'
+
+
+        # if len(pos) > 0:
+        #     return self.findDependencySimilarity(pos, sourceWord[2], sourceIndex, targetWord[2], targetIndex, sourceDParse, targetDParse, alignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)[0]
+        # else:
+        #     sourceWordParents = findParents(sourceDParse, sourceIndex, sourceWord[2])
+        #     sourceWordChildren = findChildren(sourceDParse, sourceIndex, sourceWord[2])
+        #     targetWordParents = findParents(targetDParse, targetIndex, targetWord[2])
+        #     targetWordChildren = findChildren(targetDParse, targetIndex, targetWord[2])
+        #
+        #     evidence = 0
+        #
+        #     for item in sourceWordParents:
+        #         for jtem in targetWordParents:
+        #             if [item[0], jtem[0]] in alignments:
+        #                 evidence += 1
+        #     for item in sourceWordChildren:
+        #         for jtem in targetWordChildren:
+        #             if [item[0], jtem[0]] in alignments:
+        #                 evidence += 1
+        #     return evidence
+
     def calculateDependencySimilarity(self, sourceWord, sourceIndex, targetWord, targetIndex, sourceSentence, targetSentence, sourceParseResult, targetParseResult, alignments):
         sourceLemmas = [item[3] for item in sourceSentence]
         targetLemmas = [item[3] for item in targetSentence]
@@ -856,6 +918,10 @@ class Aligner(object):
 
         sourceDParse = dependencyParseAndPutOffsets(sourceParseResult)
         targetDParse = dependencyParseAndPutOffsets(targetParseResult)
+
+
+        evidence = 0
+        normalizedEvidence = 0
 
         pos = ''
         if sourceWord[4].lower().startswith('v'):
@@ -867,23 +933,31 @@ class Aligner(object):
         if sourceWord[4].lower().startswith('r'):
             pos = 'adverb'
 
+        sourceWordParents = findParents(sourceDParse, sourceIndex, sourceWord[2])
+        sourceWordChildren = findChildren(sourceDParse, sourceIndex, sourceWord[2])
+        targetWordParents = findParents(targetDParse, targetIndex, targetWord[2])
+        targetWordChildren = findChildren(targetDParse, targetIndex, targetWord[2])
+
+
         if len(pos) > 0:
-            return self.findDependencySimilarity(pos, sourceWord[2], sourceIndex, targetWord[2], targetIndex, sourceDParse, targetDParse, alignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)[0]
+            context = self.findDependencySimilarity(pos, sourceWord[2], sourceIndex, targetWord[2], targetIndex, sourceDParse, targetDParse, alignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)
+            evidence = context[0]
         else:
-            sourceWordParents = findParents(sourceDParse, sourceIndex, sourceWord[2])
-            sourceWordChildren = findChildren(sourceDParse, sourceIndex, sourceWord[2])
-            targetWordParents = findParents(targetDParse, targetIndex, targetWord[2])
-            targetWordChildren = findChildren(targetDParse, targetIndex, targetWord[2])
-
-            evidence = 0
-
             for item in sourceWordParents:
                 for jtem in targetWordParents:
                     if [item[0], jtem[0]] in alignments:
                         evidence += 1
+
             for item in sourceWordChildren:
                 for jtem in targetWordChildren:
                     if [item[0], jtem[0]] in alignments:
-                        evidence += 1
+                            evidence += 1
 
-            return evidence
+        totalContext = len(targetWordChildren) + len(targetWordParents) + 1.0
+        normalizedEvidence += (evidence/totalContext - 1) * math.log(totalContext)
+
+        return normalizedEvidence
+
+
+
+
