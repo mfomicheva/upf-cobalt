@@ -137,3 +137,16 @@ def readSentences(sentenceFile):
     sentences.append(sentenceStructure)
 
     return sentences
+
+##############################################################################################################################
+
+def readFileNames(filesFile):
+
+
+    files = []
+
+    for line in filesFile:
+        line = line.strip()
+        files.append(line)
+
+    return files

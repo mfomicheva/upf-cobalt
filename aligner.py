@@ -768,12 +768,12 @@ class Aligner(object):
                 l = j
 
                 while k > 0:
-                    if sourceLemmas[k] in stopwords + punctuations + ['\'s', '\'d', '\'ll']:
+                    if sourceLemmas[k-1] in stopwords + punctuations + ['\'s', '\'d', '\'ll']:
                         k -= 1
                     else:
                         break
                 while l > 0:
-                    if targetLemmas[l] in stopwords + punctuations + ['\'s', '\'d', '\'ll']:
+                    if targetLemmas[l-1] in stopwords + punctuations + ['\'s', '\'d', '\'ll']:
                         l -= 1
                     else:
                         break
@@ -781,21 +781,23 @@ class Aligner(object):
                 m = i
                 n = j
 
+
                 while m < len(sourceLemmas) - 1:
-                    if sourceLemmas[m] in stopwords + punctuations + ['\'s', '\'d', '\'ll']:
+                    if sourceLemmas[m - 1] in stopwords + punctuations + ['\'s', '\'d', '\'ll']:
+
                         m += 1
                     else:
                         break
                 while n < len(targetLemmas) - 1:
-                    if targetLemmas[n] in stopwords + punctuations + ['\'s', '\'d', '\'ll']:
+                    if targetLemmas[n - 1] in stopwords + punctuations + ['\'s', '\'d', '\'ll']:
                         n += 1
                     else:
                         break
 
-                if [k-1, l-1] in alignments:
+                if [k, l] in alignments:
                     evidence += 1
 
-                if [m+1, n+1] in alignments:
+                if [m, n] in alignments:
                     evidence += 1
 
                 try:

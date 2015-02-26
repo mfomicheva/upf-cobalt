@@ -1,1 +1,1 @@
-java -mx5g -cp "$STANFORD_CORENLP_DIR/*" edu.stanford.nlp.pipeline.StanfordCoreNLP -file "$1" -outputFormat text -outputFolder "Work" -annotators "tokenize, ssplit, pos, lemma, ner, parse" -sentences newline
+java -mx5g -cp "$STANFORD_CORENLP_DIR/*" edu.stanford.nlp.pipeline.StanfordCoreNLP -outputFormat text -outputDirectory "$1" -props "/Users/MarinaFomicheva/workspace/stanford-corenlp-python/parse.properties" -filelist "/Users/MarinaFomicheva/workspace/stanford-corenlp-python/fileList.txt"

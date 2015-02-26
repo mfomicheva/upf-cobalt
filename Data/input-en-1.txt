@@ -1,22 +1,29 @@
-Sentence #1 (10 tokens):
-Our statement of rights is first of this millennium.
-[Text=Our CharacterOffsetBegin=0 CharacterOffsetEnd=3 PartOfSpeech=PRP$ Lemma=we NamedEntityTag=O] [Text=statement CharacterOffsetBegin=4 CharacterOffsetEnd=13 PartOfSpeech=NN Lemma=statement NamedEntityTag=O] [Text=of CharacterOffsetBegin=14 CharacterOffsetEnd=16 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=rights CharacterOffsetBegin=17 CharacterOffsetEnd=23 PartOfSpeech=NNS Lemma=rights NamedEntityTag=O] [Text=is CharacterOffsetBegin=24 CharacterOffsetEnd=26 PartOfSpeech=VBZ Lemma=be NamedEntityTag=O] [Text=first CharacterOffsetBegin=27 CharacterOffsetEnd=32 PartOfSpeech=RB Lemma=first NamedEntityTag=ORDINAL NormalizedNamedEntityTag=1.0] [Text=of CharacterOffsetBegin=33 CharacterOffsetEnd=35 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=this CharacterOffsetBegin=36 CharacterOffsetEnd=40 PartOfSpeech=DT Lemma=this NamedEntityTag=DATE NormalizedNamedEntityTag=THIS P1000Y Timex=<TIMEX3 alt_value="THIS P1000Y" anchorTimeID="t0" temporalFunction="true" tid="t1" type="DATE" valueFromFunction="tf0">this millennium</TIMEX3>] [Text=millennium CharacterOffsetBegin=41 CharacterOffsetEnd=51 PartOfSpeech=JJ Lemma=millennium NamedEntityTag=DATE NormalizedNamedEntityTag=THIS P1000Y Timex=<TIMEX3 alt_value="THIS P1000Y" anchorTimeID="t0" temporalFunction="true" tid="t1" type="DATE" valueFromFunction="tf0">this millennium</TIMEX3>] [Text=. CharacterOffsetBegin=51 CharacterOffsetEnd=52 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+Sentence #58 (14 tokens):
+(The sitting was suspended at 6.55 p.m. and resumed at 9 p.m.)
+[Text=-LRB- CharacterOffsetBegin=9371 CharacterOffsetEnd=9372 PartOfSpeech=-LRB- Lemma=-lrb- NamedEntityTag=O] [Text=The CharacterOffsetBegin=9372 CharacterOffsetEnd=9375 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=sitting CharacterOffsetBegin=9376 CharacterOffsetEnd=9383 PartOfSpeech=VBG Lemma=sit NamedEntityTag=O] [Text=was CharacterOffsetBegin=9384 CharacterOffsetEnd=9387 PartOfSpeech=VBD Lemma=be NamedEntityTag=O] [Text=suspended CharacterOffsetBegin=9388 CharacterOffsetEnd=9397 PartOfSpeech=VBN Lemma=suspend NamedEntityTag=O] [Text=at CharacterOffsetBegin=9398 CharacterOffsetEnd=9400 PartOfSpeech=IN Lemma=at NamedEntityTag=O] [Text=6.55 CharacterOffsetBegin=9401 CharacterOffsetEnd=9405 PartOfSpeech=CD Lemma=6.55 NamedEntityTag=TIME] [Text=p.m. CharacterOffsetBegin=9406 CharacterOffsetEnd=9410 PartOfSpeech=NN Lemma=p.m. NamedEntityTag=TIME] [Text=and CharacterOffsetBegin=9411 CharacterOffsetEnd=9414 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=resumed CharacterOffsetBegin=9415 CharacterOffsetEnd=9422 PartOfSpeech=VBD Lemma=resume NamedEntityTag=O] [Text=at CharacterOffsetBegin=9423 CharacterOffsetEnd=9425 PartOfSpeech=IN Lemma=at NamedEntityTag=O] [Text=9 CharacterOffsetBegin=9426 CharacterOffsetEnd=9427 PartOfSpeech=CD Lemma=9 NamedEntityTag=TIME NormalizedNamedEntityTag=T21:00 Timex=<TIMEX3 tid="t28" type="TIME" value="T21:00">9 p.m.</TIMEX3>] [Text=p.m. CharacterOffsetBegin=9428 CharacterOffsetEnd=9432 PartOfSpeech=NN Lemma=p.m. NamedEntityTag=TIME NormalizedNamedEntityTag=T21:00 Timex=<TIMEX3 tid="t28" type="TIME" value="T21:00">9 p.m.</TIMEX3>] [Text=-RRB- CharacterOffsetBegin=9432 CharacterOffsetEnd=9433 PartOfSpeech=-RRB- Lemma=-rrb- NamedEntityTag=O] 
 (ROOT
-  (S
-    (NP
-      (NP (PRP$ Our) (NN statement))
-      (PP (IN of)
-        (NP (NNS rights))))
-    (VP (VBZ is)
-      (ADVP (RB first))
-      (PP (IN of)
-        (NP (DT this) (JJ millennium))))
-    (. .)))
+  (PRN (-LRB- -LRB-)
+    (S
+      (NP (DT The) (VBG sitting))
+      (VP
+        (VP (VBD was)
+          (VP (VBN suspended)
+            (PP (IN at)
+              (NP (CD 6.55)))
+            (NP-TMP (NN p.m.))))
+        (CC and)
+        (VP (VBD resumed)
+          (PP (IN at)
+            (NP (CD 9)))
+          (NP-TMP (NN p.m.)))))
+    (-RRB- -RRB-)))
 
-root(ROOT-0, is-5)
-det(statement-2, Our-1)
-nsubj(is-5, statement-2)
-prep_of(statement-2, rights-4)
-advmod(is-5, first-6)
-det(millennium-9, this-8)
-prep_of(is-5, millennium-9)
+root(ROOT-0, suspended-5)
+nsubjpass(suspended-5, The-2)
+amod(The-2, sitting-3)
+auxpass(suspended-5, was-4)
+prep_at(suspended-5, 6.55-7)
+tmod(suspended-5, p.m.-8)
+conj_and(suspended-5, resumed-10)
+prep_at(resumed-10, 9-12)
+tmod(resumed-10, p.m.-13)
