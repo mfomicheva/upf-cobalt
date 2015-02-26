@@ -77,13 +77,10 @@ def wordRelatedness(word1, pos1, word2, pos2):
     if word1 in punctuations or word2 in punctuations:
         return 0
 
-    word1Cleaned = re.sub(r'u\'(.+)\'', r'\1', word1).lower()
-    word2Cleaned = re.sub(r'u\'(.+)\'', r'\1', word2).lower()
-
     ## use synonymDictionary or ppDB
-    if synonymDictionary.checkSynonymByLemma(word1Cleaned, word2Cleaned):
+    if synonymDictionary.checkSynonymByLemma(word1, word2):
         return synonymSimilarity
-    elif presentInPPDB(word1Cleaned, word2Cleaned):
+    elif presentInPPDB(word1, word2):
         return paraphraseSimilarity
     else:
        return 0

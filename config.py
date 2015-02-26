@@ -14,5 +14,8 @@ stemmer = SnowballStemmer('english')
 synonymDictionary = SynonymDictionary('english')
 
 punctuations = ['(','-lrb-','.',',','-','?','!',';','_',':','{','}','[','/',']','...','"','\'',')', '-rrb-']
+punctuations = map(lambda x: x.encode('UTF-8'), punctuations)
+
 stopwords = stopwords.words('english')
+stopwords = map(lambda x: x.encode('UTF-8'), stopwords)
 
