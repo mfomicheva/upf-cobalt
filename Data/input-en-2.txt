@@ -1,24 +1,29 @@
-Sentence #1 (11 tokens):
-Our declaration of rights is the first of this millennium.
-[Text=Our CharacterOffsetBegin=0 CharacterOffsetEnd=3 PartOfSpeech=PRP$ Lemma=we NamedEntityTag=O] [Text=declaration CharacterOffsetBegin=4 CharacterOffsetEnd=15 PartOfSpeech=NN Lemma=declaration NamedEntityTag=O] [Text=of CharacterOffsetBegin=16 CharacterOffsetEnd=18 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=rights CharacterOffsetBegin=19 CharacterOffsetEnd=25 PartOfSpeech=NNS Lemma=rights NamedEntityTag=O] [Text=is CharacterOffsetBegin=26 CharacterOffsetEnd=28 PartOfSpeech=VBZ Lemma=be NamedEntityTag=O] [Text=the CharacterOffsetBegin=29 CharacterOffsetEnd=32 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=first CharacterOffsetBegin=33 CharacterOffsetEnd=38 PartOfSpeech=JJ Lemma=first NamedEntityTag=ORDINAL NormalizedNamedEntityTag=1.0] [Text=of CharacterOffsetBegin=39 CharacterOffsetEnd=41 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=this CharacterOffsetBegin=42 CharacterOffsetEnd=46 PartOfSpeech=DT Lemma=this NamedEntityTag=DATE NormalizedNamedEntityTag=THIS P1000Y Timex=<TIMEX3 alt_value="THIS P1000Y" anchorTimeID="t0" temporalFunction="true" tid="t1" type="DATE" valueFromFunction="tf0">this millennium</TIMEX3>] [Text=millennium CharacterOffsetBegin=47 CharacterOffsetEnd=57 PartOfSpeech=JJ Lemma=millennium NamedEntityTag=DATE NormalizedNamedEntityTag=THIS P1000Y Timex=<TIMEX3 alt_value="THIS P1000Y" anchorTimeID="t0" temporalFunction="true" tid="t1" type="DATE" valueFromFunction="tf0">this millennium</TIMEX3>] [Text=. CharacterOffsetBegin=57 CharacterOffsetEnd=58 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+Sentence #58 (15 tokens):
+(The sitting was suspended at 655 pm and resumed at 900 pm).
+[Text=-LRB- CharacterOffsetBegin=9056 CharacterOffsetEnd=9057 PartOfSpeech=-LRB- Lemma=-lrb- NamedEntityTag=O] [Text=The CharacterOffsetBegin=9057 CharacterOffsetEnd=9060 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=sitting CharacterOffsetBegin=9061 CharacterOffsetEnd=9068 PartOfSpeech=VBG Lemma=sit NamedEntityTag=O] [Text=was CharacterOffsetBegin=9069 CharacterOffsetEnd=9072 PartOfSpeech=VBD Lemma=be NamedEntityTag=O] [Text=suspended CharacterOffsetBegin=9073 CharacterOffsetEnd=9082 PartOfSpeech=VBN Lemma=suspend NamedEntityTag=O] [Text=at CharacterOffsetBegin=9083 CharacterOffsetEnd=9085 PartOfSpeech=IN Lemma=at NamedEntityTag=O] [Text=655 CharacterOffsetBegin=9086 CharacterOffsetEnd=9089 PartOfSpeech=CD Lemma=655 NamedEntityTag=NUMBER NormalizedNamedEntityTag=655.0] [Text=pm CharacterOffsetBegin=9090 CharacterOffsetEnd=9092 PartOfSpeech=NN Lemma=pm NamedEntityTag=O] [Text=and CharacterOffsetBegin=9093 CharacterOffsetEnd=9096 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=resumed CharacterOffsetBegin=9097 CharacterOffsetEnd=9104 PartOfSpeech=VBD Lemma=resume NamedEntityTag=O] [Text=at CharacterOffsetBegin=9105 CharacterOffsetEnd=9107 PartOfSpeech=IN Lemma=at NamedEntityTag=O] [Text=900 CharacterOffsetBegin=9108 CharacterOffsetEnd=9111 PartOfSpeech=CD Lemma=900 NamedEntityTag=NUMBER NormalizedNamedEntityTag=900.0] [Text=pm CharacterOffsetBegin=9112 CharacterOffsetEnd=9114 PartOfSpeech=NN Lemma=pm NamedEntityTag=O] [Text=-RRB- CharacterOffsetBegin=9114 CharacterOffsetEnd=9115 PartOfSpeech=-RRB- Lemma=-rrb- NamedEntityTag=O] [Text=. CharacterOffsetBegin=9115 CharacterOffsetEnd=9116 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
 (ROOT
-  (S
+  (S (-LRB- -LRB-)
     (NP
-      (NP (PRP$ Our) (NN declaration))
-      (PP (IN of)
-        (NP (NNS rights))))
-    (VP (VBZ is)
-      (NP
-        (NP (DT the) (JJ first))
-        (PP (IN of)
-          (NP (DT this) (JJ millennium)))))
-    (. .)))
+      (NP (DT The) (VBG sitting))
+      (SBAR
+        (S
+          (VP (VBD was)
+            (VP (VBN suspended)
+              (PP (IN at)
+                (NP (CD 655) (NN pm))))))))
+    (ADVP (CC and))
+    (VP (VBD resumed)
+      (PP (IN at)
+        (NP (CD 900) (NN pm))))
+    (-RRB- -RRB-) (. .)))
 
-root(ROOT-0, first-7)
-det(declaration-2, Our-1)
-nsubj(first-7, declaration-2)
-prep_of(declaration-2, rights-4)
-cop(first-7, is-5)
-det(first-7, the-6)
-det(millennium-10, this-9)
-prep_of(first-7, millennium-10)
+root(ROOT-0, resumed-10)
+nsubj(resumed-10, The-2)
+amod(The-2, sitting-3)
+auxpass(suspended-5, was-4)
+rcmod(The-2, suspended-5)
+num(pm-8, 655-7)
+prep_at(suspended-5, pm-8)
+advmod(resumed-10, and-9)
+num(pm-13, 900-12)
+prep_at(resumed-10, pm-13)
