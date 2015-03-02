@@ -1,29 +1,162 @@
-Sentence #58 (14 tokens):
-(The sitting was suspended at 6.55 p.m. and resumed at 9 p.m.)
-[Text=-LRB- CharacterOffsetBegin=9371 CharacterOffsetEnd=9372 PartOfSpeech=-LRB- Lemma=-lrb- NamedEntityTag=O] [Text=The CharacterOffsetBegin=9372 CharacterOffsetEnd=9375 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=sitting CharacterOffsetBegin=9376 CharacterOffsetEnd=9383 PartOfSpeech=VBG Lemma=sit NamedEntityTag=O] [Text=was CharacterOffsetBegin=9384 CharacterOffsetEnd=9387 PartOfSpeech=VBD Lemma=be NamedEntityTag=O] [Text=suspended CharacterOffsetBegin=9388 CharacterOffsetEnd=9397 PartOfSpeech=VBN Lemma=suspend NamedEntityTag=O] [Text=at CharacterOffsetBegin=9398 CharacterOffsetEnd=9400 PartOfSpeech=IN Lemma=at NamedEntityTag=O] [Text=6.55 CharacterOffsetBegin=9401 CharacterOffsetEnd=9405 PartOfSpeech=CD Lemma=6.55 NamedEntityTag=TIME] [Text=p.m. CharacterOffsetBegin=9406 CharacterOffsetEnd=9410 PartOfSpeech=NN Lemma=p.m. NamedEntityTag=TIME] [Text=and CharacterOffsetBegin=9411 CharacterOffsetEnd=9414 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=resumed CharacterOffsetBegin=9415 CharacterOffsetEnd=9422 PartOfSpeech=VBD Lemma=resume NamedEntityTag=O] [Text=at CharacterOffsetBegin=9423 CharacterOffsetEnd=9425 PartOfSpeech=IN Lemma=at NamedEntityTag=O] [Text=9 CharacterOffsetBegin=9426 CharacterOffsetEnd=9427 PartOfSpeech=CD Lemma=9 NamedEntityTag=TIME NormalizedNamedEntityTag=T21:00 Timex=<TIMEX3 tid="t28" type="TIME" value="T21:00">9 p.m.</TIMEX3>] [Text=p.m. CharacterOffsetBegin=9428 CharacterOffsetEnd=9432 PartOfSpeech=NN Lemma=p.m. NamedEntityTag=TIME NormalizedNamedEntityTag=T21:00 Timex=<TIMEX3 tid="t28" type="TIME" value="T21:00">9 p.m.</TIMEX3>] [Text=-RRB- CharacterOffsetBegin=9432 CharacterOffsetEnd=9433 PartOfSpeech=-RRB- Lemma=-rrb- NamedEntityTag=O] 
+Sentence #80 (76 tokens):
+Some believe that the importance of democracy is on when it comes to Africa, which are complex procedures, that must be given time. However, I believe that no compromise is possible with democracy and the question being asked today to Côte d'Ivoire is the same as that which arises for example in Guinea, when we now know that there are people in prison and that there is a democratic system.
+[Text=Some CharacterOffsetBegin=13316 CharacterOffsetEnd=13320 PartOfSpeech=DT Lemma=some NamedEntityTag=O] [Text=believe CharacterOffsetBegin=13321 CharacterOffsetEnd=13328 PartOfSpeech=VBP Lemma=believe NamedEntityTag=O] [Text=that CharacterOffsetBegin=13329 CharacterOffsetEnd=13333 PartOfSpeech=IN Lemma=that NamedEntityTag=O] [Text=the CharacterOffsetBegin=13334 CharacterOffsetEnd=13337 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=importance CharacterOffsetBegin=13338 CharacterOffsetEnd=13348 PartOfSpeech=NN Lemma=importance NamedEntityTag=O] [Text=of CharacterOffsetBegin=13349 CharacterOffsetEnd=13351 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=democracy CharacterOffsetBegin=13352 CharacterOffsetEnd=13361 PartOfSpeech=NN Lemma=democracy NamedEntityTag=O] [Text=is CharacterOffsetBegin=13362 CharacterOffsetEnd=13364 PartOfSpeech=VBZ Lemma=be NamedEntityTag=O] [Text=on CharacterOffsetBegin=13365 CharacterOffsetEnd=13367 PartOfSpeech=IN Lemma=on NamedEntityTag=O] [Text=when CharacterOffsetBegin=13368 CharacterOffsetEnd=13372 PartOfSpeech=WRB Lemma=when NamedEntityTag=O] [Text=it CharacterOffsetBegin=13373 CharacterOffsetEnd=13375 PartOfSpeech=PRP Lemma=it NamedEntityTag=O] [Text=comes CharacterOffsetBegin=13376 CharacterOffsetEnd=13381 PartOfSpeech=VBZ Lemma=come NamedEntityTag=O] [Text=to CharacterOffsetBegin=13382 CharacterOffsetEnd=13384 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=Africa CharacterOffsetBegin=13385 CharacterOffsetEnd=13391 PartOfSpeech=NNP Lemma=Africa NamedEntityTag=LOCATION] [Text=, CharacterOffsetBegin=13391 CharacterOffsetEnd=13392 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=which CharacterOffsetBegin=13393 CharacterOffsetEnd=13398 PartOfSpeech=WDT Lemma=which NamedEntityTag=O] [Text=are CharacterOffsetBegin=13399 CharacterOffsetEnd=13402 PartOfSpeech=VBP Lemma=be NamedEntityTag=O] [Text=complex CharacterOffsetBegin=13403 CharacterOffsetEnd=13410 PartOfSpeech=JJ Lemma=complex NamedEntityTag=O] [Text=procedures CharacterOffsetBegin=13411 CharacterOffsetEnd=13421 PartOfSpeech=NNS Lemma=procedure NamedEntityTag=O] [Text=, CharacterOffsetBegin=13421 CharacterOffsetEnd=13422 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=that CharacterOffsetBegin=13423 CharacterOffsetEnd=13427 PartOfSpeech=IN Lemma=that NamedEntityTag=O] [Text=must CharacterOffsetBegin=13428 CharacterOffsetEnd=13432 PartOfSpeech=MD Lemma=must NamedEntityTag=O] [Text=be CharacterOffsetBegin=13433 CharacterOffsetEnd=13435 PartOfSpeech=VB Lemma=be NamedEntityTag=O] [Text=given CharacterOffsetBegin=13436 CharacterOffsetEnd=13441 PartOfSpeech=VBN Lemma=give NamedEntityTag=O] [Text=time CharacterOffsetBegin=13442 CharacterOffsetEnd=13446 PartOfSpeech=NN Lemma=time NamedEntityTag=O] [Text=. CharacterOffsetBegin=13446 CharacterOffsetEnd=13447 PartOfSpeech=. Lemma=. NamedEntityTag=O] [Text=However CharacterOffsetBegin=13448 CharacterOffsetEnd=13455 PartOfSpeech=RB Lemma=however NamedEntityTag=O] [Text=, CharacterOffsetBegin=13455 CharacterOffsetEnd=13456 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=I CharacterOffsetBegin=13457 CharacterOffsetEnd=13458 PartOfSpeech=PRP Lemma=I NamedEntityTag=O] [Text=believe CharacterOffsetBegin=13459 CharacterOffsetEnd=13466 PartOfSpeech=VBP Lemma=believe NamedEntityTag=O] [Text=that CharacterOffsetBegin=13467 CharacterOffsetEnd=13471 PartOfSpeech=IN Lemma=that NamedEntityTag=O] [Text=no CharacterOffsetBegin=13472 CharacterOffsetEnd=13474 PartOfSpeech=DT Lemma=no NamedEntityTag=O] [Text=compromise CharacterOffsetBegin=13475 CharacterOffsetEnd=13485 PartOfSpeech=NN Lemma=compromise NamedEntityTag=O] [Text=is CharacterOffsetBegin=13486 CharacterOffsetEnd=13488 PartOfSpeech=VBZ Lemma=be NamedEntityTag=O] [Text=possible CharacterOffsetBegin=13489 CharacterOffsetEnd=13497 PartOfSpeech=JJ Lemma=possible NamedEntityTag=O] [Text=with CharacterOffsetBegin=13498 CharacterOffsetEnd=13502 PartOfSpeech=IN Lemma=with NamedEntityTag=O] [Text=democracy CharacterOffsetBegin=13503 CharacterOffsetEnd=13512 PartOfSpeech=NN Lemma=democracy NamedEntityTag=O] [Text=and CharacterOffsetBegin=13513 CharacterOffsetEnd=13516 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=the CharacterOffsetBegin=13517 CharacterOffsetEnd=13520 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=question CharacterOffsetBegin=13521 CharacterOffsetEnd=13529 PartOfSpeech=NN Lemma=question NamedEntityTag=O] [Text=being CharacterOffsetBegin=13530 CharacterOffsetEnd=13535 PartOfSpeech=VBG Lemma=be NamedEntityTag=O] [Text=asked CharacterOffsetBegin=13536 CharacterOffsetEnd=13541 PartOfSpeech=VBD Lemma=ask NamedEntityTag=O] [Text=today CharacterOffsetBegin=13542 CharacterOffsetEnd=13547 PartOfSpeech=NN Lemma=today NamedEntityTag=DATE NormalizedNamedEntityTag=THIS P1D Timex=<TIMEX3 alt_value="THIS P1D" anchorTimeID="t0" temporalFunction="true" tid="t8" type="DATE" valueFromFunction="tf1">today</TIMEX3>] [Text=to CharacterOffsetBegin=13548 CharacterOffsetEnd=13550 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=Côte CharacterOffsetBegin=13551 CharacterOffsetEnd=13555 PartOfSpeech=VB Lemma=côte NamedEntityTag=O] [Text=d'Ivoire CharacterOffsetBegin=13556 CharacterOffsetEnd=13564 PartOfSpeech=NN Lemma=d'ivoire NamedEntityTag=O] [Text=is CharacterOffsetBegin=13565 CharacterOffsetEnd=13567 PartOfSpeech=VBZ Lemma=be NamedEntityTag=O] [Text=the CharacterOffsetBegin=13568 CharacterOffsetEnd=13571 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=same CharacterOffsetBegin=13572 CharacterOffsetEnd=13576 PartOfSpeech=JJ Lemma=same NamedEntityTag=O] [Text=as CharacterOffsetBegin=13577 CharacterOffsetEnd=13579 PartOfSpeech=IN Lemma=as NamedEntityTag=O] [Text=that CharacterOffsetBegin=13580 CharacterOffsetEnd=13584 PartOfSpeech=DT Lemma=that NamedEntityTag=O] [Text=which CharacterOffsetBegin=13585 CharacterOffsetEnd=13590 PartOfSpeech=WDT Lemma=which NamedEntityTag=O] [Text=arises CharacterOffsetBegin=13591 CharacterOffsetEnd=13597 PartOfSpeech=VBZ Lemma=arise NamedEntityTag=O] [Text=for CharacterOffsetBegin=13598 CharacterOffsetEnd=13601 PartOfSpeech=IN Lemma=for NamedEntityTag=O] [Text=example CharacterOffsetBegin=13602 CharacterOffsetEnd=13609 PartOfSpeech=NN Lemma=example NamedEntityTag=O] [Text=in CharacterOffsetBegin=13610 CharacterOffsetEnd=13612 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=Guinea CharacterOffsetBegin=13613 CharacterOffsetEnd=13619 PartOfSpeech=NNP Lemma=Guinea NamedEntityTag=LOCATION] [Text=, CharacterOffsetBegin=13619 CharacterOffsetEnd=13620 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=when CharacterOffsetBegin=13621 CharacterOffsetEnd=13625 PartOfSpeech=WRB Lemma=when NamedEntityTag=O] [Text=we CharacterOffsetBegin=13626 CharacterOffsetEnd=13628 PartOfSpeech=PRP Lemma=we NamedEntityTag=O] [Text=now CharacterOffsetBegin=13629 CharacterOffsetEnd=13632 PartOfSpeech=RB Lemma=now NamedEntityTag=DATE NormalizedNamedEntityTag=PRESENT_REF Timex=<TIMEX3 tid="t31" type="DATE" value="PRESENT_REF">now</TIMEX3>] [Text=know CharacterOffsetBegin=13633 CharacterOffsetEnd=13637 PartOfSpeech=VBP Lemma=know NamedEntityTag=O] [Text=that CharacterOffsetBegin=13638 CharacterOffsetEnd=13642 PartOfSpeech=IN Lemma=that NamedEntityTag=O] [Text=there CharacterOffsetBegin=13643 CharacterOffsetEnd=13648 PartOfSpeech=EX Lemma=there NamedEntityTag=O] [Text=are CharacterOffsetBegin=13649 CharacterOffsetEnd=13652 PartOfSpeech=VBP Lemma=be NamedEntityTag=O] [Text=people CharacterOffsetBegin=13653 CharacterOffsetEnd=13659 PartOfSpeech=NNS Lemma=people NamedEntityTag=O] [Text=in CharacterOffsetBegin=13660 CharacterOffsetEnd=13662 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=prison CharacterOffsetBegin=13663 CharacterOffsetEnd=13669 PartOfSpeech=NN Lemma=prison NamedEntityTag=O] [Text=and CharacterOffsetBegin=13670 CharacterOffsetEnd=13673 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=that CharacterOffsetBegin=13674 CharacterOffsetEnd=13678 PartOfSpeech=IN Lemma=that NamedEntityTag=O] [Text=there CharacterOffsetBegin=13679 CharacterOffsetEnd=13684 PartOfSpeech=EX Lemma=there NamedEntityTag=O] [Text=is CharacterOffsetBegin=13685 CharacterOffsetEnd=13687 PartOfSpeech=VBZ Lemma=be NamedEntityTag=O] [Text=a CharacterOffsetBegin=13688 CharacterOffsetEnd=13689 PartOfSpeech=DT Lemma=a NamedEntityTag=O] [Text=democratic CharacterOffsetBegin=13690 CharacterOffsetEnd=13700 PartOfSpeech=JJ Lemma=democratic NamedEntityTag=O] [Text=system CharacterOffsetBegin=13701 CharacterOffsetEnd=13707 PartOfSpeech=NN Lemma=system NamedEntityTag=O] [Text=. CharacterOffsetBegin=13707 CharacterOffsetEnd=13708 PartOfSpeech=. Lemma=. NamedEntityTag=O]
 (ROOT
-  (PRN (-LRB- -LRB-)
+  (S
     (S
-      (NP (DT The) (VBG sitting))
-      (VP
-        (VP (VBD was)
-          (VP (VBN suspended)
-            (PP (IN at)
-              (NP (CD 6.55)))
-            (NP-TMP (NN p.m.))))
-        (CC and)
-        (VP (VBD resumed)
-          (PP (IN at)
-            (NP (CD 9)))
-          (NP-TMP (NN p.m.)))))
-    (-RRB- -RRB-)))
+      (NP (DT Some))
+      (VP (VBP believe)
+        (SBAR (IN that)
+          (S
+            (NP
+              (NP (DT the) (NN importance))
+              (PP (IN of)
+                (NP (NN democracy))))
+            (VP (VBZ is)
+              (PP (IN on)
+                (SBAR
+                  (WHADVP (WRB when))
+                  (S
+                    (NP (PRP it))
+                    (VP (VBZ comes)
+                      (PP (TO to)
+                        (NP
+                          (NP (NNP Africa))
+                          (, ,)
+                          (SBAR
+                            (WHNP (WDT which))
+                            (S
+                              (VP (VBP are)
+                                (NP
+                                  (NP (JJ complex) (NNS procedures))
+                                  (, ,)
+                                  (SBAR
+                                    (WHNP (IN that))
+                                    (S
+                                      (VP (MD must)
+                                        (VP (VB be)
+                                          (VP (VBN given)
+                                            (NP-TMP (NN time))))))))))))))))))
+            (. .)))
+        (ADVP (RB However))))
+    (, ,)
+    (S
+      (NP (PRP I))
+      (VP (VBP believe)
+        (SBAR (IN that)
+          (S
+            (NP (DT no) (NN compromise))
+            (VP (VBZ is)
+              (ADJP (JJ possible)
+                (PP (IN with)
+                  (NP (NN democracy)))))))))
+    (CC and)
+    (S
+      (NP
+        (NP (DT the) (NN question))
+        (VP (VBG being)
+          (VP (VBD asked)
+            (NP-TMP (NN today))
+            (S
+              (VP (TO to)
+                (VP (VB Côte)
+                  (NP (NN d'Ivoire))))))))
+      (VP (VBZ is)
+        (NP
+          (NP (DT the) (JJ same))
+          (PP (IN as)
+            (NP
+              (NP (DT that))
+              (SBAR
+                (WHNP (WDT which))
+                (S
+                  (VP (VBZ arises)
+                    (PP (IN for)
+                      (NP
+                        (NP (NN example))
+                        (PP (IN in)
+                          (NP (NNP Guinea)))))
+                    (, ,)
+                    (SBAR
+                      (WHADVP (WRB when))
+                      (S
+                        (NP (PRP we))
+                        (ADVP (RB now))
+                        (VP (VBP know)
+                          (SBAR
+                            (SBAR (IN that)
+                              (S
+                                (NP (EX there))
+                                (VP (VBP are)
+                                  (NP
+                                    (NP (NNS people))
+                                    (PP (IN in)
+                                      (NP (NN prison)))))))
+                            (CC and)
+                            (SBAR (IN that)
+                              (S
+                                (NP (EX there))
+                                (VP (VBZ is)
+                                  (NP (DT a) (JJ democratic) (NN system)))))))))))))))))
+    (. .)))
 
-root(ROOT-0, suspended-5)
-nsubjpass(suspended-5, The-2)
-amod(The-2, sitting-3)
-auxpass(suspended-5, was-4)
-prep_at(suspended-5, 6.55-7)
-tmod(suspended-5, p.m.-8)
-conj_and(suspended-5, resumed-10)
-prep_at(resumed-10, 9-12)
-tmod(resumed-10, p.m.-13)
+root(ROOT-0, believe-2)
+nsubj(believe-2, Some-1)
+mark(is-8, that-3)
+det(importance-5, the-4)
+nsubj(is-8, importance-5)
+prep_of(importance-5, democracy-7)
+ccomp(believe-2, is-8)
+advmod(comes-12, when-10)
+nsubj(comes-12, it-11)
+prepc_on(is-8, comes-12)
+prep_to(comes-12, Africa-14)
+nsubj(procedures-19, which-16)
+cop(procedures-19, are-17)
+amod(procedures-19, complex-18)
+rcmod(Africa-14, procedures-19)
+nsubjpass(given-24, that-21)
+aux(given-24, must-22)
+auxpass(given-24, be-23)
+rcmod(procedures-19, given-24)
+tmod(given-24, time-25)
+advmod(believe-2, However-27)
+nsubj(believe-30, I-29)
+conj_and(believe-2, believe-30)
+mark(possible-35, that-31)
+neg(compromise-33, no-32)
+nsubj(possible-35, compromise-33)
+cop(possible-35, is-34)
+ccomp(believe-30, possible-35)
+prep_with(possible-35, democracy-37)
+det(question-40, the-39)
+nsubj(same-49, question-40)
+auxpass(asked-42, being-41)
+vmod(question-40, asked-42)
+tmod(asked-42, today-43)
+aux(Côte-45, to-44)
+xcomp(asked-42, Côte-45)
+dobj(Côte-45, d'Ivoire-46)
+cop(same-49, is-47)
+det(same-49, the-48)
+conj_and(believe-2, same-49)
+prep_as(same-49, that-51)
+nsubj(arises-53, which-52)
+rcmod(that-51, arises-53)
+prep_for(arises-53, example-55)
+prep_in(example-55, Guinea-57)
+advmod(know-62, when-59)
+nsubj(know-62, we-60)
+advmod(know-62, now-61)
+advcl(arises-53, know-62)
+mark(are-65, that-63)
+expl(are-65, there-64)
+ccomp(know-62, are-65)
+nsubj(are-65, people-66)
+prep_in(people-66, prison-68)
+mark(is-72, that-70)
+expl(is-72, there-71)
+conj_and(are-65, is-72)
+det(system-75, a-73)
+amod(system-75, democratic-74)
+nsubj(is-72, system-75)
