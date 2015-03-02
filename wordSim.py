@@ -1,7 +1,8 @@
 import re
 from config import *
+from nltk.corpus import wordnet
 
-################################################################################
+
 def loadPPDB(ppdbFileName = 'Resources/ppdb-1.0-xxxl-lexical.extended.synonyms.uniquepairs'):
 
     global synonymSimilarity
@@ -19,27 +20,41 @@ def loadPPDB(ppdbFileName = 'Resources/ppdb-1.0-xxxl-lexical.extended.synonyms.u
         ppdbDict[(tokens[0], tokens[1])] = paraphraseSimilarity
         count += 1
 
-################################################################################
 
-
-################################################################################
 def presentInPPDB(word1, word2):
-
     global ppdbDict
 
     if (word1.lower(), word2.lower()) in ppdbDict:
         return True
     if (word2.lower(), word1.lower()) in ppdbDict:
         return True
-    
-################################################################################
 
 
-##############################################################################################################################
+def wordnetSimilarity(word1, word2):
+
+    synsets1 = wordnet.synsets(word1)
+    synsets2 = wordnet.synsets(word2)
+
+    max_similarity = 0
+
+    for synset1 in synsets1:
+        for synset2 in synsets2:
+            if synset1._pos == synset2._pos:
+                similarity = wordnet.path_similarity(synset1, synset2)
+            else:
+                similarity = 0
+            if max_similarity < similarity:
+                max_similarity = similarity
+
+    return max_similarity
+
+
 def wordRelatedness(word1, pos1, word2, pos2):
     global stemmer
     global synonymSimilarity
     global paraphraseSimilarity
+    global relatedSimilarity
+
     global punctuations
 
     if len(word1) > 1:
@@ -82,8 +97,10 @@ def wordRelatedness(word1, pos1, word2, pos2):
         return synonymSimilarity
     elif presentInPPDB(word1, word2):
         return paraphraseSimilarity
+    elif wordnetSimilarity(word1, word2) > 0.25:
+        return relatedSimilarity
     else:
-       return 0
+        return 0
 
 ##############################################################################################################################
 def functionWord(word):
@@ -95,6 +112,7 @@ def weightedWordRelatedness(word1, word2, exact, stem, synonym, paraphrase, cont
     global stemmer
     global synonymSimilarity
     global paraphraseSimilarity
+    global relatedSimilarity
     global punctuations
 
     result = 0
@@ -117,20 +135,20 @@ def weightedWordRelatedness(word1, word2, exact, stem, synonym, paraphrase, cont
     if canonicalWord1.lower() == canonicalWord2.lower():
         result = exact
 
-    if word1[3].lower() == word2[3].lower() and result == 0:
+    if result == 0 and word1[3].lower() == word2[3].lower():
         result = stem
 
-    if stemmer.stem(word1[2]).lower() == stemmer.stem(word2[2]).lower() and result == 0:
+    if result == 0 and stemmer.stem(word1[2]).lower() == stemmer.stem(word2[2]).lower():
         result = stem
 
-    word1Cleaned = re.sub(r'u\'(.+)\'', r'\1', word1[3]).lower()
-    word2Cleaned = re.sub(r'u\'(.+)\'', r'\1', word2[3]).lower()
+    if result == 0 and synonymDictionary.checkSynonymByLemma(word1[2], word2[2]):
+        result = synonym
 
-    if synonymDictionary.checkSynonymByLemma(word1Cleaned, word2Cleaned) and result == 0:
-      result = synonym
+    if result == 0 and presentInPPDB(word1[2], word2[2]):
+        result = paraphrase
 
-    if presentInPPDB(word1Cleaned, word2Cleaned) and result == 0:
-      result = paraphrase
+    if result == 0 and wordnetSimilarity(word1[2], word2[2]) > 0.25:
+        return relatedSimilarity
 
     ## use contextSimilarity to calculate match score
     # result += result * contextSimilarity / 5.0
