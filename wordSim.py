@@ -97,8 +97,8 @@ def wordRelatedness(word1, pos1, word2, pos2):
         return synonymSimilarity
     elif presentInPPDB(word1, word2):
         return paraphraseSimilarity
-    elif wordnetSimilarity(word1, word2) > 0.25:
-        return relatedSimilarity
+    # elif wordnetSimilarity(word1, word2) > 0.25:
+    #     return relatedSimilarity
     else:
         return 0
 
@@ -147,13 +147,8 @@ def weightedWordRelatedness(word1, word2, exact, stem, synonym, paraphrase, cont
     if result == 0 and presentInPPDB(word1[2], word2[2]):
         result = paraphrase
 
-    if result == 0 and wordnetSimilarity(word1[2], word2[2]) > 0.25:
-        return relatedSimilarity
-
-    ## use contextSimilarity to calculate match score
-    # result += result * contextSimilarity / 5.0
-    # result *= (contextSimilarity+1.0)/5.0
-    # result += (contextSimilarity-1.0)
+    # if result == 0 and wordnetSimilarity(word1[2], word2[2]) > 0.25:
+    #    result = relatedSimilarity
 
     result += contextPenalty
 

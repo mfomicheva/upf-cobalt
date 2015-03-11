@@ -9,7 +9,7 @@ import re
 #sentences2 = readSentences(open('/Users/MarinaFomicheva/Dropbox/workspace/dataSets/wmt2007-data/es-en_judged/parsed/test2007.en.out'))
 
 dir2process = '/Users/MarinaFomicheva/Dropbox/workspace/dataSets/wmt2007-data/es-en_judged/parsed'
-outputDir = '/Users/MarinaFomicheva/Dropbox/workspace/alignment/results/wmt2007/mwa/results_tmp'
+outputDir = '/Users/MarinaFomicheva/Dropbox/workspace/alignment/results/wmt2007/mwa/systran_no_weighting_on_num_of_dependents'
 referenceFiles = readFileNames(open('Data/filesListReferences.txt'))
 testFiles = readFileNames(open('Data/filesListTest.txt'))
 
@@ -23,19 +23,20 @@ for r in referenceFiles:
         dataSet = 'test'
         outputFileNameRef = 'europarl_'
 
-    sentences = readSentences(codecs.open(dir2process+'/'+r, encoding = 'UTF-8'))
+    sentencesRef = readSentences(codecs.open(dir2process+'/'+r, encoding = 'UTF-8'))
     for t in testFiles:
         if (dataSet == 'nc-test' and 'nc' not in t) or (dataSet == 'test' and 'nc' in t):
             continue
         outputFileNameTest=t
         outputFileScoring = open(outputDir + '/' + outputFileNameRef + outputFileNameTest +'.scoring.out', 'w')
         outputFileAlign = open(outputDir + '/' + outputFileNameRef + outputFileNameTest +'.align.out', 'w')
-        sentences2 = readSentences(codecs.open(dir2process+'/'+t, encoding = 'UTF-8'))
+        sentencesTest = readSentences(codecs.open(dir2process+'/'+t, encoding = 'UTF-8'))
         aligner = Aligner('english')
         scorer = Scorer()
-        for i, sentence in enumerate(sentences):
-            alignments = aligner.align(sentence, sentences2[i])
-            score = scorer.calculateScore(sentence, sentences2[i], alignments)
+        for i, sentence in enumerate(sentencesRef):
+            alignments = aligner.align(sentencesTest[i], sentence)
+            score = scorer.calculateScore(sentencesTest[i], sentence, alignments)
+
             outputFileScoring.write(str(score) + '\n')
             for index in xrange(len(alignments[0])):
                 outputFileAlign.write(str(alignments[0][index]) + " : " + str(alignments[1][index]) + " : " + str(alignments[2][index])+'\n')
@@ -46,17 +47,18 @@ for r in referenceFiles:
 
 
 
-# sentences = readSentences(codecs.open('Data/input-en-1.txt', encoding = 'UTF-8'))
-# sentences2 = readSentences(codecs.open('Data/input-en-2.txt', encoding = 'UTF-8'))
+# sentencesRef = readSentences(codecs.open('Data/input-en-1.txt', encoding = 'UTF-8'))
+# sentencesTest = readSentences(codecs.open('Data/input-en-2.txt', encoding = 'UTF-8'))
 #
 # aligner = Aligner('english')
 # scorer = Scorer()
 #
-# for i, sentence in enumerate(sentences):
-#     alignments = aligner.align(sentence, sentences2[i])
+# for i, sentence in enumerate(sentencesRef):
+#     alignments = aligner.align(sentencesTest[i], sentence)
 #
 #     ## print alignment and context information
-#     #for index in xrange(len(alignments[0])):
-#           #print str(alignments[0][index]) + " : " + str(alignments[1][index]) + " : " + str(alignments[2][index])
 #
-#     print scorer.calculateScore(sentence, sentences2[i], alignments)
+#     for index in xrange(len(alignments[0])):
+#           print str(alignments[0][index]) + " : " + str(alignments[1][index]) + " : " + str(alignments[2][index])
+#
+#     print scorer.calculateScore(sentencesTest[i], sentence, alignments)
