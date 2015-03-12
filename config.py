@@ -1,9 +1,9 @@
 from synonymDictionary import SynonymDictionary
 
 ppdbDict = {}
-synonymSimilarity = 0.9
-paraphraseSimilarity = 0.7
-relatedSimilarity = 0.4
+synonymSimilarity = 0.8
+paraphraseSimilarity = 0.6
+relatedSimilarity = 0.3
 
 theta1 = 0.9
 
