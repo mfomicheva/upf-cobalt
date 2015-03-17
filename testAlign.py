@@ -4,12 +4,8 @@ from scorer import *
 import codecs
 import re
 
-#sentences = readSentences(open('Data/systran.es-en.test.primary.txt.out'))
-#sentences = readSentences(open('/Users/MarinaFomicheva/Dropbox/workspace/dataSets/wmt2007-data/es-en_judged/parsed/systran.es-en.test.primary.txt.out'))
-#sentences2 = readSentences(open('/Users/MarinaFomicheva/Dropbox/workspace/dataSets/wmt2007-data/es-en_judged/parsed/test2007.en.out'))
-
 dir2process = '/Users/MarinaFomicheva/Dropbox/workspace/dataSets/wmt2007-data/es-en_judged/parsed'
-outputDir = '/Users/MarinaFomicheva/Dropbox/workspace/alignment/results/wmt2007/mwa/systran_no_weighting_on_num_of_dependents'
+outputDir = '/Users/MarinaFomicheva/Dropbox/workspace/alignment/results/wmt2007/mwa/tmp3'
 referenceFiles = readFileNames(open('Data/filesListReferences.txt'))
 testFiles = readFileNames(open('Data/filesListTest.txt'))
 
@@ -43,9 +39,6 @@ for r in referenceFiles:
 
         outputFileScoring.close()
         outputFileAlign.close()
-
-
-
 
 # sentencesRef = readSentences(codecs.open('Data/input-en-1.txt', encoding = 'UTF-8'))
 # sentencesTest = readSentences(codecs.open('Data/input-en-2.txt', encoding = 'UTF-8'))

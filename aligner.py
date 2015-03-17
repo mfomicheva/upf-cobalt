@@ -86,7 +86,7 @@ class Aligner(object):
         global thresholdSimilarity
         global theta1
 
-        thresholdSimilarity = paraphraseSimilarity
+        thresholdSimilarity = relatedSimilarity
 
         posAlignments = []
 
@@ -962,8 +962,7 @@ class Aligner(object):
                             evidence += 1
 
         totalContext = len(targetWordChildren) + len(targetWordParents) + 1.0
-        #normalizedEvidence += (evidence/totalContext - 1) * math.log(totalContext)
-        normalizedEvidence += (evidence/totalContext - 1)
+        normalizedEvidence += (evidence/totalContext - 1) * math.log(totalContext)
 
         return normalizedEvidence
 

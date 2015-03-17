@@ -1,37 +1,65 @@
-Sentence #54 (17 tokens):
-They believe that America is bent on undermining Iran's security and compromising its national interests.
-[Text=They CharacterOffsetBegin=7213 CharacterOffsetEnd=7217 PartOfSpeech=PRP Lemma=they NamedEntityTag=O] [Text=believe CharacterOffsetBegin=7218 CharacterOffsetEnd=7225 PartOfSpeech=VBP Lemma=believe NamedEntityTag=O] [Text=that CharacterOffsetBegin=7226 CharacterOffsetEnd=7230 PartOfSpeech=IN Lemma=that NamedEntityTag=O] [Text=America CharacterOffsetBegin=7231 CharacterOffsetEnd=7238 PartOfSpeech=NNP Lemma=America NamedEntityTag=LOCATION] [Text=is CharacterOffsetBegin=7239 CharacterOffsetEnd=7241 PartOfSpeech=VBZ Lemma=be NamedEntityTag=O] [Text=bent CharacterOffsetBegin=7242 CharacterOffsetEnd=7246 PartOfSpeech=JJ Lemma=bent NamedEntityTag=O] [Text=on CharacterOffsetBegin=7247 CharacterOffsetEnd=7249 PartOfSpeech=IN Lemma=on NamedEntityTag=O] [Text=undermining CharacterOffsetBegin=7250 CharacterOffsetEnd=7261 PartOfSpeech=VBG Lemma=undermine NamedEntityTag=O] [Text=Iran CharacterOffsetBegin=7262 CharacterOffsetEnd=7266 PartOfSpeech=NNP Lemma=Iran NamedEntityTag=LOCATION] [Text='s CharacterOffsetBegin=7266 CharacterOffsetEnd=7268 PartOfSpeech=POS Lemma='s NamedEntityTag=O] [Text=security CharacterOffsetBegin=7269 CharacterOffsetEnd=7277 PartOfSpeech=NN Lemma=security NamedEntityTag=O] [Text=and CharacterOffsetBegin=7278 CharacterOffsetEnd=7281 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=compromising CharacterOffsetBegin=7282 CharacterOffsetEnd=7294 PartOfSpeech=VBG Lemma=compromise NamedEntityTag=O] [Text=its CharacterOffsetBegin=7295 CharacterOffsetEnd=7298 PartOfSpeech=PRP$ Lemma=its NamedEntityTag=O] [Text=national CharacterOffsetBegin=7299 CharacterOffsetEnd=7307 PartOfSpeech=JJ Lemma=national NamedEntityTag=O] [Text=interests CharacterOffsetBegin=7308 CharacterOffsetEnd=7317 PartOfSpeech=NNS Lemma=interest NamedEntityTag=O] [Text=. CharacterOffsetBegin=7317 CharacterOffsetEnd=7318 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+Sentence #6 (37 tokens):
+Thirdly, we must do our utmost to prepare the European Union for the enlargement process, by 2003, in the spirit of the splendid speech made by President of the Commission, Mr Prodi.
+[Text=Thirdly CharacterOffsetBegin=409 CharacterOffsetEnd=416 PartOfSpeech=RB Lemma=thirdly NamedEntityTag=O] [Text=, CharacterOffsetBegin=416 CharacterOffsetEnd=417 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=we CharacterOffsetBegin=418 CharacterOffsetEnd=420 PartOfSpeech=PRP Lemma=we NamedEntityTag=O] [Text=must CharacterOffsetBegin=421 CharacterOffsetEnd=425 PartOfSpeech=MD Lemma=must NamedEntityTag=O] [Text=do CharacterOffsetBegin=426 CharacterOffsetEnd=428 PartOfSpeech=VB Lemma=do NamedEntityTag=O] [Text=our CharacterOffsetBegin=429 CharacterOffsetEnd=432 PartOfSpeech=PRP$ Lemma=we NamedEntityTag=O] [Text=utmost CharacterOffsetBegin=433 CharacterOffsetEnd=439 PartOfSpeech=JJ Lemma=utmost NamedEntityTag=O] [Text=to CharacterOffsetBegin=440 CharacterOffsetEnd=442 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=prepare CharacterOffsetBegin=443 CharacterOffsetEnd=450 PartOfSpeech=VB Lemma=prepare NamedEntityTag=O] [Text=the CharacterOffsetBegin=451 CharacterOffsetEnd=454 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=European CharacterOffsetBegin=455 CharacterOffsetEnd=463 PartOfSpeech=NNP Lemma=European NamedEntityTag=LOCATION] [Text=Union CharacterOffsetBegin=464 CharacterOffsetEnd=469 PartOfSpeech=NNP Lemma=Union NamedEntityTag=LOCATION] [Text=for CharacterOffsetBegin=470 CharacterOffsetEnd=473 PartOfSpeech=IN Lemma=for NamedEntityTag=O] [Text=the CharacterOffsetBegin=474 CharacterOffsetEnd=477 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=enlargement CharacterOffsetBegin=478 CharacterOffsetEnd=489 PartOfSpeech=NN Lemma=enlargement NamedEntityTag=O] [Text=process CharacterOffsetBegin=490 CharacterOffsetEnd=497 PartOfSpeech=NN Lemma=process NamedEntityTag=O] [Text=, CharacterOffsetBegin=497 CharacterOffsetEnd=498 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=by CharacterOffsetBegin=499 CharacterOffsetEnd=501 PartOfSpeech=IN Lemma=by NamedEntityTag=O] [Text=2003 CharacterOffsetBegin=502 CharacterOffsetEnd=506 PartOfSpeech=CD Lemma=2003 NamedEntityTag=DATE NormalizedNamedEntityTag=2003 Timex=<TIMEX3 tid="t4" type="DATE" value="2003">2003</TIMEX3>] [Text=, CharacterOffsetBegin=506 CharacterOffsetEnd=507 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=in CharacterOffsetBegin=508 CharacterOffsetEnd=510 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=the CharacterOffsetBegin=511 CharacterOffsetEnd=514 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=spirit CharacterOffsetBegin=515 CharacterOffsetEnd=521 PartOfSpeech=NN Lemma=spirit NamedEntityTag=O] [Text=of CharacterOffsetBegin=522 CharacterOffsetEnd=524 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=the CharacterOffsetBegin=525 CharacterOffsetEnd=528 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=splendid CharacterOffsetBegin=529 CharacterOffsetEnd=537 PartOfSpeech=JJ Lemma=splendid NamedEntityTag=O] [Text=speech CharacterOffsetBegin=538 CharacterOffsetEnd=544 PartOfSpeech=NN Lemma=speech NamedEntityTag=O] [Text=made CharacterOffsetBegin=545 CharacterOffsetEnd=549 PartOfSpeech=VBN Lemma=make NamedEntityTag=O] [Text=by CharacterOffsetBegin=550 CharacterOffsetEnd=552 PartOfSpeech=IN Lemma=by NamedEntityTag=O] [Text=President CharacterOffsetBegin=553 CharacterOffsetEnd=562 PartOfSpeech=NNP Lemma=President NamedEntityTag=O] [Text=of CharacterOffsetBegin=563 CharacterOffsetEnd=565 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=the CharacterOffsetBegin=566 CharacterOffsetEnd=569 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=Commission CharacterOffsetBegin=570 CharacterOffsetEnd=580 PartOfSpeech=NNP Lemma=Commission NamedEntityTag=ORGANIZATION] [Text=, CharacterOffsetBegin=580 CharacterOffsetEnd=581 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=Mr CharacterOffsetBegin=582 CharacterOffsetEnd=584 PartOfSpeech=NNP Lemma=Mr NamedEntityTag=PERSON] [Text=Prodi CharacterOffsetBegin=585 CharacterOffsetEnd=590 PartOfSpeech=NNP Lemma=Prodi NamedEntityTag=PERSON] [Text=. CharacterOffsetBegin=590 CharacterOffsetEnd=591 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
 (ROOT
   (S
-    (NP (PRP They))
-    (VP (VBP believe)
-      (SBAR (IN that)
+    (ADVP (RB Thirdly))
+    (, ,)
+    (NP (PRP we))
+    (VP (MD must)
+      (VP (VB do)
+        (NP (PRP$ our) (JJ utmost))
         (S
-          (NP (NNP America))
-          (VP (VBZ is)
-            (ADJP (JJ bent)
-              (PP (IN on)
-                (S
-                  (VP
-                    (VP (VBG undermining)
-                      (NP
-                        (NP (NNP Iran) (POS 's))
-                        (NN security)))
-                    (CC and)
-                    (VP (VBG compromising)
-                      (NP (PRP$ its) (JJ national) (NNS interests)))))))))))
+          (VP (TO to)
+            (VP (VB prepare)
+              (NP
+                (NP (DT the) (NNP European) (NNP Union))
+                (PP (IN for)
+                  (NP (DT the) (NN enlargement) (NN process))))
+              (, ,)
+              (PP (IN by)
+                (NP (CD 2003)))
+              (, ,)
+              (PP (IN in)
+                (NP
+                  (NP (DT the) (NN spirit))
+                  (PP (IN of)
+                    (NP
+                      (NP (DT the) (JJ splendid) (NN speech))
+                      (VP (VBN made)
+                        (PP (IN by)
+                          (NP
+                            (NP (NNP President))
+                            (PP (IN of)
+                              (NP
+                                (NP (DT the) (NNP Commission))
+                                (, ,)
+                                (NP (NNP Mr) (NNP Prodi))))))))))))))))
     (. .)))
 
-root(ROOT-0, believe-2)
-nsubj(believe-2, They-1)
-mark(bent-6, that-3)
-nsubj(bent-6, America-4)
-cop(bent-6, is-5)
-ccomp(believe-2, bent-6)
-prepc_on(bent-6, undermining-8)
-poss(security-11, Iran-9)
-dobj(undermining-8, security-11)
-conj_and(undermining-8, compromising-13)
-poss(interests-16, its-14)
-amod(interests-16, national-15)
-dobj(compromising-13, interests-16)
+root(ROOT-0, do-5)
+advmod(do-5, Thirdly-1)
+nsubj(do-5, we-3)
+aux(do-5, must-4)
+poss(utmost-7, our-6)
+dobj(do-5, utmost-7)
+aux(prepare-9, to-8)
+vmod(do-5, prepare-9)
+det(Union-12, the-10)
+nn(Union-12, European-11)
+dobj(prepare-9, Union-12)
+det(process-16, the-14)
+nn(process-16, enlargement-15)
+prep_for(Union-12, process-16)
+prep_by(prepare-9, 2003-19)
+det(spirit-23, the-22)
+prep_in(prepare-9, spirit-23)
+det(speech-27, the-25)
+amod(speech-27, splendid-26)
+prep_of(spirit-23, speech-27)
+vmod(speech-27, made-28)
+agent(made-28, President-30)
+det(Commission-33, the-32)
+prep_of(President-30, Commission-33)
+nn(Prodi-36, Mr-35)
+appos(Commission-33, Prodi-36)
