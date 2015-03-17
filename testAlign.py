@@ -1,7 +1,9 @@
 from aligner import *
 from util import *
 from scorer import *
+from config import *
 import re
+import codecs
 
 #sentences = readSentences(open('Data/systran.es-en.test.primary.txt.out'))
 #sentences = readSentences(open('/Users/MarinaFomicheva/Dropbox/workspace/dataSets/wmt2007-data/es-en_judged/parsed/systran.es-en.test.primary.txt.out'))
@@ -42,20 +44,17 @@ import re
 #         outputFileScoring.close()
 #         outputFileAlign.close()
 
+sentences = readSentences(codecs.open('Data/wmt2007.test.es-en.txt.out', encoding='UTF-8'))
+sentences2 = readSentences(codecs.open('Data/wmt2007.reference.es-en.txt.out', encoding='UTF-8'))
 
-
-
-sentences = readSentences(open('Data/input-en-1.txt'))
-sentences2 = readSentences(open('Data/input-en-2.txt'))
-
-aligner = Aligner('english')
 scorer = Scorer()
+aligner = Aligner('english', scorer)
 
 for i, sentence in enumerate(sentences):
-    alignments = aligner.align(sentence.decode('UTF-8'), sentences2[i].decode('UTF-8'))
+    alignments = aligner.align(sentence, sentences2[i])
 
     ## print alignment and context information
-    for index in xrange(len(alignments[0])):
-          print str(alignments[0][index]) + " : " + str(alignments[1][index]) + " : " + str(alignments[2][index])
+    #for index in xrange(len(alignments[0])):
+    #    print str(alignments[0][index]) + " : " + str(alignments[1][index]) + " : " + str(alignments[2][index])
 
     print scorer.calculateScore(sentence, sentences2[i], alignments)

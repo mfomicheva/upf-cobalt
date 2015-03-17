@@ -1,6 +1,5 @@
 from config import *
 
-##############################################################################################################################
 def isSublist(A, B):
 # returns True if A is a sublist of B, False otherwise
     sub = True
@@ -11,10 +10,8 @@ def isSublist(A, B):
             break
     
     return sub
-##############################################################################################################################
 
 
-##############################################################################################################################
 def findAllCommonContiguousSublists(A, B, turnToLowerCases=True): # this is a very inefficient implementation, you can use suffix trees to devise a much faster method
 # returns all the contiguous sublists in order of decreasing length
 # output format (0-indexed):
@@ -75,11 +72,8 @@ def findAllCommonContiguousSublists(A, B, turnToLowerCases=True): # this is a ve
             item[1] = temp
 
     return commonContiguousSublists
-##############################################################################################################################
 
 
-
-##############################################################################################################################
 def findTextualNeighborhood(sentenceDetails, wordIndex, leftSpan, rightSpan):
 # return the lemmas in the span [wordIndex-leftSpan, wordIndex+rightSpan] and the positions actually available, left and right
 
@@ -101,10 +95,8 @@ def findTextualNeighborhood(sentenceDetails, wordIndex, leftSpan, rightSpan):
             lemmas.append(item[3])
             wordIndices.append(item[1])
     return [wordIndices, lemmas, wordIndex-startWordIndex, endWordIndex-wordIndex]
-##############################################################################################################################
 
 
-##############################################################################################################################
 def isAcronym(word, namedEntity):
 # returns whether 'word' is an acronym of 'namedEntity', which is a list of the component words
     canonicalWord = word.replace('.', '')
@@ -118,7 +110,7 @@ def isAcronym(word, namedEntity):
             break
 
     return acronym
-##############################################################################################################################
+
 
 def readSentences(sentenceFile):
 
@@ -138,11 +130,8 @@ def readSentences(sentenceFile):
 
     return sentences
 
-##############################################################################################################################
 
 def readFileNames(filesFile):
-
-
     files = []
 
     for line in filesFile:
