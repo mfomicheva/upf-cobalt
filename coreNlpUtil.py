@@ -1,4 +1,6 @@
 from parsedSentencesLoader import ParsedSentencesLoader
+from word import Word
+
 
 def parseText(sentences):
 
@@ -144,11 +146,7 @@ def lemmatize(parseResult):
         wordIndex += 1
         res.append(tag)
 
-
     return res
-##############################################################################################################################
-
-
 
 
 def prepareSentence(sentence):
@@ -171,8 +169,31 @@ def prepareSentence(sentence):
     return sentenceLemmasAndPosTags
 
 
+def prepareSentence2(sentence):
+    sentenceParseResult = parseText(sentence)
 
-##############################################################################################################################
+    sentenceLemmatized = lemmatize(sentenceParseResult)
+
+    sentencePosTagged = posTag(sentenceParseResult)
+
+    sentenceLemmasAndPosTags = []
+
+    for i in xrange(len(sentenceLemmatized)):
+        sentenceLemmasAndPosTags.append([])
+
+    for i in xrange(len(sentenceLemmatized)):
+        for item in sentenceLemmatized[i]:
+            sentenceLemmasAndPosTags[i].append(item)
+        sentenceLemmasAndPosTags[i].append(sentencePosTagged[i][3])
+
+    words = []
+
+    for rawWord in sentenceLemmasAndPosTags:
+        words.append(Word(rawWord[1] - 1, rawWord[2], rawWord[3], rawWord[4]))
+
+    return words
+
+
 def dependencyParseAndPutOffsets(parseResult):
 # returns dependency parse of the sentence whhere each item is of the form (rel, left{charStartOffset, charEndOffset, wordNumber}, right{charStartOffset, charEndOffset, wordNumber})
 

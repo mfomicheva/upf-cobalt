@@ -1,12 +1,9 @@
-import re
 from config import *
 from nltk.corpus import wordnet
 
 
 def loadPPDB(ppdbFileName = 'Resources/ppdb-1.0-xxxl-lexical.extended.synonyms.uniquepairs'):
 
-    global synonymSimilarity
-    global paraphraseSimilarity
     global ppdbDict
 
     count = 0
@@ -17,7 +14,7 @@ def loadPPDB(ppdbFileName = 'Resources/ppdb-1.0-xxxl-lexical.extended.synonyms.u
             continue
         tokens = line.split()
         tokens[1] = tokens[1].strip()
-        ppdbDict[(tokens[0], tokens[1])] = paraphraseSimilarity
+        ppdbDict[(tokens[0], tokens[1])] = 0.6
         count += 1
 
 
@@ -28,6 +25,11 @@ def presentInPPDB(word1, word2):
         return True
     if (word2.lower(), word1.lower()) in ppdbDict:
         return True
+
+
+def functionWord(word):
+    global punctuations
+    return (word.form.lower() in stopwords) or (word.form.lower() in punctuations)
 
 
 def wordnetSimilarity(word1, word2):
@@ -49,12 +51,8 @@ def wordnetSimilarity(word1, word2):
     return max_similarity
 
 
-def wordRelatedness(word1, pos1, word2, pos2):
+def wordRelatedness(word1, pos1, word2, pos2, scorer):
     global stemmer
-    global synonymSimilarity
-    global paraphraseSimilarity
-    global relatedSimilarity
-
     global punctuations
 
     if len(word1) > 1:
@@ -70,7 +68,6 @@ def wordRelatedness(word1, pos1, word2, pos2):
         canonicalWord2 = canonicalWord2.replace(',', '')
     else:
         canonicalWord2 = word2
-    
     
     if canonicalWord1.lower() == canonicalWord2.lower():
         return 1
@@ -92,64 +89,60 @@ def wordRelatedness(word1, pos1, word2, pos2):
     if word1 in punctuations or word2 in punctuations:
         return 0
 
-    ## use synonymDictionary or ppDB
     if synonymDictionary.checkSynonymByLemma(word1, word2):
-        return synonymSimilarity
+        return scorer.synonym
+
     elif presentInPPDB(word1, word2):
-        return paraphraseSimilarity
-    # elif wordnetSimilarity(word1, word2) > 0.25:
-    #     return relatedSimilarity
+        return scorer.paraphrase
+
+    elif wordnetSimilarity(word1, word2) > scorer.relatedThreshold:
+        return scorer.related
+
     else:
         return 0
 
-##############################################################################################################################
-def functionWord(word):
-    global punctuations
 
-    return (word[2].lower() in stopwords) or (word[2].lower() in punctuations)
+def maxWeightedWordRelatedness(word1, word2, scorer, contextPenalty):
+    return max(weightedWordRelatedness(word1.form, word2.form, scorer, contextPenalty, scorer.exact),
+               weightedWordRelatedness(word1.lemma, word2.lemma, scorer, contextPenalty, scorer.stem))
 
-def weightedWordRelatedness(word1, word2, exact, stem, synonym, paraphrase, contextPenalty):
+
+def weightedWordRelatedness(form1, form2, scorer, contextPenalty, matchScore):
     global stemmer
-    global synonymSimilarity
-    global paraphraseSimilarity
-    global relatedSimilarity
     global punctuations
 
     result = 0
 
-    if len(word1[2]) > 1:
-        canonicalWord1 = word1[2].replace('.', '')
+    if len(form1) > 1:
+        canonicalWord1 = form1.replace('.', '')
         canonicalWord1 = canonicalWord1.replace('-', '')
         canonicalWord1 = canonicalWord1.replace(',', '')
     else:
-        canonicalWord1 = word1[2]
+        canonicalWord1 = form1
 
-    if len(word2[2]) > 1:
-        canonicalWord2 = word2[2].replace('.', '')
+    if len(form2) > 1:
+        canonicalWord2 = form2.replace('.', '')
         canonicalWord2 = canonicalWord2.replace('-', '')
         canonicalWord2 = canonicalWord2.replace(',', '')
     else:
-        canonicalWord2 = word2[2]
-
+        canonicalWord2 = form2
 
     if canonicalWord1.lower() == canonicalWord2.lower():
-        result = exact
+        result = matchScore
 
-    if result == 0 and word1[3].lower() == word2[3].lower():
-        result = stem
+    elif stemmer.stem(form1).lower() == stemmer.stem(form2).lower():
+        result = scorer.stem
 
-    if result == 0 and stemmer.stem(word1[2]).lower() == stemmer.stem(word2[2]).lower():
-        result = stem
+    elif synonymDictionary.checkSynonymByLemma(form1, form2):
+        result = scorer.synonym
 
-    if result == 0 and synonymDictionary.checkSynonymByLemma(word1[2], word2[2]):
-        result = synonym
+    elif presentInPPDB(form1, form2):
+        result = scorer.paraphrase
 
-    if result == 0 and presentInPPDB(word1[2], word2[2]):
-        result = paraphrase
+    elif wordnetSimilarity(form1, form2) > scorer.relatedThreshold:
+        result = scorer.related
 
-    # if result == 0 and wordnetSimilarity(word1[2], word2[2]) > 0.25:
-    #    result = relatedSimilarity
-
+    result *= matchScore
     result += contextPenalty
 
     return result
