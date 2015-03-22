@@ -1,56 +1,38 @@
-Sentence #51 (28 tokens):
-pragmatic the Iranians argue that Iran will inevitably have to cooperate with the United States, at least to safeguard the rights of the Shiite Iraqi population.
-[Text=pragmatic CharacterOffsetBegin=7129 CharacterOffsetEnd=7138 PartOfSpeech=JJ Lemma=pragmatic NamedEntityTag=O] [Text=the CharacterOffsetBegin=7139 CharacterOffsetEnd=7142 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=Iranians CharacterOffsetBegin=7143 CharacterOffsetEnd=7151 PartOfSpeech=NNPS Lemma=Iranians NamedEntityTag=MISC] [Text=argue CharacterOffsetBegin=7152 CharacterOffsetEnd=7157 PartOfSpeech=VBP Lemma=argue NamedEntityTag=O] [Text=that CharacterOffsetBegin=7158 CharacterOffsetEnd=7162 PartOfSpeech=IN Lemma=that NamedEntityTag=O] [Text=Iran CharacterOffsetBegin=7163 CharacterOffsetEnd=7167 PartOfSpeech=NNP Lemma=Iran NamedEntityTag=LOCATION] [Text=will CharacterOffsetBegin=7168 CharacterOffsetEnd=7172 PartOfSpeech=MD Lemma=will NamedEntityTag=O] [Text=inevitably CharacterOffsetBegin=7173 CharacterOffsetEnd=7183 PartOfSpeech=RB Lemma=inevitably NamedEntityTag=O] [Text=have CharacterOffsetBegin=7184 CharacterOffsetEnd=7188 PartOfSpeech=VB Lemma=have NamedEntityTag=O] [Text=to CharacterOffsetBegin=7189 CharacterOffsetEnd=7191 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=cooperate CharacterOffsetBegin=7192 CharacterOffsetEnd=7201 PartOfSpeech=VB Lemma=cooperate NamedEntityTag=O] [Text=with CharacterOffsetBegin=7202 CharacterOffsetEnd=7206 PartOfSpeech=IN Lemma=with NamedEntityTag=O] [Text=the CharacterOffsetBegin=7207 CharacterOffsetEnd=7210 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=United CharacterOffsetBegin=7211 CharacterOffsetEnd=7217 PartOfSpeech=NNP Lemma=United NamedEntityTag=LOCATION] [Text=States CharacterOffsetBegin=7218 CharacterOffsetEnd=7224 PartOfSpeech=NNPS Lemma=States NamedEntityTag=LOCATION] [Text=, CharacterOffsetBegin=7224 CharacterOffsetEnd=7225 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=at CharacterOffsetBegin=7226 CharacterOffsetEnd=7228 PartOfSpeech=IN Lemma=at NamedEntityTag=O] [Text=least CharacterOffsetBegin=7229 CharacterOffsetEnd=7234 PartOfSpeech=JJS Lemma=least NamedEntityTag=O] [Text=to CharacterOffsetBegin=7235 CharacterOffsetEnd=7237 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=safeguard CharacterOffsetBegin=7238 CharacterOffsetEnd=7247 PartOfSpeech=VB Lemma=safeguard NamedEntityTag=O] [Text=the CharacterOffsetBegin=7248 CharacterOffsetEnd=7251 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=rights CharacterOffsetBegin=7252 CharacterOffsetEnd=7258 PartOfSpeech=NNS Lemma=rights NamedEntityTag=O] [Text=of CharacterOffsetBegin=7259 CharacterOffsetEnd=7261 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=the CharacterOffsetBegin=7262 CharacterOffsetEnd=7265 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=Shiite CharacterOffsetBegin=7266 CharacterOffsetEnd=7272 PartOfSpeech=NNP Lemma=Shiite NamedEntityTag=MISC] [Text=Iraqi CharacterOffsetBegin=7273 CharacterOffsetEnd=7278 PartOfSpeech=JJ Lemma=iraqi NamedEntityTag=MISC] [Text=population CharacterOffsetBegin=7279 CharacterOffsetEnd=7289 PartOfSpeech=NN Lemma=population NamedEntityTag=O] [Text=. CharacterOffsetBegin=7289 CharacterOffsetEnd=7290 PartOfSpeech=. Lemma=. NamedEntityTag=O]
+Sentence #2698 (19 tokens):
+The notice of the Organisation for the Prohibition of Chemical Weapons came the day before, November 1.
+[Text=The CharacterOffsetBegin=319540 CharacterOffsetEnd=319543 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=notice CharacterOffsetBegin=319544 CharacterOffsetEnd=319550 PartOfSpeech=NN Lemma=notice NamedEntityTag=O] [Text=of CharacterOffsetBegin=319551 CharacterOffsetEnd=319553 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=the CharacterOffsetBegin=319554 CharacterOffsetEnd=319557 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=Organisation CharacterOffsetBegin=319558 CharacterOffsetEnd=319570 PartOfSpeech=NNP Lemma=Organisation NamedEntityTag=ORGANIZATION] [Text=for CharacterOffsetBegin=319571 CharacterOffsetEnd=319574 PartOfSpeech=IN Lemma=for NamedEntityTag=ORGANIZATION] [Text=the CharacterOffsetBegin=319575 CharacterOffsetEnd=319578 PartOfSpeech=DT Lemma=the NamedEntityTag=ORGANIZATION] [Text=Prohibition CharacterOffsetBegin=319579 CharacterOffsetEnd=319590 PartOfSpeech=NNP Lemma=Prohibition NamedEntityTag=ORGANIZATION] [Text=of CharacterOffsetBegin=319591 CharacterOffsetEnd=319593 PartOfSpeech=IN Lemma=of NamedEntityTag=ORGANIZATION] [Text=Chemical CharacterOffsetBegin=319594 CharacterOffsetEnd=319602 PartOfSpeech=NNP Lemma=Chemical NamedEntityTag=ORGANIZATION] [Text=Weapons CharacterOffsetBegin=319603 CharacterOffsetEnd=319610 PartOfSpeech=NNP Lemma=Weapons NamedEntityTag=ORGANIZATION] [Text=came CharacterOffsetBegin=319611 CharacterOffsetEnd=319615 PartOfSpeech=VBD Lemma=come NamedEntityTag=O] [Text=the CharacterOffsetBegin=319616 CharacterOffsetEnd=319619 PartOfSpeech=DT Lemma=the NamedEntityTag=DATE NormalizedNamedEntityTag=THIS P1D INTERSECT XXXX-11-01 Timex=<TIMEX3 alt_value="THIS P1D INTERSECT XXXX-11-01" anchorTimeID="t25" temporalFunction="true" tid="t820" type="DATE" valueFromFunction="tf104">the day before, November 1</TIMEX3>] [Text=day CharacterOffsetBegin=319620 CharacterOffsetEnd=319623 PartOfSpeech=NN Lemma=day NamedEntityTag=DATE NormalizedNamedEntityTag=THIS P1D INTERSECT XXXX-11-01 Timex=<TIMEX3 alt_value="THIS P1D INTERSECT XXXX-11-01" anchorTimeID="t25" temporalFunction="true" tid="t820" type="DATE" valueFromFunction="tf104">the day before, November 1</TIMEX3>] [Text=before CharacterOffsetBegin=319624 CharacterOffsetEnd=319630 PartOfSpeech=RB Lemma=before NamedEntityTag=DATE NormalizedNamedEntityTag=THIS P1D INTERSECT XXXX-11-01 Timex=<TIMEX3 alt_value="THIS P1D INTERSECT XXXX-11-01" anchorTimeID="t25" temporalFunction="true" tid="t820" type="DATE" valueFromFunction="tf104">the day before, November 1</TIMEX3>] [Text=, CharacterOffsetBegin=319630 CharacterOffsetEnd=319631 PartOfSpeech=, Lemma=, NamedEntityTag=DATE NormalizedNamedEntityTag=THIS P1D INTERSECT XXXX-11-01 Timex=<TIMEX3 alt_value="THIS P1D INTERSECT XXXX-11-01" anchorTimeID="t25" temporalFunction="true" tid="t820" type="DATE" valueFromFunction="tf104">the day before, November 1</TIMEX3>] [Text=November CharacterOffsetBegin=319632 CharacterOffsetEnd=319640 PartOfSpeech=NNP Lemma=November NamedEntityTag=DATE NormalizedNamedEntityTag=THIS P1D INTERSECT XXXX-11-01 Timex=<TIMEX3 alt_value="THIS P1D INTERSECT XXXX-11-01" anchorTimeID="t25" temporalFunction="true" tid="t820" type="DATE" valueFromFunction="tf104">the day before, November 1</TIMEX3>] [Text=1 CharacterOffsetBegin=319641 CharacterOffsetEnd=319642 PartOfSpeech=CD Lemma=1 NamedEntityTag=DATE NormalizedNamedEntityTag=THIS P1D INTERSECT XXXX-11-01 Timex=<TIMEX3 alt_value="THIS P1D INTERSECT XXXX-11-01" anchorTimeID="t25" temporalFunction="true" tid="t820" type="DATE" valueFromFunction="tf104">the day before, November 1</TIMEX3>] [Text=. CharacterOffsetBegin=319642 CharacterOffsetEnd=319643 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
 (ROOT
   (S
-    (ADJP (JJ pragmatic))
-    (NP (DT the) (NNPS Iranians))
-    (VP (VBP argue)
-      (SBAR (IN that)
-        (S
-          (NP (NNP Iran))
-          (VP (MD will)
-            (ADVP (RB inevitably))
-            (VP (VB have)
-              (S
-                (VP (TO to)
-                  (VP (VB cooperate)
-                    (PP (IN with)
-                      (NP
-                        (NP (DT the) (NNP United) (NNPS States))
-                        (, ,)
-                        (ADVP (IN at) (JJS least)))))))
-              (S
-                (VP (TO to)
-                  (VP (VB safeguard)
-                    (NP
-                      (NP (DT the) (NNS rights))
-                      (PP (IN of)
-                        (NP (DT the) (NNP Shiite) (JJ Iraqi) (NN population))))))))))))
+    (NP
+      (NP (DT The) (NN notice))
+      (PP (IN of)
+        (NP
+          (NP (DT the) (NNP Organisation))
+          (PP (IN for)
+            (NP
+              (NP (DT the) (NNP Prohibition))
+              (PP (IN of)
+                (NP (NNP Chemical) (NNP Weapons))))))))
+    (VP (VBD came)
+      (ADVP
+        (NP (DT the) (NN day))
+        (RB before))
+      (, ,)
+      (S
+        (NP (NNP November) (CD 1))))
     (. .)))
 
-root(ROOT-0, argue-4)
-dep(argue-4, pragmatic-1)
-det(Iranians-3, the-2)
-nsubj(argue-4, Iranians-3)
-mark(have-9, that-5)
-nsubj(have-9, Iran-6)
-aux(have-9, will-7)
-advmod(have-9, inevitably-8)
-ccomp(argue-4, have-9)
-aux(cooperate-11, to-10)
-xcomp(have-9, cooperate-11)
-det(States-15, the-13)
-nn(States-15, United-14)
-prep_with(cooperate-11, States-15)
-advmod(States-15, at-17)
-pobj(at-17, least-18)
-aux(safeguard-20, to-19)
-xcomp(have-9, safeguard-20)
-det(rights-22, the-21)
-dobj(safeguard-20, rights-22)
-det(population-27, the-24)
-nn(population-27, Shiite-25)
-amod(population-27, Iraqi-26)
-prep_of(rights-22, population-27)
-
+root(ROOT-0, came-12)
+det(notice-2, The-1)
+nsubj(came-12, notice-2)
+det(Organisation-5, the-4)
+prep_of(notice-2, Organisation-5)
+det(Prohibition-8, the-7)
+prep_for(Organisation-5, Prohibition-8)
+nn(Weapons-11, Chemical-10)
+prep_of(Prohibition-8, Weapons-11)
+det(day-14, the-13)
+npadvmod(before-15, day-14)
+advmod(came-12, before-15)
+dep(came-12, November-17)
+num(November-17, 1-18)

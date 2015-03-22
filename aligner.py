@@ -473,8 +473,12 @@ class Aligner(object):
 
         for item in commonContiguousSublists:
             allStopWords = True
-            for jtem in item:
-                if jtem not in stopwords and jtem not in punctuations:
+            for sourceWord in item[0]:
+                if sourceWords[sourceWord] not in stopwords and sourceWords[sourceWord] not in punctuations:
+                    allStopWords = False
+                    break
+            for targetWord in item[1]:
+                if targetWords[targetWord] not in stopwords and targetWords[targetWord] not in punctuations:
                     allStopWords = False
                     break
             if len(item[0]) >= 2 and not allStopWords:

@@ -1,51 +1,34 @@
-Sentence #51 (27 tokens):
-Iranian pragmatists argue that Iran must inevitably cooperate with the US in post-Saddam Iraq, if only to ensure the rights of Iraq's Shi'a population.
-[Text=Iranian CharacterOffsetBegin=6604 CharacterOffsetEnd=6611 PartOfSpeech=JJ Lemma=iranian NamedEntityTag=MISC] [Text=pragmatists CharacterOffsetBegin=6612 CharacterOffsetEnd=6623 PartOfSpeech=NNS Lemma=pragmatist NamedEntityTag=O] [Text=argue CharacterOffsetBegin=6624 CharacterOffsetEnd=6629 PartOfSpeech=VBP Lemma=argue NamedEntityTag=O] [Text=that CharacterOffsetBegin=6630 CharacterOffsetEnd=6634 PartOfSpeech=IN Lemma=that NamedEntityTag=O] [Text=Iran CharacterOffsetBegin=6635 CharacterOffsetEnd=6639 PartOfSpeech=NNP Lemma=Iran NamedEntityTag=LOCATION] [Text=must CharacterOffsetBegin=6640 CharacterOffsetEnd=6644 PartOfSpeech=MD Lemma=must NamedEntityTag=O] [Text=inevitably CharacterOffsetBegin=6645 CharacterOffsetEnd=6655 PartOfSpeech=RB Lemma=inevitably NamedEntityTag=O] [Text=cooperate CharacterOffsetBegin=6656 CharacterOffsetEnd=6665 PartOfSpeech=VB Lemma=cooperate NamedEntityTag=O] [Text=with CharacterOffsetBegin=6666 CharacterOffsetEnd=6670 PartOfSpeech=IN Lemma=with NamedEntityTag=O] [Text=the CharacterOffsetBegin=6671 CharacterOffsetEnd=6674 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=US CharacterOffsetBegin=6675 CharacterOffsetEnd=6677 PartOfSpeech=NNP Lemma=US NamedEntityTag=LOCATION] [Text=in CharacterOffsetBegin=6678 CharacterOffsetEnd=6680 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=post-Saddam CharacterOffsetBegin=6681 CharacterOffsetEnd=6692 PartOfSpeech=NNP Lemma=post-Saddam NamedEntityTag=MISC] [Text=Iraq CharacterOffsetBegin=6693 CharacterOffsetEnd=6697 PartOfSpeech=NNP Lemma=Iraq NamedEntityTag=LOCATION] [Text=, CharacterOffsetBegin=6697 CharacterOffsetEnd=6698 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=if CharacterOffsetBegin=6699 CharacterOffsetEnd=6701 PartOfSpeech=IN Lemma=if NamedEntityTag=O] [Text=only CharacterOffsetBegin=6702 CharacterOffsetEnd=6706 PartOfSpeech=RB Lemma=only NamedEntityTag=O] [Text=to CharacterOffsetBegin=6707 CharacterOffsetEnd=6709 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=ensure CharacterOffsetBegin=6710 CharacterOffsetEnd=6716 PartOfSpeech=VB Lemma=ensure NamedEntityTag=O] [Text=the CharacterOffsetBegin=6717 CharacterOffsetEnd=6720 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=rights CharacterOffsetBegin=6721 CharacterOffsetEnd=6727 PartOfSpeech=NNS Lemma=rights NamedEntityTag=O] [Text=of CharacterOffsetBegin=6728 CharacterOffsetEnd=6730 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=Iraq CharacterOffsetBegin=6731 CharacterOffsetEnd=6735 PartOfSpeech=NNP Lemma=Iraq NamedEntityTag=LOCATION] [Text='s CharacterOffsetBegin=6735 CharacterOffsetEnd=6737 PartOfSpeech=POS Lemma='s NamedEntityTag=O] [Text=Shi'a CharacterOffsetBegin=6738 CharacterOffsetEnd=6743 PartOfSpeech=NNP Lemma=Shi'a NamedEntityTag=MISC] [Text=population CharacterOffsetBegin=6744 CharacterOffsetEnd=6754 PartOfSpeech=NN Lemma=population NamedEntityTag=O] [Text=. CharacterOffsetBegin=6754 CharacterOffsetEnd=6755 PartOfSpeech=. Lemma=. NamedEntityTag=O]
+Sentence #2698 (18 tokens):
+The announcement by the Organization for the Prohibition of Chemical Weapons came one day ahead of the Nov.
+[Text=The CharacterOffsetBegin=321887 CharacterOffsetEnd=321890 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=announcement CharacterOffsetBegin=321891 CharacterOffsetEnd=321903 PartOfSpeech=NN Lemma=announcement NamedEntityTag=O] [Text=by CharacterOffsetBegin=321904 CharacterOffsetEnd=321906 PartOfSpeech=IN Lemma=by NamedEntityTag=O] [Text=the CharacterOffsetBegin=321907 CharacterOffsetEnd=321910 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=Organization CharacterOffsetBegin=321911 CharacterOffsetEnd=321923 PartOfSpeech=NNP Lemma=Organization NamedEntityTag=O] [Text=for CharacterOffsetBegin=321924 CharacterOffsetEnd=321927 PartOfSpeech=IN Lemma=for NamedEntityTag=O] [Text=the CharacterOffsetBegin=321928 CharacterOffsetEnd=321931 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=Prohibition CharacterOffsetBegin=321932 CharacterOffsetEnd=321943 PartOfSpeech=NNP Lemma=Prohibition NamedEntityTag=ORGANIZATION] [Text=of CharacterOffsetBegin=321944 CharacterOffsetEnd=321946 PartOfSpeech=IN Lemma=of NamedEntityTag=ORGANIZATION] [Text=Chemical CharacterOffsetBegin=321947 CharacterOffsetEnd=321955 PartOfSpeech=NNP Lemma=Chemical NamedEntityTag=ORGANIZATION] [Text=Weapons CharacterOffsetBegin=321956 CharacterOffsetEnd=321963 PartOfSpeech=NNP Lemma=Weapons NamedEntityTag=ORGANIZATION] [Text=came CharacterOffsetBegin=321964 CharacterOffsetEnd=321968 PartOfSpeech=VBD Lemma=come NamedEntityTag=O] [Text=one CharacterOffsetBegin=321969 CharacterOffsetEnd=321972 PartOfSpeech=CD Lemma=one NamedEntityTag=DURATION NormalizedNamedEntityTag=P1D Timex=<TIMEX3 tid="t31" type="DURATION" value="P1D">one day</TIMEX3>] [Text=day CharacterOffsetBegin=321973 CharacterOffsetEnd=321976 PartOfSpeech=NN Lemma=day NamedEntityTag=DURATION NormalizedNamedEntityTag=P1D Timex=<TIMEX3 tid="t31" type="DURATION" value="P1D">one day</TIMEX3>] [Text=ahead CharacterOffsetBegin=321977 CharacterOffsetEnd=321982 PartOfSpeech=RB Lemma=ahead NamedEntityTag=O] [Text=of CharacterOffsetBegin=321983 CharacterOffsetEnd=321985 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=the CharacterOffsetBegin=321986 CharacterOffsetEnd=321989 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=Nov. CharacterOffsetBegin=321990 CharacterOffsetEnd=321994 PartOfSpeech=NNP Lemma=Nov. NamedEntityTag=DATE NormalizedNamedEntityTag=XXXX-11 Timex=<TIMEX3 tid="t830" type="DATE" value="XXXX-11">Nov.</TIMEX3>] 
 (ROOT
   (S
-    (NP (JJ Iranian) (NNS pragmatists))
-    (VP (VBP argue)
-      (SBAR (IN that)
-        (S
-          (NP (NNP Iran))
-          (VP (MD must)
-            (ADVP (RB inevitably))
-            (VP (VB cooperate)
-              (PP (IN with)
-                (NP (DT the) (NNP US)))
-              (PP (IN in)
-                (NP (NNP post-Saddam) (NNP Iraq)))
-              (, ,)
-              (SBAR (IN if) (RB only)
-                (S
-                  (VP (TO to)
-                    (VP (VB ensure)
-                      (NP
-                        (NP (DT the) (NNS rights))
-                        (PP (IN of)
-                          (NP
-                            (NP (NNP Iraq) (POS 's))
-                            (NNP Shi'a) (NN population)))))))))))))
-    (. .)))
+    (NP
+      (NP (DT The) (NN announcement))
+      (PP (IN by)
+        (NP
+          (NP (DT the) (NNP Organization))
+          (PP (IN for)
+            (NP
+              (NP (DT the) (NNP Prohibition))
+              (PP (IN of)
+                (NP (NNP Chemical) (NNP Weapons))))))))
+    (VP (VBD came)
+      (NP
+        (NP (CD one) (NN day))
+        (PP (RB ahead) (IN of)
+          (NP (DT the) (NNP Nov.)))))))
 
-root(ROOT-0, argue-3)
-amod(pragmatists-2, Iranian-1)
-nsubj(argue-3, pragmatists-2)
-mark(cooperate-8, that-4)
-nsubj(cooperate-8, Iran-5)
-aux(cooperate-8, must-6)
-advmod(cooperate-8, inevitably-7)
-ccomp(argue-3, cooperate-8)
-det(US-11, the-10)
-prep_with(cooperate-8, US-11)
-nn(Iraq-14, post-Saddam-13)
-prep_in(cooperate-8, Iraq-14)
-mark(ensure-19, if-16)
-advmod(ensure-19, only-17)
-aux(ensure-19, to-18)
-advcl(cooperate-8, ensure-19)
-det(rights-21, the-20)
-dobj(ensure-19, rights-21)
-poss(population-26, Iraq-23)
-nn(population-26, Shi'a-25)
-prep_of(rights-21, population-26)
+root(ROOT-0, came-12)
+det(announcement-2, The-1)
+nsubj(came-12, announcement-2)
+det(Organization-5, the-4)
+prep_by(announcement-2, Organization-5)
+det(Prohibition-8, the-7)
+prep_for(Organization-5, Prohibition-8)
+nn(Weapons-11, Chemical-10)
+prep_of(Prohibition-8, Weapons-11)
+num(day-14, one-13)
+dobj(came-12, day-14)
+det(Nov.-18, the-17)
+prep_ahead_of(day-14, Nov.-18)
