@@ -4,9 +4,9 @@ from scorer import *
 import codecs
 import re
 
-dir2processRef = '/Users/MarinaFomicheva/Dropbox/workspace/dataSets/wmt14-metrics-task/baselines/data/parsed/references'
-dir2processTest = '/Users/MarinaFomicheva/Dropbox/workspace/dataSets/wmt14-metrics-task/baselines/data/parsed/system-outputs/newstest2014/de-en'
-outputDir = '/Users/MarinaFomicheva/Dropbox/workspace/dataSets/wmt14-metrics-task/submissions/MWA/de-en'
+dir2processRef = '~/Dropbox/workspace/dataSets/wmt14-metrics-task/baselines/data/parsed/references'
+dir2processTest = '~/workspace/dataSets/wmt14-metrics-task/baselines/data/parsed/system-outputs/newstest2014/de-en'
+outputDir = '~/Dropbox/workspace/dataSets/wmt14-metrics-task/submissions/MWA/de-en'
 referenceFiles = readFileNames(open('Data/filesListReferences.txt'))
 testFiles = readFileNames(open('Data/filesListTest.txt'))
 

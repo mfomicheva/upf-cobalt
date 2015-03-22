@@ -846,7 +846,7 @@ class Aligner(object):
         sentence2LemmasAndPosTags = prepareSentence(sentence2)
 
         myWordAlignments = self.alignWords(sentence1LemmasAndPosTags, sentence2LemmasAndPosTags, sentence1ParseResult, sentence2ParseResult)
-        myWordAlignmentTokens = [[str(sentence1LemmasAndPosTags[item[0]-1][2]), str(sentence2LemmasAndPosTags[item[1]-1][2])] for item in myWordAlignments]
+        myWordAlignmentTokens = [[sentence1LemmasAndPosTags[item[0]-1][2], sentence2LemmasAndPosTags[item[1]-1][2]] for item in myWordAlignments]
         myWordDependencySimilarity = []
 
         for pair in myWordAlignments:
