@@ -1,2 +1,1 @@
-test2007.en.out
-nc-test2007.en.out
+newstest2014-ref.de-en.out
