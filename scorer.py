@@ -51,6 +51,8 @@ class Scorer(object):
     # receives alignments structure as an input - alignments[0] is the aligned pair indexes,
     # alignments[1] is the aligned pair words, alignments[2] is the aligned pair dependency similarity score
     def calculateScore(self, sentence1, sentence2, alignments):
+
+
         sentence1 = prepareSentence2(sentence1)
         sentence2 = prepareSentence2(sentence2)
 

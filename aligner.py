@@ -842,6 +842,35 @@ class Aligner(object):
 
         return alignments
 
+    def deduplicateAligments(self, aligments, aligmentSimilarity):
+        removed = []
+        for i, a in enumerate(aligments):
+            for j, b in enumerate(aligments):
+                if (a[0] == b[0] and a != b) or (a[1] == b[1] and a != b):
+                    if aligmentSimilarity[j] > aligmentSimilarity[i]:
+                        if a not in removed:
+                            removed.append(a)
+                    else:
+                        if b not in removed:
+                            removed.append(b)
+
+        for r in removed:
+            aligmentSimilarity.remove(aligmentSimilarity[aligments.index(r)])
+            aligments.remove(r)
+
+        return aligments, aligmentSimilarity
+
+    def updateDuplicationSimilarity(self, aligments, aligmentSimilarity):
+        for i, a in enumerate(aligments):
+            for j, b in enumerate(aligments):
+                if (a[0] == b[0] and a != b) or (a[1] == b[1] and a != b):
+                    if aligmentSimilarity[j] > aligmentSimilarity[i]:
+                        aligmentSimilarity[i] = aligmentSimilarity[j]
+                    else:
+                        aligmentSimilarity[j] = aligmentSimilarity[i]
+
+        return aligments, aligmentSimilarity
+
     def align(self, sentence1, sentence2):
         sentence1ParseResult = parseText(sentence1)
         sentence2ParseResult = parseText(sentence2)
@@ -850,7 +879,6 @@ class Aligner(object):
         sentence2LemmasAndPosTags = prepareSentence(sentence2)
 
         myWordAlignments = self.alignWords(sentence1LemmasAndPosTags, sentence2LemmasAndPosTags, sentence1ParseResult, sentence2ParseResult)
-        myWordAlignmentTokens = [[sentence1LemmasAndPosTags[item[0]-1][2], sentence2LemmasAndPosTags[item[1]-1][2]] for item in myWordAlignments]
         myWordDependencySimilarity = []
 
         for pair in myWordAlignments:
@@ -858,6 +886,9 @@ class Aligner(object):
             targetWord = sentence2LemmasAndPosTags[pair[1] - 1]
             myWordDependencySimilarity.append(self.calculateDependencySimilarity(sourceWord,  pair[0], targetWord, pair[1], sentence1LemmasAndPosTags, sentence2LemmasAndPosTags, sentence1ParseResult, sentence2ParseResult, myWordAlignments))
 
+        myWordAlignments, myWordDependencySimilarity = self.updateDuplicationSimilarity(myWordAlignments, myWordDependencySimilarity)
+
+        myWordAlignmentTokens = [[sentence1LemmasAndPosTags[item[0]-1][2], sentence2LemmasAndPosTags[item[1]-1][2]] for item in myWordAlignments]
         return [myWordAlignments, myWordAlignmentTokens, myWordDependencySimilarity]
 
     def calculateDependencySimilarity(self, sourceWord, sourceIndex, targetWord, targetIndex, sourceSentence, targetSentence, sourceParseResult, targetParseResult, alignments):
