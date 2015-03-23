@@ -10,16 +10,16 @@ from os.path import expanduser
 
 
 home = expanduser("~")
-referenceDir = home + '/Dropbox/dataSets/wmt14-metrics-task/baselines/data/parsed/references'
-testDir = home + '/Dropbox/dataSets/wmt14-metrics-task/baselines/data/parsed/system-outputs'
-outputDir = home + '/Dropbox/dataSets/wmt14-metrics-task/submissions/MWA/'
+referenceDir = home + '/Dropbox/workspace/dataSets/wmt14-metrics-task/baselines/data/parsed/references'
+testDir = home + '/Dropbox/workspace/dataSets/wmt14-metrics-task/baselines/data/parsed/system-outputs'
+outputDir = home + '/Dropbox/workspace/dataSets/wmt14-metrics-task/submissions/MWA/ru-en'
 dataset = 'newstest2014'
 metric = 'MWA'
 
 
 def main(args):
 
-    opts, args = getopt.getopt(args, 'hl:m:', ['language=', 'maxsegments='])
+    opts, args = getopt.getopt(args, 'hl:m:a:', ['language=', 'maxsegments=', 'writealignments='])
 
     languagePair = ""
     maxSegments = 0
@@ -34,7 +34,7 @@ def main(args):
         elif opt in ('-m', '--maxsegments'):
             maxSegments = int(arg)
         elif opt in ('-a', '--writealignments'):
-            maxSegments = bool(arg)
+            writeAlignments = bool(arg)
 
     sentencesRef = readSentences(codecs.open(referenceDir + '/' + dataset + '-ref.' + languagePair + '.out', encoding='UTF-8'))
 
@@ -43,11 +43,15 @@ def main(args):
     testFiles = [f for f in listdir(testDir + '/' + dataset + '/' + languagePair) if isfile(join(testDir + '/' + dataset + '/' + languagePair, f))]
 
     for t in testFiles:
+
+
         system = t.split('.')[1] + '.' + t.split('.')[2]
+
         sentencesTest = readSentences(codecs.open(testDir + '/' + dataset + '/' + languagePair + '/' + t, encoding='UTF-8'))
         scorer = Scorer()
         aligner = Aligner('english', scorer)
-        outputFileAlign = open(outputDir + '/' + dataset + '.' + system + '.' + languagePair + '.align.out', 'w')
+        if (writeAlignments):
+            outputFileAlign = open(outputDir + '/' + dataset + '.' + system + '.' + languagePair + '.align.out', 'w')
 
         for i, sentence in enumerate(sentencesRef):
             phrase = i + 1

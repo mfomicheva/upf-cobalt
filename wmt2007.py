@@ -1,36 +1,38 @@
-__author__ = 'MarinaFomicheva'
-
 from aligner import *
 from util import *
 from scorer import *
 import codecs
-import re
+import getopt
+import sys
+from os import listdir
+from os.path import isfile, join
+from os.path import expanduser
 
-dir2process = '/Users/MarinaFomicheva/Dropbox/workspace/dataSets/wmt2007-data/es-en_judged/parsed'
-outputDir = '/Users/MarinaFomicheva/Dropbox/workspace/alignment/results/wmt2007/mwa/tmp3'
-referenceFiles = readFileNames(open('Data/filesListReferences.txt'))
-testFiles = readFileNames(open('Data/filesListTest.txt'))
 
+refDir = '/Users/MarinaFomicheva/Dropbox/workspace/dataSets/wmt2007-data/es-en_judged/parsed/references'
+testDir = '/Users/MarinaFomicheva/Dropbox/workspace/dataSets/wmt2007-data/es-en_judged/parsed/system-outputs'
+outputDir = '/Users/MarinaFomicheva/Dropbox/workspace/alignment/results/wmt2007/mwa/systran_tmp'
+dataset = 'nc-test2007'
+
+referenceFiles = [f for f in listdir(refDir + '/' + dataset) if isfile(join(refDir + '/' + dataset, f))]
+testFiles = [f for f in listdir(testDir + '/' + dataset) if isfile(join(testDir + '/' + dataset, f))]
 
 for r in referenceFiles:
 
-    if 'nc' in r:
-        dataSet = 'nc-test'
-        outputFileNameRef = 'news_'
-    else:
-        dataSet = 'test'
-        outputFileNameRef = 'europarl_'
+    sentencesRef = readSentences(codecs.open(refDir + '/' + dataset + '/' + r, encoding = 'UTF-8'))
 
-    sentencesRef = readSentences(codecs.open(dir2process+'/'+r, encoding = 'UTF-8'))
     for t in testFiles:
-        if (dataSet == 'nc-test' and 'nc' not in t) or (dataSet == 'test' and 'nc' in t):
+
+        if 'systran' not in t:
             continue
-        outputFileNameTest=t
-        outputFileScoring = open(outputDir + '/' + outputFileNameRef + outputFileNameTest +'.scoring.out', 'w')
-        outputFileAlign = open(outputDir + '/' + outputFileNameRef + outputFileNameTest +'.align.out', 'w')
-        sentencesTest = readSentences(codecs.open(dir2process+'/'+t, encoding = 'UTF-8'))
+
+        sentencesTest = readSentences(codecs.open(testDir + '/' + dataset + '/' + t, encoding = 'UTF-8'))
+        outputFileScoring = open(outputDir + '/' + t +'.scoring.out', 'w')
+        outputFileAlign = open(outputDir + '/' + t + '.align.out', 'w')
+
         scorer = Scorer()
         aligner = Aligner('english',scorer)
+
         for i, sentence in enumerate(sentencesRef):
             alignments = aligner.align(sentencesTest[i], sentence)
             score = scorer.calculateScore(sentencesTest[i], sentence, alignments)
