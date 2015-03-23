@@ -11,6 +11,14 @@ class AlignerConfig(object):
         self.config.readfp(open('Config/' + language + '.cfg'))
         self.similarity_threshold = self.config.getfloat('Aligner', 'similarity_threshold')
 
+        self.exact = self.config.getfloat('Aligner', 'exact')
+        self.stem = self.config.getfloat('Aligner', 'stem')
+        self.synonym = self.config.getfloat('Aligner', 'synonym')
+        self.paraphrase = self.config.getfloat('Aligner', 'paraphrase')
+        self.related = self.config.getfloat('Aligner', 'related')
+        self.related_threshold = self.config.getfloat('Aligner', 'related_threshold')
+
+
     def get_similar_group(self, pos_source, pos_target, is_opposite, relation):
         group_name = pos_source + '_' + ('opposite_' if is_opposite else '') + pos_target + '_' + relation
         similar_group = []
