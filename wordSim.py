@@ -1,7 +1,6 @@
 from config import *
 from nltk.corpus import wordnet
 
-
 def loadPPDB(ppdbFileName = 'Resources/ppdb-1.0-xxxl-lexical.extended.synonyms.uniquepairs'):
 
     global ppdbDict
@@ -49,7 +48,6 @@ def wordnetSimilarity(word1, word2):
                 max_similarity = similarity
 
     return max_similarity
-
 
 def wordRelatedness(word1, pos1, word2, pos2, scorer):
     global stemmer
@@ -101,10 +99,14 @@ def wordRelatedness(word1, pos1, word2, pos2, scorer):
     else:
         return 0
 
-
 def maxWeightedWordRelatedness(word1, word2, scorer, contextPenalty):
-    return max(weightedWordRelatedness(word1.form, word2.form, scorer, contextPenalty, scorer.exact),
-               weightedWordRelatedness(word1.lemma, word2.lemma, scorer, contextPenalty, scorer.stem))
+    relatedness = max(weightedWordRelatedness(word1.form, word2.form, scorer, contextPenalty, scorer.exact),
+                      weightedWordRelatedness(word1.lemma, word2.lemma, scorer, contextPenalty, scorer.stem))
+
+    if relatedness < 0.1:
+        relatedness = 0.1
+
+    return relatedness
 
 
 def weightedWordRelatedness(form1, form2, scorer, contextPenalty, matchScore):

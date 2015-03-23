@@ -19,25 +19,31 @@ metric = 'MWA'
 
 def main(args):
 
-    opts, args = getopt.getopt(args, "hl:", ["language="])
+    opts, args = getopt.getopt(args, 'hl:m:', ['language=', 'maxsegments='])
 
     languagePair = ""
+    maxSegments = 0
+    writeAlignments = False
 
     for opt, arg in opts:
         if opt == '-h':
             print 'wmt2014 -l <language_pair>'
             sys.exit()
-        elif opt in ("-l", "--language"):
+        elif opt in ('-l', '--language'):
             languagePair = arg
+        elif opt in ('-m', '--maxsegments'):
+            maxSegments = int(arg)
+        elif opt in ('-a', '--writealignments'):
+            maxSegments = bool(arg)
 
     sentencesRef = readSentences(codecs.open(referenceDir + '/' + dataset + '-ref.' + languagePair + '.out', encoding='UTF-8'))
 
-    outputFileScoring = open(outputDir + '/' + 'mwa-without-wordnet.' + languagePair + '.' + 'seg.score', 'w')
+    outputFileScoring = open(outputDir + '/' + 'mwa-no-wordnet.' + languagePair + '.' + 'seg.score', 'w')
 
     testFiles = [f for f in listdir(testDir + '/' + dataset + '/' + languagePair) if isfile(join(testDir + '/' + dataset + '/' + languagePair, f))]
 
     for t in testFiles:
-        system = t.split('.')[1] + t.split('.')[2]
+        system = t.split('.')[1] + '.' + t.split('.')[2]
         sentencesTest = readSentences(codecs.open(testDir + '/' + dataset + '/' + languagePair + '/' + t, encoding='UTF-8'))
         scorer = Scorer()
         aligner = Aligner('english', scorer)
@@ -45,13 +51,25 @@ def main(args):
 
         for i, sentence in enumerate(sentencesRef):
             phrase = i + 1
-            alignments = aligner.align(sentencesTest[i], sentence)
-            score = scorer.calculateScore(sentencesTest[i], sentence, alignments)
+            if maxSegments != 0 and phrase > maxSegments:
+                continue
 
-            outputFileScoring.write(str(metric) + '\t' + str(languagePair) + '\t' + str(dataset) + '\t' + str(system) + '\t' + str(phrase) + '\t' + str(score) + '\n')
+            # calculating alignment and score test to reference
+            alignments1 = aligner.align(sentencesTest[i], sentence)
+            score1 = scorer.calculateScore(sentencesTest[i], sentence, alignments1)
 
-            for index in xrange(len(alignments[0])):
-                outputFileAlign.write(str(alignments[0][index]) + " : " + str(alignments[1][index]) + " : " + str(alignments[2][index])+'\n')
+            # calculating alignment and score reference to test
+            # alignments2 = aligner.align(sentence, sentencesTest[i])
+            # score2 = scorer.calculateScore(sentence, sentencesTest[i], alignments2)
+
+            if (writeAlignments):
+                for index in xrange(len(alignments1[0])):
+                    outputFileAlign.write(str(alignments1[0][index]) + " : " + str(alignments1[1][index]) + " : " + str(alignments1[2][index])+'\n')
+                #for index in xrange(len(alignments2[0])):
+                #    outputFileAlign.write(str(alignments2[0][index]) + " : " + str(alignments2[1][index]) + " : " + str(alignments2[2][index])+'\n')
+
+            outputFileScoring.write(str(metric) + '\t' + str(languagePair) + '\t' + str(dataset) + '\t' + str(system) + '\t' + str(phrase) + '\t' + str(score1) + '\n')
+
 
         outputFileAlign.close()
     outputFileScoring.close()

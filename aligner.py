@@ -842,24 +842,6 @@ class Aligner(object):
 
         return alignments
 
-    def deduplicateAligments(self, aligments, aligmentSimilarity):
-        removed = []
-        for i, a in enumerate(aligments):
-            for j, b in enumerate(aligments):
-                if (a[0] == b[0] and a != b) or (a[1] == b[1] and a != b):
-                    if aligmentSimilarity[j] > aligmentSimilarity[i]:
-                        if a not in removed:
-                            removed.append(a)
-                    else:
-                        if b not in removed:
-                            removed.append(b)
-
-        for r in removed:
-            aligmentSimilarity.remove(aligmentSimilarity[aligments.index(r)])
-            aligments.remove(r)
-
-        return aligments, aligmentSimilarity
-
     def updateDuplicationSimilarity(self, aligments, aligmentSimilarity):
         for i, a in enumerate(aligments):
             for j, b in enumerate(aligments):
