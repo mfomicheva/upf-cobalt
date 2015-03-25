@@ -48,7 +48,7 @@ class ParsedSentencesLoader(object):
 
 
     def __parse_dependency_entry(self, line):
-        split_entry = re.split("\(|,", line[:-1])
+        split_entry = re.split("\(|, ", line[:-1])
         if len(split_entry) == 3:
             rel, left, right = split_entry
             return tuple([rel,left,right])
