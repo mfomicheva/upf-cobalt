@@ -106,7 +106,7 @@ def maxWeightedWordRelatedness(word1, word2, scorer, contextPenalty):
     relatedness = max(weightedWordRelatedness(word1.form, word2.form, scorer, contextPenalty, scorer.exact),
                       weightedWordRelatedness(word1.lemma, word2.lemma, scorer, contextPenalty, scorer.stem))
 
-    return relatedness
+    return max(relatedness, scorer.minimal_aligned_relatedness)
 
 
 def weightedWordRelatedness(form1, form2, scorer, contextPenalty, matchScore):

@@ -16,6 +16,7 @@ class Scorer(object):
     related = 1
     related_threshold = 1
     context_importance = 1
+    minimal_aligned_relatedness = 1
 
     def __init__(self):
         config = ConfigParser()
@@ -31,6 +32,7 @@ class Scorer(object):
         self.related = config.getfloat('Scorer', 'related')
         self.related_threshold = config.getfloat('Scorer', 'related_threshold')
         self.context_importance = config.getfloat('Scorer', 'context_importance')
+        self.minimal_aligned_relatedness = config.getfloat('Scorer', 'minimal_aligned_relatedness')
 
 
     # receives alignments structure as an input - alignments[0] is the aligned pair indexes,

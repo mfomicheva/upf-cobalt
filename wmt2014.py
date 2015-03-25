@@ -12,7 +12,7 @@ from os.path import expanduser
 home = expanduser("~")
 referenceDir = home + '/Dropbox/dataSets/wmt14-metrics-task/baselines/data/parsed/references'
 testDir = home + '/Dropbox/dataSets/wmt14-metrics-task/baselines/data/parsed/system-outputs'
-outputDir = home + '/Dropbox/dataSets/wmt14-metrics-task/submissions/MWA/'
+outputDir = home + '/Dropbox/dataSets/wmt14-metrics-task/submissions/MWA/MWA-WORDNET-MIN'
 dataset = 'newstest2014'
 metric = 'MWA'
 
@@ -38,7 +38,7 @@ def main(args):
 
     sentencesRef = readSentences(codecs.open(referenceDir + '/' + dataset + '-ref.' + languagePair + '.out', encoding='UTF-8'))
 
-    outputFileScoring = open(outputDir + '/' + 'mwa-wordnet.' + languagePair + '.' + 'seg.score', 'w')
+    outputFileScoring = open(outputDir + '/' + 'mwa-wordnet-min.' + languagePair + '.' + 'seg.score', 'w')
 
     testFiles = [f for f in listdir(testDir + '/' + dataset + '/' + languagePair) if isfile(join(testDir + '/' + dataset + '/' + languagePair, f))]
 
@@ -60,25 +60,16 @@ def main(args):
             alignments1 = aligner.align(sentencesTest[i], sentence)
             score1 = scorer.calculateScore(sentencesTest[i], sentence, alignments1)
 
-            # calculating alignment and score reference to test
-            alignments2 = aligner.align(sentence, sentencesTest[i])
-            score2 = scorer.calculateScore(sentence, sentencesTest[i], alignments2)
-
             if (writeAlignments):
                 outputFileAlign.write('Sentence #' + str(phrase) + '\n')
-                outputFileAlign.write('##Test to reference\n')
                 for index in xrange(len(alignments1[0])):
                     outputFileAlign.write(str(alignments1[0][index]) + " : " + str(alignments1[1][index]) + " : " + str(alignments1[2][index])+'\n')
 
-                outputFileAlign.write('##Reference to test\n')
-                for index in xrange(len(alignments2[0])):
-                    outputFileAlign.write(str(alignments2[0][index]) + " : " + str(alignments2[1][index]) + " : " + str(alignments2[2][index])+'\n')
-
-            outputFileScoring.write(str(metric) + '\t' + str(languagePair) + '\t' + str(dataset) + '\t' + str(system) + '\t' + str(phrase) + '\t' + str(max(score1, score2)) + '\n')
+            outputFileScoring.write(str(metric) + '\t' + str(languagePair) + '\t' + str(dataset) + '\t' + str(system) + '\t' + str(phrase) + '\t' + str(score1) + '\n')
 
 
         outputFileAlign.close()
     outputFileScoring.close()
 
 if __name__ == "__main__":
-   main(sys.argv[1:])
+    main(sys.argv[1:])
