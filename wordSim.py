@@ -1,6 +1,7 @@
 from config import *
 from nltk.corpus import wordnet
 
+
 def loadPPDB(ppdbFileName = 'Resources/ppdb-1.0-xxxl-lexical.extended.synonyms.uniquepairs'):
 
     global ppdbDict
@@ -49,7 +50,8 @@ def wordnetSimilarity(word1, word2):
 
     return max_similarity
 
-def wordRelatedness(word1, pos1, word2, pos2, scorer):
+
+def wordRelatedness(word1, pos1, word2, pos2, config):
     global stemmer
     global punctuations
 
@@ -68,10 +70,10 @@ def wordRelatedness(word1, pos1, word2, pos2, scorer):
         canonicalWord2 = word2
     
     if canonicalWord1.lower() == canonicalWord2.lower():
-        return 1
+        return config.exact
 
     if stemmer.stem(word1).lower() == stemmer.stem(word2).lower():
-        return 1
+        return config.exact
 
     if canonicalWord1.isdigit() and canonicalWord2.isdigit() and canonicalWord1 <> canonicalWord2:
         return 0
@@ -88,23 +90,21 @@ def wordRelatedness(word1, pos1, word2, pos2, scorer):
         return 0
 
     if synonymDictionary.checkSynonymByLemma(word1, word2):
-        return scorer.synonym
+        return config.synonym
 
     elif presentInPPDB(word1, word2):
-        return scorer.paraphrase
+        return config.paraphrase
 
-    elif wordnetSimilarity(word1, word2) > scorer.relatedThreshold:
-        return scorer.related
+    elif wordnetSimilarity(word1, word2) > config.related_threshold:
+        return config.related
 
     else:
         return 0
 
+
 def maxWeightedWordRelatedness(word1, word2, scorer, contextPenalty):
     relatedness = max(weightedWordRelatedness(word1.form, word2.form, scorer, contextPenalty, scorer.exact),
                       weightedWordRelatedness(word1.lemma, word2.lemma, scorer, contextPenalty, scorer.stem))
-
-    if relatedness < 0.1:
-        relatedness = 0.1
 
     return relatedness
 
@@ -141,11 +141,11 @@ def weightedWordRelatedness(form1, form2, scorer, contextPenalty, matchScore):
     elif presentInPPDB(form1, form2):
         result = scorer.paraphrase
 
-    elif wordnetSimilarity(form1, form2) > scorer.relatedThreshold:
+    elif wordnetSimilarity(form1, form2) > scorer.related_threshold:
         result = scorer.related
 
     result *= matchScore
-    result += contextPenalty
+    result += contextPenalty*scorer.context_importance
 
     return result
 

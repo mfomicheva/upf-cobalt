@@ -1,34 +1,65 @@
-Sentence #2698 (18 tokens):
-The announcement by the Organization for the Prohibition of Chemical Weapons came one day ahead of the Nov.
-[Text=The CharacterOffsetBegin=321887 CharacterOffsetEnd=321890 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=announcement CharacterOffsetBegin=321891 CharacterOffsetEnd=321903 PartOfSpeech=NN Lemma=announcement NamedEntityTag=O] [Text=by CharacterOffsetBegin=321904 CharacterOffsetEnd=321906 PartOfSpeech=IN Lemma=by NamedEntityTag=O] [Text=the CharacterOffsetBegin=321907 CharacterOffsetEnd=321910 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=Organization CharacterOffsetBegin=321911 CharacterOffsetEnd=321923 PartOfSpeech=NNP Lemma=Organization NamedEntityTag=O] [Text=for CharacterOffsetBegin=321924 CharacterOffsetEnd=321927 PartOfSpeech=IN Lemma=for NamedEntityTag=O] [Text=the CharacterOffsetBegin=321928 CharacterOffsetEnd=321931 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=Prohibition CharacterOffsetBegin=321932 CharacterOffsetEnd=321943 PartOfSpeech=NNP Lemma=Prohibition NamedEntityTag=ORGANIZATION] [Text=of CharacterOffsetBegin=321944 CharacterOffsetEnd=321946 PartOfSpeech=IN Lemma=of NamedEntityTag=ORGANIZATION] [Text=Chemical CharacterOffsetBegin=321947 CharacterOffsetEnd=321955 PartOfSpeech=NNP Lemma=Chemical NamedEntityTag=ORGANIZATION] [Text=Weapons CharacterOffsetBegin=321956 CharacterOffsetEnd=321963 PartOfSpeech=NNP Lemma=Weapons NamedEntityTag=ORGANIZATION] [Text=came CharacterOffsetBegin=321964 CharacterOffsetEnd=321968 PartOfSpeech=VBD Lemma=come NamedEntityTag=O] [Text=one CharacterOffsetBegin=321969 CharacterOffsetEnd=321972 PartOfSpeech=CD Lemma=one NamedEntityTag=DURATION NormalizedNamedEntityTag=P1D Timex=<TIMEX3 tid="t31" type="DURATION" value="P1D">one day</TIMEX3>] [Text=day CharacterOffsetBegin=321973 CharacterOffsetEnd=321976 PartOfSpeech=NN Lemma=day NamedEntityTag=DURATION NormalizedNamedEntityTag=P1D Timex=<TIMEX3 tid="t31" type="DURATION" value="P1D">one day</TIMEX3>] [Text=ahead CharacterOffsetBegin=321977 CharacterOffsetEnd=321982 PartOfSpeech=RB Lemma=ahead NamedEntityTag=O] [Text=of CharacterOffsetBegin=321983 CharacterOffsetEnd=321985 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=the CharacterOffsetBegin=321986 CharacterOffsetEnd=321989 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=Nov. CharacterOffsetBegin=321990 CharacterOffsetEnd=321994 PartOfSpeech=NNP Lemma=Nov. NamedEntityTag=DATE NormalizedNamedEntityTag=XXXX-11 Timex=<TIMEX3 tid="t830" type="DATE" value="XXXX-11">Nov.</TIMEX3>] 
+Sentence #6 (37 tokens):
+Thirdly, we must do our utmost to prepare the European Union for the enlargement process, by 2003, in the spirit of the splendid speech made by President of the Commission, Mr Prodi.
+[Text=Thirdly CharacterOffsetBegin=409 CharacterOffsetEnd=416 PartOfSpeech=RB Lemma=thirdly NamedEntityTag=O] [Text=, CharacterOffsetBegin=416 CharacterOffsetEnd=417 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=we CharacterOffsetBegin=418 CharacterOffsetEnd=420 PartOfSpeech=PRP Lemma=we NamedEntityTag=O] [Text=must CharacterOffsetBegin=421 CharacterOffsetEnd=425 PartOfSpeech=MD Lemma=must NamedEntityTag=O] [Text=do CharacterOffsetBegin=426 CharacterOffsetEnd=428 PartOfSpeech=VB Lemma=do NamedEntityTag=O] [Text=our CharacterOffsetBegin=429 CharacterOffsetEnd=432 PartOfSpeech=PRP$ Lemma=we NamedEntityTag=O] [Text=utmost CharacterOffsetBegin=433 CharacterOffsetEnd=439 PartOfSpeech=JJ Lemma=utmost NamedEntityTag=O] [Text=to CharacterOffsetBegin=440 CharacterOffsetEnd=442 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=prepare CharacterOffsetBegin=443 CharacterOffsetEnd=450 PartOfSpeech=VB Lemma=prepare NamedEntityTag=O] [Text=the CharacterOffsetBegin=451 CharacterOffsetEnd=454 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=European CharacterOffsetBegin=455 CharacterOffsetEnd=463 PartOfSpeech=NNP Lemma=European NamedEntityTag=LOCATION] [Text=Union CharacterOffsetBegin=464 CharacterOffsetEnd=469 PartOfSpeech=NNP Lemma=Union NamedEntityTag=LOCATION] [Text=for CharacterOffsetBegin=470 CharacterOffsetEnd=473 PartOfSpeech=IN Lemma=for NamedEntityTag=O] [Text=the CharacterOffsetBegin=474 CharacterOffsetEnd=477 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=enlargement CharacterOffsetBegin=478 CharacterOffsetEnd=489 PartOfSpeech=NN Lemma=enlargement NamedEntityTag=O] [Text=process CharacterOffsetBegin=490 CharacterOffsetEnd=497 PartOfSpeech=NN Lemma=process NamedEntityTag=O] [Text=, CharacterOffsetBegin=497 CharacterOffsetEnd=498 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=by CharacterOffsetBegin=499 CharacterOffsetEnd=501 PartOfSpeech=IN Lemma=by NamedEntityTag=O] [Text=2003 CharacterOffsetBegin=502 CharacterOffsetEnd=506 PartOfSpeech=CD Lemma=2003 NamedEntityTag=DATE NormalizedNamedEntityTag=2003 Timex=<TIMEX3 tid="t4" type="DATE" value="2003">2003</TIMEX3>] [Text=, CharacterOffsetBegin=506 CharacterOffsetEnd=507 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=in CharacterOffsetBegin=508 CharacterOffsetEnd=510 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=the CharacterOffsetBegin=511 CharacterOffsetEnd=514 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=spirit CharacterOffsetBegin=515 CharacterOffsetEnd=521 PartOfSpeech=NN Lemma=spirit NamedEntityTag=O] [Text=of CharacterOffsetBegin=522 CharacterOffsetEnd=524 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=the CharacterOffsetBegin=525 CharacterOffsetEnd=528 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=splendid CharacterOffsetBegin=529 CharacterOffsetEnd=537 PartOfSpeech=JJ Lemma=splendid NamedEntityTag=O] [Text=speech CharacterOffsetBegin=538 CharacterOffsetEnd=544 PartOfSpeech=NN Lemma=speech NamedEntityTag=O] [Text=made CharacterOffsetBegin=545 CharacterOffsetEnd=549 PartOfSpeech=VBN Lemma=make NamedEntityTag=O] [Text=by CharacterOffsetBegin=550 CharacterOffsetEnd=552 PartOfSpeech=IN Lemma=by NamedEntityTag=O] [Text=President CharacterOffsetBegin=553 CharacterOffsetEnd=562 PartOfSpeech=NNP Lemma=President NamedEntityTag=O] [Text=of CharacterOffsetBegin=563 CharacterOffsetEnd=565 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=the CharacterOffsetBegin=566 CharacterOffsetEnd=569 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=Commission CharacterOffsetBegin=570 CharacterOffsetEnd=580 PartOfSpeech=NNP Lemma=Commission NamedEntityTag=ORGANIZATION] [Text=, CharacterOffsetBegin=580 CharacterOffsetEnd=581 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=Mr CharacterOffsetBegin=582 CharacterOffsetEnd=584 PartOfSpeech=NNP Lemma=Mr NamedEntityTag=PERSON] [Text=Prodi CharacterOffsetBegin=585 CharacterOffsetEnd=590 PartOfSpeech=NNP Lemma=Prodi NamedEntityTag=PERSON] [Text=. CharacterOffsetBegin=590 CharacterOffsetEnd=591 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
 (ROOT
   (S
-    (NP
-      (NP (DT The) (NN announcement))
-      (PP (IN by)
-        (NP
-          (NP (DT the) (NNP Organization))
-          (PP (IN for)
-            (NP
-              (NP (DT the) (NNP Prohibition))
-              (PP (IN of)
-                (NP (NNP Chemical) (NNP Weapons))))))))
-    (VP (VBD came)
-      (NP
-        (NP (CD one) (NN day))
-        (PP (RB ahead) (IN of)
-          (NP (DT the) (NNP Nov.)))))))
+    (ADVP (RB Thirdly))
+    (, ,)
+    (NP (PRP we))
+    (VP (MD must)
+      (VP (VB do)
+        (NP (PRP$ our) (JJ utmost))
+        (S
+          (VP (TO to)
+            (VP (VB prepare)
+              (NP
+                (NP (DT the) (NNP European) (NNP Union))
+                (PP (IN for)
+                  (NP (DT the) (NN enlargement) (NN process))))
+              (, ,)
+              (PP (IN by)
+                (NP (CD 2003)))
+              (, ,)
+              (PP (IN in)
+                (NP
+                  (NP (DT the) (NN spirit))
+                  (PP (IN of)
+                    (NP
+                      (NP (DT the) (JJ splendid) (NN speech))
+                      (VP (VBN made)
+                        (PP (IN by)
+                          (NP
+                            (NP (NNP President))
+                            (PP (IN of)
+                              (NP
+                                (NP (DT the) (NNP Commission))
+                                (, ,)
+                                (NP (NNP Mr) (NNP Prodi))))))))))))))))
+    (. .)))
 
-root(ROOT-0, came-12)
-det(announcement-2, The-1)
-nsubj(came-12, announcement-2)
-det(Organization-5, the-4)
-prep_by(announcement-2, Organization-5)
-det(Prohibition-8, the-7)
-prep_for(Organization-5, Prohibition-8)
-nn(Weapons-11, Chemical-10)
-prep_of(Prohibition-8, Weapons-11)
-num(day-14, one-13)
-dobj(came-12, day-14)
-det(Nov.-18, the-17)
-prep_ahead_of(day-14, Nov.-18)
+root(ROOT-0, do-5)
+advmod(do-5, Thirdly-1)
+nsubj(do-5, we-3)
+aux(do-5, must-4)
+poss(utmost-7, our-6)
+dobj(do-5, utmost-7)
+aux(prepare-9, to-8)
+vmod(do-5, prepare-9)
+det(Union-12, the-10)
+nn(Union-12, European-11)
+dobj(prepare-9, Union-12)
+det(process-16, the-14)
+nn(process-16, enlargement-15)
+prep_for(Union-12, process-16)
+prep_by(prepare-9, 2003-19)
+det(spirit-23, the-22)
+prep_in(prepare-9, spirit-23)
+det(speech-27, the-25)
+amod(speech-27, splendid-26)
+prep_of(spirit-23, speech-27)
+vmod(speech-27, made-28)
+agent(made-28, President-30)
+det(Commission-33, the-32)
+prep_of(President-30, Commission-33)
+nn(Prodi-36, Mr-35)
+appos(Commission-33, Prodi-36)

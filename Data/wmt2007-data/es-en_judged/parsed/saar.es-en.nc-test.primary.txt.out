@@ -1,0 +1,1486 @@
+Sentence #1 (26 tokens):
+The population of more and more older at home and the borders more open than ever, involving a fragmentation is in the European countries.
+[Text=The CharacterOffsetBegin=0 CharacterOffsetEnd=3 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=population CharacterOffsetBegin=4 CharacterOffsetEnd=14 PartOfSpeech=NN Lemma=population NamedEntityTag=O] [Text=of CharacterOffsetBegin=15 CharacterOffsetEnd=17 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=more CharacterOffsetBegin=18 CharacterOffsetEnd=22 PartOfSpeech=JJR Lemma=more NamedEntityTag=O] [Text=and CharacterOffsetBegin=23 CharacterOffsetEnd=26 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=more CharacterOffsetBegin=27 CharacterOffsetEnd=31 PartOfSpeech=RBR Lemma=more NamedEntityTag=O] [Text=older CharacterOffsetBegin=32 CharacterOffsetEnd=37 PartOfSpeech=JJR Lemma=older NamedEntityTag=O] [Text=at CharacterOffsetBegin=38 CharacterOffsetEnd=40 PartOfSpeech=IN Lemma=at NamedEntityTag=O] [Text=home CharacterOffsetBegin=41 CharacterOffsetEnd=45 PartOfSpeech=NN Lemma=home NamedEntityTag=O] [Text=and CharacterOffsetBegin=46 CharacterOffsetEnd=49 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=the CharacterOffsetBegin=50 CharacterOffsetEnd=53 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=borders CharacterOffsetBegin=54 CharacterOffsetEnd=61 PartOfSpeech=NNS Lemma=border NamedEntityTag=O] [Text=more CharacterOffsetBegin=62 CharacterOffsetEnd=66 PartOfSpeech=RBR Lemma=more NamedEntityTag=O] [Text=open CharacterOffsetBegin=67 CharacterOffsetEnd=71 PartOfSpeech=JJ Lemma=open NamedEntityTag=O] [Text=than CharacterOffsetBegin=72 CharacterOffsetEnd=76 PartOfSpeech=IN Lemma=than NamedEntityTag=O] [Text=ever CharacterOffsetBegin=77 CharacterOffsetEnd=81 PartOfSpeech=RB Lemma=ever NamedEntityTag=O] [Text=, CharacterOffsetBegin=81 CharacterOffsetEnd=82 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=involving CharacterOffsetBegin=83 CharacterOffsetEnd=92 PartOfSpeech=VBG Lemma=involve NamedEntityTag=O] [Text=a CharacterOffsetBegin=93 CharacterOffsetEnd=94 PartOfSpeech=DT Lemma=a NamedEntityTag=O] [Text=fragmentation CharacterOffsetBegin=95 CharacterOffsetEnd=108 PartOfSpeech=NN Lemma=fragmentation NamedEntityTag=O] [Text=is CharacterOffsetBegin=109 CharacterOffsetEnd=111 PartOfSpeech=VBZ Lemma=be NamedEntityTag=O] [Text=in CharacterOffsetBegin=112 CharacterOffsetEnd=114 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=the CharacterOffsetBegin=115 CharacterOffsetEnd=118 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=European CharacterOffsetBegin=119 CharacterOffsetEnd=127 PartOfSpeech=JJ Lemma=european NamedEntityTag=MISC] [Text=countries CharacterOffsetBegin=128 CharacterOffsetEnd=137 PartOfSpeech=NNS Lemma=country NamedEntityTag=O] [Text=. CharacterOffsetBegin=137 CharacterOffsetEnd=138 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+(ROOT
+  (S
+    (NP
+      (NP (DT The) (NN population))
+      (PP (IN of)
+        (NP
+          (NP (JJR more))
+          (ADJP
+            (ADJP
+              (NP
+                (QP (CC and)
+                  (RBR more)))
+              (JJR older)
+              (PP (IN at)
+                (NP (NN home))))
+            (CC and)
+            (ADJP
+              (ADJP
+                (NP (DT the) (NNS borders))
+                (RBR more) (JJ open))
+              (PP (IN than)
+                (ADVP (RB ever)))))
+          (, ,)
+          (PP (VBG involving)
+            (NP (DT a) (NN fragmentation))))))
+    (VP (VBZ is)
+      (PP (IN in)
+        (NP (DT the) (JJ European) (NNS countries))))
+    (. .)))
+
+root(ROOT-0, is-21)
+det(population-2, The-1)
+nsubj(is-21, population-2)
+prep_of(population-2, more-4)
+cc(more-6, and-5)
+npadvmod(older-7, more-6)
+amod(more-4, older-7)
+prep_at(older-7, home-9)
+det(borders-12, the-11)
+dep(open-14, borders-12)
+advmod(open-14, more-13)
+conj_and(older-7, open-14)
+prep(open-14, than-15)
+pcomp(than-15, ever-16)
+det(fragmentation-20, a-19)
+prep_involving(more-4, fragmentation-20)
+det(countries-25, the-23)
+amod(countries-25, European-24)
+prep_in(is-21, countries-25)
+
+Sentence #2 (29 tokens):
+Some favouring affirmative action programmes which give preference to the minorities for the allocation of jobs, the admission of the College and the granting of public contracts.
+[Text=Some CharacterOffsetBegin=142 CharacterOffsetEnd=146 PartOfSpeech=DT Lemma=some NamedEntityTag=O] [Text=favouring CharacterOffsetBegin=147 CharacterOffsetEnd=156 PartOfSpeech=VBG Lemma=favour NamedEntityTag=O] [Text=affirmative CharacterOffsetBegin=157 CharacterOffsetEnd=168 PartOfSpeech=JJ Lemma=affirmative NamedEntityTag=O] [Text=action CharacterOffsetBegin=169 CharacterOffsetEnd=175 PartOfSpeech=NN Lemma=action NamedEntityTag=O] [Text=programmes CharacterOffsetBegin=176 CharacterOffsetEnd=186 PartOfSpeech=NNS Lemma=programme NamedEntityTag=O] [Text=which CharacterOffsetBegin=187 CharacterOffsetEnd=192 PartOfSpeech=WDT Lemma=which NamedEntityTag=O] [Text=give CharacterOffsetBegin=193 CharacterOffsetEnd=197 PartOfSpeech=VBP Lemma=give NamedEntityTag=O] [Text=preference CharacterOffsetBegin=198 CharacterOffsetEnd=208 PartOfSpeech=NN Lemma=preference NamedEntityTag=O] [Text=to CharacterOffsetBegin=209 CharacterOffsetEnd=211 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=the CharacterOffsetBegin=212 CharacterOffsetEnd=215 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=minorities CharacterOffsetBegin=216 CharacterOffsetEnd=226 PartOfSpeech=NNS Lemma=minority NamedEntityTag=O] [Text=for CharacterOffsetBegin=227 CharacterOffsetEnd=230 PartOfSpeech=IN Lemma=for NamedEntityTag=O] [Text=the CharacterOffsetBegin=231 CharacterOffsetEnd=234 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=allocation CharacterOffsetBegin=235 CharacterOffsetEnd=245 PartOfSpeech=NN Lemma=allocation NamedEntityTag=O] [Text=of CharacterOffsetBegin=246 CharacterOffsetEnd=248 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=jobs CharacterOffsetBegin=249 CharacterOffsetEnd=253 PartOfSpeech=NNS Lemma=job NamedEntityTag=O] [Text=, CharacterOffsetBegin=253 CharacterOffsetEnd=254 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=the CharacterOffsetBegin=255 CharacterOffsetEnd=258 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=admission CharacterOffsetBegin=259 CharacterOffsetEnd=268 PartOfSpeech=NN Lemma=admission NamedEntityTag=O] [Text=of CharacterOffsetBegin=269 CharacterOffsetEnd=271 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=the CharacterOffsetBegin=272 CharacterOffsetEnd=275 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=College CharacterOffsetBegin=276 CharacterOffsetEnd=283 PartOfSpeech=NNP Lemma=College NamedEntityTag=O] [Text=and CharacterOffsetBegin=284 CharacterOffsetEnd=287 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=the CharacterOffsetBegin=288 CharacterOffsetEnd=291 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=granting CharacterOffsetBegin=292 CharacterOffsetEnd=300 PartOfSpeech=VBG Lemma=grant NamedEntityTag=O] [Text=of CharacterOffsetBegin=301 CharacterOffsetEnd=303 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=public CharacterOffsetBegin=304 CharacterOffsetEnd=310 PartOfSpeech=JJ Lemma=public NamedEntityTag=O] [Text=contracts CharacterOffsetBegin=311 CharacterOffsetEnd=320 PartOfSpeech=NNS Lemma=contract NamedEntityTag=O] [Text=. CharacterOffsetBegin=320 CharacterOffsetEnd=321 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+(ROOT
+  (NP
+    (NP (DT Some))
+    (VP (VBG favouring)
+      (NP
+        (NP (JJ affirmative) (NN action) (NNS programmes))
+        (SBAR
+          (WHNP (WDT which))
+          (S
+            (VP (VBP give)
+              (NP (NN preference))
+              (PP (TO to)
+                (NP
+                  (NP
+                    (NP (DT the) (NNS minorities))
+                    (PP (IN for)
+                      (NP
+                        (NP (DT the) (NN allocation))
+                        (PP (IN of)
+                          (NP (NNS jobs))))))
+                  (, ,)
+                  (NP
+                    (NP (DT the) (NN admission))
+                    (PP (IN of)
+                      (NP (DT the) (NNP College))))
+                  (CC and)
+                  (NP
+                    (NP (DT the) (VBG granting))
+                    (PP (IN of)
+                      (NP (JJ public) (NNS contracts)))))))))))
+    (. .)))
+
+root(ROOT-0, Some-1)
+vmod(Some-1, favouring-2)
+amod(programmes-5, affirmative-3)
+nn(programmes-5, action-4)
+dobj(favouring-2, programmes-5)
+nsubj(give-7, which-6)
+rcmod(programmes-5, give-7)
+dobj(give-7, preference-8)
+det(minorities-11, the-10)
+prep_to(give-7, minorities-11)
+det(allocation-14, the-13)
+prep_for(minorities-11, allocation-14)
+prep_of(allocation-14, jobs-16)
+det(admission-19, the-18)
+conj_and(minorities-11, admission-19)
+det(College-22, the-21)
+prep_of(admission-19, College-22)
+conj_and(minorities-11, the-24)
+amod(the-24, granting-25)
+amod(contracts-28, public-27)
+prep_of(the-24, contracts-28)
+
+Sentence #3 (52 tokens):
+Others are opposed to the affirmative action and to argue that a policy of blind to the races, along with the policies of the free market and the values profamiliares, that is all that is needed to create jobs for minorities and help to keep to the black families.
+[Text=Others CharacterOffsetBegin=325 CharacterOffsetEnd=331 PartOfSpeech=NNS Lemma=other NamedEntityTag=O] [Text=are CharacterOffsetBegin=332 CharacterOffsetEnd=335 PartOfSpeech=VBP Lemma=be NamedEntityTag=O] [Text=opposed CharacterOffsetBegin=336 CharacterOffsetEnd=343 PartOfSpeech=VBN Lemma=oppose NamedEntityTag=O] [Text=to CharacterOffsetBegin=344 CharacterOffsetEnd=346 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=the CharacterOffsetBegin=347 CharacterOffsetEnd=350 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=affirmative CharacterOffsetBegin=351 CharacterOffsetEnd=362 PartOfSpeech=JJ Lemma=affirmative NamedEntityTag=O] [Text=action CharacterOffsetBegin=363 CharacterOffsetEnd=369 PartOfSpeech=NN Lemma=action NamedEntityTag=O] [Text=and CharacterOffsetBegin=370 CharacterOffsetEnd=373 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=to CharacterOffsetBegin=374 CharacterOffsetEnd=376 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=argue CharacterOffsetBegin=377 CharacterOffsetEnd=382 PartOfSpeech=VB Lemma=argue NamedEntityTag=O] [Text=that CharacterOffsetBegin=383 CharacterOffsetEnd=387 PartOfSpeech=IN Lemma=that NamedEntityTag=O] [Text=a CharacterOffsetBegin=388 CharacterOffsetEnd=389 PartOfSpeech=DT Lemma=a NamedEntityTag=O] [Text=policy CharacterOffsetBegin=390 CharacterOffsetEnd=396 PartOfSpeech=NN Lemma=policy NamedEntityTag=O] [Text=of CharacterOffsetBegin=397 CharacterOffsetEnd=399 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=blind CharacterOffsetBegin=400 CharacterOffsetEnd=405 PartOfSpeech=JJ Lemma=blind NamedEntityTag=O] [Text=to CharacterOffsetBegin=406 CharacterOffsetEnd=408 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=the CharacterOffsetBegin=409 CharacterOffsetEnd=412 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=races CharacterOffsetBegin=413 CharacterOffsetEnd=418 PartOfSpeech=NNS Lemma=race NamedEntityTag=O] [Text=, CharacterOffsetBegin=418 CharacterOffsetEnd=419 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=along CharacterOffsetBegin=420 CharacterOffsetEnd=425 PartOfSpeech=IN Lemma=along NamedEntityTag=O] [Text=with CharacterOffsetBegin=426 CharacterOffsetEnd=430 PartOfSpeech=IN Lemma=with NamedEntityTag=O] [Text=the CharacterOffsetBegin=431 CharacterOffsetEnd=434 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=policies CharacterOffsetBegin=435 CharacterOffsetEnd=443 PartOfSpeech=NNS Lemma=policy NamedEntityTag=O] [Text=of CharacterOffsetBegin=444 CharacterOffsetEnd=446 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=the CharacterOffsetBegin=447 CharacterOffsetEnd=450 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=free CharacterOffsetBegin=451 CharacterOffsetEnd=455 PartOfSpeech=JJ Lemma=free NamedEntityTag=O] [Text=market CharacterOffsetBegin=456 CharacterOffsetEnd=462 PartOfSpeech=NN Lemma=market NamedEntityTag=O] [Text=and CharacterOffsetBegin=463 CharacterOffsetEnd=466 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=the CharacterOffsetBegin=467 CharacterOffsetEnd=470 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=values CharacterOffsetBegin=471 CharacterOffsetEnd=477 PartOfSpeech=NNS Lemma=value NamedEntityTag=O] [Text=profamiliares CharacterOffsetBegin=478 CharacterOffsetEnd=491 PartOfSpeech=NNS Lemma=profamiliare NamedEntityTag=O] [Text=, CharacterOffsetBegin=491 CharacterOffsetEnd=492 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=that CharacterOffsetBegin=493 CharacterOffsetEnd=497 PartOfSpeech=DT Lemma=that NamedEntityTag=O] [Text=is CharacterOffsetBegin=498 CharacterOffsetEnd=500 PartOfSpeech=VBZ Lemma=be NamedEntityTag=O] [Text=all CharacterOffsetBegin=501 CharacterOffsetEnd=504 PartOfSpeech=DT Lemma=all NamedEntityTag=O] [Text=that CharacterOffsetBegin=505 CharacterOffsetEnd=509 PartOfSpeech=DT Lemma=that NamedEntityTag=O] [Text=is CharacterOffsetBegin=510 CharacterOffsetEnd=512 PartOfSpeech=VBZ Lemma=be NamedEntityTag=O] [Text=needed CharacterOffsetBegin=513 CharacterOffsetEnd=519 PartOfSpeech=VBN Lemma=need NamedEntityTag=O] [Text=to CharacterOffsetBegin=520 CharacterOffsetEnd=522 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=create CharacterOffsetBegin=523 CharacterOffsetEnd=529 PartOfSpeech=VB Lemma=create NamedEntityTag=O] [Text=jobs CharacterOffsetBegin=530 CharacterOffsetEnd=534 PartOfSpeech=NNS Lemma=job NamedEntityTag=O] [Text=for CharacterOffsetBegin=535 CharacterOffsetEnd=538 PartOfSpeech=IN Lemma=for NamedEntityTag=O] [Text=minorities CharacterOffsetBegin=539 CharacterOffsetEnd=549 PartOfSpeech=NNS Lemma=minority NamedEntityTag=O] [Text=and CharacterOffsetBegin=550 CharacterOffsetEnd=553 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=help CharacterOffsetBegin=554 CharacterOffsetEnd=558 PartOfSpeech=VB Lemma=help NamedEntityTag=O] [Text=to CharacterOffsetBegin=559 CharacterOffsetEnd=561 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=keep CharacterOffsetBegin=562 CharacterOffsetEnd=566 PartOfSpeech=VB Lemma=keep NamedEntityTag=O] [Text=to CharacterOffsetBegin=567 CharacterOffsetEnd=569 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=the CharacterOffsetBegin=570 CharacterOffsetEnd=573 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=black CharacterOffsetBegin=574 CharacterOffsetEnd=579 PartOfSpeech=JJ Lemma=black NamedEntityTag=O] [Text=families CharacterOffsetBegin=580 CharacterOffsetEnd=588 PartOfSpeech=NNS Lemma=family NamedEntityTag=O] [Text=. CharacterOffsetBegin=588 CharacterOffsetEnd=589 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+(ROOT
+  (S
+    (NP (NNS Others))
+    (VP (VBP are)
+      (VP (VBN opposed)
+        (PP (TO to)
+          (NP
+            (NP (DT the) (JJ affirmative) (NN action))
+            (CC and)
+            (S
+              (VP (TO to)
+                (VP (VB argue)
+                  (SBAR (IN that)
+                    (S
+                      (NP
+                        (NP (DT a) (NN policy))
+                        (PP (IN of)
+                          (NP
+                            (NP
+                              (ADJP (JJ blind)
+                                (PP (TO to)
+                                  (NP
+                                    (NP (DT the) (NNS races))
+                                    (, ,)
+                                    (ADVP (IN along)
+                                      (PP (IN with)
+                                        (NP
+                                          (NP (DT the) (NNS policies))
+                                          (PP (IN of)
+                                            (NP
+                                              (NP (DT the) (JJ free) (NN market))
+                                              (CC and)
+                                              (NP (DT the) (NNS values))))))))))
+                              (NNS profamiliares))
+                            (, ,)
+                            (NP (DT that)))))
+                      (VP (VBZ is)
+                        (NP
+                          (NP (DT all))
+                          (SBAR
+                            (WHNP (DT that))
+                            (S
+                              (VP (VBZ is)
+                                (VP (VBN needed)
+                                  (S
+                                    (VP (TO to)
+                                      (VP
+                                        (VP (VB create)
+                                          (NP
+                                            (NP (NNS jobs))
+                                            (PP (IN for)
+                                              (NP (NNS minorities)))))
+                                        (CC and)
+                                        (VP (VB help)
+                                          (S
+                                            (VP (TO to)
+                                              (VP (VB keep)
+                                                (PP (TO to)
+                                                  (NP (DT the) (JJ black) (NNS families)))))))))))))))))))))))))
+    (. .)))
+
+root(ROOT-0, opposed-3)
+nsubjpass(opposed-3, Others-1)
+auxpass(opposed-3, are-2)
+det(action-7, the-5)
+amod(action-7, affirmative-6)
+prep_to(opposed-3, action-7)
+aux(argue-10, to-9)
+conj_and(action-7, argue-10)
+mark(all-35, that-11)
+det(policy-13, a-12)
+nsubj(all-35, policy-13)
+amod(profamiliares-31, blind-15)
+det(races-18, the-17)
+prep_to(blind-15, races-18)
+det(policies-23, the-22)
+prep_along_with(races-18, policies-23)
+det(market-27, the-25)
+amod(market-27, free-26)
+prep_of(policies-23, market-27)
+det(values-30, the-29)
+conj_and(market-27, values-30)
+prep_of(policy-13, profamiliares-31)
+appos(profamiliares-31, that-33)
+cop(all-35, is-34)
+ccomp(argue-10, all-35)
+nsubjpass(needed-38, that-36)
+auxpass(needed-38, is-37)
+rcmod(all-35, needed-38)
+aux(create-40, to-39)
+xcomp(needed-38, create-40)
+dobj(create-40, jobs-41)
+prep_for(jobs-41, minorities-43)
+conj_and(create-40, help-45)
+aux(keep-47, to-46)
+xcomp(help-45, keep-47)
+det(families-51, the-49)
+amod(families-51, black-50)
+prep_to(keep-47, families-51)
+
+Sentence #4 (28 tokens):
+The money of the French taxpayer would be better employed in profits for the temporary workers posted in subsidies to maintain living a plant is not profitable.
+[Text=The CharacterOffsetBegin=593 CharacterOffsetEnd=596 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=money CharacterOffsetBegin=597 CharacterOffsetEnd=602 PartOfSpeech=NN Lemma=money NamedEntityTag=O] [Text=of CharacterOffsetBegin=603 CharacterOffsetEnd=605 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=the CharacterOffsetBegin=606 CharacterOffsetEnd=609 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=French CharacterOffsetBegin=610 CharacterOffsetEnd=616 PartOfSpeech=JJ Lemma=french NamedEntityTag=MISC] [Text=taxpayer CharacterOffsetBegin=617 CharacterOffsetEnd=625 PartOfSpeech=NN Lemma=taxpayer NamedEntityTag=O] [Text=would CharacterOffsetBegin=626 CharacterOffsetEnd=631 PartOfSpeech=MD Lemma=would NamedEntityTag=O] [Text=be CharacterOffsetBegin=632 CharacterOffsetEnd=634 PartOfSpeech=VB Lemma=be NamedEntityTag=O] [Text=better CharacterOffsetBegin=635 CharacterOffsetEnd=641 PartOfSpeech=JJR Lemma=better NamedEntityTag=O] [Text=employed CharacterOffsetBegin=642 CharacterOffsetEnd=650 PartOfSpeech=VBN Lemma=employ NamedEntityTag=O] [Text=in CharacterOffsetBegin=651 CharacterOffsetEnd=653 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=profits CharacterOffsetBegin=654 CharacterOffsetEnd=661 PartOfSpeech=NNS Lemma=profit NamedEntityTag=O] [Text=for CharacterOffsetBegin=662 CharacterOffsetEnd=665 PartOfSpeech=IN Lemma=for NamedEntityTag=O] [Text=the CharacterOffsetBegin=666 CharacterOffsetEnd=669 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=temporary CharacterOffsetBegin=670 CharacterOffsetEnd=679 PartOfSpeech=JJ Lemma=temporary NamedEntityTag=O] [Text=workers CharacterOffsetBegin=680 CharacterOffsetEnd=687 PartOfSpeech=NNS Lemma=worker NamedEntityTag=O] [Text=posted CharacterOffsetBegin=688 CharacterOffsetEnd=694 PartOfSpeech=VBD Lemma=post NamedEntityTag=O] [Text=in CharacterOffsetBegin=695 CharacterOffsetEnd=697 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=subsidies CharacterOffsetBegin=698 CharacterOffsetEnd=707 PartOfSpeech=NNS Lemma=subsidy NamedEntityTag=O] [Text=to CharacterOffsetBegin=708 CharacterOffsetEnd=710 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=maintain CharacterOffsetBegin=711 CharacterOffsetEnd=719 PartOfSpeech=VB Lemma=maintain NamedEntityTag=O] [Text=living CharacterOffsetBegin=720 CharacterOffsetEnd=726 PartOfSpeech=VBG Lemma=live NamedEntityTag=O] [Text=a CharacterOffsetBegin=727 CharacterOffsetEnd=728 PartOfSpeech=DT Lemma=a NamedEntityTag=O] [Text=plant CharacterOffsetBegin=729 CharacterOffsetEnd=734 PartOfSpeech=NN Lemma=plant NamedEntityTag=O] [Text=is CharacterOffsetBegin=735 CharacterOffsetEnd=737 PartOfSpeech=VBZ Lemma=be NamedEntityTag=O] [Text=not CharacterOffsetBegin=738 CharacterOffsetEnd=741 PartOfSpeech=RB Lemma=not NamedEntityTag=O] [Text=profitable CharacterOffsetBegin=742 CharacterOffsetEnd=752 PartOfSpeech=JJ Lemma=profitable NamedEntityTag=O] [Text=. CharacterOffsetBegin=752 CharacterOffsetEnd=753 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+(ROOT
+  (S
+    (NP
+      (NP (DT The) (NN money))
+      (PP (IN of)
+        (NP (DT the) (JJ French) (NN taxpayer))))
+    (VP (MD would)
+      (VP (VB be)
+        (VP
+          (ADVP (JJR better))
+          (VBN employed)
+          (PP (IN in)
+            (NP (NNS profits)))
+          (SBAR (IN for)
+            (S
+              (NP (DT the) (JJ temporary) (NNS workers))
+              (VP (VBD posted)
+                (PP (IN in)
+                  (NP (NNS subsidies)))
+                (S
+                  (VP (TO to)
+                    (VP (VB maintain)
+                      (S
+                        (VP (VBG living)
+                          (SBAR
+                            (S
+                              (NP (DT a) (NN plant))
+                              (VP (VBZ is) (RB not)
+                                (ADJP (JJ profitable))))))))))))))))
+    (. .)))
+
+root(ROOT-0, employed-10)
+det(money-2, The-1)
+nsubjpass(employed-10, money-2)
+det(taxpayer-6, the-4)
+amod(taxpayer-6, French-5)
+prep_of(money-2, taxpayer-6)
+aux(employed-10, would-7)
+auxpass(employed-10, be-8)
+advmod(employed-10, better-9)
+prep_in(employed-10, profits-12)
+mark(posted-17, for-13)
+det(workers-16, the-14)
+amod(workers-16, temporary-15)
+nsubj(posted-17, workers-16)
+advcl(employed-10, posted-17)
+prep_in(posted-17, subsidies-19)
+aux(maintain-21, to-20)
+xcomp(posted-17, maintain-21)
+xcomp(maintain-21, living-22)
+det(plant-24, a-23)
+nsubj(profitable-27, plant-24)
+cop(profitable-27, is-25)
+neg(profitable-27, not-26)
+ccomp(living-22, profitable-27)
+
+Sentence #5 (69 tokens):
+For decades, through administrations Democrats and republicanas, the United States has sought a series of clear objectives of energy policy: to maintain world prices of oil as stable as possible; to reduce the internal consumption of mineral oils way less painful; to reduce the dependence on imports, provided that it is possible; and to diversify the sources of the oil imported.
+[Text=For CharacterOffsetBegin=757 CharacterOffsetEnd=760 PartOfSpeech=IN Lemma=for NamedEntityTag=O] [Text=decades CharacterOffsetBegin=761 CharacterOffsetEnd=768 PartOfSpeech=NNS Lemma=decade NamedEntityTag=DURATION NormalizedNamedEntityTag=PXY Timex=<TIMEX3 tid="t1" type="DURATION" value="PXY">decades</TIMEX3>] [Text=, CharacterOffsetBegin=768 CharacterOffsetEnd=769 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=through CharacterOffsetBegin=770 CharacterOffsetEnd=777 PartOfSpeech=IN Lemma=through NamedEntityTag=O] [Text=administrations CharacterOffsetBegin=778 CharacterOffsetEnd=793 PartOfSpeech=NNS Lemma=administration NamedEntityTag=O] [Text=Democrats CharacterOffsetBegin=794 CharacterOffsetEnd=803 PartOfSpeech=NNPS Lemma=Democrats NamedEntityTag=MISC] [Text=and CharacterOffsetBegin=804 CharacterOffsetEnd=807 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=republicanas CharacterOffsetBegin=808 CharacterOffsetEnd=820 PartOfSpeech=NNS Lemma=republicana NamedEntityTag=O] [Text=, CharacterOffsetBegin=820 CharacterOffsetEnd=821 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=the CharacterOffsetBegin=822 CharacterOffsetEnd=825 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=United CharacterOffsetBegin=826 CharacterOffsetEnd=832 PartOfSpeech=NNP Lemma=United NamedEntityTag=LOCATION] [Text=States CharacterOffsetBegin=833 CharacterOffsetEnd=839 PartOfSpeech=NNPS Lemma=States NamedEntityTag=LOCATION] [Text=has CharacterOffsetBegin=840 CharacterOffsetEnd=843 PartOfSpeech=VBZ Lemma=have NamedEntityTag=O] [Text=sought CharacterOffsetBegin=844 CharacterOffsetEnd=850 PartOfSpeech=VBN Lemma=seek NamedEntityTag=O] [Text=a CharacterOffsetBegin=851 CharacterOffsetEnd=852 PartOfSpeech=DT Lemma=a NamedEntityTag=O] [Text=series CharacterOffsetBegin=853 CharacterOffsetEnd=859 PartOfSpeech=NN Lemma=series NamedEntityTag=O] [Text=of CharacterOffsetBegin=860 CharacterOffsetEnd=862 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=clear CharacterOffsetBegin=863 CharacterOffsetEnd=868 PartOfSpeech=JJ Lemma=clear NamedEntityTag=O] [Text=objectives CharacterOffsetBegin=869 CharacterOffsetEnd=879 PartOfSpeech=NNS Lemma=objective NamedEntityTag=O] [Text=of CharacterOffsetBegin=880 CharacterOffsetEnd=882 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=energy CharacterOffsetBegin=883 CharacterOffsetEnd=889 PartOfSpeech=NN Lemma=energy NamedEntityTag=O] [Text=policy CharacterOffsetBegin=890 CharacterOffsetEnd=896 PartOfSpeech=NN Lemma=policy NamedEntityTag=O] [Text=: CharacterOffsetBegin=896 CharacterOffsetEnd=897 PartOfSpeech=: Lemma=: NamedEntityTag=O] [Text=to CharacterOffsetBegin=898 CharacterOffsetEnd=900 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=maintain CharacterOffsetBegin=901 CharacterOffsetEnd=909 PartOfSpeech=VB Lemma=maintain NamedEntityTag=O] [Text=world CharacterOffsetBegin=910 CharacterOffsetEnd=915 PartOfSpeech=NN Lemma=world NamedEntityTag=O] [Text=prices CharacterOffsetBegin=916 CharacterOffsetEnd=922 PartOfSpeech=NNS Lemma=price NamedEntityTag=O] [Text=of CharacterOffsetBegin=923 CharacterOffsetEnd=925 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=oil CharacterOffsetBegin=926 CharacterOffsetEnd=929 PartOfSpeech=NN Lemma=oil NamedEntityTag=O] [Text=as CharacterOffsetBegin=930 CharacterOffsetEnd=932 PartOfSpeech=IN Lemma=as NamedEntityTag=O] [Text=stable CharacterOffsetBegin=933 CharacterOffsetEnd=939 PartOfSpeech=JJ Lemma=stable NamedEntityTag=O] [Text=as CharacterOffsetBegin=940 CharacterOffsetEnd=942 PartOfSpeech=IN Lemma=as NamedEntityTag=O] [Text=possible CharacterOffsetBegin=943 CharacterOffsetEnd=951 PartOfSpeech=JJ Lemma=possible NamedEntityTag=O] [Text=; CharacterOffsetBegin=951 CharacterOffsetEnd=952 PartOfSpeech=: Lemma=; NamedEntityTag=O] [Text=to CharacterOffsetBegin=953 CharacterOffsetEnd=955 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=reduce CharacterOffsetBegin=956 CharacterOffsetEnd=962 PartOfSpeech=VB Lemma=reduce NamedEntityTag=O] [Text=the CharacterOffsetBegin=963 CharacterOffsetEnd=966 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=internal CharacterOffsetBegin=967 CharacterOffsetEnd=975 PartOfSpeech=JJ Lemma=internal NamedEntityTag=O] [Text=consumption CharacterOffsetBegin=976 CharacterOffsetEnd=987 PartOfSpeech=NN Lemma=consumption NamedEntityTag=O] [Text=of CharacterOffsetBegin=988 CharacterOffsetEnd=990 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=mineral CharacterOffsetBegin=991 CharacterOffsetEnd=998 PartOfSpeech=NN Lemma=mineral NamedEntityTag=O] [Text=oils CharacterOffsetBegin=999 CharacterOffsetEnd=1003 PartOfSpeech=NNS Lemma=oils NamedEntityTag=O] [Text=way CharacterOffsetBegin=1004 CharacterOffsetEnd=1007 PartOfSpeech=RB Lemma=way NamedEntityTag=O] [Text=less CharacterOffsetBegin=1008 CharacterOffsetEnd=1012 PartOfSpeech=RBR Lemma=less NamedEntityTag=O] [Text=painful CharacterOffsetBegin=1013 CharacterOffsetEnd=1020 PartOfSpeech=JJ Lemma=painful NamedEntityTag=O] [Text=; CharacterOffsetBegin=1020 CharacterOffsetEnd=1021 PartOfSpeech=: Lemma=; NamedEntityTag=O] [Text=to CharacterOffsetBegin=1022 CharacterOffsetEnd=1024 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=reduce CharacterOffsetBegin=1025 CharacterOffsetEnd=1031 PartOfSpeech=VB Lemma=reduce NamedEntityTag=O] [Text=the CharacterOffsetBegin=1032 CharacterOffsetEnd=1035 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=dependence CharacterOffsetBegin=1036 CharacterOffsetEnd=1046 PartOfSpeech=NN Lemma=dependence NamedEntityTag=O] [Text=on CharacterOffsetBegin=1047 CharacterOffsetEnd=1049 PartOfSpeech=IN Lemma=on NamedEntityTag=O] [Text=imports CharacterOffsetBegin=1050 CharacterOffsetEnd=1057 PartOfSpeech=NNS Lemma=import NamedEntityTag=O] [Text=, CharacterOffsetBegin=1057 CharacterOffsetEnd=1058 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=provided CharacterOffsetBegin=1059 CharacterOffsetEnd=1067 PartOfSpeech=VBD Lemma=provide NamedEntityTag=O] [Text=that CharacterOffsetBegin=1068 CharacterOffsetEnd=1072 PartOfSpeech=IN Lemma=that NamedEntityTag=O] [Text=it CharacterOffsetBegin=1073 CharacterOffsetEnd=1075 PartOfSpeech=PRP Lemma=it NamedEntityTag=O] [Text=is CharacterOffsetBegin=1076 CharacterOffsetEnd=1078 PartOfSpeech=VBZ Lemma=be NamedEntityTag=O] [Text=possible CharacterOffsetBegin=1079 CharacterOffsetEnd=1087 PartOfSpeech=JJ Lemma=possible NamedEntityTag=O] [Text=; CharacterOffsetBegin=1087 CharacterOffsetEnd=1088 PartOfSpeech=: Lemma=; NamedEntityTag=O] [Text=and CharacterOffsetBegin=1089 CharacterOffsetEnd=1092 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=to CharacterOffsetBegin=1093 CharacterOffsetEnd=1095 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=diversify CharacterOffsetBegin=1096 CharacterOffsetEnd=1105 PartOfSpeech=VB Lemma=diversify NamedEntityTag=O] [Text=the CharacterOffsetBegin=1106 CharacterOffsetEnd=1109 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=sources CharacterOffsetBegin=1110 CharacterOffsetEnd=1117 PartOfSpeech=NNS Lemma=source NamedEntityTag=O] [Text=of CharacterOffsetBegin=1118 CharacterOffsetEnd=1120 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=the CharacterOffsetBegin=1121 CharacterOffsetEnd=1124 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=oil CharacterOffsetBegin=1125 CharacterOffsetEnd=1128 PartOfSpeech=NN Lemma=oil NamedEntityTag=O] [Text=imported CharacterOffsetBegin=1129 CharacterOffsetEnd=1137 PartOfSpeech=VBN Lemma=import NamedEntityTag=O] [Text=. CharacterOffsetBegin=1137 CharacterOffsetEnd=1138 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+(ROOT
+  (S
+    (PP (IN For)
+      (NP (NNS decades)))
+    (, ,)
+    (PP (IN through)
+      (NP
+        (NP
+          (NP (NNS administrations))
+          (NNPS Democrats))
+        (CC and)
+        (NP (NNS republicanas))))
+    (, ,)
+    (NP (DT the) (NNP United) (NNPS States))
+    (VP (VBZ has)
+      (VP (VBN sought)
+        (NP
+          (NP
+            (NP (DT a) (NN series))
+            (PP (IN of)
+              (NP
+                (NP (JJ clear) (NNS objectives))
+                (PP (IN of)
+                  (NP (NN energy) (NN policy))))))
+          (: :)
+          (S
+            (S
+              (VP (TO to)
+                (VP (VB maintain)
+                  (NP
+                    (NP (NN world) (NNS prices))
+                    (PP (IN of)
+                      (NP (NN oil))))
+                  (PP (IN as)
+                    (ADJP (JJ stable)
+                      (PP (IN as)
+                        (ADJP (JJ possible))))))))
+            (: ;)
+            (S
+              (VP (TO to)
+                (VP (VB reduce)
+                  (NP
+                    (NP (DT the) (JJ internal) (NN consumption))
+                    (PP (IN of)
+                      (NP
+                        (NP (NN mineral) (NNS oils))
+                        (ADJP
+                          (ADVP (RB way) (RBR less))
+                          (JJ painful))))))))
+            (: ;)
+            (S
+              (VP
+                (VP (TO to)
+                  (VP (VB reduce)
+                    (NP
+                      (NP (DT the) (NN dependence))
+                      (PP (IN on)
+                        (NP
+                          (NP (NNS imports))
+                          (, ,)
+                          (SBAR
+                            (S
+                              (VP (VBD provided)
+                                (SBAR (IN that)
+                                  (S
+                                    (NP (PRP it))
+                                    (VP (VBZ is)
+                                      (ADJP (JJ possible))))))))
+                          (: ;))))))
+                (CC and)
+                (VP (TO to)
+                  (VP (VB diversify)
+                    (NP
+                      (NP (DT the) (NNS sources))
+                      (PP (IN of)
+                        (NP
+                          (NP (DT the) (NN oil))
+                          (VP (VBN imported)))))))))))))
+    (. .)))
+
+root(ROOT-0, sought-14)
+prep_for(sought-14, decades-2)
+nn(Democrats-6, administrations-5)
+prep_through(sought-14, Democrats-6)
+conj_and(Democrats-6, republicanas-8)
+det(States-12, the-10)
+nn(States-12, United-11)
+nsubj(sought-14, States-12)
+aux(sought-14, has-13)
+det(series-16, a-15)
+dobj(sought-14, series-16)
+amod(objectives-19, clear-18)
+prep_of(series-16, objectives-19)
+nn(policy-22, energy-21)
+prep_of(objectives-19, policy-22)
+aux(maintain-25, to-24)
+dep(series-16, maintain-25)
+nn(prices-27, world-26)
+dobj(maintain-25, prices-27)
+prep_of(prices-27, oil-29)
+prep_as(maintain-25, stable-31)
+prep_as(stable-31, possible-33)
+aux(reduce-36, to-35)
+parataxis(maintain-25, reduce-36)
+det(consumption-39, the-37)
+amod(consumption-39, internal-38)
+dobj(reduce-36, consumption-39)
+nn(oils-42, mineral-41)
+prep_of(consumption-39, oils-42)
+advmod(less-44, way-43)
+advmod(painful-45, less-44)
+amod(oils-42, painful-45)
+aux(reduce-48, to-47)
+parataxis(maintain-25, reduce-48)
+det(dependence-50, the-49)
+dobj(reduce-48, dependence-50)
+prep_on(dependence-50, imports-52)
+rcmod(imports-52, provided-54)
+mark(possible-58, that-55)
+nsubj(possible-58, it-56)
+cop(possible-58, is-57)
+ccomp(provided-54, possible-58)
+aux(diversify-62, to-61)
+conj_and(reduce-48, diversify-62)
+det(sources-64, the-63)
+dobj(diversify-62, sources-64)
+det(oil-67, the-66)
+prep_of(sources-64, oil-67)
+vmod(oil-67, imported-68)
+
+Sentence #6 (19 tokens):
+The future of Iraq is directly dependent on the fate of the production of oil from the country.
+[Text=The CharacterOffsetBegin=1142 CharacterOffsetEnd=1145 PartOfSpeech=DT Lemma=the NamedEntityTag=DATE NormalizedNamedEntityTag=FUTURE_REF Timex=<TIMEX3 tid="t2" type="DATE" value="FUTURE_REF">The future</TIMEX3>] [Text=future CharacterOffsetBegin=1146 CharacterOffsetEnd=1152 PartOfSpeech=NN Lemma=future NamedEntityTag=DATE NormalizedNamedEntityTag=FUTURE_REF Timex=<TIMEX3 tid="t2" type="DATE" value="FUTURE_REF">The future</TIMEX3>] [Text=of CharacterOffsetBegin=1153 CharacterOffsetEnd=1155 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=Iraq CharacterOffsetBegin=1156 CharacterOffsetEnd=1160 PartOfSpeech=NNP Lemma=Iraq NamedEntityTag=LOCATION] [Text=is CharacterOffsetBegin=1161 CharacterOffsetEnd=1163 PartOfSpeech=VBZ Lemma=be NamedEntityTag=O] [Text=directly CharacterOffsetBegin=1164 CharacterOffsetEnd=1172 PartOfSpeech=RB Lemma=directly NamedEntityTag=O] [Text=dependent CharacterOffsetBegin=1173 CharacterOffsetEnd=1182 PartOfSpeech=JJ Lemma=dependent NamedEntityTag=O] [Text=on CharacterOffsetBegin=1183 CharacterOffsetEnd=1185 PartOfSpeech=IN Lemma=on NamedEntityTag=O] [Text=the CharacterOffsetBegin=1186 CharacterOffsetEnd=1189 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=fate CharacterOffsetBegin=1190 CharacterOffsetEnd=1194 PartOfSpeech=NN Lemma=fate NamedEntityTag=O] [Text=of CharacterOffsetBegin=1195 CharacterOffsetEnd=1197 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=the CharacterOffsetBegin=1198 CharacterOffsetEnd=1201 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=production CharacterOffsetBegin=1202 CharacterOffsetEnd=1212 PartOfSpeech=NN Lemma=production NamedEntityTag=O] [Text=of CharacterOffsetBegin=1213 CharacterOffsetEnd=1215 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=oil CharacterOffsetBegin=1216 CharacterOffsetEnd=1219 PartOfSpeech=NN Lemma=oil NamedEntityTag=O] [Text=from CharacterOffsetBegin=1220 CharacterOffsetEnd=1224 PartOfSpeech=IN Lemma=from NamedEntityTag=O] [Text=the CharacterOffsetBegin=1225 CharacterOffsetEnd=1228 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=country CharacterOffsetBegin=1229 CharacterOffsetEnd=1236 PartOfSpeech=NN Lemma=country NamedEntityTag=O] [Text=. CharacterOffsetBegin=1236 CharacterOffsetEnd=1237 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+(ROOT
+  (S
+    (NP
+      (NP (DT The) (NN future))
+      (PP (IN of)
+        (NP (NNP Iraq))))
+    (VP (VBZ is)
+      (ADJP (RB directly) (JJ dependent)
+        (PP (IN on)
+          (NP
+            (NP (DT the) (NN fate))
+            (PP (IN of)
+              (NP
+                (NP (DT the) (NN production))
+                (PP (IN of)
+                  (NP (NN oil))))))))
+      (PP (IN from)
+        (NP (DT the) (NN country))))
+    (. .)))
+
+root(ROOT-0, dependent-7)
+det(future-2, The-1)
+nsubj(dependent-7, future-2)
+prep_of(future-2, Iraq-4)
+cop(dependent-7, is-5)
+advmod(dependent-7, directly-6)
+det(fate-10, the-9)
+prep_on(dependent-7, fate-10)
+det(production-13, the-12)
+prep_of(fate-10, production-13)
+prep_of(production-13, oil-15)
+det(country-18, the-17)
+prep_from(dependent-7, country-18)
+
+Sentence #7 (18 tokens):
+Before the invasion, the production capacity of Iraqi oil reached the three million barrels per day.
+[Text=Before CharacterOffsetBegin=1241 CharacterOffsetEnd=1247 PartOfSpeech=IN Lemma=before NamedEntityTag=O] [Text=the CharacterOffsetBegin=1248 CharacterOffsetEnd=1251 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=invasion CharacterOffsetBegin=1252 CharacterOffsetEnd=1260 PartOfSpeech=NN Lemma=invasion NamedEntityTag=O] [Text=, CharacterOffsetBegin=1260 CharacterOffsetEnd=1261 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=the CharacterOffsetBegin=1262 CharacterOffsetEnd=1265 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=production CharacterOffsetBegin=1266 CharacterOffsetEnd=1276 PartOfSpeech=NN Lemma=production NamedEntityTag=O] [Text=capacity CharacterOffsetBegin=1277 CharacterOffsetEnd=1285 PartOfSpeech=NN Lemma=capacity NamedEntityTag=O] [Text=of CharacterOffsetBegin=1286 CharacterOffsetEnd=1288 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=Iraqi CharacterOffsetBegin=1289 CharacterOffsetEnd=1294 PartOfSpeech=JJ Lemma=iraqi NamedEntityTag=LOCATION] [Text=oil CharacterOffsetBegin=1295 CharacterOffsetEnd=1298 PartOfSpeech=NN Lemma=oil NamedEntityTag=O] [Text=reached CharacterOffsetBegin=1299 CharacterOffsetEnd=1306 PartOfSpeech=VBD Lemma=reach NamedEntityTag=O] [Text=the CharacterOffsetBegin=1307 CharacterOffsetEnd=1310 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=three CharacterOffsetBegin=1311 CharacterOffsetEnd=1316 PartOfSpeech=CD Lemma=three NamedEntityTag=NUMBER NormalizedNamedEntityTag=3000000.0] [Text=million CharacterOffsetBegin=1317 CharacterOffsetEnd=1324 PartOfSpeech=CD Lemma=million NamedEntityTag=NUMBER NormalizedNamedEntityTag=3000000.0] [Text=barrels CharacterOffsetBegin=1325 CharacterOffsetEnd=1332 PartOfSpeech=NNS Lemma=barrel NamedEntityTag=O] [Text=per CharacterOffsetBegin=1333 CharacterOffsetEnd=1336 PartOfSpeech=IN Lemma=per NamedEntityTag=O] [Text=day CharacterOffsetBegin=1337 CharacterOffsetEnd=1340 PartOfSpeech=NN Lemma=day NamedEntityTag=DURATION NormalizedNamedEntityTag=P1D Timex=<TIMEX3 tid="t3" type="DURATION" value="P1D">day</TIMEX3>] [Text=. CharacterOffsetBegin=1340 CharacterOffsetEnd=1341 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+(ROOT
+  (S
+    (PP (IN Before)
+      (NP (DT the) (NN invasion)))
+    (, ,)
+    (NP
+      (NP (DT the) (NN production) (NN capacity))
+      (PP (IN of)
+        (NP (JJ Iraqi) (NN oil))))
+    (VP (VBD reached)
+      (NP
+        (NP (DT the)
+          (QP (CD three) (CD million))
+          (NNS barrels))
+        (PP (IN per)
+          (NP (NN day)))))
+    (. .)))
+
+root(ROOT-0, reached-11)
+det(invasion-3, the-2)
+prep_before(reached-11, invasion-3)
+det(capacity-7, the-5)
+nn(capacity-7, production-6)
+nsubj(reached-11, capacity-7)
+amod(oil-10, Iraqi-9)
+prep_of(capacity-7, oil-10)
+det(barrels-15, the-12)
+number(million-14, three-13)
+num(barrels-15, million-14)
+dobj(reached-11, barrels-15)
+prep_per(barrels-15, day-17)
+
+Sentence #8 (18 tokens):
+This year it was the turn of Africa to nominar President, and became a to Libya.
+[Text=This CharacterOffsetBegin=1345 CharacterOffsetEnd=1349 PartOfSpeech=DT Lemma=this NamedEntityTag=DATE NormalizedNamedEntityTag=THIS P1Y Timex=<TIMEX3 alt_value="THIS P1Y" anchorTimeID="t0" temporalFunction="true" tid="t4" type="DATE" valueFromFunction="tf0">This year</TIMEX3>] [Text=year CharacterOffsetBegin=1350 CharacterOffsetEnd=1354 PartOfSpeech=NN Lemma=year NamedEntityTag=DATE NormalizedNamedEntityTag=THIS P1Y Timex=<TIMEX3 alt_value="THIS P1Y" anchorTimeID="t0" temporalFunction="true" tid="t4" type="DATE" valueFromFunction="tf0">This year</TIMEX3>] [Text=it CharacterOffsetBegin=1355 CharacterOffsetEnd=1357 PartOfSpeech=PRP Lemma=it NamedEntityTag=O] [Text=was CharacterOffsetBegin=1358 CharacterOffsetEnd=1361 PartOfSpeech=VBD Lemma=be NamedEntityTag=O] [Text=the CharacterOffsetBegin=1362 CharacterOffsetEnd=1365 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=turn CharacterOffsetBegin=1366 CharacterOffsetEnd=1370 PartOfSpeech=NN Lemma=turn NamedEntityTag=O] [Text=of CharacterOffsetBegin=1371 CharacterOffsetEnd=1373 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=Africa CharacterOffsetBegin=1374 CharacterOffsetEnd=1380 PartOfSpeech=NNP Lemma=Africa NamedEntityTag=LOCATION] [Text=to CharacterOffsetBegin=1381 CharacterOffsetEnd=1383 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=nominar CharacterOffsetBegin=1384 CharacterOffsetEnd=1391 PartOfSpeech=VB Lemma=nominar NamedEntityTag=O] [Text=President CharacterOffsetBegin=1392 CharacterOffsetEnd=1401 PartOfSpeech=NNP Lemma=President NamedEntityTag=O] [Text=, CharacterOffsetBegin=1401 CharacterOffsetEnd=1402 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=and CharacterOffsetBegin=1403 CharacterOffsetEnd=1406 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=became CharacterOffsetBegin=1407 CharacterOffsetEnd=1413 PartOfSpeech=VBD Lemma=become NamedEntityTag=O] [Text=a CharacterOffsetBegin=1414 CharacterOffsetEnd=1415 PartOfSpeech=DT Lemma=a NamedEntityTag=O] [Text=to CharacterOffsetBegin=1416 CharacterOffsetEnd=1418 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=Libya CharacterOffsetBegin=1419 CharacterOffsetEnd=1424 PartOfSpeech=NNP Lemma=Libya NamedEntityTag=LOCATION] [Text=. CharacterOffsetBegin=1424 CharacterOffsetEnd=1425 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+(ROOT
+  (S
+    (NP-TMP (DT This) (NN year))
+    (NP (PRP it))
+    (VP
+      (VP (VBD was)
+        (NP (DT the) (NN turn))
+        (PP (IN of)
+          (NP (NNP Africa)))
+        (S
+          (VP (TO to)
+            (VP (VB nominar)
+              (NP (NNP President))))))
+      (, ,)
+      (CC and)
+      (VP (VBD became)
+        (NP (DT a))
+        (PP (TO to)
+          (NP (NNP Libya)))))
+    (. .)))
+
+root(ROOT-0, turn-6)
+det(year-2, This-1)
+tmod(turn-6, year-2)
+nsubj(turn-6, it-3)
+cop(turn-6, was-4)
+det(turn-6, the-5)
+prep_of(turn-6, Africa-8)
+aux(nominar-10, to-9)
+vmod(turn-6, nominar-10)
+dobj(nominar-10, President-11)
+conj_and(turn-6, became-14)
+xcomp(became-14, a-15)
+prep_to(became-14, Libya-17)
+
+Sentence #9 (33 tokens):
+Let us remember: Libya is a totalitarian regime; its leader, moammar kadafi erratic behaviour, combining with political extremists, and supporting dictators in the world as a whole.
+[Text=Let CharacterOffsetBegin=1429 CharacterOffsetEnd=1432 PartOfSpeech=VB Lemma=let NamedEntityTag=O] [Text=us CharacterOffsetBegin=1433 CharacterOffsetEnd=1435 PartOfSpeech=PRP Lemma=we NamedEntityTag=O] [Text=remember CharacterOffsetBegin=1436 CharacterOffsetEnd=1444 PartOfSpeech=VB Lemma=remember NamedEntityTag=O] [Text=: CharacterOffsetBegin=1444 CharacterOffsetEnd=1445 PartOfSpeech=: Lemma=: NamedEntityTag=O] [Text=Libya CharacterOffsetBegin=1446 CharacterOffsetEnd=1451 PartOfSpeech=NNP Lemma=Libya NamedEntityTag=LOCATION] [Text=is CharacterOffsetBegin=1452 CharacterOffsetEnd=1454 PartOfSpeech=VBZ Lemma=be NamedEntityTag=O] [Text=a CharacterOffsetBegin=1455 CharacterOffsetEnd=1456 PartOfSpeech=DT Lemma=a NamedEntityTag=O] [Text=totalitarian CharacterOffsetBegin=1457 CharacterOffsetEnd=1469 PartOfSpeech=JJ Lemma=totalitarian NamedEntityTag=O] [Text=regime CharacterOffsetBegin=1470 CharacterOffsetEnd=1476 PartOfSpeech=NN Lemma=regime NamedEntityTag=O] [Text=; CharacterOffsetBegin=1476 CharacterOffsetEnd=1477 PartOfSpeech=: Lemma=; NamedEntityTag=O] [Text=its CharacterOffsetBegin=1478 CharacterOffsetEnd=1481 PartOfSpeech=PRP$ Lemma=its NamedEntityTag=O] [Text=leader CharacterOffsetBegin=1482 CharacterOffsetEnd=1488 PartOfSpeech=NN Lemma=leader NamedEntityTag=O] [Text=, CharacterOffsetBegin=1488 CharacterOffsetEnd=1489 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=moammar CharacterOffsetBegin=1490 CharacterOffsetEnd=1497 PartOfSpeech=NN Lemma=moammar NamedEntityTag=PERSON] [Text=kadafi CharacterOffsetBegin=1498 CharacterOffsetEnd=1504 PartOfSpeech=FW Lemma=kadafi NamedEntityTag=PERSON] [Text=erratic CharacterOffsetBegin=1505 CharacterOffsetEnd=1512 PartOfSpeech=JJ Lemma=erratic NamedEntityTag=O] [Text=behaviour CharacterOffsetBegin=1513 CharacterOffsetEnd=1522 PartOfSpeech=NN Lemma=behaviour NamedEntityTag=O] [Text=, CharacterOffsetBegin=1522 CharacterOffsetEnd=1523 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=combining CharacterOffsetBegin=1524 CharacterOffsetEnd=1533 PartOfSpeech=VBG Lemma=combine NamedEntityTag=O] [Text=with CharacterOffsetBegin=1534 CharacterOffsetEnd=1538 PartOfSpeech=IN Lemma=with NamedEntityTag=O] [Text=political CharacterOffsetBegin=1539 CharacterOffsetEnd=1548 PartOfSpeech=JJ Lemma=political NamedEntityTag=O] [Text=extremists CharacterOffsetBegin=1549 CharacterOffsetEnd=1559 PartOfSpeech=NNS Lemma=extremist NamedEntityTag=O] [Text=, CharacterOffsetBegin=1559 CharacterOffsetEnd=1560 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=and CharacterOffsetBegin=1561 CharacterOffsetEnd=1564 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=supporting CharacterOffsetBegin=1565 CharacterOffsetEnd=1575 PartOfSpeech=VBG Lemma=support NamedEntityTag=O] [Text=dictators CharacterOffsetBegin=1576 CharacterOffsetEnd=1585 PartOfSpeech=NNS Lemma=dictator NamedEntityTag=O] [Text=in CharacterOffsetBegin=1586 CharacterOffsetEnd=1588 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=the CharacterOffsetBegin=1589 CharacterOffsetEnd=1592 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=world CharacterOffsetBegin=1593 CharacterOffsetEnd=1598 PartOfSpeech=NN Lemma=world NamedEntityTag=O] [Text=as CharacterOffsetBegin=1599 CharacterOffsetEnd=1601 PartOfSpeech=IN Lemma=as NamedEntityTag=O] [Text=a CharacterOffsetBegin=1602 CharacterOffsetEnd=1603 PartOfSpeech=DT Lemma=a NamedEntityTag=O] [Text=whole CharacterOffsetBegin=1604 CharacterOffsetEnd=1609 PartOfSpeech=NN Lemma=whole NamedEntityTag=O] [Text=. CharacterOffsetBegin=1609 CharacterOffsetEnd=1610 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+(ROOT
+  (S
+    (S
+      (VP (VB Let)
+        (S
+          (NP (PRP us))
+          (VP (VB remember)))))
+    (: :)
+    (S
+      (NP (NNP Libya))
+      (VP (VBZ is)
+        (NP
+          (NP (DT a) (JJ totalitarian) (NN regime))
+          (: ;)
+          (S
+            (NP
+              (NP (PRP$ its) (NN leader))
+              (, ,)
+              (NP
+                (NP (NN moammar))
+                (NP (FW kadafi))
+                (NP (JJ erratic) (NN behaviour)))
+              (, ,))
+            (VP
+              (VP (VBG combining)
+                (PP (IN with)
+                  (NP (JJ political) (NNS extremists))))
+              (, ,)
+              (CC and)
+              (VP (VBG supporting)
+                (NP (NNS dictators))
+                (PP (IN in)
+                  (NP
+                    (NP (DT the) (NN world))
+                    (PP (IN as)
+                      (NP (DT a) (NN whole)))))))))))
+    (. .)))
+
+root(ROOT-0, Let-1)
+nsubj(remember-3, us-2)
+ccomp(Let-1, remember-3)
+nsubj(regime-9, Libya-5)
+cop(regime-9, is-6)
+det(regime-9, a-7)
+amod(regime-9, totalitarian-8)
+parataxis(Let-1, regime-9)
+poss(leader-12, its-11)
+nsubj(combining-19, leader-12)
+appos(leader-12, moammar-14)
+dep(moammar-14, kadafi-15)
+amod(behaviour-17, erratic-16)
+dep(moammar-14, behaviour-17)
+dep(regime-9, combining-19)
+amod(extremists-22, political-21)
+prep_with(combining-19, extremists-22)
+conj_and(combining-19, supporting-25)
+dobj(supporting-25, dictators-26)
+det(world-29, the-28)
+prep_in(supporting-25, world-29)
+det(whole-32, a-31)
+prep_as(world-29, whole-32)
+
+Sentence #10 (5 tokens):
+The authoritarian to websites.
+[Text=The CharacterOffsetBegin=1614 CharacterOffsetEnd=1617 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=authoritarian CharacterOffsetBegin=1618 CharacterOffsetEnd=1631 PartOfSpeech=JJ Lemma=authoritarian NamedEntityTag=O] [Text=to CharacterOffsetBegin=1632 CharacterOffsetEnd=1634 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=websites CharacterOffsetBegin=1635 CharacterOffsetEnd=1643 PartOfSpeech=NNS Lemma=website NamedEntityTag=O] [Text=. CharacterOffsetBegin=1643 CharacterOffsetEnd=1644 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+(ROOT
+  (NP
+    (NP (DT The) (JJ authoritarian))
+    (PP (TO to)
+      (NP (NNS websites)))
+    (. .)))
+
+root(ROOT-0, authoritarian-2)
+det(authoritarian-2, The-1)
+prep_to(authoritarian-2, websites-4)
+
+Sentence #11 (26 tokens):
+On the contrary, one of them was promoted to address the recently created (with funds from the EU) anti-terrorist unit in Djakarta.
+[Text=On CharacterOffsetBegin=1648 CharacterOffsetEnd=1650 PartOfSpeech=IN Lemma=on NamedEntityTag=O] [Text=the CharacterOffsetBegin=1651 CharacterOffsetEnd=1654 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=contrary CharacterOffsetBegin=1655 CharacterOffsetEnd=1663 PartOfSpeech=NN Lemma=contrary NamedEntityTag=O] [Text=, CharacterOffsetBegin=1663 CharacterOffsetEnd=1664 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=one CharacterOffsetBegin=1665 CharacterOffsetEnd=1668 PartOfSpeech=CD Lemma=one NamedEntityTag=NUMBER NormalizedNamedEntityTag=1.0] [Text=of CharacterOffsetBegin=1669 CharacterOffsetEnd=1671 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=them CharacterOffsetBegin=1672 CharacterOffsetEnd=1676 PartOfSpeech=PRP Lemma=they NamedEntityTag=O] [Text=was CharacterOffsetBegin=1677 CharacterOffsetEnd=1680 PartOfSpeech=VBD Lemma=be NamedEntityTag=O] [Text=promoted CharacterOffsetBegin=1681 CharacterOffsetEnd=1689 PartOfSpeech=VBN Lemma=promote NamedEntityTag=O] [Text=to CharacterOffsetBegin=1690 CharacterOffsetEnd=1692 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=address CharacterOffsetBegin=1693 CharacterOffsetEnd=1700 PartOfSpeech=VB Lemma=address NamedEntityTag=O] [Text=the CharacterOffsetBegin=1701 CharacterOffsetEnd=1704 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=recently CharacterOffsetBegin=1705 CharacterOffsetEnd=1713 PartOfSpeech=RB Lemma=recently NamedEntityTag=DATE NormalizedNamedEntityTag=PAST_REF Timex=<TIMEX3 tid="t5" type="DATE" value="PAST_REF">recently</TIMEX3>] [Text=created CharacterOffsetBegin=1714 CharacterOffsetEnd=1721 PartOfSpeech=VBN Lemma=create NamedEntityTag=O] [Text=-LRB- CharacterOffsetBegin=1722 CharacterOffsetEnd=1723 PartOfSpeech=-LRB- Lemma=-lrb- NamedEntityTag=O] [Text=with CharacterOffsetBegin=1723 CharacterOffsetEnd=1727 PartOfSpeech=IN Lemma=with NamedEntityTag=O] [Text=funds CharacterOffsetBegin=1728 CharacterOffsetEnd=1733 PartOfSpeech=NNS Lemma=fund NamedEntityTag=O] [Text=from CharacterOffsetBegin=1734 CharacterOffsetEnd=1738 PartOfSpeech=IN Lemma=from NamedEntityTag=O] [Text=the CharacterOffsetBegin=1739 CharacterOffsetEnd=1742 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=EU CharacterOffsetBegin=1743 CharacterOffsetEnd=1745 PartOfSpeech=NNP Lemma=EU NamedEntityTag=LOCATION] [Text=-RRB- CharacterOffsetBegin=1745 CharacterOffsetEnd=1746 PartOfSpeech=-RRB- Lemma=-rrb- NamedEntityTag=O] [Text=anti-terrorist CharacterOffsetBegin=1747 CharacterOffsetEnd=1761 PartOfSpeech=JJ Lemma=anti-terrorist NamedEntityTag=O] [Text=unit CharacterOffsetBegin=1762 CharacterOffsetEnd=1766 PartOfSpeech=NN Lemma=unit NamedEntityTag=O] [Text=in CharacterOffsetBegin=1767 CharacterOffsetEnd=1769 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=Djakarta CharacterOffsetBegin=1770 CharacterOffsetEnd=1778 PartOfSpeech=NNP Lemma=Djakarta NamedEntityTag=LOCATION] [Text=. CharacterOffsetBegin=1778 CharacterOffsetEnd=1779 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+(ROOT
+  (S
+    (PP (IN On)
+      (NP (DT the) (NN contrary)))
+    (, ,)
+    (NP
+      (NP (CD one))
+      (PP (IN of)
+        (NP (PRP them))))
+    (VP (VBD was)
+      (VP (VBN promoted)
+        (S
+          (VP (TO to)
+            (VP (VB address)
+              (NP
+                (NP (DT the)
+                  (ADJP (RB recently) (VBN created)))
+                (PRN (-LRB- -LRB-)
+                  (PP (IN with)
+                    (NP
+                      (NP (NNS funds))
+                      (PP (IN from)
+                        (NP (DT the) (NNP EU)))))
+                  (-RRB- -RRB-)))
+              (PP
+                (NP (JJ anti-terrorist) (NN unit))
+                (IN in)
+                (NP (NNP Djakarta))))))))
+    (. .)))
+
+root(ROOT-0, promoted-9)
+det(contrary-3, the-2)
+prep_on(promoted-9, contrary-3)
+nsubjpass(promoted-9, one-5)
+prep_of(one-5, them-7)
+auxpass(promoted-9, was-8)
+aux(address-11, to-10)
+xcomp(promoted-9, address-11)
+det(created-14, the-12)
+advmod(created-14, recently-13)
+dobj(address-11, created-14)
+prep_with(created-14, funds-17)
+det(EU-20, the-19)
+prep_from(funds-17, EU-20)
+amod(unit-23, anti-terrorist-22)
+npadvmod(address-11, unit-23)
+prep_in(address-11, Djakarta-25)
+
+Sentence #12 (28 tokens):
+Since the fall of Suharto in 1988, Indonesia has become the third major democratic country in the world and in the most democratic Community Muslim history.
+[Text=Since CharacterOffsetBegin=1783 CharacterOffsetEnd=1788 PartOfSpeech=IN Lemma=since NamedEntityTag=O] [Text=the CharacterOffsetBegin=1789 CharacterOffsetEnd=1792 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=fall CharacterOffsetBegin=1793 CharacterOffsetEnd=1797 PartOfSpeech=NN Lemma=fall NamedEntityTag=DATE NormalizedNamedEntityTag=XXXX-FA Timex=<TIMEX3 tid="t6" type="DATE" value="XXXX-FA">fall</TIMEX3>] [Text=of CharacterOffsetBegin=1798 CharacterOffsetEnd=1800 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=Suharto CharacterOffsetBegin=1801 CharacterOffsetEnd=1808 PartOfSpeech=NNP Lemma=Suharto NamedEntityTag=PERSON] [Text=in CharacterOffsetBegin=1809 CharacterOffsetEnd=1811 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=1988 CharacterOffsetBegin=1812 CharacterOffsetEnd=1816 PartOfSpeech=CD Lemma=1988 NamedEntityTag=DATE NormalizedNamedEntityTag=1988 Timex=<TIMEX3 tid="t7" type="DATE" value="1988">1988</TIMEX3>] [Text=, CharacterOffsetBegin=1816 CharacterOffsetEnd=1817 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=Indonesia CharacterOffsetBegin=1818 CharacterOffsetEnd=1827 PartOfSpeech=NNP Lemma=Indonesia NamedEntityTag=LOCATION] [Text=has CharacterOffsetBegin=1828 CharacterOffsetEnd=1831 PartOfSpeech=VBZ Lemma=have NamedEntityTag=O] [Text=become CharacterOffsetBegin=1832 CharacterOffsetEnd=1838 PartOfSpeech=VBN Lemma=become NamedEntityTag=O] [Text=the CharacterOffsetBegin=1839 CharacterOffsetEnd=1842 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=third CharacterOffsetBegin=1843 CharacterOffsetEnd=1848 PartOfSpeech=JJ Lemma=third NamedEntityTag=ORDINAL NormalizedNamedEntityTag=3.0] [Text=major CharacterOffsetBegin=1849 CharacterOffsetEnd=1854 PartOfSpeech=JJ Lemma=major NamedEntityTag=O] [Text=democratic CharacterOffsetBegin=1855 CharacterOffsetEnd=1865 PartOfSpeech=JJ Lemma=democratic NamedEntityTag=O] [Text=country CharacterOffsetBegin=1866 CharacterOffsetEnd=1873 PartOfSpeech=NN Lemma=country NamedEntityTag=O] [Text=in CharacterOffsetBegin=1874 CharacterOffsetEnd=1876 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=the CharacterOffsetBegin=1877 CharacterOffsetEnd=1880 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=world CharacterOffsetBegin=1881 CharacterOffsetEnd=1886 PartOfSpeech=NN Lemma=world NamedEntityTag=O] [Text=and CharacterOffsetBegin=1887 CharacterOffsetEnd=1890 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=in CharacterOffsetBegin=1891 CharacterOffsetEnd=1893 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=the CharacterOffsetBegin=1894 CharacterOffsetEnd=1897 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=most CharacterOffsetBegin=1898 CharacterOffsetEnd=1902 PartOfSpeech=RBS Lemma=most NamedEntityTag=O] [Text=democratic CharacterOffsetBegin=1903 CharacterOffsetEnd=1913 PartOfSpeech=JJ Lemma=democratic NamedEntityTag=O] [Text=Community CharacterOffsetBegin=1914 CharacterOffsetEnd=1923 PartOfSpeech=NN Lemma=community NamedEntityTag=O] [Text=Muslim CharacterOffsetBegin=1924 CharacterOffsetEnd=1930 PartOfSpeech=JJ Lemma=muslim NamedEntityTag=O] [Text=history CharacterOffsetBegin=1931 CharacterOffsetEnd=1938 PartOfSpeech=NN Lemma=history NamedEntityTag=O] [Text=. CharacterOffsetBegin=1938 CharacterOffsetEnd=1939 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+(ROOT
+  (S
+    (PP (IN Since)
+      (NP
+        (NP (DT the) (NN fall))
+        (PP (IN of)
+          (NP
+            (NP (NNP Suharto))
+            (PP (IN in)
+              (NP (CD 1988)))))))
+    (, ,)
+    (NP (NNP Indonesia))
+    (VP (VBZ has)
+      (VP (VBN become)
+        (NP (DT the) (JJ third) (JJ major) (JJ democratic) (NN country))
+        (PP
+          (PP (IN in)
+            (NP (DT the) (NN world)))
+          (CC and)
+          (PP (IN in)
+            (NP (DT the)
+              (ADJP (RBS most) (JJ democratic))
+              (NN Community)))
+          (NP (JJ Muslim) (NN history)))))
+    (. .)))
+
+root(ROOT-0, become-11)
+det(fall-3, the-2)
+prep_since(become-11, fall-3)
+prep_of(fall-3, Suharto-5)
+prep_in(Suharto-5, 1988-7)
+nsubj(become-11, Indonesia-9)
+aux(become-11, has-10)
+det(country-16, the-12)
+amod(country-16, third-13)
+amod(country-16, major-14)
+amod(country-16, democratic-15)
+xcomp(become-11, country-16)
+det(world-19, the-18)
+prep_in(become-11, world-19)
+det(Community-25, the-22)
+advmod(democratic-24, most-23)
+amod(Community-25, democratic-24)
+conj_and(world-19, Community-25)
+amod(history-27, Muslim-26)
+pobj(become-11, history-27)
+
+Sentence #13 (15 tokens):
+This means that for every cut-throat not implemented, would die three innocent victims.
+[Text=This CharacterOffsetBegin=1943 CharacterOffsetEnd=1947 PartOfSpeech=DT Lemma=this NamedEntityTag=O] [Text=means CharacterOffsetBegin=1948 CharacterOffsetEnd=1953 PartOfSpeech=VBZ Lemma=mean NamedEntityTag=O] [Text=that CharacterOffsetBegin=1954 CharacterOffsetEnd=1958 PartOfSpeech=IN Lemma=that NamedEntityTag=O] [Text=for CharacterOffsetBegin=1959 CharacterOffsetEnd=1962 PartOfSpeech=IN Lemma=for NamedEntityTag=O] [Text=every CharacterOffsetBegin=1963 CharacterOffsetEnd=1968 PartOfSpeech=DT Lemma=every NamedEntityTag=O] [Text=cut-throat CharacterOffsetBegin=1969 CharacterOffsetEnd=1979 PartOfSpeech=JJ Lemma=cut-throat NamedEntityTag=O] [Text=not CharacterOffsetBegin=1980 CharacterOffsetEnd=1983 PartOfSpeech=RB Lemma=not NamedEntityTag=O] [Text=implemented CharacterOffsetBegin=1984 CharacterOffsetEnd=1995 PartOfSpeech=VBN Lemma=implement NamedEntityTag=O] [Text=, CharacterOffsetBegin=1995 CharacterOffsetEnd=1996 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=would CharacterOffsetBegin=1997 CharacterOffsetEnd=2002 PartOfSpeech=MD Lemma=would NamedEntityTag=O] [Text=die CharacterOffsetBegin=2003 CharacterOffsetEnd=2006 PartOfSpeech=VB Lemma=die NamedEntityTag=O] [Text=three CharacterOffsetBegin=2007 CharacterOffsetEnd=2012 PartOfSpeech=CD Lemma=three NamedEntityTag=NUMBER NormalizedNamedEntityTag=3.0] [Text=innocent CharacterOffsetBegin=2013 CharacterOffsetEnd=2021 PartOfSpeech=JJ Lemma=innocent NamedEntityTag=O] [Text=victims CharacterOffsetBegin=2022 CharacterOffsetEnd=2029 PartOfSpeech=NNS Lemma=victim NamedEntityTag=O] [Text=. CharacterOffsetBegin=2029 CharacterOffsetEnd=2030 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+(ROOT
+  (S
+    (NP (DT This))
+    (VP (VBZ means)
+      (SBAR (IN that)
+        (S
+          (PP (IN for)
+            (NP
+              (NP (DT every) (JJ cut-throat))
+              (VP (RB not) (VBN implemented))))
+          (, ,)
+          (VP (MD would)
+            (VP (VB die)
+              (NP (CD three) (JJ innocent) (NNS victims)))))))
+    (. .)))
+
+root(ROOT-0, means-2)
+nsubj(means-2, This-1)
+mark(die-11, that-3)
+det(cut-throat-6, every-5)
+prep_for(die-11, cut-throat-6)
+neg(implemented-8, not-7)
+vmod(cut-throat-6, implemented-8)
+aux(die-11, would-10)
+ccomp(means-2, die-11)
+num(victims-14, three-12)
+amod(victims-14, innocent-13)
+dobj(die-11, victims-14)
+
+Sentence #14 (14 tokens):
+Of course, I am concerned about the risk of implementing a innocent.
+[Text=Of CharacterOffsetBegin=2034 CharacterOffsetEnd=2036 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=course CharacterOffsetBegin=2037 CharacterOffsetEnd=2043 PartOfSpeech=NN Lemma=course NamedEntityTag=O] [Text=, CharacterOffsetBegin=2043 CharacterOffsetEnd=2044 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=I CharacterOffsetBegin=2045 CharacterOffsetEnd=2046 PartOfSpeech=PRP Lemma=I NamedEntityTag=O] [Text=am CharacterOffsetBegin=2047 CharacterOffsetEnd=2049 PartOfSpeech=VBP Lemma=be NamedEntityTag=O] [Text=concerned CharacterOffsetBegin=2050 CharacterOffsetEnd=2059 PartOfSpeech=VBN Lemma=concern NamedEntityTag=O] [Text=about CharacterOffsetBegin=2060 CharacterOffsetEnd=2065 PartOfSpeech=IN Lemma=about NamedEntityTag=O] [Text=the CharacterOffsetBegin=2066 CharacterOffsetEnd=2069 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=risk CharacterOffsetBegin=2070 CharacterOffsetEnd=2074 PartOfSpeech=NN Lemma=risk NamedEntityTag=O] [Text=of CharacterOffsetBegin=2075 CharacterOffsetEnd=2077 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=implementing CharacterOffsetBegin=2078 CharacterOffsetEnd=2090 PartOfSpeech=VBG Lemma=implement NamedEntityTag=O] [Text=a CharacterOffsetBegin=2091 CharacterOffsetEnd=2092 PartOfSpeech=DT Lemma=a NamedEntityTag=O] [Text=innocent CharacterOffsetBegin=2093 CharacterOffsetEnd=2101 PartOfSpeech=JJ Lemma=innocent NamedEntityTag=O] [Text=. CharacterOffsetBegin=2101 CharacterOffsetEnd=2102 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+(ROOT
+  (S
+    (PP (IN Of)
+      (NP (NN course)))
+    (, ,)
+    (NP (PRP I))
+    (VP (VBP am)
+      (ADJP (VBN concerned)
+        (PP (IN about)
+          (NP
+            (NP (DT the) (NN risk))
+            (PP (IN of)
+              (S
+                (VP (VBG implementing)
+                  (NP (DT a) (JJ innocent)))))))))
+    (. .)))
+
+root(ROOT-0, concerned-6)
+prep_of(concerned-6, course-2)
+nsubjpass(concerned-6, I-4)
+auxpass(concerned-6, am-5)
+det(risk-9, the-8)
+prep_about(concerned-6, risk-9)
+prepc_of(risk-9, implementing-11)
+det(innocent-13, a-12)
+dobj(implementing-11, innocent-13)
+
+Sentence #15 (18 tokens):
+And this process has been strengthened, with the development of the identification based on the DNA.
+[Text=And CharacterOffsetBegin=2106 CharacterOffsetEnd=2109 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=this CharacterOffsetBegin=2110 CharacterOffsetEnd=2114 PartOfSpeech=DT Lemma=this NamedEntityTag=O] [Text=process CharacterOffsetBegin=2115 CharacterOffsetEnd=2122 PartOfSpeech=NN Lemma=process NamedEntityTag=O] [Text=has CharacterOffsetBegin=2123 CharacterOffsetEnd=2126 PartOfSpeech=VBZ Lemma=have NamedEntityTag=O] [Text=been CharacterOffsetBegin=2127 CharacterOffsetEnd=2131 PartOfSpeech=VBN Lemma=be NamedEntityTag=O] [Text=strengthened CharacterOffsetBegin=2132 CharacterOffsetEnd=2144 PartOfSpeech=VBN Lemma=strengthen NamedEntityTag=O] [Text=, CharacterOffsetBegin=2144 CharacterOffsetEnd=2145 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=with CharacterOffsetBegin=2146 CharacterOffsetEnd=2150 PartOfSpeech=IN Lemma=with NamedEntityTag=O] [Text=the CharacterOffsetBegin=2151 CharacterOffsetEnd=2154 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=development CharacterOffsetBegin=2155 CharacterOffsetEnd=2166 PartOfSpeech=NN Lemma=development NamedEntityTag=O] [Text=of CharacterOffsetBegin=2167 CharacterOffsetEnd=2169 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=the CharacterOffsetBegin=2170 CharacterOffsetEnd=2173 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=identification CharacterOffsetBegin=2174 CharacterOffsetEnd=2188 PartOfSpeech=NN Lemma=identification NamedEntityTag=O] [Text=based CharacterOffsetBegin=2189 CharacterOffsetEnd=2194 PartOfSpeech=VBN Lemma=base NamedEntityTag=O] [Text=on CharacterOffsetBegin=2195 CharacterOffsetEnd=2197 PartOfSpeech=IN Lemma=on NamedEntityTag=O] [Text=the CharacterOffsetBegin=2198 CharacterOffsetEnd=2201 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=DNA CharacterOffsetBegin=2202 CharacterOffsetEnd=2205 PartOfSpeech=NN Lemma=dna NamedEntityTag=O] [Text=. CharacterOffsetBegin=2205 CharacterOffsetEnd=2206 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+(ROOT
+  (S (CC And)
+    (NP (DT this) (NN process))
+    (VP (VBZ has)
+      (VP (VBN been)
+        (VP (VBN strengthened) (, ,)
+          (PP (IN with)
+            (NP
+              (NP (DT the) (NN development))
+              (PP (IN of)
+                (NP
+                  (NP (DT the) (NN identification))
+                  (VP (VBN based)
+                    (PP (IN on)
+                      (NP (DT the) (NN DNA)))))))))))
+    (. .)))
+
+root(ROOT-0, strengthened-6)
+cc(strengthened-6, And-1)
+det(process-3, this-2)
+nsubjpass(strengthened-6, process-3)
+aux(strengthened-6, has-4)
+auxpass(strengthened-6, been-5)
+det(development-10, the-9)
+prep_with(strengthened-6, development-10)
+det(identification-13, the-12)
+prep_of(development-10, identification-13)
+vmod(identification-13, based-14)
+det(DNA-17, the-16)
+prep_on(based-14, DNA-17)
+
+Sentence #16 (44 tokens):
+Although these filters politicians are a complex issue in the post-Communist societies, where both the victimisation and cooperation are so common and the limits between them are so unclear, could have found a good solution, as in the Czech Republic.
+[Text=Although CharacterOffsetBegin=2210 CharacterOffsetEnd=2218 PartOfSpeech=IN Lemma=although NamedEntityTag=O] [Text=these CharacterOffsetBegin=2219 CharacterOffsetEnd=2224 PartOfSpeech=DT Lemma=these NamedEntityTag=O] [Text=filters CharacterOffsetBegin=2225 CharacterOffsetEnd=2232 PartOfSpeech=NNS Lemma=filter NamedEntityTag=O] [Text=politicians CharacterOffsetBegin=2233 CharacterOffsetEnd=2244 PartOfSpeech=NNS Lemma=politician NamedEntityTag=O] [Text=are CharacterOffsetBegin=2245 CharacterOffsetEnd=2248 PartOfSpeech=VBP Lemma=be NamedEntityTag=O] [Text=a CharacterOffsetBegin=2249 CharacterOffsetEnd=2250 PartOfSpeech=DT Lemma=a NamedEntityTag=O] [Text=complex CharacterOffsetBegin=2251 CharacterOffsetEnd=2258 PartOfSpeech=JJ Lemma=complex NamedEntityTag=O] [Text=issue CharacterOffsetBegin=2259 CharacterOffsetEnd=2264 PartOfSpeech=NN Lemma=issue NamedEntityTag=O] [Text=in CharacterOffsetBegin=2265 CharacterOffsetEnd=2267 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=the CharacterOffsetBegin=2268 CharacterOffsetEnd=2271 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=post-Communist CharacterOffsetBegin=2272 CharacterOffsetEnd=2286 PartOfSpeech=JJ Lemma=post-communist NamedEntityTag=MISC] [Text=societies CharacterOffsetBegin=2287 CharacterOffsetEnd=2296 PartOfSpeech=NNS Lemma=society NamedEntityTag=O] [Text=, CharacterOffsetBegin=2296 CharacterOffsetEnd=2297 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=where CharacterOffsetBegin=2298 CharacterOffsetEnd=2303 PartOfSpeech=WRB Lemma=where NamedEntityTag=O] [Text=both CharacterOffsetBegin=2304 CharacterOffsetEnd=2308 PartOfSpeech=CC Lemma=both NamedEntityTag=O] [Text=the CharacterOffsetBegin=2309 CharacterOffsetEnd=2312 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=victimisation CharacterOffsetBegin=2313 CharacterOffsetEnd=2326 PartOfSpeech=NN Lemma=victimisation NamedEntityTag=O] [Text=and CharacterOffsetBegin=2327 CharacterOffsetEnd=2330 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=cooperation CharacterOffsetBegin=2331 CharacterOffsetEnd=2342 PartOfSpeech=NN Lemma=cooperation NamedEntityTag=O] [Text=are CharacterOffsetBegin=2343 CharacterOffsetEnd=2346 PartOfSpeech=VBP Lemma=be NamedEntityTag=O] [Text=so CharacterOffsetBegin=2347 CharacterOffsetEnd=2349 PartOfSpeech=RB Lemma=so NamedEntityTag=O] [Text=common CharacterOffsetBegin=2350 CharacterOffsetEnd=2356 PartOfSpeech=JJ Lemma=common NamedEntityTag=O] [Text=and CharacterOffsetBegin=2357 CharacterOffsetEnd=2360 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=the CharacterOffsetBegin=2361 CharacterOffsetEnd=2364 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=limits CharacterOffsetBegin=2365 CharacterOffsetEnd=2371 PartOfSpeech=NNS Lemma=limit NamedEntityTag=O] [Text=between CharacterOffsetBegin=2372 CharacterOffsetEnd=2379 PartOfSpeech=IN Lemma=between NamedEntityTag=O] [Text=them CharacterOffsetBegin=2380 CharacterOffsetEnd=2384 PartOfSpeech=PRP Lemma=they NamedEntityTag=O] [Text=are CharacterOffsetBegin=2385 CharacterOffsetEnd=2388 PartOfSpeech=VBP Lemma=be NamedEntityTag=O] [Text=so CharacterOffsetBegin=2389 CharacterOffsetEnd=2391 PartOfSpeech=RB Lemma=so NamedEntityTag=O] [Text=unclear CharacterOffsetBegin=2392 CharacterOffsetEnd=2399 PartOfSpeech=JJ Lemma=unclear NamedEntityTag=O] [Text=, CharacterOffsetBegin=2399 CharacterOffsetEnd=2400 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=could CharacterOffsetBegin=2401 CharacterOffsetEnd=2406 PartOfSpeech=MD Lemma=could NamedEntityTag=O] [Text=have CharacterOffsetBegin=2407 CharacterOffsetEnd=2411 PartOfSpeech=VB Lemma=have NamedEntityTag=O] [Text=found CharacterOffsetBegin=2412 CharacterOffsetEnd=2417 PartOfSpeech=VBN Lemma=find NamedEntityTag=O] [Text=a CharacterOffsetBegin=2418 CharacterOffsetEnd=2419 PartOfSpeech=DT Lemma=a NamedEntityTag=O] [Text=good CharacterOffsetBegin=2420 CharacterOffsetEnd=2424 PartOfSpeech=JJ Lemma=good NamedEntityTag=O] [Text=solution CharacterOffsetBegin=2425 CharacterOffsetEnd=2433 PartOfSpeech=NN Lemma=solution NamedEntityTag=O] [Text=, CharacterOffsetBegin=2433 CharacterOffsetEnd=2434 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=as CharacterOffsetBegin=2435 CharacterOffsetEnd=2437 PartOfSpeech=IN Lemma=as NamedEntityTag=O] [Text=in CharacterOffsetBegin=2438 CharacterOffsetEnd=2440 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=the CharacterOffsetBegin=2441 CharacterOffsetEnd=2444 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=Czech CharacterOffsetBegin=2445 CharacterOffsetEnd=2450 PartOfSpeech=NNP Lemma=Czech NamedEntityTag=LOCATION] [Text=Republic CharacterOffsetBegin=2451 CharacterOffsetEnd=2459 PartOfSpeech=NNP Lemma=Republic NamedEntityTag=LOCATION] [Text=. CharacterOffsetBegin=2459 CharacterOffsetEnd=2460 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+(ROOT
+  (S
+    (SBAR (IN Although)
+      (S
+        (NP (DT these) (NNS filters) (NNS politicians))
+        (VP (VBP are)
+          (NP
+            (NP (DT a) (JJ complex) (NN issue))
+            (PP (IN in)
+              (NP (DT the) (JJ post-Communist) (NNS societies)))))))
+    (, ,)
+    (SBAR
+      (WHADVP (WRB where))
+      (S
+        (S
+          (NP (CC both)
+            (NP (DT the) (NN victimisation))
+            (CC and)
+            (NP (NN cooperation)))
+          (VP (VBP are)
+            (ADJP (RB so) (JJ common))))
+        (CC and)
+        (S
+          (NP
+            (NP (DT the) (NNS limits))
+            (PP (IN between)
+              (NP (PRP them))))
+          (VP (VBP are)
+            (ADJP (RB so) (JJ unclear))))))
+    (, ,)
+    (VP (MD could)
+      (VP (VB have)
+        (VP (VBN found)
+          (NP (DT a) (JJ good) (NN solution))
+          (, ,)
+          (PP (IN as)
+            (PP (IN in)
+              (NP (DT the) (NNP Czech) (NNP Republic)))))))
+    (. .)))
+
+root(ROOT-0, found-34)
+mark(issue-8, Although-1)
+det(politicians-4, these-2)
+nn(politicians-4, filters-3)
+nsubj(issue-8, politicians-4)
+cop(issue-8, are-5)
+det(issue-8, a-6)
+amod(issue-8, complex-7)
+advcl(found-34, issue-8)
+det(societies-12, the-10)
+amod(societies-12, post-Communist-11)
+prep_in(issue-8, societies-12)
+advmod(common-22, where-14)
+preconj(victimisation-17, both-15)
+det(victimisation-17, the-16)
+nsubj(common-22, victimisation-17)
+conj_and(victimisation-17, cooperation-19)
+cop(common-22, are-20)
+advmod(common-22, so-21)
+advcl(found-34, common-22)
+det(limits-25, the-24)
+nsubj(unclear-30, limits-25)
+prep_between(limits-25, them-27)
+cop(unclear-30, are-28)
+advmod(unclear-30, so-29)
+conj_and(common-22, unclear-30)
+aux(found-34, could-32)
+aux(found-34, have-33)
+det(solution-37, a-35)
+amod(solution-37, good-36)
+dobj(found-34, solution-37)
+prep(found-34, as-39)
+pcomp(as-39, in-40)
+det(Republic-43, the-41)
+nn(Republic-43, Czech-42)
+pobj(in-40, Republic-43)
+
+Sentence #17 (14 tokens):
+As in Ukraine, the Lebanon and Kyrgyzstan, decided on the streets.
+[Text=As CharacterOffsetBegin=2464 CharacterOffsetEnd=2466 PartOfSpeech=IN Lemma=as NamedEntityTag=O] [Text=in CharacterOffsetBegin=2467 CharacterOffsetEnd=2469 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=Ukraine CharacterOffsetBegin=2470 CharacterOffsetEnd=2477 PartOfSpeech=NNP Lemma=Ukraine NamedEntityTag=LOCATION] [Text=, CharacterOffsetBegin=2477 CharacterOffsetEnd=2478 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=the CharacterOffsetBegin=2479 CharacterOffsetEnd=2482 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=Lebanon CharacterOffsetBegin=2483 CharacterOffsetEnd=2490 PartOfSpeech=NNP Lemma=Lebanon NamedEntityTag=LOCATION] [Text=and CharacterOffsetBegin=2491 CharacterOffsetEnd=2494 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=Kyrgyzstan CharacterOffsetBegin=2495 CharacterOffsetEnd=2505 PartOfSpeech=NNP Lemma=Kyrgyzstan NamedEntityTag=LOCATION] [Text=, CharacterOffsetBegin=2505 CharacterOffsetEnd=2506 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=decided CharacterOffsetBegin=2507 CharacterOffsetEnd=2514 PartOfSpeech=VBD Lemma=decide NamedEntityTag=O] [Text=on CharacterOffsetBegin=2515 CharacterOffsetEnd=2517 PartOfSpeech=IN Lemma=on NamedEntityTag=O] [Text=the CharacterOffsetBegin=2518 CharacterOffsetEnd=2521 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=streets CharacterOffsetBegin=2522 CharacterOffsetEnd=2529 PartOfSpeech=NNS Lemma=street NamedEntityTag=O] [Text=. CharacterOffsetBegin=2529 CharacterOffsetEnd=2530 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+(ROOT
+  (S
+    (PP (IN As)
+      (PP (IN in)
+        (NP (NNP Ukraine))))
+    (, ,)
+    (NP
+      (NP (DT the) (NNP Lebanon))
+      (CC and)
+      (NP (NNP Kyrgyzstan))
+      (, ,))
+    (VP (VBD decided)
+      (PP (IN on)
+        (NP (DT the) (NNS streets))))
+    (. .)))
+
+root(ROOT-0, decided-10)
+prep(decided-10, As-1)
+pcomp(As-1, in-2)
+pobj(in-2, Ukraine-3)
+det(Lebanon-6, the-5)
+nsubj(decided-10, Lebanon-6)
+conj_and(Lebanon-6, Kyrgyzstan-8)
+det(streets-13, the-12)
+prep_on(decided-10, streets-13)
+
+Sentence #18 (11 tokens):
+But too low a level can give the same result.
+[Text=But CharacterOffsetBegin=2534 CharacterOffsetEnd=2537 PartOfSpeech=CC Lemma=but NamedEntityTag=O] [Text=too CharacterOffsetBegin=2538 CharacterOffsetEnd=2541 PartOfSpeech=RB Lemma=too NamedEntityTag=O] [Text=low CharacterOffsetBegin=2542 CharacterOffsetEnd=2545 PartOfSpeech=JJ Lemma=low NamedEntityTag=O] [Text=a CharacterOffsetBegin=2546 CharacterOffsetEnd=2547 PartOfSpeech=DT Lemma=a NamedEntityTag=O] [Text=level CharacterOffsetBegin=2548 CharacterOffsetEnd=2553 PartOfSpeech=NN Lemma=level NamedEntityTag=O] [Text=can CharacterOffsetBegin=2554 CharacterOffsetEnd=2557 PartOfSpeech=MD Lemma=can NamedEntityTag=O] [Text=give CharacterOffsetBegin=2558 CharacterOffsetEnd=2562 PartOfSpeech=VB Lemma=give NamedEntityTag=O] [Text=the CharacterOffsetBegin=2563 CharacterOffsetEnd=2566 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=same CharacterOffsetBegin=2567 CharacterOffsetEnd=2571 PartOfSpeech=JJ Lemma=same NamedEntityTag=O] [Text=result CharacterOffsetBegin=2572 CharacterOffsetEnd=2578 PartOfSpeech=NN Lemma=result NamedEntityTag=O] [Text=. CharacterOffsetBegin=2578 CharacterOffsetEnd=2579 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+(ROOT
+  (S (CC But)
+    (NP
+      (ADJP (RB too) (JJ low))
+      (DT a) (NN level))
+    (VP (MD can)
+      (VP (VB give)
+        (NP (DT the) (JJ same) (NN result))))
+    (. .)))
+
+root(ROOT-0, give-7)
+cc(give-7, But-1)
+advmod(low-3, too-2)
+amod(level-5, low-3)
+det(level-5, a-4)
+nsubj(give-7, level-5)
+aux(give-7, can-6)
+det(result-10, the-8)
+amod(result-10, same-9)
+dobj(give-7, result-10)
+
+Sentence #19 (33 tokens):
+The debt of the government of India is of more than 70% of GDP, so that more than half of their income tax is dedicated to the payment of interest.
+[Text=The CharacterOffsetBegin=2583 CharacterOffsetEnd=2586 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=debt CharacterOffsetBegin=2587 CharacterOffsetEnd=2591 PartOfSpeech=NN Lemma=debt NamedEntityTag=O] [Text=of CharacterOffsetBegin=2592 CharacterOffsetEnd=2594 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=the CharacterOffsetBegin=2595 CharacterOffsetEnd=2598 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=government CharacterOffsetBegin=2599 CharacterOffsetEnd=2609 PartOfSpeech=NN Lemma=government NamedEntityTag=O] [Text=of CharacterOffsetBegin=2610 CharacterOffsetEnd=2612 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=India CharacterOffsetBegin=2613 CharacterOffsetEnd=2618 PartOfSpeech=NNP Lemma=India NamedEntityTag=LOCATION] [Text=is CharacterOffsetBegin=2619 CharacterOffsetEnd=2621 PartOfSpeech=VBZ Lemma=be NamedEntityTag=O] [Text=of CharacterOffsetBegin=2622 CharacterOffsetEnd=2624 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=more CharacterOffsetBegin=2625 CharacterOffsetEnd=2629 PartOfSpeech=JJR Lemma=more NamedEntityTag=O] [Text=than CharacterOffsetBegin=2630 CharacterOffsetEnd=2634 PartOfSpeech=IN Lemma=than NamedEntityTag=O] [Text=70 CharacterOffsetBegin=2635 CharacterOffsetEnd=2637 PartOfSpeech=CD Lemma=70 NamedEntityTag=PERCENT NormalizedNamedEntityTag=>%70.0] [Text=% CharacterOffsetBegin=2637 CharacterOffsetEnd=2638 PartOfSpeech=NN Lemma=% NamedEntityTag=PERCENT NormalizedNamedEntityTag=>%70.0] [Text=of CharacterOffsetBegin=2639 CharacterOffsetEnd=2641 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=GDP CharacterOffsetBegin=2642 CharacterOffsetEnd=2645 PartOfSpeech=NNP Lemma=GDP NamedEntityTag=O] [Text=, CharacterOffsetBegin=2645 CharacterOffsetEnd=2646 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=so CharacterOffsetBegin=2647 CharacterOffsetEnd=2649 PartOfSpeech=RB Lemma=so NamedEntityTag=O] [Text=that CharacterOffsetBegin=2650 CharacterOffsetEnd=2654 PartOfSpeech=IN Lemma=that NamedEntityTag=O] [Text=more CharacterOffsetBegin=2655 CharacterOffsetEnd=2659 PartOfSpeech=JJR Lemma=more NamedEntityTag=O] [Text=than CharacterOffsetBegin=2660 CharacterOffsetEnd=2664 PartOfSpeech=IN Lemma=than NamedEntityTag=O] [Text=half CharacterOffsetBegin=2665 CharacterOffsetEnd=2669 PartOfSpeech=NN Lemma=half NamedEntityTag=O] [Text=of CharacterOffsetBegin=2670 CharacterOffsetEnd=2672 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=their CharacterOffsetBegin=2673 CharacterOffsetEnd=2678 PartOfSpeech=PRP$ Lemma=they NamedEntityTag=O] [Text=income CharacterOffsetBegin=2679 CharacterOffsetEnd=2685 PartOfSpeech=NN Lemma=income NamedEntityTag=O] [Text=tax CharacterOffsetBegin=2686 CharacterOffsetEnd=2689 PartOfSpeech=NN Lemma=tax NamedEntityTag=O] [Text=is CharacterOffsetBegin=2690 CharacterOffsetEnd=2692 PartOfSpeech=VBZ Lemma=be NamedEntityTag=O] [Text=dedicated CharacterOffsetBegin=2693 CharacterOffsetEnd=2702 PartOfSpeech=VBN Lemma=dedicate NamedEntityTag=O] [Text=to CharacterOffsetBegin=2703 CharacterOffsetEnd=2705 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=the CharacterOffsetBegin=2706 CharacterOffsetEnd=2709 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=payment CharacterOffsetBegin=2710 CharacterOffsetEnd=2717 PartOfSpeech=NN Lemma=payment NamedEntityTag=O] [Text=of CharacterOffsetBegin=2718 CharacterOffsetEnd=2720 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=interest CharacterOffsetBegin=2721 CharacterOffsetEnd=2729 PartOfSpeech=NN Lemma=interest NamedEntityTag=O] [Text=. CharacterOffsetBegin=2729 CharacterOffsetEnd=2730 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+(ROOT
+  (S
+    (NP
+      (NP (DT The) (NN debt))
+      (PP (IN of)
+        (NP
+          (NP (DT the) (NN government))
+          (PP (IN of)
+            (NP (NNP India))))))
+    (VP (VBZ is)
+      (PP (IN of)
+        (NP
+          (NP
+            (QP (JJR more) (IN than) (CD 70))
+            (NN %))
+          (PP (IN of)
+            (NP (NNP GDP)))))
+      (, ,)
+      (SBAR (RB so) (IN that)
+        (S
+          (NP
+            (NP
+              (QP (JJR more) (IN than) (NN half)))
+            (PP (IN of)
+              (NP (PRP$ their) (NN income) (NN tax))))
+          (VP (VBZ is)
+            (VP (VBN dedicated)
+              (PP (TO to)
+                (NP
+                  (NP (DT the) (NN payment))
+                  (PP (IN of)
+                    (NP (NN interest))))))))))
+    (. .)))
+
+root(ROOT-0, is-8)
+det(debt-2, The-1)
+nsubj(is-8, debt-2)
+det(government-5, the-4)
+prep_of(debt-2, government-5)
+prep_of(government-5, India-7)
+mwe(than-11, more-10)
+quantmod(70-12, than-11)
+num(%-13, 70-12)
+prep_of(is-8, %-13)
+prep_of(%-13, GDP-15)
+advmod(dedicated-27, so-17)
+mark(dedicated-27, that-18)
+quantmod(half-21, more-19)
+quantmod(half-21, than-20)
+nsubjpass(dedicated-27, half-21)
+poss(tax-25, their-23)
+nn(tax-25, income-24)
+prep_of(half-21, tax-25)
+auxpass(dedicated-27, is-26)
+advcl(is-8, dedicated-27)
+det(payment-30, the-29)
+prep_to(dedicated-27, payment-30)
+prep_of(payment-30, interest-32)
+
+Sentence #20 (32 tokens):
+In December 1999, the European Council gave Turkey the status of miembro-candidato to the EU, implying that would accede to the EU at a future date and not specified.
+[Text=In CharacterOffsetBegin=2734 CharacterOffsetEnd=2736 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=December CharacterOffsetBegin=2737 CharacterOffsetEnd=2745 PartOfSpeech=NNP Lemma=December NamedEntityTag=DATE NormalizedNamedEntityTag=1999-12 Timex=<TIMEX3 tid="t8" type="DATE" value="1999-12">December 1999</TIMEX3>] [Text=1999 CharacterOffsetBegin=2746 CharacterOffsetEnd=2750 PartOfSpeech=CD Lemma=1999 NamedEntityTag=DATE NormalizedNamedEntityTag=1999-12 Timex=<TIMEX3 tid="t8" type="DATE" value="1999-12">December 1999</TIMEX3>] [Text=, CharacterOffsetBegin=2750 CharacterOffsetEnd=2751 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=the CharacterOffsetBegin=2752 CharacterOffsetEnd=2755 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=European CharacterOffsetBegin=2756 CharacterOffsetEnd=2764 PartOfSpeech=JJ Lemma=european NamedEntityTag=ORGANIZATION] [Text=Council CharacterOffsetBegin=2765 CharacterOffsetEnd=2772 PartOfSpeech=NNP Lemma=Council NamedEntityTag=ORGANIZATION] [Text=gave CharacterOffsetBegin=2773 CharacterOffsetEnd=2777 PartOfSpeech=VBD Lemma=give NamedEntityTag=O] [Text=Turkey CharacterOffsetBegin=2778 CharacterOffsetEnd=2784 PartOfSpeech=NNP Lemma=Turkey NamedEntityTag=LOCATION] [Text=the CharacterOffsetBegin=2785 CharacterOffsetEnd=2788 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=status CharacterOffsetBegin=2789 CharacterOffsetEnd=2795 PartOfSpeech=NN Lemma=status NamedEntityTag=O] [Text=of CharacterOffsetBegin=2796 CharacterOffsetEnd=2798 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=miembro-candidato CharacterOffsetBegin=2799 CharacterOffsetEnd=2816 PartOfSpeech=NN Lemma=miembro-candidato NamedEntityTag=O] [Text=to CharacterOffsetBegin=2817 CharacterOffsetEnd=2819 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=the CharacterOffsetBegin=2820 CharacterOffsetEnd=2823 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=EU CharacterOffsetBegin=2824 CharacterOffsetEnd=2826 PartOfSpeech=NNP Lemma=EU NamedEntityTag=ORGANIZATION] [Text=, CharacterOffsetBegin=2826 CharacterOffsetEnd=2827 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=implying CharacterOffsetBegin=2828 CharacterOffsetEnd=2836 PartOfSpeech=VBG Lemma=imply NamedEntityTag=O] [Text=that CharacterOffsetBegin=2837 CharacterOffsetEnd=2841 PartOfSpeech=DT Lemma=that NamedEntityTag=O] [Text=would CharacterOffsetBegin=2842 CharacterOffsetEnd=2847 PartOfSpeech=MD Lemma=would NamedEntityTag=O] [Text=accede CharacterOffsetBegin=2848 CharacterOffsetEnd=2854 PartOfSpeech=VB Lemma=accede NamedEntityTag=O] [Text=to CharacterOffsetBegin=2855 CharacterOffsetEnd=2857 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=the CharacterOffsetBegin=2858 CharacterOffsetEnd=2861 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=EU CharacterOffsetBegin=2862 CharacterOffsetEnd=2864 PartOfSpeech=NNP Lemma=EU NamedEntityTag=ORGANIZATION] [Text=at CharacterOffsetBegin=2865 CharacterOffsetEnd=2867 PartOfSpeech=IN Lemma=at NamedEntityTag=O] [Text=a CharacterOffsetBegin=2868 CharacterOffsetEnd=2869 PartOfSpeech=DT Lemma=a NamedEntityTag=O] [Text=future CharacterOffsetBegin=2870 CharacterOffsetEnd=2876 PartOfSpeech=JJ Lemma=future NamedEntityTag=DATE NormalizedNamedEntityTag=FUTURE_REF Timex=<TIMEX3 tid="t9" type="DATE" value="FUTURE_REF">future</TIMEX3>] [Text=date CharacterOffsetBegin=2877 CharacterOffsetEnd=2881 PartOfSpeech=NN Lemma=date NamedEntityTag=O] [Text=and CharacterOffsetBegin=2882 CharacterOffsetEnd=2885 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=not CharacterOffsetBegin=2886 CharacterOffsetEnd=2889 PartOfSpeech=RB Lemma=not NamedEntityTag=O] [Text=specified CharacterOffsetBegin=2890 CharacterOffsetEnd=2899 PartOfSpeech=VBN Lemma=specify NamedEntityTag=O] [Text=. CharacterOffsetBegin=2899 CharacterOffsetEnd=2900 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+(ROOT
+  (S
+    (S
+      (PP (IN In)
+        (NP (NNP December) (CD 1999)))
+      (, ,)
+      (NP (DT the) (JJ European) (NNP Council))
+      (VP (VBD gave)
+        (NP (NNP Turkey))
+        (NP
+          (NP (DT the) (NN status))
+          (PP (IN of)
+            (NP (NN miembro-candidato))))
+        (PP (TO to)
+          (NP (DT the) (NNP EU)))
+        (, ,)
+        (S
+          (VP (VBG implying)
+            (SBAR
+              (S
+                (NP (DT that))
+                (VP (MD would)
+                  (VP (VB accede)
+                    (PP (TO to)
+                      (NP (DT the) (NNP EU)))
+                    (PP (IN at)
+                      (NP (DT a) (JJ future) (NN date)))))))))))
+    (CC and)
+    (RB not)
+    (S
+      (VP (VBN specified)))
+    (. .)))
+
+root(ROOT-0, gave-8)
+prep_in(gave-8, December-2)
+num(December-2, 1999-3)
+det(Council-7, the-5)
+amod(Council-7, European-6)
+nsubj(gave-8, Council-7)
+iobj(gave-8, Turkey-9)
+det(status-11, the-10)
+dobj(gave-8, status-11)
+prep_of(status-11, miembro-candidato-13)
+det(EU-16, the-15)
+prep_to(gave-8, EU-16)
+vmod(gave-8, implying-18)
+nsubj(accede-21, that-19)
+aux(accede-21, would-20)
+ccomp(implying-18, accede-21)
+det(EU-24, the-23)
+prep_to(accede-21, EU-24)
+det(date-28, a-26)
+amod(date-28, future-27)
+prep_at(accede-21, date-28)
+neg(specified-31, not-30)
+conj_and(gave-8, specified-31)
+
+Sentence #21 (28 tokens):
+Democracy is absent or incomplete in countries such as Cuba, Mexico and Nicaragua, and is threatened by a reason or another in Venezuela and Colombia.
+[Text=Democracy CharacterOffsetBegin=2904 CharacterOffsetEnd=2913 PartOfSpeech=NN Lemma=democracy NamedEntityTag=O] [Text=is CharacterOffsetBegin=2914 CharacterOffsetEnd=2916 PartOfSpeech=VBZ Lemma=be NamedEntityTag=O] [Text=absent CharacterOffsetBegin=2917 CharacterOffsetEnd=2923 PartOfSpeech=JJ Lemma=absent NamedEntityTag=O] [Text=or CharacterOffsetBegin=2924 CharacterOffsetEnd=2926 PartOfSpeech=CC Lemma=or NamedEntityTag=O] [Text=incomplete CharacterOffsetBegin=2927 CharacterOffsetEnd=2937 PartOfSpeech=JJ Lemma=incomplete NamedEntityTag=O] [Text=in CharacterOffsetBegin=2938 CharacterOffsetEnd=2940 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=countries CharacterOffsetBegin=2941 CharacterOffsetEnd=2950 PartOfSpeech=NNS Lemma=country NamedEntityTag=O] [Text=such CharacterOffsetBegin=2951 CharacterOffsetEnd=2955 PartOfSpeech=JJ Lemma=such NamedEntityTag=O] [Text=as CharacterOffsetBegin=2956 CharacterOffsetEnd=2958 PartOfSpeech=IN Lemma=as NamedEntityTag=O] [Text=Cuba CharacterOffsetBegin=2959 CharacterOffsetEnd=2963 PartOfSpeech=NNP Lemma=Cuba NamedEntityTag=LOCATION] [Text=, CharacterOffsetBegin=2963 CharacterOffsetEnd=2964 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=Mexico CharacterOffsetBegin=2965 CharacterOffsetEnd=2971 PartOfSpeech=NNP Lemma=Mexico NamedEntityTag=LOCATION] [Text=and CharacterOffsetBegin=2972 CharacterOffsetEnd=2975 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=Nicaragua CharacterOffsetBegin=2976 CharacterOffsetEnd=2985 PartOfSpeech=NNP Lemma=Nicaragua NamedEntityTag=LOCATION] [Text=, CharacterOffsetBegin=2985 CharacterOffsetEnd=2986 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=and CharacterOffsetBegin=2987 CharacterOffsetEnd=2990 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=is CharacterOffsetBegin=2991 CharacterOffsetEnd=2993 PartOfSpeech=VBZ Lemma=be NamedEntityTag=O] [Text=threatened CharacterOffsetBegin=2994 CharacterOffsetEnd=3004 PartOfSpeech=VBN Lemma=threaten NamedEntityTag=O] [Text=by CharacterOffsetBegin=3005 CharacterOffsetEnd=3007 PartOfSpeech=IN Lemma=by NamedEntityTag=O] [Text=a CharacterOffsetBegin=3008 CharacterOffsetEnd=3009 PartOfSpeech=DT Lemma=a NamedEntityTag=O] [Text=reason CharacterOffsetBegin=3010 CharacterOffsetEnd=3016 PartOfSpeech=NN Lemma=reason NamedEntityTag=O] [Text=or CharacterOffsetBegin=3017 CharacterOffsetEnd=3019 PartOfSpeech=CC Lemma=or NamedEntityTag=O] [Text=another CharacterOffsetBegin=3020 CharacterOffsetEnd=3027 PartOfSpeech=DT Lemma=another NamedEntityTag=O] [Text=in CharacterOffsetBegin=3028 CharacterOffsetEnd=3030 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=Venezuela CharacterOffsetBegin=3031 CharacterOffsetEnd=3040 PartOfSpeech=NNP Lemma=Venezuela NamedEntityTag=LOCATION] [Text=and CharacterOffsetBegin=3041 CharacterOffsetEnd=3044 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=Colombia CharacterOffsetBegin=3045 CharacterOffsetEnd=3053 PartOfSpeech=NNP Lemma=Colombia NamedEntityTag=LOCATION] [Text=. CharacterOffsetBegin=3053 CharacterOffsetEnd=3054 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+(ROOT
+  (S
+    (NP (NN Democracy))
+    (VP
+      (VP (VBZ is)
+        (ADJP (JJ absent)
+          (CC or)
+          (JJ incomplete))
+        (PP (IN in)
+          (NP
+            (NP (NNS countries))
+            (PP (JJ such) (IN as)
+              (NP (NNP Cuba) (, ,) (NNP Mexico)
+                (CC and)
+                (NNP Nicaragua))))))
+      (, ,)
+      (CC and)
+      (VP (VBZ is)
+        (VP (VBN threatened)
+          (PP (IN by)
+            (NP
+              (NP (DT a) (NN reason))
+              (CC or)
+              (NP (DT another))))
+          (PP (IN in)
+            (NP (NNP Venezuela)
+              (CC and)
+              (NNP Colombia))))))
+    (. .)))
+
+root(ROOT-0, absent-3)
+nsubj(absent-3, Democracy-1)
+cop(absent-3, is-2)
+conj_or(absent-3, incomplete-5)
+prep_in(absent-3, countries-7)
+prep_such_as(countries-7, Cuba-10)
+conj_and(Cuba-10, Mexico-12)
+conj_and(Cuba-10, Nicaragua-14)
+auxpass(threatened-18, is-17)
+conj_and(absent-3, threatened-18)
+det(reason-21, a-20)
+agent(threatened-18, reason-21)
+conj_or(reason-21, another-23)
+prep_in(threatened-18, Venezuela-25)
+conj_and(Venezuela-25, Colombia-27)
+
+Sentence #22 (33 tokens):
+Evo Morales, the leader of the opposition and the coca leaf, may be a democratic leader honestly, although disoriented, but it does have its supporters of authoritarian wishes?
+[Text=Evo CharacterOffsetBegin=3058 CharacterOffsetEnd=3061 PartOfSpeech=NNP Lemma=Evo NamedEntityTag=PERSON] [Text=Morales CharacterOffsetBegin=3062 CharacterOffsetEnd=3069 PartOfSpeech=NNP Lemma=Morales NamedEntityTag=PERSON] [Text=, CharacterOffsetBegin=3069 CharacterOffsetEnd=3070 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=the CharacterOffsetBegin=3071 CharacterOffsetEnd=3074 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=leader CharacterOffsetBegin=3075 CharacterOffsetEnd=3081 PartOfSpeech=NN Lemma=leader NamedEntityTag=O] [Text=of CharacterOffsetBegin=3082 CharacterOffsetEnd=3084 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=the CharacterOffsetBegin=3085 CharacterOffsetEnd=3088 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=opposition CharacterOffsetBegin=3089 CharacterOffsetEnd=3099 PartOfSpeech=NN Lemma=opposition NamedEntityTag=O] [Text=and CharacterOffsetBegin=3100 CharacterOffsetEnd=3103 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=the CharacterOffsetBegin=3104 CharacterOffsetEnd=3107 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=coca CharacterOffsetBegin=3108 CharacterOffsetEnd=3112 PartOfSpeech=NN Lemma=coca NamedEntityTag=O] [Text=leaf CharacterOffsetBegin=3113 CharacterOffsetEnd=3117 PartOfSpeech=NN Lemma=leaf NamedEntityTag=O] [Text=, CharacterOffsetBegin=3117 CharacterOffsetEnd=3118 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=may CharacterOffsetBegin=3119 CharacterOffsetEnd=3122 PartOfSpeech=MD Lemma=may NamedEntityTag=O] [Text=be CharacterOffsetBegin=3123 CharacterOffsetEnd=3125 PartOfSpeech=VB Lemma=be NamedEntityTag=O] [Text=a CharacterOffsetBegin=3126 CharacterOffsetEnd=3127 PartOfSpeech=DT Lemma=a NamedEntityTag=O] [Text=democratic CharacterOffsetBegin=3128 CharacterOffsetEnd=3138 PartOfSpeech=JJ Lemma=democratic NamedEntityTag=O] [Text=leader CharacterOffsetBegin=3139 CharacterOffsetEnd=3145 PartOfSpeech=NN Lemma=leader NamedEntityTag=O] [Text=honestly CharacterOffsetBegin=3146 CharacterOffsetEnd=3154 PartOfSpeech=RB Lemma=honestly NamedEntityTag=O] [Text=, CharacterOffsetBegin=3154 CharacterOffsetEnd=3155 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=although CharacterOffsetBegin=3156 CharacterOffsetEnd=3164 PartOfSpeech=IN Lemma=although NamedEntityTag=O] [Text=disoriented CharacterOffsetBegin=3165 CharacterOffsetEnd=3176 PartOfSpeech=JJ Lemma=disoriented NamedEntityTag=O] [Text=, CharacterOffsetBegin=3176 CharacterOffsetEnd=3177 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=but CharacterOffsetBegin=3178 CharacterOffsetEnd=3181 PartOfSpeech=CC Lemma=but NamedEntityTag=O] [Text=it CharacterOffsetBegin=3182 CharacterOffsetEnd=3184 PartOfSpeech=PRP Lemma=it NamedEntityTag=O] [Text=does CharacterOffsetBegin=3185 CharacterOffsetEnd=3189 PartOfSpeech=VBZ Lemma=do NamedEntityTag=O] [Text=have CharacterOffsetBegin=3190 CharacterOffsetEnd=3194 PartOfSpeech=VB Lemma=have NamedEntityTag=O] [Text=its CharacterOffsetBegin=3195 CharacterOffsetEnd=3198 PartOfSpeech=PRP$ Lemma=its NamedEntityTag=O] [Text=supporters CharacterOffsetBegin=3199 CharacterOffsetEnd=3209 PartOfSpeech=NNS Lemma=supporter NamedEntityTag=O] [Text=of CharacterOffsetBegin=3210 CharacterOffsetEnd=3212 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=authoritarian CharacterOffsetBegin=3213 CharacterOffsetEnd=3226 PartOfSpeech=JJ Lemma=authoritarian NamedEntityTag=O] [Text=wishes CharacterOffsetBegin=3227 CharacterOffsetEnd=3233 PartOfSpeech=NNS Lemma=wish NamedEntityTag=O] [Text=? CharacterOffsetBegin=3233 CharacterOffsetEnd=3234 PartOfSpeech=. Lemma=? NamedEntityTag=O] 
+(ROOT
+  (S
+    (S
+      (NP
+        (NP (NNP Evo) (NNP Morales))
+        (, ,)
+        (NP
+          (NP (DT the) (NN leader))
+          (PP (IN of)
+            (NP
+              (NP (DT the) (NN opposition))
+              (CC and)
+              (NP (DT the) (NN coca) (NN leaf)))))
+        (, ,))
+      (VP (MD may)
+        (VP (VB be)
+          (NP (DT a) (JJ democratic) (NN leader))
+          (ADVP (RB honestly))
+          (, ,)
+          (ADJP (IN although) (JJ disoriented)))))
+    (, ,)
+    (CC but)
+    (S
+      (NP (PRP it))
+      (VP (VBZ does)
+        (VP (VB have)
+          (NP
+            (NP (PRP$ its) (NNS supporters))
+            (PP (IN of)
+              (NP (JJ authoritarian) (NNS wishes)))))))
+    (. ?)))
+
+root(ROOT-0, disoriented-22)
+nn(Morales-2, Evo-1)
+nsubj(disoriented-22, Morales-2)
+det(leader-5, the-4)
+appos(Morales-2, leader-5)
+det(opposition-8, the-7)
+prep_of(leader-5, opposition-8)
+det(leaf-12, the-10)
+nn(leaf-12, coca-11)
+conj_and(opposition-8, leaf-12)
+aux(disoriented-22, may-14)
+cop(disoriented-22, be-15)
+det(leader-18, a-16)
+amod(leader-18, democratic-17)
+dep(disoriented-22, leader-18)
+advmod(disoriented-22, honestly-19)
+dep(disoriented-22, although-21)
+nsubj(have-27, it-25)
+aux(have-27, does-26)
+conj_but(disoriented-22, have-27)
+poss(supporters-29, its-28)
+dobj(have-27, supporters-29)
+amod(wishes-32, authoritarian-31)
+prep_of(supporters-29, wishes-32)
+
+Sentence #23 (42 tokens):
+The French State spending huge amounts of money on the improvement of its language and its culture, and yet, the French are painfully aware of the overall position of your country is no longer what it was ever again.
+[Text=The CharacterOffsetBegin=3238 CharacterOffsetEnd=3241 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=French CharacterOffsetBegin=3242 CharacterOffsetEnd=3248 PartOfSpeech=JJ Lemma=french NamedEntityTag=MISC] [Text=State CharacterOffsetBegin=3249 CharacterOffsetEnd=3254 PartOfSpeech=NN Lemma=state NamedEntityTag=O] [Text=spending CharacterOffsetBegin=3255 CharacterOffsetEnd=3263 PartOfSpeech=NN Lemma=spending NamedEntityTag=O] [Text=huge CharacterOffsetBegin=3264 CharacterOffsetEnd=3268 PartOfSpeech=JJ Lemma=huge NamedEntityTag=O] [Text=amounts CharacterOffsetBegin=3269 CharacterOffsetEnd=3276 PartOfSpeech=NNS Lemma=amount NamedEntityTag=O] [Text=of CharacterOffsetBegin=3277 CharacterOffsetEnd=3279 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=money CharacterOffsetBegin=3280 CharacterOffsetEnd=3285 PartOfSpeech=NN Lemma=money NamedEntityTag=O] [Text=on CharacterOffsetBegin=3286 CharacterOffsetEnd=3288 PartOfSpeech=IN Lemma=on NamedEntityTag=O] [Text=the CharacterOffsetBegin=3289 CharacterOffsetEnd=3292 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=improvement CharacterOffsetBegin=3293 CharacterOffsetEnd=3304 PartOfSpeech=NN Lemma=improvement NamedEntityTag=O] [Text=of CharacterOffsetBegin=3305 CharacterOffsetEnd=3307 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=its CharacterOffsetBegin=3308 CharacterOffsetEnd=3311 PartOfSpeech=PRP$ Lemma=its NamedEntityTag=O] [Text=language CharacterOffsetBegin=3312 CharacterOffsetEnd=3320 PartOfSpeech=NN Lemma=language NamedEntityTag=O] [Text=and CharacterOffsetBegin=3321 CharacterOffsetEnd=3324 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=its CharacterOffsetBegin=3325 CharacterOffsetEnd=3328 PartOfSpeech=PRP$ Lemma=its NamedEntityTag=O] [Text=culture CharacterOffsetBegin=3329 CharacterOffsetEnd=3336 PartOfSpeech=NN Lemma=culture NamedEntityTag=O] [Text=, CharacterOffsetBegin=3336 CharacterOffsetEnd=3337 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=and CharacterOffsetBegin=3338 CharacterOffsetEnd=3341 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=yet CharacterOffsetBegin=3342 CharacterOffsetEnd=3345 PartOfSpeech=RB Lemma=yet NamedEntityTag=O] [Text=, CharacterOffsetBegin=3345 CharacterOffsetEnd=3346 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=the CharacterOffsetBegin=3347 CharacterOffsetEnd=3350 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=French CharacterOffsetBegin=3351 CharacterOffsetEnd=3357 PartOfSpeech=NNP Lemma=French NamedEntityTag=MISC] [Text=are CharacterOffsetBegin=3358 CharacterOffsetEnd=3361 PartOfSpeech=VBP Lemma=be NamedEntityTag=O] [Text=painfully CharacterOffsetBegin=3362 CharacterOffsetEnd=3371 PartOfSpeech=RB Lemma=painfully NamedEntityTag=O] [Text=aware CharacterOffsetBegin=3372 CharacterOffsetEnd=3377 PartOfSpeech=JJ Lemma=aware NamedEntityTag=O] [Text=of CharacterOffsetBegin=3378 CharacterOffsetEnd=3380 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=the CharacterOffsetBegin=3381 CharacterOffsetEnd=3384 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=overall CharacterOffsetBegin=3385 CharacterOffsetEnd=3392 PartOfSpeech=JJ Lemma=overall NamedEntityTag=O] [Text=position CharacterOffsetBegin=3393 CharacterOffsetEnd=3401 PartOfSpeech=NN Lemma=position NamedEntityTag=O] [Text=of CharacterOffsetBegin=3402 CharacterOffsetEnd=3404 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=your CharacterOffsetBegin=3405 CharacterOffsetEnd=3409 PartOfSpeech=PRP$ Lemma=you NamedEntityTag=O] [Text=country CharacterOffsetBegin=3410 CharacterOffsetEnd=3417 PartOfSpeech=NN Lemma=country NamedEntityTag=O] [Text=is CharacterOffsetBegin=3418 CharacterOffsetEnd=3420 PartOfSpeech=VBZ Lemma=be NamedEntityTag=O] [Text=no CharacterOffsetBegin=3421 CharacterOffsetEnd=3423 PartOfSpeech=RB Lemma=no NamedEntityTag=O] [Text=longer CharacterOffsetBegin=3424 CharacterOffsetEnd=3430 PartOfSpeech=RB Lemma=longer NamedEntityTag=O] [Text=what CharacterOffsetBegin=3431 CharacterOffsetEnd=3435 PartOfSpeech=WP Lemma=what NamedEntityTag=O] [Text=it CharacterOffsetBegin=3436 CharacterOffsetEnd=3438 PartOfSpeech=PRP Lemma=it NamedEntityTag=O] [Text=was CharacterOffsetBegin=3439 CharacterOffsetEnd=3442 PartOfSpeech=VBD Lemma=be NamedEntityTag=O] [Text=ever CharacterOffsetBegin=3443 CharacterOffsetEnd=3447 PartOfSpeech=RB Lemma=ever NamedEntityTag=O] [Text=again CharacterOffsetBegin=3448 CharacterOffsetEnd=3453 PartOfSpeech=RB Lemma=again NamedEntityTag=O] [Text=. CharacterOffsetBegin=3453 CharacterOffsetEnd=3454 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+(ROOT
+  (S
+    (NP
+      (NP (DT The) (JJ French) (NN State) (NN spending))
+      (SBAR
+        (S
+          (NP
+            (NP (JJ huge) (NNS amounts))
+            (PP (IN of)
+              (NP
+                (NP (NN money))
+                (PP (IN on)
+                  (NP
+                    (NP
+                      (NP (DT the) (NN improvement))
+                      (PP (IN of)
+                        (NP
+                          (NP (PRP$ its) (NN language))
+                          (CC and)
+                          (NP (PRP$ its) (NN culture)))))
+                    (, ,)
+                    (CC and)
+                    (ADVP (RB yet))
+                    (, ,)
+                    (NP (DT the) (NNP French)))))))
+          (VP (VBP are)
+            (ADJP (RB painfully) (JJ aware)))))
+      (PP (IN of)
+        (NP
+          (NP (DT the) (JJ overall) (NN position))
+          (PP (IN of)
+            (NP (PRP$ your) (NN country))))))
+    (VP (VBZ is)
+      (ADVP
+        (ADVP (RB no) (RB longer))
+        (SBAR
+          (WHNP (WP what))
+          (S
+            (NP (PRP it))
+            (VP (VBD was)
+              (ADVP (RB ever))
+              (ADVP (RB again)))))))
+    (. .)))
+
+root(ROOT-0, is-34)
+det(spending-4, The-1)
+amod(spending-4, French-2)
+nn(spending-4, State-3)
+nsubj(is-34, spending-4)
+amod(amounts-6, huge-5)
+nsubj(aware-26, amounts-6)
+prep_of(amounts-6, money-8)
+det(improvement-11, the-10)
+prep_on(money-8, improvement-11)
+poss(language-14, its-13)
+prep_of(improvement-11, language-14)
+poss(culture-17, its-16)
+conj_and(language-14, culture-17)
+advmod(improvement-11, yet-20)
+det(French-23, the-22)
+conj_and(improvement-11, French-23)
+cop(aware-26, are-24)
+advmod(aware-26, painfully-25)
+rcmod(spending-4, aware-26)
+det(position-30, the-28)
+amod(position-30, overall-29)
+prep_of(spending-4, position-30)
+poss(country-33, your-32)
+prep_of(position-30, country-33)
+neg(longer-36, no-35)
+advmod(is-34, longer-36)
+dobj(was-39, what-37)
+nsubj(was-39, it-38)
+ccomp(longer-36, was-39)
+advmod(was-39, ever-40)
+advmod(was-39, again-41)
+
+Sentence #24 (46 tokens):
+The OECD and Eurostat, the European body responsible for this type of data, thought they had finished with this aspect of the controversy at show that France, Germany, Italy and great Britain have approximately the same levels of life per capita.
+[Text=The CharacterOffsetBegin=3458 CharacterOffsetEnd=3461 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=OECD CharacterOffsetBegin=3462 CharacterOffsetEnd=3466 PartOfSpeech=NNP Lemma=OECD NamedEntityTag=ORGANIZATION] [Text=and CharacterOffsetBegin=3467 CharacterOffsetEnd=3470 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=Eurostat CharacterOffsetBegin=3471 CharacterOffsetEnd=3479 PartOfSpeech=NNP Lemma=Eurostat NamedEntityTag=ORGANIZATION] [Text=, CharacterOffsetBegin=3479 CharacterOffsetEnd=3480 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=the CharacterOffsetBegin=3481 CharacterOffsetEnd=3484 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=European CharacterOffsetBegin=3485 CharacterOffsetEnd=3493 PartOfSpeech=JJ Lemma=european NamedEntityTag=MISC] [Text=body CharacterOffsetBegin=3494 CharacterOffsetEnd=3498 PartOfSpeech=NN Lemma=body NamedEntityTag=O] [Text=responsible CharacterOffsetBegin=3499 CharacterOffsetEnd=3510 PartOfSpeech=JJ Lemma=responsible NamedEntityTag=O] [Text=for CharacterOffsetBegin=3511 CharacterOffsetEnd=3514 PartOfSpeech=IN Lemma=for NamedEntityTag=O] [Text=this CharacterOffsetBegin=3515 CharacterOffsetEnd=3519 PartOfSpeech=DT Lemma=this NamedEntityTag=O] [Text=type CharacterOffsetBegin=3520 CharacterOffsetEnd=3524 PartOfSpeech=NN Lemma=type NamedEntityTag=O] [Text=of CharacterOffsetBegin=3525 CharacterOffsetEnd=3527 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=data CharacterOffsetBegin=3528 CharacterOffsetEnd=3532 PartOfSpeech=NNS Lemma=datum NamedEntityTag=O] [Text=, CharacterOffsetBegin=3532 CharacterOffsetEnd=3533 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=thought CharacterOffsetBegin=3534 CharacterOffsetEnd=3541 PartOfSpeech=VBD Lemma=think NamedEntityTag=O] [Text=they CharacterOffsetBegin=3542 CharacterOffsetEnd=3546 PartOfSpeech=PRP Lemma=they NamedEntityTag=O] [Text=had CharacterOffsetBegin=3547 CharacterOffsetEnd=3550 PartOfSpeech=VBD Lemma=have NamedEntityTag=O] [Text=finished CharacterOffsetBegin=3551 CharacterOffsetEnd=3559 PartOfSpeech=VBN Lemma=finish NamedEntityTag=O] [Text=with CharacterOffsetBegin=3560 CharacterOffsetEnd=3564 PartOfSpeech=IN Lemma=with NamedEntityTag=O] [Text=this CharacterOffsetBegin=3565 CharacterOffsetEnd=3569 PartOfSpeech=DT Lemma=this NamedEntityTag=O] [Text=aspect CharacterOffsetBegin=3570 CharacterOffsetEnd=3576 PartOfSpeech=NN Lemma=aspect NamedEntityTag=O] [Text=of CharacterOffsetBegin=3577 CharacterOffsetEnd=3579 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=the CharacterOffsetBegin=3580 CharacterOffsetEnd=3583 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=controversy CharacterOffsetBegin=3584 CharacterOffsetEnd=3595 PartOfSpeech=NN Lemma=controversy NamedEntityTag=O] [Text=at CharacterOffsetBegin=3596 CharacterOffsetEnd=3598 PartOfSpeech=IN Lemma=at NamedEntityTag=O] [Text=show CharacterOffsetBegin=3599 CharacterOffsetEnd=3603 PartOfSpeech=NN Lemma=show NamedEntityTag=O] [Text=that CharacterOffsetBegin=3604 CharacterOffsetEnd=3608 PartOfSpeech=IN Lemma=that NamedEntityTag=O] [Text=France CharacterOffsetBegin=3609 CharacterOffsetEnd=3615 PartOfSpeech=NNP Lemma=France NamedEntityTag=LOCATION] [Text=, CharacterOffsetBegin=3615 CharacterOffsetEnd=3616 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=Germany CharacterOffsetBegin=3617 CharacterOffsetEnd=3624 PartOfSpeech=NNP Lemma=Germany NamedEntityTag=LOCATION] [Text=, CharacterOffsetBegin=3624 CharacterOffsetEnd=3625 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=Italy CharacterOffsetBegin=3626 CharacterOffsetEnd=3631 PartOfSpeech=NNP Lemma=Italy NamedEntityTag=LOCATION] [Text=and CharacterOffsetBegin=3632 CharacterOffsetEnd=3635 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=great CharacterOffsetBegin=3636 CharacterOffsetEnd=3641 PartOfSpeech=JJ Lemma=great NamedEntityTag=O] [Text=Britain CharacterOffsetBegin=3642 CharacterOffsetEnd=3649 PartOfSpeech=NNP Lemma=Britain NamedEntityTag=LOCATION] [Text=have CharacterOffsetBegin=3650 CharacterOffsetEnd=3654 PartOfSpeech=VBP Lemma=have NamedEntityTag=O] [Text=approximately CharacterOffsetBegin=3655 CharacterOffsetEnd=3668 PartOfSpeech=RB Lemma=approximately NamedEntityTag=O] [Text=the CharacterOffsetBegin=3669 CharacterOffsetEnd=3672 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=same CharacterOffsetBegin=3673 CharacterOffsetEnd=3677 PartOfSpeech=JJ Lemma=same NamedEntityTag=O] [Text=levels CharacterOffsetBegin=3678 CharacterOffsetEnd=3684 PartOfSpeech=NNS Lemma=level NamedEntityTag=O] [Text=of CharacterOffsetBegin=3685 CharacterOffsetEnd=3687 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=life CharacterOffsetBegin=3688 CharacterOffsetEnd=3692 PartOfSpeech=NN Lemma=life NamedEntityTag=O] [Text=per CharacterOffsetBegin=3693 CharacterOffsetEnd=3696 PartOfSpeech=IN Lemma=per NamedEntityTag=O] [Text=capita CharacterOffsetBegin=3697 CharacterOffsetEnd=3703 PartOfSpeech=NN Lemma=capita NamedEntityTag=O] [Text=. CharacterOffsetBegin=3703 CharacterOffsetEnd=3704 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+(ROOT
+  (S
+    (NP
+      (NP (DT The) (NNP OECD)
+        (CC and)
+        (NNP Eurostat))
+      (, ,)
+      (NP
+        (NP (DT the) (JJ European) (NN body))
+        (ADJP (JJ responsible)
+          (PP (IN for)
+            (NP
+              (NP (DT this) (NN type))
+              (PP (IN of)
+                (NP (NNS data)))))))
+      (, ,))
+    (VP (VBD thought)
+      (SBAR
+        (S
+          (NP (PRP they))
+          (VP (VBD had)
+            (VP (VBN finished)
+              (PP (IN with)
+                (NP
+                  (NP (DT this) (NN aspect))
+                  (PP (IN of)
+                    (NP
+                      (NP (DT the) (NN controversy))
+                      (PP (IN at)
+                        (NP (NN show)))))))
+              (SBAR (IN that)
+                (S
+                  (NP
+                    (NP (NNP France))
+                    (, ,)
+                    (NP (NNP Germany))
+                    (, ,)
+                    (NP (NNP Italy))
+                    (CC and)
+                    (NP (JJ great) (NNP Britain)))
+                  (VP (VBP have)
+                    (NP
+                      (NP (RB approximately) (DT the) (JJ same) (NNS levels))
+                      (PP (IN of)
+                        (NP
+                          (NP (NN life))
+                          (ADJP (IN per) (NN capita)))))))))))))
+    (. .)))
+
+root(ROOT-0, thought-16)
+det(OECD-2, The-1)
+nsubj(thought-16, OECD-2)
+conj_and(OECD-2, Eurostat-4)
+det(body-8, the-6)
+amod(body-8, European-7)
+appos(OECD-2, body-8)
+amod(body-8, responsible-9)
+det(type-12, this-11)
+prep_for(responsible-9, type-12)
+prep_of(type-12, data-14)
+nsubj(finished-19, they-17)
+aux(finished-19, had-18)
+ccomp(thought-16, finished-19)
+det(aspect-22, this-21)
+prep_with(finished-19, aspect-22)
+det(controversy-25, the-24)
+prep_of(aspect-22, controversy-25)
+prep_at(controversy-25, show-27)
+mark(have-37, that-28)
+nsubj(have-37, France-29)
+conj_and(France-29, Germany-31)
+conj_and(France-29, Italy-33)
+amod(Britain-36, great-35)
+conj_and(France-29, Britain-36)
+ccomp(finished-19, have-37)
+advmod(levels-41, approximately-38)
+det(levels-41, the-39)
+amod(levels-41, same-40)
+dobj(have-37, levels-41)
+prep_of(levels-41, life-43)
+dep(capita-45, per-44)
+amod(life-43, capita-45)
+
+Sentence #25 (10 tokens):
+A "shock therapy 'in the style of Mrs.
+[Text=A CharacterOffsetBegin=3708 CharacterOffsetEnd=3709 PartOfSpeech=DT Lemma=a NamedEntityTag=O] [Text=`` CharacterOffsetBegin=3710 CharacterOffsetEnd=3711 PartOfSpeech=`` Lemma=`` NamedEntityTag=O] [Text=shock CharacterOffsetBegin=3711 CharacterOffsetEnd=3716 PartOfSpeech=NN Lemma=shock NamedEntityTag=O] [Text=therapy CharacterOffsetBegin=3717 CharacterOffsetEnd=3724 PartOfSpeech=NN Lemma=therapy NamedEntityTag=O] [Text=` CharacterOffsetBegin=3725 CharacterOffsetEnd=3726 PartOfSpeech=`` Lemma=` NamedEntityTag=O] [Text=in CharacterOffsetBegin=3726 CharacterOffsetEnd=3728 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=the CharacterOffsetBegin=3729 CharacterOffsetEnd=3732 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=style CharacterOffsetBegin=3733 CharacterOffsetEnd=3738 PartOfSpeech=NN Lemma=style NamedEntityTag=O] [Text=of CharacterOffsetBegin=3739 CharacterOffsetEnd=3741 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=Mrs. CharacterOffsetBegin=3742 CharacterOffsetEnd=3746 PartOfSpeech=NNP Lemma=Mrs. NamedEntityTag=O] 
+(ROOT
+  (NP
+    (NP (DT A) (`` ``) (NN shock) (NN therapy))
+    (PP (`` `) (IN in)
+      (NP (DT the) (NN style)))
+    (PP (IN of)
+      (NP (NNP Mrs.)))))
+
+root(ROOT-0, therapy-4)
+det(therapy-4, A-1)
+nn(therapy-4, shock-3)
+det(style-8, the-7)
+prep_in(therapy-4, style-8)
+prep_of(therapy-4, Mrs.-10)
+
+Sentence #26 (37 tokens):
+One of the major challenges for the future of the EU is to tackle the superiority of the solidarity would be directed towards the elderly people of solidarity on the dynamic that benefits to young people.
+[Text=One CharacterOffsetBegin=3750 CharacterOffsetEnd=3753 PartOfSpeech=CD Lemma=one NamedEntityTag=NUMBER NormalizedNamedEntityTag=1.0] [Text=of CharacterOffsetBegin=3754 CharacterOffsetEnd=3756 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=the CharacterOffsetBegin=3757 CharacterOffsetEnd=3760 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=major CharacterOffsetBegin=3761 CharacterOffsetEnd=3766 PartOfSpeech=JJ Lemma=major NamedEntityTag=O] [Text=challenges CharacterOffsetBegin=3767 CharacterOffsetEnd=3777 PartOfSpeech=NNS Lemma=challenge NamedEntityTag=O] [Text=for CharacterOffsetBegin=3778 CharacterOffsetEnd=3781 PartOfSpeech=IN Lemma=for NamedEntityTag=O] [Text=the CharacterOffsetBegin=3782 CharacterOffsetEnd=3785 PartOfSpeech=DT Lemma=the NamedEntityTag=DATE NormalizedNamedEntityTag=FUTURE_REF Timex=<TIMEX3 tid="t10" type="DATE" value="FUTURE_REF">the future</TIMEX3>] [Text=future CharacterOffsetBegin=3786 CharacterOffsetEnd=3792 PartOfSpeech=NN Lemma=future NamedEntityTag=DATE NormalizedNamedEntityTag=FUTURE_REF Timex=<TIMEX3 tid="t10" type="DATE" value="FUTURE_REF">the future</TIMEX3>] [Text=of CharacterOffsetBegin=3793 CharacterOffsetEnd=3795 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=the CharacterOffsetBegin=3796 CharacterOffsetEnd=3799 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=EU CharacterOffsetBegin=3800 CharacterOffsetEnd=3802 PartOfSpeech=NNP Lemma=EU NamedEntityTag=LOCATION] [Text=is CharacterOffsetBegin=3803 CharacterOffsetEnd=3805 PartOfSpeech=VBZ Lemma=be NamedEntityTag=O] [Text=to CharacterOffsetBegin=3806 CharacterOffsetEnd=3808 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=tackle CharacterOffsetBegin=3809 CharacterOffsetEnd=3815 PartOfSpeech=VB Lemma=tackle NamedEntityTag=O] [Text=the CharacterOffsetBegin=3816 CharacterOffsetEnd=3819 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=superiority CharacterOffsetBegin=3820 CharacterOffsetEnd=3831 PartOfSpeech=NN Lemma=superiority NamedEntityTag=O] [Text=of CharacterOffsetBegin=3832 CharacterOffsetEnd=3834 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=the CharacterOffsetBegin=3835 CharacterOffsetEnd=3838 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=solidarity CharacterOffsetBegin=3839 CharacterOffsetEnd=3849 PartOfSpeech=NN Lemma=solidarity NamedEntityTag=O] [Text=would CharacterOffsetBegin=3850 CharacterOffsetEnd=3855 PartOfSpeech=MD Lemma=would NamedEntityTag=O] [Text=be CharacterOffsetBegin=3856 CharacterOffsetEnd=3858 PartOfSpeech=VB Lemma=be NamedEntityTag=O] [Text=directed CharacterOffsetBegin=3859 CharacterOffsetEnd=3867 PartOfSpeech=VBN Lemma=direct NamedEntityTag=O] [Text=towards CharacterOffsetBegin=3868 CharacterOffsetEnd=3875 PartOfSpeech=IN Lemma=towards NamedEntityTag=O] [Text=the CharacterOffsetBegin=3876 CharacterOffsetEnd=3879 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=elderly CharacterOffsetBegin=3880 CharacterOffsetEnd=3887 PartOfSpeech=JJ Lemma=elderly NamedEntityTag=O] [Text=people CharacterOffsetBegin=3888 CharacterOffsetEnd=3894 PartOfSpeech=NNS Lemma=people NamedEntityTag=O] [Text=of CharacterOffsetBegin=3895 CharacterOffsetEnd=3897 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=solidarity CharacterOffsetBegin=3898 CharacterOffsetEnd=3908 PartOfSpeech=NN Lemma=solidarity NamedEntityTag=O] [Text=on CharacterOffsetBegin=3909 CharacterOffsetEnd=3911 PartOfSpeech=IN Lemma=on NamedEntityTag=O] [Text=the CharacterOffsetBegin=3912 CharacterOffsetEnd=3915 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=dynamic CharacterOffsetBegin=3916 CharacterOffsetEnd=3923 PartOfSpeech=NN Lemma=dynamic NamedEntityTag=O] [Text=that CharacterOffsetBegin=3924 CharacterOffsetEnd=3928 PartOfSpeech=WDT Lemma=that NamedEntityTag=O] [Text=benefits CharacterOffsetBegin=3929 CharacterOffsetEnd=3937 PartOfSpeech=VBZ Lemma=benefit NamedEntityTag=O] [Text=to CharacterOffsetBegin=3938 CharacterOffsetEnd=3940 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=young CharacterOffsetBegin=3941 CharacterOffsetEnd=3946 PartOfSpeech=JJ Lemma=young NamedEntityTag=O] [Text=people CharacterOffsetBegin=3947 CharacterOffsetEnd=3953 PartOfSpeech=NNS Lemma=people NamedEntityTag=O] [Text=. CharacterOffsetBegin=3953 CharacterOffsetEnd=3954 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+(ROOT
+  (S
+    (NP
+      (NP (CD One))
+      (PP (IN of)
+        (NP
+          (NP (DT the) (JJ major) (NNS challenges))
+          (PP (IN for)
+            (NP
+              (NP (DT the) (NN future))
+              (PP (IN of)
+                (NP (DT the) (NNP EU))))))))
+    (VP (VBZ is)
+      (S
+        (VP (TO to)
+          (VP (VB tackle)
+            (SBAR
+              (S
+                (NP
+                  (NP (DT the) (NN superiority))
+                  (PP (IN of)
+                    (NP (DT the) (NN solidarity))))
+                (VP (MD would)
+                  (VP (VB be)
+                    (VP (VBN directed)
+                      (PP (IN towards)
+                        (NP
+                          (NP (DT the) (JJ elderly) (NNS people))
+                          (PP (IN of)
+                            (NP (NN solidarity)))))
+                      (PP (IN on)
+                        (NP
+                          (NP (DT the) (NN dynamic))
+                          (SBAR
+                            (WHNP (WDT that))
+                            (S
+                              (VP (VBZ benefits)
+                                (PP (TO to)
+                                  (NP (JJ young) (NNS people)))))))))))))))))
+    (. .)))
+
+root(ROOT-0, is-12)
+nsubj(is-12, One-1)
+det(challenges-5, the-3)
+amod(challenges-5, major-4)
+prep_of(One-1, challenges-5)
+det(future-8, the-7)
+prep_for(challenges-5, future-8)
+det(EU-11, the-10)
+prep_of(future-8, EU-11)
+aux(tackle-14, to-13)
+xcomp(is-12, tackle-14)
+det(superiority-16, the-15)
+nsubjpass(directed-22, superiority-16)
+det(solidarity-19, the-18)
+prep_of(superiority-16, solidarity-19)
+aux(directed-22, would-20)
+auxpass(directed-22, be-21)
+ccomp(tackle-14, directed-22)
+det(people-26, the-24)
+amod(people-26, elderly-25)
+prep_towards(directed-22, people-26)
+prep_of(people-26, solidarity-28)
+det(dynamic-31, the-30)
+prep_on(directed-22, dynamic-31)
+nsubj(benefits-33, that-32)
+rcmod(dynamic-31, benefits-33)
+amod(people-36, young-35)
+prep_to(benefits-33, people-36)
+
+Sentence #27 (22 tokens):
+Subsidiarity is similar to the concept of solidarity in that it also has two interpretations: subsidiarity vertical and horizontal subsidiarity.
+[Text=Subsidiarity CharacterOffsetBegin=3958 CharacterOffsetEnd=3970 PartOfSpeech=NN Lemma=subsidiarity NamedEntityTag=O] [Text=is CharacterOffsetBegin=3971 CharacterOffsetEnd=3973 PartOfSpeech=VBZ Lemma=be NamedEntityTag=O] [Text=similar CharacterOffsetBegin=3974 CharacterOffsetEnd=3981 PartOfSpeech=JJ Lemma=similar NamedEntityTag=O] [Text=to CharacterOffsetBegin=3982 CharacterOffsetEnd=3984 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=the CharacterOffsetBegin=3985 CharacterOffsetEnd=3988 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=concept CharacterOffsetBegin=3989 CharacterOffsetEnd=3996 PartOfSpeech=NN Lemma=concept NamedEntityTag=O] [Text=of CharacterOffsetBegin=3997 CharacterOffsetEnd=3999 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=solidarity CharacterOffsetBegin=4000 CharacterOffsetEnd=4010 PartOfSpeech=NN Lemma=solidarity NamedEntityTag=O] [Text=in CharacterOffsetBegin=4011 CharacterOffsetEnd=4013 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=that CharacterOffsetBegin=4014 CharacterOffsetEnd=4018 PartOfSpeech=IN Lemma=that NamedEntityTag=O] [Text=it CharacterOffsetBegin=4019 CharacterOffsetEnd=4021 PartOfSpeech=PRP Lemma=it NamedEntityTag=O] [Text=also CharacterOffsetBegin=4022 CharacterOffsetEnd=4026 PartOfSpeech=RB Lemma=also NamedEntityTag=O] [Text=has CharacterOffsetBegin=4027 CharacterOffsetEnd=4030 PartOfSpeech=VBZ Lemma=have NamedEntityTag=O] [Text=two CharacterOffsetBegin=4031 CharacterOffsetEnd=4034 PartOfSpeech=CD Lemma=two NamedEntityTag=NUMBER NormalizedNamedEntityTag=2.0] [Text=interpretations CharacterOffsetBegin=4035 CharacterOffsetEnd=4050 PartOfSpeech=NNS Lemma=interpretation NamedEntityTag=O] [Text=: CharacterOffsetBegin=4050 CharacterOffsetEnd=4051 PartOfSpeech=: Lemma=: NamedEntityTag=O] [Text=subsidiarity CharacterOffsetBegin=4052 CharacterOffsetEnd=4064 PartOfSpeech=NN Lemma=subsidiarity NamedEntityTag=O] [Text=vertical CharacterOffsetBegin=4065 CharacterOffsetEnd=4073 PartOfSpeech=JJ Lemma=vertical NamedEntityTag=O] [Text=and CharacterOffsetBegin=4074 CharacterOffsetEnd=4077 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=horizontal CharacterOffsetBegin=4078 CharacterOffsetEnd=4088 PartOfSpeech=JJ Lemma=horizontal NamedEntityTag=O] [Text=subsidiarity CharacterOffsetBegin=4089 CharacterOffsetEnd=4101 PartOfSpeech=NN Lemma=subsidiarity NamedEntityTag=O] [Text=. CharacterOffsetBegin=4101 CharacterOffsetEnd=4102 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+(ROOT
+  (S
+    (NP (NN Subsidiarity))
+    (VP (VBZ is)
+      (ADJP (JJ similar)
+        (PP (TO to)
+          (NP
+            (NP (DT the) (NN concept))
+            (PP (IN of)
+              (NP (NN solidarity))))))
+      (PP (IN in)
+        (NP
+          (SBAR (IN that)
+            (S
+              (NP (PRP it))
+              (ADVP (RB also))
+              (VP (VBZ has)
+                (NP (CD two) (NNS interpretations)))))
+          (: :)
+          (NP (NN subsidiarity) (JJ vertical)
+            (CC and)
+            (JJ horizontal) (NN subsidiarity)))))
+    (. .)))
+
+root(ROOT-0, similar-3)
+nsubj(similar-3, Subsidiarity-1)
+cop(similar-3, is-2)
+det(concept-6, the-5)
+prep_to(similar-3, concept-6)
+prep_of(concept-6, solidarity-8)
+mark(has-13, that-10)
+nsubj(has-13, it-11)
+advmod(has-13, also-12)
+dep(vertical-18, has-13)
+num(interpretations-15, two-14)
+dobj(has-13, interpretations-15)
+npadvmod(vertical-18, subsidiarity-17)
+prep_in(similar-3, vertical-18)
+amod(subsidiarity-21, horizontal-20)
+conj_and(vertical-18, subsidiarity-21)
+
+Sentence #28 (13 tokens):
+It encompasses the relations between the State, society and the market.
+[Text=It CharacterOffsetBegin=4106 CharacterOffsetEnd=4108 PartOfSpeech=PRP Lemma=it NamedEntityTag=O] [Text=encompasses CharacterOffsetBegin=4109 CharacterOffsetEnd=4120 PartOfSpeech=VBZ Lemma=encompass NamedEntityTag=O] [Text=the CharacterOffsetBegin=4121 CharacterOffsetEnd=4124 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=relations CharacterOffsetBegin=4125 CharacterOffsetEnd=4134 PartOfSpeech=NNS Lemma=relation NamedEntityTag=O] [Text=between CharacterOffsetBegin=4135 CharacterOffsetEnd=4142 PartOfSpeech=IN Lemma=between NamedEntityTag=O] [Text=the CharacterOffsetBegin=4143 CharacterOffsetEnd=4146 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=State CharacterOffsetBegin=4147 CharacterOffsetEnd=4152 PartOfSpeech=NN Lemma=state NamedEntityTag=O] [Text=, CharacterOffsetBegin=4152 CharacterOffsetEnd=4153 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=society CharacterOffsetBegin=4154 CharacterOffsetEnd=4161 PartOfSpeech=NN Lemma=society NamedEntityTag=O] [Text=and CharacterOffsetBegin=4162 CharacterOffsetEnd=4165 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=the CharacterOffsetBegin=4166 CharacterOffsetEnd=4169 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=market CharacterOffsetBegin=4170 CharacterOffsetEnd=4176 PartOfSpeech=NN Lemma=market NamedEntityTag=O] [Text=. CharacterOffsetBegin=4176 CharacterOffsetEnd=4177 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+(ROOT
+  (S
+    (NP (PRP It))
+    (VP (VBZ encompasses)
+      (NP
+        (NP (DT the) (NNS relations))
+        (PP (IN between)
+          (NP
+            (NP (DT the) (NN State))
+            (, ,)
+            (NP (NN society))
+            (CC and)
+            (NP (DT the) (NN market))))))
+    (. .)))
+
+root(ROOT-0, encompasses-2)
+nsubj(encompasses-2, It-1)
+det(relations-4, the-3)
+dobj(encompasses-2, relations-4)
+det(State-7, the-6)
+prep_between(relations-4, State-7)
+conj_and(State-7, society-9)
+det(market-12, the-11)
+conj_and(State-7, market-12)
+
+Sentence #29 (36 tokens):
+When the opposition to the government pl

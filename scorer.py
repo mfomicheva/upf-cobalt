@@ -7,8 +7,6 @@ import wordSim
 class Scorer(object):
 
     alpha = 1
-    beta = 1
-    gamma = 1
     delta = 1
 
     exact = 1
@@ -16,43 +14,28 @@ class Scorer(object):
     synonym = 1
     paraphrase = 1
     related = 1
-    relatedThreshold = 1
+    related_threshold = 1
+    context_importance = 1
 
     def __init__(self):
         config = ConfigParser()
         config.readfp(open('Config/scorer.cfg'))
 
         self.alpha = config.getfloat('Scorer', 'alpha')
-        self.beta = config.getfloat('Scorer', 'beta')
-        self.gamma = config.getfloat('Scorer', 'gamma')
         self.delta = config.getfloat('Scorer', 'delta')
+
         self.exact = config.getfloat('Scorer', 'exact')
         self.stem = config.getfloat('Scorer', 'stem')
         self.synonym = config.getfloat('Scorer', 'synonym')
         self.paraphrase = config.getfloat('Scorer', 'paraphrase')
         self.related = config.getfloat('Scorer', 'related')
-        self.relatedThreshold = config.getfloat('Scorer', 'relatedThreshold')
+        self.related_threshold = config.getfloat('Scorer', 'related_threshold')
+        self.context_importance = config.getfloat('Scorer', 'context_importance')
 
-    def __calculateChuncks(self, sentence1, sentence2, alignments):
-        sortedAlignments = sorted(alignments, key=lambda alignment: alignment[0])
-
-        chunks = 0
-
-        previousPair = None
-
-        for pair in sortedAlignments:
-            if previousPair == None or previousPair[0] != pair[0] - 1 or previousPair[1] != pair[1] - 1:
-                chunks += 1
-
-            previousPair = pair
-
-        return chunks
 
     # receives alignments structure as an input - alignments[0] is the aligned pair indexes,
     # alignments[1] is the aligned pair words, alignments[2] is the aligned pair dependency similarity score
     def calculateScore(self, sentence1, sentence2, alignments):
-
-
         sentence1 = prepareSentence2(sentence1)
         sentence2 = prepareSentence2(sentence2)
 
@@ -79,22 +62,11 @@ class Scorer(object):
         precision = weightedMatches1 / weightedLength1
         recall = weightedMatches2 / weightedLength2
 
-        #f1 = (2 * precision * recall) / (precision + recall)
-
         if precision == 0 or recall == 0:
             fMean = 0
         else:
             fMean = 1.0 / (((1.0 - self.alpha) / precision) + (self.alpha / recall))
 
-
-        fragPenalty = 0
-
-        chunckNumber = self.__calculateChuncks(sentence1, sentence2, alignments[0])
-
-        if chunckNumber > 1:
-            fragPenalty = self.gamma * pow(float(chunckNumber) / len(alignments[0]), self.beta)
-
-        #score = fMean * (1.0 - fragPenalty)
         score = fMean
 
         return score
