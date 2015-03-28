@@ -1,5 +1,6 @@
 from itertools import islice
 
+
 class SynonymDictionary(object):
 
         wordSynsetTable = {}
@@ -17,9 +18,9 @@ class SynonymDictionary(object):
 
                     self.wordSynsetTable[synsetBatch[0].strip()] = synsetList
 
-        #Checks if two lemmas are in one synset
+        # Checks if two lemmas are in one synset
         def checkSynonymByLemma(self, lemma1, lemma2):
-            if (lemma1 not in self.wordSynsetTable or lemma2 not in self.wordSynsetTable):
+            if lemma1 not in self.wordSynsetTable or lemma2 not in self.wordSynsetTable:
                 return False
 
             synsetList1 = self.wordSynsetTable[lemma1]

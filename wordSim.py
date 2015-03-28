@@ -32,6 +32,17 @@ def functionWord(word):
     return (word.form.lower() in stopwords) or (word.form.lower() in punctuations)
 
 
+def canonize_word(word):
+    if len(word) > 1:
+        canonical_form = word.replace('.', '')
+        canonical_form = canonical_form.replace('-', '')
+        canonical_form = canonical_form.replace(',', '').lower()
+    else:
+        canonical_form = word.lower()
+
+    return canonical_form
+
+
 def wordnetSimilarity(word1, word2):
 
     synsets1 = wordnet.synsets(word1)
@@ -55,38 +66,27 @@ def wordRelatedness(word1, pos1, word2, pos2, config):
     global stemmer
     global punctuations
 
-    if len(word1) > 1:
-        canonicalWord1 = word1.replace('.', '')
-        canonicalWord1 = canonicalWord1.replace('-', '')
-        canonicalWord1 = canonicalWord1.replace(',', '')
-    else:
-        canonicalWord1 = word1
-        
-    if len(word2) > 1:
-        canonicalWord2 = word2.replace('.', '')
-        canonicalWord2 = canonicalWord2.replace('-', '')
-        canonicalWord2 = canonicalWord2.replace(',', '')
-    else:
-        canonicalWord2 = word2
-    
-    if canonicalWord1.lower() == canonicalWord2.lower():
+    canonical_word1 = canonize_word(word1)
+    canonical_word2 = canonize_word(word2)
+
+    if canonical_word1 == canonical_word2:
         return config.exact
 
-    if stemmer.stem(word1).lower() == stemmer.stem(word2).lower():
-        return config.exact
+    if stemmer.stem(canonical_word1) == stemmer.stem(canonical_word2):
+        return config.stem
 
-    if canonicalWord1.isdigit() and canonicalWord2.isdigit() and canonicalWord1 <> canonicalWord2:
+    if canonical_word1.isdigit() and canonical_word2.isdigit() and canonical_word1 != canonical_word2:
         return 0
 
-    if pos1.lower() == 'cd' and pos2.lower() == 'cd' and (not canonicalWord1.isdigit() and not canonicalWord2.isdigit()) and canonicalWord1 <> canonicalWord2:
+    if pos1.lower() == 'cd' and pos2.lower() == 'cd' and (not canonical_word1.isdigit() and not canonical_word2.isdigit()) and canonical_word1 <> canonical_word2:
         return 0
 
     # stopwords can be similar to only stopwords
-    if (word1.lower() in stopwords and word2.lower() not in stopwords) or (word1.lower() not in stopwords and word2.lower() in stopwords):
+    if (canonical_word1 in stopwords and canonical_word2 not in stopwords) or (canonical_word1 not in stopwords and canonical_word2 in stopwords):
         return 0
 
     # punctuations can only be either identical or totally dissimilar
-    if word1 in punctuations or word2 in punctuations:
+    if canonical_word1 in punctuations or canonical_word2 in punctuations:
         return 0
 
     if synonymDictionary.checkSynonymByLemma(word1, word2):
@@ -103,36 +103,28 @@ def wordRelatedness(word1, pos1, word2, pos2, config):
 
 
 def maxWeightedWordRelatedness(word1, word2, scorer, contextPenalty):
-    relatedness = max(weightedWordRelatedness(word1.form, word2.form, scorer, contextPenalty, scorer.exact),
-                      weightedWordRelatedness(word1.lemma, word2.lemma, scorer, contextPenalty, scorer.stem))
+    relatedness = max(weightedWordRelatedness(word1.form, word2.form, word1, word2, scorer, contextPenalty, scorer.exact),
+                      weightedWordRelatedness(word1.lemma, word2.lemma, word1, word2, scorer, contextPenalty, scorer.stem))
 
     return max(relatedness, scorer.minimal_aligned_relatedness)
 
 
-def weightedWordRelatedness(form1, form2, scorer, contextPenalty, matchScore):
+def weightedWordRelatedness(form1, form2, word1, word2, scorer, contextPenalty, matchScore):
     global stemmer
     global punctuations
 
     result = 0
 
-    if len(form1) > 1:
-        canonicalWord1 = form1.replace('.', '')
-        canonicalWord1 = canonicalWord1.replace('-', '')
-        canonicalWord1 = canonicalWord1.replace(',', '')
-    else:
-        canonicalWord1 = form1
+    canonical_word1 = canonize_word(form1)
+    canonical_word2 = canonize_word(form2)
 
-    if len(form2) > 1:
-        canonicalWord2 = form2.replace('.', '')
-        canonicalWord2 = canonicalWord2.replace('-', '')
-        canonicalWord2 = canonicalWord2.replace(',', '')
-    else:
-        canonicalWord2 = form2
+    if canonical_word1 == canonical_word2:
+        result = scorer.exact
 
-    if canonicalWord1.lower() == canonicalWord2.lower():
-        result = matchScore
+    elif contractionDictionary.check_contraction(canonical_word1, canonical_word2):
+        result = scorer.exact
 
-    elif stemmer.stem(form1).lower() == stemmer.stem(form2).lower():
+    elif stemmer.stem(canonical_word1) == stemmer.stem(canonical_word2):
         result = scorer.stem
 
     elif synonymDictionary.checkSynonymByLemma(form1, form2):
@@ -141,7 +133,8 @@ def weightedWordRelatedness(form1, form2, scorer, contextPenalty, matchScore):
     elif presentInPPDB(form1, form2):
         result = scorer.paraphrase
 
-    elif wordnetSimilarity(form1, form2) > scorer.related_threshold:
+    elif not functionWord(word1) and not functionWord(word2) and \
+            wordnetSimilarity(form1, form2) > scorer.related_threshold:
         result = scorer.related
 
     result *= matchScore
