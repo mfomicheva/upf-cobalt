@@ -1,5 +1,6 @@
 from scorer import Scorer
 from synonymDictionary import SynonymDictionary
+from contractionDictionary import ContractionDictionary
 
 ppdbDict = {}
 theta1 = 0.9
@@ -10,6 +11,7 @@ from nltk import SnowballStemmer
 
 stemmer = SnowballStemmer('english')
 synonymDictionary = SynonymDictionary('english')
+contractionDictionary = ContractionDictionary('english')
 
 punctuations = ['(','-lrb-','.',',','-','?','!',';','_',':','{','}','[','/',']','...','"','\'',')', '-rrb-']
 punctuations = map(lambda x: x.encode('UTF-8'), punctuations)

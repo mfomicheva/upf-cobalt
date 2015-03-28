@@ -10,7 +10,7 @@ referenceFiles = readFileNames(open('Data/wmt2007-data/filesListReferences.txt')
 testFiles = readFileNames(open('Data/wmt2007-data/filesListTest.txt'))
 
 scorer = Scorer()
-aligner = Aligner('english', scorer)
+aligner = Aligner('english')
 
 if not os.path.exists(outputDir):
     os.makedirs(outputDir)
