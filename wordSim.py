@@ -133,9 +133,9 @@ def weightedWordRelatedness(form1, form2, word1, word2, scorer, contextPenalty, 
     elif presentInPPDB(form1, form2):
         result = scorer.paraphrase
 
-    elif not functionWord(word1) and not functionWord(word2) and \
-            wordnetSimilarity(form1, form2) > scorer.related_threshold:
-        result = scorer.related
+    #elif not functionWord(word1) and not functionWord(word2) and \
+    #        wordnetSimilarity(form1, form2) > scorer.related_threshold:
+    #    result = scorer.related
 
     result *= matchScore
     result += contextPenalty*scorer.context_importance

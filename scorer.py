@@ -61,10 +61,17 @@ class Scorer(object):
             else:
                 weightedMatches2 += (1 - self.delta) * wordSim.maxWeightedWordRelatedness(sentence1[a[0] - 1], sentence2[a[1] - 1], self, alignments[2][i])
 
-        precision = weightedMatches1 / weightedLength1
-        recall = weightedMatches2 / weightedLength2
+        if weightedLength1 == 0:
+            precision = weightedMatches1
+        else:
+            precision = weightedMatches1 / weightedLength1
 
-        if precision == 0 or recall == 0:
+        if weightedLength2 == 0:
+            recall = weightedMatches2
+        else:
+            recall = weightedMatches2 / weightedLength2
+
+        if precision == 0 or recall == 0 or (((1.0 - self.alpha) / precision) + (self.alpha / recall)) == 0:
             fMean = 0
         else:
             fMean = 1.0 / (((1.0 - self.alpha) / precision) + (self.alpha / recall))
