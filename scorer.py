@@ -41,8 +41,8 @@ class Scorer(object):
         sentence1 = prepareSentence2(sentence1)
         sentence2 = prepareSentence2(sentence2)
 
-        functionalWords1 = filter(lambda x: wordSim.functionWord(x), sentence1)
-        functionalWords2 = filter(lambda x: wordSim.functionWord(x), sentence2)
+        functionalWords1 = filter(lambda x: wordSim.functionWord(x.form), sentence1)
+        functionalWords2 = filter(lambda x: wordSim.functionWord(x.form), sentence2)
 
         weightedLength1 = self.delta * (len(sentence1) - len(functionalWords1)) + ((1.0 - self.delta) * len(functionalWords1))
         weightedLength2 = self.delta * (len(sentence2) - len(functionalWords2)) + ((1.0 - self.delta) * len(functionalWords2))
@@ -51,15 +51,15 @@ class Scorer(object):
         weightedMatches2 = 0
 
         for i, a in enumerate(alignments[0]):
-            if not wordSim.functionWord(sentence1[a[0] - 1]):
-                weightedMatches1 += self.delta * wordSim.maxWeightedWordRelatedness(sentence1[a[0] - 1], sentence2[a[1] - 1], self, alignments[2][i])
+            if not wordSim.functionWord(sentence1[a[0] - 1].form):
+                weightedMatches1 += self.delta * wordSim.weightedWordRelatedness(sentence1[a[0] - 1], sentence2[a[1] - 1], self, alignments[2][i])
             else:
-                weightedMatches1 += (1 - self.delta) * wordSim.maxWeightedWordRelatedness(sentence1[a[0] - 1], sentence2[a[1] - 1], self, alignments[2][i])
+                weightedMatches1 += (1 - self.delta) * wordSim.weightedWordRelatedness(sentence1[a[0] - 1], sentence2[a[1] - 1], self, alignments[2][i])
 
-            if not wordSim.functionWord(sentence2[a[1] - 1]):
-                weightedMatches2 += self.delta * wordSim.maxWeightedWordRelatedness(sentence1[a[0] - 1], sentence2[a[1] - 1], self, alignments[2][i])
+            if not wordSim.functionWord(sentence2[a[1] - 1].form):
+                weightedMatches2 += self.delta * wordSim.weightedWordRelatedness(sentence1[a[0] - 1], sentence2[a[1] - 1], self, alignments[2][i])
             else:
-                weightedMatches2 += (1 - self.delta) * wordSim.maxWeightedWordRelatedness(sentence1[a[0] - 1], sentence2[a[1] - 1], self, alignments[2][i])
+                weightedMatches2 += (1 - self.delta) * wordSim.weightedWordRelatedness(sentence1[a[0] - 1], sentence2[a[1] - 1], self, alignments[2][i])
 
         if weightedLength1 == 0:
             precision = weightedMatches1

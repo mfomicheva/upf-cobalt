@@ -1,6 +1,45 @@
 from config import *
 from nltk.corpus import wordnet
+import re
+import math
+from types import *
 
+def loadWordVectors(vectorsFileName = 'Resources/vectors/deps.words'):
+
+    global wordVector
+    vectorFile = open (vectorsFileName, 'r')
+
+    for line in vectorFile:
+        if line == '\n':
+            continue
+
+        match = re.match(r'^([^ ]+) (.+)',line)
+        if type(match) is NoneType:
+            continue
+
+        word = match.group(1)
+        vector = match.group(2)
+
+        wordVector[word] = vector
+
+def cosineSimilarity(word1,word2):
+
+    global wordVector
+
+    if word1.lower() in wordVector and word2.lower() in wordVector:
+        vector1 = wordVector[word1.lower()].split( )
+        vector2 = wordVector[word2.lower()].split( )
+        sumxx, sumxy, sumyy = 0, 0, 0
+
+        for i in range(len(vector1)):
+            x = float(vector1[i])
+            y = float(vector2[i])
+            sumxx += x*x
+            sumyy += y*y
+            sumxy += x*y
+        return sumxy/math.sqrt(sumxx*sumyy)
+    else:
+        return 0
 
 def loadPPDB(ppdbFileName = 'Resources/ppdb-1.0-xxxl-lexical.extended.synonyms.uniquepairs'):
 
@@ -29,7 +68,7 @@ def presentInPPDB(word1, word2):
 
 def functionWord(word):
     global punctuations
-    return (word.form.lower() in stopwords) or (word.form.lower() in punctuations)
+    return (word.lower() in stopwords) or (word.lower() in punctuations)
 
 
 def canonize_word(word):
@@ -62,7 +101,7 @@ def wordnetSimilarity(word1, word2):
     return max_similarity
 
 
-def wordRelatedness(word1, pos1, word2, pos2, config):
+def wordRelatedness(word1, lemma1, pos1, word2, lemma2, pos2, config):
     global stemmer
     global punctuations
 
@@ -73,6 +112,9 @@ def wordRelatedness(word1, pos1, word2, pos2, config):
         return config.exact
 
     if stemmer.stem(canonical_word1) == stemmer.stem(canonical_word2):
+        return config.stem
+
+    if lemma1 == lemma2:
         return config.stem
 
     if canonical_word1.isdigit() and canonical_word2.isdigit() and canonical_word1 != canonical_word2:
@@ -89,57 +131,92 @@ def wordRelatedness(word1, pos1, word2, pos2, config):
     if canonical_word1 in punctuations or canonical_word2 in punctuations:
         return 0
 
-    if synonymDictionary.checkSynonymByLemma(word1, word2):
+    if synonymDictionary.checkSynonymByLemma(canonical_word1, canonical_word2):
         return config.synonym
 
-    elif presentInPPDB(word1, word2):
+    elif synonymDictionary.checkSynonymByLemma(lemma1, lemma2):
+        return config.synonym
+
+    elif presentInPPDB(canonical_word1, canonical_word2):
         return config.paraphrase
 
-    elif wordnetSimilarity(word1, word2) > config.related_threshold:
+    elif presentInPPDB(lemma1, lemma2):
+        return config.paraphrase
+
+    # elif not functionWord(canonical_word1) and not functionWord(canonical_word1) and wordnetSimilarity(lemma1, lemma2) > config.related_threshold:
+    #     return config.related
+
+    elif cosineSimilarity(lemma1, lemma2) > config.related_threshold:
         return config.related
 
     else:
         return 0
 
 
-def maxWeightedWordRelatedness(word1, word2, scorer, contextPenalty):
-    relatedness = max(weightedWordRelatedness(word1.form, word2.form, word1, word2, scorer, contextPenalty, scorer.exact),
-                      weightedWordRelatedness(word1.lemma, word2.lemma, word1, word2, scorer, contextPenalty, scorer.stem))
-
-    return max(relatedness, scorer.minimal_aligned_relatedness)
-
-
-def weightedWordRelatedness(form1, form2, word1, word2, scorer, contextPenalty, matchScore):
+def weightedWordRelatedness(word1, word2, scorer, contextPenalty):
     global stemmer
     global punctuations
 
+    lexSim = 0
+    posSim = 0
+    wordSim = 0
     result = 0
 
-    canonical_word1 = canonize_word(form1)
-    canonical_word2 = canonize_word(form2)
+    canonical_word1 = canonize_word(word1.form)
+    canonical_word2 = canonize_word(word2.form)
 
     if canonical_word1 == canonical_word2:
-        result = scorer.exact
+        lexSim = scorer.exact
 
     elif contractionDictionary.check_contraction(canonical_word1, canonical_word2):
-        result = scorer.exact
+        lexSim = scorer.exact
+
+    elif word1.lemma == word2.lemma:
+        lexSim = scorer.exact
 
     elif stemmer.stem(canonical_word1) == stemmer.stem(canonical_word2):
-        result = scorer.stem
+        lexSim = scorer.exact
 
-    elif synonymDictionary.checkSynonymByLemma(form1, form2):
-        result = scorer.synonym
+    elif synonymDictionary.checkSynonymByLemma(canonical_word1, canonical_word2):
+        lexSim = scorer.synonym
 
-    elif presentInPPDB(form1, form2):
-        result = scorer.paraphrase
+    elif synonymDictionary.checkSynonymByLemma(word1.lemma, word2.lemma):
+        lexSim = scorer.synonym
 
-    #elif not functionWord(word1) and not functionWord(word2) and \
-    #        wordnetSimilarity(form1, form2) > scorer.related_threshold:
-    #    result = scorer.related
+    elif presentInPPDB(word1.form, word2.form):
+        lexSim = scorer.paraphrase
 
-    result *= matchScore
-    result += contextPenalty*scorer.context_importance
+    elif presentInPPDB(canonical_word1, canonical_word2):
+        lexSim = scorer.paraphrase
+
+    elif presentInPPDB(word1.lemma, word2.lemma):
+        lexSim = scorer.paraphrase
+
+    # elif not functionWord(canonical_word1) and not functionWord(canonical_word1) and wordnetSimilarity(word1.lemma, word2.lemma) > scorer.related_threshold:
+    #     lexSim = scorer.related
+
+    elif cosineSimilarity(word1.lemma, word2.lemma) > scorer.related_threshold:
+       lexSim = scorer.related
+
+
+    posSim = comparePos(word1.pos,word2.pos)
+    wordSim = lexSim + (posSim - 1)
+    result = wordSim + contextPenalty*scorer.context_importance
+    resultThreshold = max(result, scorer.minimal_aligned_relatedness)
 
     return result
 
+def comparePos (pos1,pos2):
+
+    if pos1 == pos2:
+        posSim = 1
+    elif pos1[0] == pos2[0]:
+        posSim = 0.8
+    else:
+        posSim = 0.6
+
+    return posSim
+
+
 loadPPDB()
+loadWordVectors()

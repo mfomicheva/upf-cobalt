@@ -31,7 +31,7 @@ for r in referenceFiles:
         outputFileAlign = open(outputDir + '/' + t + '.align.out', 'w')
 
         scorer = Scorer()
-        aligner = Aligner('english',scorer)
+        aligner = Aligner('english')
 
         for i, sentence in enumerate(sentencesRef):
             alignments = aligner.align(sentencesTest[i], sentence)

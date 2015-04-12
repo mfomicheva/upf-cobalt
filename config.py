@@ -3,6 +3,7 @@ from synonymDictionary import SynonymDictionary
 from contractionDictionary import ContractionDictionary
 
 ppdbDict = {}
+wordVector = {}
 theta1 = 0.9
 
 from nltk.corpus import stopwords

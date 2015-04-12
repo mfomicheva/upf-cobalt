@@ -1,75 +1,50 @@
-Sentence #6 (42 tokens):
-Third: we must do everything in our power to draw up until the end of 2003 to the European Union for the enlargement process in the direction of the excellent speech by the President of the Commission, Mr Prodi.
-[Text=Third CharacterOffsetBegin=458 CharacterOffsetEnd=463 PartOfSpeech=NNP Lemma=Third NamedEntityTag=ORDINAL NormalizedNamedEntityTag=3.0] [Text=: CharacterOffsetBegin=463 CharacterOffsetEnd=464 PartOfSpeech=: Lemma=: NamedEntityTag=O] [Text=we CharacterOffsetBegin=465 CharacterOffsetEnd=467 PartOfSpeech=PRP Lemma=we NamedEntityTag=O] [Text=must CharacterOffsetBegin=468 CharacterOffsetEnd=472 PartOfSpeech=MD Lemma=must NamedEntityTag=O] [Text=do CharacterOffsetBegin=473 CharacterOffsetEnd=475 PartOfSpeech=VB Lemma=do NamedEntityTag=O] [Text=everything CharacterOffsetBegin=476 CharacterOffsetEnd=486 PartOfSpeech=NN Lemma=everything NamedEntityTag=O] [Text=in CharacterOffsetBegin=487 CharacterOffsetEnd=489 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=our CharacterOffsetBegin=490 CharacterOffsetEnd=493 PartOfSpeech=PRP$ Lemma=we NamedEntityTag=O] [Text=power CharacterOffsetBegin=494 CharacterOffsetEnd=499 PartOfSpeech=NN Lemma=power NamedEntityTag=O] [Text=to CharacterOffsetBegin=500 CharacterOffsetEnd=502 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=draw CharacterOffsetBegin=503 CharacterOffsetEnd=507 PartOfSpeech=VB Lemma=draw NamedEntityTag=O] [Text=up CharacterOffsetBegin=508 CharacterOffsetEnd=510 PartOfSpeech=RP Lemma=up NamedEntityTag=O] [Text=until CharacterOffsetBegin=511 CharacterOffsetEnd=516 PartOfSpeech=IN Lemma=until NamedEntityTag=O] [Text=the CharacterOffsetBegin=517 CharacterOffsetEnd=520 PartOfSpeech=DT Lemma=the NamedEntityTag=DATE NormalizedNamedEntityTag=2003 Timex=<TIMEX3 mod="LATE" tid="t4" type="DATE" value="2003">the end of 2003</TIMEX3>] [Text=end CharacterOffsetBegin=521 CharacterOffsetEnd=524 PartOfSpeech=NN Lemma=end NamedEntityTag=DATE NormalizedNamedEntityTag=2003 Timex=<TIMEX3 mod="LATE" tid="t4" type="DATE" value="2003">the end of 2003</TIMEX3>] [Text=of CharacterOffsetBegin=525 CharacterOffsetEnd=527 PartOfSpeech=IN Lemma=of NamedEntityTag=DATE NormalizedNamedEntityTag=2003 Timex=<TIMEX3 mod="LATE" tid="t4" type="DATE" value="2003">the end of 2003</TIMEX3>] [Text=2003 CharacterOffsetBegin=528 CharacterOffsetEnd=532 PartOfSpeech=CD Lemma=2003 NamedEntityTag=DATE NormalizedNamedEntityTag=2003 Timex=<TIMEX3 mod="LATE" tid="t4" type="DATE" value="2003">the end of 2003</TIMEX3>] [Text=to CharacterOffsetBegin=533 CharacterOffsetEnd=535 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=the CharacterOffsetBegin=536 CharacterOffsetEnd=539 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=European CharacterOffsetBegin=540 CharacterOffsetEnd=548 PartOfSpeech=NNP Lemma=European NamedEntityTag=LOCATION] [Text=Union CharacterOffsetBegin=549 CharacterOffsetEnd=554 PartOfSpeech=NNP Lemma=Union NamedEntityTag=LOCATION] [Text=for CharacterOffsetBegin=555 CharacterOffsetEnd=558 PartOfSpeech=IN Lemma=for NamedEntityTag=O] [Text=the CharacterOffsetBegin=559 CharacterOffsetEnd=562 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=enlargement CharacterOffsetBegin=563 CharacterOffsetEnd=574 PartOfSpeech=NN Lemma=enlargement NamedEntityTag=O] [Text=process CharacterOffsetBegin=575 CharacterOffsetEnd=582 PartOfSpeech=NN Lemma=process NamedEntityTag=O] [Text=in CharacterOffsetBegin=583 CharacterOffsetEnd=585 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=the CharacterOffsetBegin=586 CharacterOffsetEnd=589 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=direction CharacterOffsetBegin=590 CharacterOffsetEnd=599 PartOfSpeech=NN Lemma=direction NamedEntityTag=O] [Text=of CharacterOffsetBegin=600 CharacterOffsetEnd=602 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=the CharacterOffsetBegin=603 CharacterOffsetEnd=606 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=excellent CharacterOffsetBegin=607 CharacterOffsetEnd=616 PartOfSpeech=JJ Lemma=excellent NamedEntityTag=O] [Text=speech CharacterOffsetBegin=617 CharacterOffsetEnd=623 PartOfSpeech=NN Lemma=speech NamedEntityTag=O] [Text=by CharacterOffsetBegin=624 CharacterOffsetEnd=626 PartOfSpeech=IN Lemma=by NamedEntityTag=O] [Text=the CharacterOffsetBegin=627 CharacterOffsetEnd=630 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=President CharacterOffsetBegin=631 CharacterOffsetEnd=640 PartOfSpeech=NNP Lemma=President NamedEntityTag=O] [Text=of CharacterOffsetBegin=641 CharacterOffsetEnd=643 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=the CharacterOffsetBegin=644 CharacterOffsetEnd=647 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=Commission CharacterOffsetBegin=648 CharacterOffsetEnd=658 PartOfSpeech=NNP Lemma=Commission NamedEntityTag=O] [Text=, CharacterOffsetBegin=658 CharacterOffsetEnd=659 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=Mr CharacterOffsetBegin=660 CharacterOffsetEnd=662 PartOfSpeech=NNP Lemma=Mr NamedEntityTag=PERSON] [Text=Prodi CharacterOffsetBegin=663 CharacterOffsetEnd=668 PartOfSpeech=NNP Lemma=Prodi NamedEntityTag=PERSON] [Text=. CharacterOffsetBegin=668 CharacterOffsetEnd=669 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
+Sentence #1 (27 tokens):
+The more and more elderly people in the House and the open borders, more than ever, involve a racial fragmentation of the European countries.
+[Text=The CharacterOffsetBegin=0 CharacterOffsetEnd=3 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=more CharacterOffsetBegin=4 CharacterOffsetEnd=8 PartOfSpeech=JJR Lemma=more NamedEntityTag=O] [Text=and CharacterOffsetBegin=9 CharacterOffsetEnd=12 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=more CharacterOffsetBegin=13 CharacterOffsetEnd=17 PartOfSpeech=RBR Lemma=more NamedEntityTag=O] [Text=elderly CharacterOffsetBegin=18 CharacterOffsetEnd=25 PartOfSpeech=JJ Lemma=elderly NamedEntityTag=O] [Text=people CharacterOffsetBegin=26 CharacterOffsetEnd=32 PartOfSpeech=NNS Lemma=people NamedEntityTag=O] [Text=in CharacterOffsetBegin=33 CharacterOffsetEnd=35 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=the CharacterOffsetBegin=36 CharacterOffsetEnd=39 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=House CharacterOffsetBegin=40 CharacterOffsetEnd=45 PartOfSpeech=NNP Lemma=House NamedEntityTag=ORGANIZATION] [Text=and CharacterOffsetBegin=46 CharacterOffsetEnd=49 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=the CharacterOffsetBegin=50 CharacterOffsetEnd=53 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=open CharacterOffsetBegin=54 CharacterOffsetEnd=58 PartOfSpeech=JJ Lemma=open NamedEntityTag=O] [Text=borders CharacterOffsetBegin=59 CharacterOffsetEnd=66 PartOfSpeech=NNS Lemma=border NamedEntityTag=O] [Text=, CharacterOffsetBegin=66 CharacterOffsetEnd=67 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=more CharacterOffsetBegin=68 CharacterOffsetEnd=72 PartOfSpeech=JJR Lemma=more NamedEntityTag=O] [Text=than CharacterOffsetBegin=73 CharacterOffsetEnd=77 PartOfSpeech=IN Lemma=than NamedEntityTag=O] [Text=ever CharacterOffsetBegin=78 CharacterOffsetEnd=82 PartOfSpeech=RB Lemma=ever NamedEntityTag=O] [Text=, CharacterOffsetBegin=82 CharacterOffsetEnd=83 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=involve CharacterOffsetBegin=84 CharacterOffsetEnd=91 PartOfSpeech=VBP Lemma=involve NamedEntityTag=O] [Text=a CharacterOffsetBegin=92 CharacterOffsetEnd=93 PartOfSpeech=DT Lemma=a NamedEntityTag=O] [Text=racial CharacterOffsetBegin=94 CharacterOffsetEnd=100 PartOfSpeech=JJ Lemma=racial NamedEntityTag=O] [Text=fragmentation CharacterOffsetBegin=101 CharacterOffsetEnd=114 PartOfSpeech=NN Lemma=fragmentation NamedEntityTag=O] [Text=of CharacterOffsetBegin=115 CharacterOffsetEnd=117 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=the CharacterOffsetBegin=118 CharacterOffsetEnd=121 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=European CharacterOffsetBegin=122 CharacterOffsetEnd=130 PartOfSpeech=JJ Lemma=european NamedEntityTag=MISC] [Text=countries CharacterOffsetBegin=131 CharacterOffsetEnd=140 PartOfSpeech=NNS Lemma=country NamedEntityTag=O] [Text=. CharacterOffsetBegin=140 CharacterOffsetEnd=141 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
 (ROOT
-  (FRAG
-    (NP (NNP Third))
-    (: :)
-    (S
-      (NP (PRP we))
-      (VP (MD must)
-        (VP (VB do)
+  (S
+    (NP
+      (NP
+        (NP (DT The)
+          (ADJP
+            (ADJP (JJR more))
+            (CC and)
+            (ADJP (RBR more) (JJ elderly)))
+          (NNS people))
+        (PP (IN in)
           (NP
-            (NP (NN everything))
-            (PP (IN in)
-              (NP (PRP$ our) (NN power)
-                (S
-                  (VP (TO to)
-                    (VP (VB draw)
-                      (PRT (RP up))
-                      (PP (IN until)
-                        (NP
-                          (NP (DT the) (NN end))
-                          (PP (IN of)
-                            (NP (CD 2003)))))))))))
-          (PP (TO to)
-            (NP
-              (NP (DT the) (NNP European) (NNP Union))
-              (PP (IN for)
-                (NP
-                  (NP (DT the) (NN enlargement) (NN process))
-                  (PP (IN in)
-                    (NP
-                      (NP (DT the) (NN direction))
-                      (PP (IN of)
-                        (NP (DT the) (JJ excellent) (NN speech)))))))))
-          (PP (IN by)
-            (NP
-              (NP (DT the) (NNP President))
-              (PP (IN of)
-                (NP
-                  (NP (DT the) (NNP Commission))
-                  (, ,)
-                  (NP (NNP Mr) (NNP Prodi)))))))))
+            (NP (DT the) (NNP House))
+            (CC and)
+            (NP (DT the) (JJ open) (NNS borders)))))
+      (, ,)
+      (NP
+        (QP (JJR more) (IN than)
+          (NP (RB ever))))
+      (, ,))
+    (VP (VBP involve)
+      (NP
+        (NP (DT a) (JJ racial) (NN fragmentation))
+        (PP (IN of)
+          (NP (DT the) (JJ European) (NNS countries)))))
     (. .)))
 
-root(ROOT-0, Third-1)
-nsubj(do-5, we-3)
-aux(do-5, must-4)
-dep(Third-1, do-5)
-dobj(do-5, everything-6)
-poss(power-9, our-8)
-prep_in(everything-6, power-9)
-aux(draw-11, to-10)
-vmod(power-9, draw-11)
-prt(draw-11, up-12)
-det(end-15, the-14)
-prep_until(draw-11, end-15)
-prep_of(end-15, 2003-17)
-det(Union-21, the-19)
-nn(Union-21, European-20)
-prep_to(do-5, Union-21)
-det(process-25, the-23)
-nn(process-25, enlargement-24)
-prep_for(Union-21, process-25)
-det(direction-28, the-27)
-prep_in(process-25, direction-28)
-det(speech-32, the-30)
-amod(speech-32, excellent-31)
-prep_of(direction-28, speech-32)
-det(President-35, the-34)
-prep_by(do-5, President-35)
-det(Commission-38, the-37)
-prep_of(President-35, Commission-38)
-nn(Prodi-41, Mr-40)
-appos(Commission-38, Prodi-41)
+root(ROOT-0, involve-19)
+det(people-6, The-1)
+amod(people-6, more-2)
+advmod(elderly-5, more-4)
+conj_and(more-2, elderly-5)
+nsubj(involve-19, people-6)
+det(House-9, the-8)
+prep_in(people-6, House-9)
+det(borders-13, the-11)
+amod(borders-13, open-12)
+conj_and(House-9, borders-13)
+quantmod(than-16, more-15)
+appos(people-6, than-16)
+dep(than-16, ever-17)
+det(fragmentation-22, a-20)
+amod(fragmentation-22, racial-21)
+dobj(involve-19, fragmentation-22)
+det(countries-26, the-24)
+amod(countries-26, European-25)
+prep_of(fragmentation-22, countries-26)
