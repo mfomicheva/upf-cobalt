@@ -10,11 +10,11 @@ from os.path import expanduser
 
 
 home = expanduser("~")
-referenceDir = home + '/Dropbox/dataSets/wmt14-metrics-task/baselines/data/parsed/references'
-testDir = home + '/Dropbox/dataSets/wmt14-metrics-task/baselines/data/parsed/system-outputs'
-outputDir = home + '/Dropbox/dataSets/wmt14-metrics-task/submissions/MWA/MWA-WORDNET-MIN'
+referenceDir = home + '/Dropbox/workspace/dataSets/wmt14-metrics-task/baselines/data/parsed/references'
+testDir = home + '/Dropbox/workspace/dataSets/wmt14-metrics-task/baselines/data/parsed/system-outputs'
+outputDir = home + '/Dropbox/workspace/dataSets/wmt14-metrics-task/submissions/MWA/MWA-dep'
 dataset = 'newstest2014'
-metric = 'MWA'
+metric = 'MWA-dep'
 
 
 def main(args):
@@ -38,7 +38,7 @@ def main(args):
 
     sentencesRef = readSentences(codecs.open(referenceDir + '/' + dataset + '-ref.' + languagePair + '.out', encoding='UTF-8'))
 
-    outputFileScoring = open(outputDir + '/' + 'mwa-wordnet-min.' + languagePair + '.' + 'seg.score', 'w')
+    outputFileScoring = open(outputDir + '/' + metric + '.' + languagePair + '.' + 'seg.score', 'w')
 
     testFiles = [f for f in listdir(testDir + '/' + dataset + '/' + languagePair) if isfile(join(testDir + '/' + dataset + '/' + languagePair, f))]
 
@@ -46,10 +46,12 @@ def main(args):
     aligner = Aligner('english')
 
     for t in testFiles:
+        print t
         system = t.split('.')[1] + '.' + t.split('.')[2]
         sentencesTest = readSentences(codecs.open(testDir + '/' + dataset + '/' + languagePair + '/' + t, encoding='UTF-8'))
 
-        outputFileAlign = open(outputDir + '/' + dataset + '.' + system + '.' + languagePair + '.align.out', 'w')
+        if (writeAlignments):
+            outputFileAlign = open(outputDir + '/' + dataset + '.' + system + '.' + languagePair + '.align.out', 'w')
 
         for i, sentence in enumerate(sentencesRef):
             phrase = i + 1

@@ -189,10 +189,9 @@ def prepareSentence2(sentence):
     words = []
 
     for rawWord in sentenceLemmasAndPosTags:
-        words.append(Word(rawWord[1] - 1, rawWord[2], rawWord[3], rawWord[4]))
+        words.append(Word(rawWord[1] - 1, rawWord[2], rawWord[3], rawWord[4], ''))
 
     return words
-
 
 def dependencyParseAndPutOffsets(parseResult):
 # returns dependency parse of the sentence whhere each item is of the form (rel, left{charStartOffset, charEndOffset, wordNumber}, right{charStartOffset, charEndOffset, wordNumber})
@@ -242,7 +241,6 @@ def findParents(dependencyParse, wordIndex, word):
     wordsWithIndices = ((int(item[2].split('{')[1].split('}')[0].split(' ')[2]), item[2].split('{')[0]) for item in dependencyParse)
     wordsWithIndices = list(set(wordsWithIndices))
     wordsWithIndices = sorted(wordsWithIndices, key=lambda item: item[0])
-    #print wordsWithIndices
 
     wordIndexPresentInTheList = False
     for item in wordsWithIndices:

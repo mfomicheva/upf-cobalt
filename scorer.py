@@ -2,6 +2,7 @@ from wordSim import *
 from ConfigParser import ConfigParser
 from coreNlpUtil import *
 import wordSim
+from json import *
 
 
 class Scorer(object):
@@ -13,6 +14,9 @@ class Scorer(object):
     stem = 1
     synonym = 1
     paraphrase = 1
+    posExact = 1
+    posGramCat = 1
+    posNone = 1
     related = 1
     related_threshold = 1
     context_importance = 1
@@ -29,6 +33,9 @@ class Scorer(object):
         self.stem = config.getfloat('Scorer', 'stem')
         self.synonym = config.getfloat('Scorer', 'synonym')
         self.paraphrase = config.getfloat('Scorer', 'paraphrase')
+        self.posExact = config.getfloat('Scorer', 'posExact')
+        self.posGramCat = config.getfloat('Scorer', 'posGramCat')
+        self.posNone = config.getfloat('Scorer', 'posNone')
         self.related = config.getfloat('Scorer', 'related')
         self.related_threshold = config.getfloat('Scorer', 'related_threshold')
         self.context_importance = config.getfloat('Scorer', 'context_importance')
@@ -37,6 +44,7 @@ class Scorer(object):
 
     # receives alignments structure as an input - alignments[0] is the aligned pair indexes,
     # alignments[1] is the aligned pair words, alignments[2] is the aligned pair dependency similarity score
+
     def calculateScore(self, sentence1, sentence2, alignments):
         sentence1 = prepareSentence2(sentence1)
         sentence2 = prepareSentence2(sentence2)
@@ -51,15 +59,16 @@ class Scorer(object):
         weightedMatches2 = 0
 
         for i, a in enumerate(alignments[0]):
+
             if not wordSim.functionWord(sentence1[a[0] - 1].form):
-                weightedMatches1 += self.delta * wordSim.weightedWordRelatedness(sentence1[a[0] - 1], sentence2[a[1] - 1], self, alignments[2][i])
+                weightedMatches1 += self.delta * wordSim.wordRelatednessScoring(sentence1[a[0] - 1], sentence2[a[1] - 1], self, alignments[2][i])
             else:
-                weightedMatches1 += (1 - self.delta) * wordSim.weightedWordRelatedness(sentence1[a[0] - 1], sentence2[a[1] - 1], self, alignments[2][i])
+                weightedMatches1 += (1 - self.delta) * wordSim.wordRelatednessScoring(sentence1[a[0] - 1], sentence2[a[1] - 1], self, alignments[2][i])
 
             if not wordSim.functionWord(sentence2[a[1] - 1].form):
-                weightedMatches2 += self.delta * wordSim.weightedWordRelatedness(sentence1[a[0] - 1], sentence2[a[1] - 1], self, alignments[2][i])
+                weightedMatches2 += self.delta * wordSim.wordRelatednessScoring(sentence1[a[0] - 1], sentence2[a[1] - 1], self, alignments[2][i])
             else:
-                weightedMatches2 += (1 - self.delta) * wordSim.weightedWordRelatedness(sentence1[a[0] - 1], sentence2[a[1] - 1], self, alignments[2][i])
+                weightedMatches2 += (1 - self.delta) * wordSim.wordRelatednessScoring(sentence1[a[0] - 1], sentence2[a[1] - 1], self, alignments[2][i])
 
         if weightedLength1 == 0:
             precision = weightedMatches1

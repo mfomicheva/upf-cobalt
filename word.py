@@ -8,10 +8,13 @@ class Word(object):
 
     pos = None
 
-    def __init__(self, index, form, lemma, pos):
+    dep = None
+
+    def __init__(self, index, form, lemma, pos, dep):
         self.index = index
         self.form = form
         self.lemma = lemma
         self.pos = pos
+        self.dep = dep
 
 

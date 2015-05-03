@@ -62,22 +62,20 @@ def loadWordVectors(vectorsFileName = 'Resources/vectors/deps.words'):
 wordVector = {}
 loadWordVectors()
 
-testFile = open('Data/wordSimTest.txt','r')
-for line in testFile:
-    data = line.split("\t")
-    word1 = data[0].lower()
-    word2 = data[1].lower()
-    source = data[2].strip()
-    vectorSim = distributionalSimilarity(word1,word2)
-    wnSim = wordnetSimilarity(word1,word2)
-    print word1 + " - " + word2 + "\t" + str(vectorSim) + "\t" + str(wnSim) + "\t" + source
+# testFile = open('Data/wordSimTest.txt','r')
+# for line in testFile:
+#     data = line.split("\t")
+#     word1 = data[0].lower()
+#     word2 = data[1].lower()
+#     source = data[2].strip()
+#     vectorSim = distributionalSimilarity(word1,word2)
+#     wnSim = wordnetSimilarity(word1,word2)
+#     print word1 + " - " + word2 + "\t" + str(vectorSim) + "\t" + str(wnSim) + "\t" + source
 
-
-
-# word1 = "absence"
-# word2 = "without"
-# vectorSim = distributionalSimilarity(word1,word2)
-# wnSim = wordnetSimilarity(word1,word2)
-# print "Distributional Similarity = " + str(vectorSim)
-# print "WordNet Path Similarity = " + str(wnSim)
+word1 = "voted"
+word2 = "favour"
+vectorSim = distributionalSimilarity(word1, word2)
+wnSim = wordnetSimilarity(word1, word2)
+print "Distributional Similarity = " + str(vectorSim)
+print "WordNet Path Similarity = " + str(wnSim)
 
