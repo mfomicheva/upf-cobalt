@@ -1,3 +1,0 @@
-Repeated counts for compareNodes and findDependencySimilarity : sentence 121 europarl systran wmt2007 (check with print error when evidence/context > 1)
-In current version of the code I eliminated the cycle that aligns all the words that contributed to alignment of word1-word2 as evidence. On systran works better.
-Check when score < 0
