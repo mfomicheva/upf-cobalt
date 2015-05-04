@@ -26,12 +26,12 @@ correlation_script_dir = home + '/Dropbox/dataSets/wmt14-metrics-task'
 dataset = 'newstest2014'
 metric = 'MWA'
 language_pair = ""
-training_values = open(home + '/Dropbox/dataSets/wmt14-metrics-task/submissions/MWA/MWA-WORDNET-MIN/training.values', 'w')
+best_found = open(home + '/Dropbox/dataSets/wmt14-metrics-task/best.values')
 
 def calculate_correlation():
     command = 'python3 ' + correlation_script_dir + '/compute-segment-correlations --judgments ' + \
               correlation_script_dir + '/judgements-2014-05-14.csv --metrics ' + \
-              str(output_dir + '/' + 'mwa-trained-wordnet-min.' + language_pair + '.' + 'seg.score')
+              str(output_dir + '/' + 'mwa-best-wordnet-min.' + language_pair + '.' + 'seg.score')
 
     output = subprocess.check_output(command, shell=True)
     output = output.replace('*', '')
@@ -54,7 +54,7 @@ def calculate_correlation():
 def calculate_scores(scorer):
     sentences_ref = readSentences(codecs.open(reference_dir + '/' + dataset + '-ref.' + language_pair + '.out', encoding='UTF-8'))
 
-    scoring_output_file = open(output_dir + '/' + 'mwa-trained-wordnet-min.' + language_pair + '.' + 'seg.score', 'w')
+    scoring_output_file = open(output_dir + '/' + 'mwa-best-wordnet-min.' + language_pair + '.' + 'seg.score', 'w')
 
     test_files = [f for f in listdir(test_dir + '/' + dataset + '/' + language_pair) if isfile(join(test_dir + '/' + dataset + '/' + language_pair, f))]
 
@@ -74,10 +74,6 @@ def calculate_scores(scorer):
     scoring_output_file.close()
 
 
-def initialize(genome, **args):
-    genome.genomeList = [2.0, 0.7, 0.8, 0.6, 1.0, 0.1, 0.75, 0.7]
-
-
 def evaluate(values):
     scorer = Scorer()
     scorer.exact = values[0]
@@ -94,15 +90,6 @@ def evaluate(values):
     calculate_scores(scorer)
     correlation = calculate_correlation()
 
-    training_values.write('[')
-    for i, value in enumerate(values):
-        training_values.write(str(value))
-        if i < len(values):
-            training_values.write(', ')
-    training_values.write('] : ' + str(correlation) + '\n')
-
-    training_values.flush()
-
     if correlation < 0:
         correlation = 0
 
@@ -111,35 +98,28 @@ def evaluate(values):
 
 def main(args):
 
-    opts, args = getopt.getopt(args, 'hl:', ['language='])
+    language_pairs = ['de-en', 'fr-en', 'hi-en', 'cs-en', 'ru-en']
 
-    for opt, arg in opts:
-        if opt == '-h':
-            print 'reader.py -l <language_pair>'
-            sys.exit()
-        elif opt in ('-l', '--language'):
-            global language_pair
-            language_pair = arg
+    global language_pair
 
-    # Genome instance
-    genome = G1DList.G1DList(8)
-    genome.setParams(rangemin=0.0, rangemax=4.0)
-    genome.initializator.set(Initializators.G1DListInitializatorReal)
-    genome.mutator.set(Mutators.G1DListMutatorRealGaussian)
-    genome.evaluator.set(evaluate)
+    for line in best_found:
+        values = map(float, line.split(':')[0].replace('[', '').replace(']', '').split(','))
 
-    # Genetic Algorithm Instance
-    ga = GSimpleGA.GSimpleGA(genome)
-    ga.selector.set(Selectors.GRouletteWheel)
-    ga.nGenerations = 1000
+        result = 0
+        results = []
+        for pair in language_pairs:
+            language_pair = pair
+            result += evaluate(values)
 
-    # Do the evolution
-    ga.evolve(10)
+        results.append(result / 5)
+        print str(values) + ' : ' + str(result / 5)
 
-    # Best individual
-    print ga.bestIndividual()
 
-    training_values.close()
+    print 'Max : ' + str(max(results))
+
+
+
+
 
 if __name__ == "__main__":
     main(sys.argv[1:])
