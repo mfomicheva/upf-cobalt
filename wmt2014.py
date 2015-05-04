@@ -12,9 +12,9 @@ from os.path import expanduser
 home = expanduser("~")
 referenceDir = home + '/Dropbox/workspace/dataSets/wmt14-metrics-task/baselines/data/parsed/references'
 testDir = home + '/Dropbox/workspace/dataSets/wmt14-metrics-task/baselines/data/parsed/system-outputs'
-outputDir = home + '/Dropbox/workspace/dataSets/wmt14-metrics-task/submissions/MWA/MWA-dep'
+outputDir = home + '/Dropbox/workspace/dataSets/wmt14-metrics-task/submissions/MWA/testCS'
 dataset = 'newstest2014'
-metric = 'MWA-dep'
+metric = 'POS'
 
 
 def main(args):
@@ -70,7 +70,8 @@ def main(args):
             outputFileScoring.write(str(metric) + '\t' + str(languagePair) + '\t' + str(dataset) + '\t' + str(system) + '\t' + str(phrase) + '\t' + str(score1) + '\n')
 
 
-        outputFileAlign.close()
+        if (writeAlignments):
+            outputFileAlign.close()
     outputFileScoring.close()
 
 if __name__ == "__main__":

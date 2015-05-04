@@ -5,23 +5,12 @@ import math
 from types import *
 
 def wordRelatednessAlignment(word1, word2, config):
+
     global stemmer
     global punctuations
 
     canonical_word1 = canonize_word(word1.form)
     canonical_word2 = canonize_word(word2.form)
-
-    if canonical_word1 == canonical_word2:
-        return config.exact
-
-    if contractionDictionary.check_contraction(canonical_word1, canonical_word2):
-        return config.exact
-
-    if stemmer.stem(canonical_word1) == stemmer.stem(canonical_word2):
-        return (config.exact + (comparePos(word1.pos, word2.pos, config) - 1))
-
-    if word1.lemma == word2.lemma:
-        return (config.exact + (comparePos(word1.pos, word2.pos, config) - 1))
 
     if canonical_word1.isdigit() and canonical_word2.isdigit() and canonical_word1 != canonical_word2:
         return 0
@@ -37,29 +26,43 @@ def wordRelatednessAlignment(word1, word2, config):
     if canonical_word1 in punctuations or canonical_word2 in punctuations:
         return 0
 
+    if canonical_word1 == canonical_word2:
+        lexSim = config.exact
+
+    elif contractionDictionary.check_contraction(canonical_word1, canonical_word2):
+        lexSim = config.exact
+
+    elif stemmer.stem(canonical_word1) == stemmer.stem(canonical_word2):
+        lexSim = config.stem
+
+    elif word1.lemma == word2.lemma:
+        lexSim = config.stem
+
     elif synonymDictionary.checkSynonymByLemma(word1.lemma, word2.lemma):
-        return (config.synonym + (comparePos(word1.pos, word2.pos, config) - 1))
+        lexSim = config.synonym
 
     elif presentInPPDB(canonical_word1, canonical_word2):
-        return (config.paraphrase + (comparePos(word1.pos, word2.pos, config) - 1))
-
-    elif presentInPPDB(word1.lemma, word2.lemma):
-        return (config.paraphrase + (comparePos(word1.pos, word2.pos, config) - 1))
+        lexSim = config.paraphrase
 
     # elif not functionWord(canonical_word1) and not functionWord(canonical_word1) and wordnetPathSimilarity(word1.lemma, word2.lemma) > config.related_threshold:
     #     return config.related
 
-    elif cosineSimilarity(word1.lemma, word2.lemma) > config.related_threshold and ((canonical_word1 not in stopwords and canonical_word2 not in stopwords) or word1.pos[0] == word2.pos[0]):
-        return (config.related + (comparePos(word1.pos, word2.pos, config) - 1))
+    # elif cosineSimilarity(word1.lemma, word2.lemma) > 0 and ((canonical_word1 not in stopwords and canonical_word2 not in stopwords) or word1.pos[0] == word2.pos[0]):
+    #     lexSim = config.related
 
     else:
-        return 0
+        lexSim = 0.0
+
+    posSim = comparePos(word1.pos, word2.pos, config)
+    wordSim = lexSim + (posSim - 1)
+
+    return lexSim
+
 
 def wordRelatednessScoring(word1, word2, scorer, contextPenalty):
+
     global stemmer
     global punctuations
-
-    lexSim = 0.0
 
     canonical_word1 = canonize_word(word1.form)
     canonical_word2 = canonize_word(word2.form)
@@ -71,10 +74,10 @@ def wordRelatednessScoring(word1, word2, scorer, contextPenalty):
         lexSim = scorer.exact
 
     elif word1.lemma == word2.lemma:
-        lexSim = scorer.exact
+        lexSim = scorer.stem
 
     elif stemmer.stem(canonical_word1) == stemmer.stem(canonical_word2):
-        lexSim = scorer.exact
+        lexSim = scorer.stem
 
     elif synonymDictionary.checkSynonymByLemma(word1.lemma, word2.lemma):
         lexSim = scorer.synonym
@@ -82,18 +85,18 @@ def wordRelatednessScoring(word1, word2, scorer, contextPenalty):
     elif presentInPPDB(canonical_word1, canonical_word2):
         lexSim = scorer.paraphrase
 
-    elif presentInPPDB(word1.lemma, word2.lemma):
-        lexSim = scorer.paraphrase
-
     # elif not functionWord(canonical_word1) and not functionWord(canonical_word1) and wordnetPathSimilarity(word1.lemma, word2.lemma) > scorer.related_threshold:
     #     lexSim = scorer.related
 
-    elif cosineSimilarity(word1.lemma, word2.lemma) > scorer.related_threshold and ((canonical_word1 not in stopwords and canonical_word2 not in stopwords) or word1.pos[0] == word2.pos[0]):
-        lexSim = scorer.related
+    # elif cosineSimilarity(word1.lemma, word2.lemma) > scorer.related_threshold and ((canonical_word1 not in stopwords and canonical_word2 not in stopwords) or word1.pos[0] == word2.pos[0]):
+    #     lexSim = scorer.related
+
+    else:
+        lexSim = 0.0
 
     posSim = comparePos(word1.pos, word2.pos, scorer)
     wordSim = lexSim + (posSim - 1)
-    result = wordSim - contextPenalty * scorer.context_importance
+    result = lexSim - contextPenalty * scorer.context_importance
 
     return result
 
@@ -115,7 +118,7 @@ def wordnetPathSimilarity(word1, word2):
 
     return max_similarity
 
-def loadWordVectors(vectorsFileName = 'Resources/DsitributionalSimilarity/deps.words'):
+def loadWordVectors(vectorsFileName = '/Users/MarinaFomicheva/workspace/resources/distribSim/deps.words'):
 
     global wordVector
     vectorFile = open (vectorsFileName, 'r')

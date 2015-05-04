@@ -42,7 +42,7 @@ def distributionalSimilarity(word1,word2):
     return vectorSimilarity
 
 
-def loadWordVectors(vectorsFileName = 'Resources/vectors/deps.words'):
+def loadWordVectors(vectorsFileName = '/Users/MarinaFomicheva/workspace/resources/distribSim/deps.words'):
 
     vectorFile = open (vectorsFileName, 'r')
 
@@ -72,10 +72,12 @@ loadWordVectors()
 #     wnSim = wordnetSimilarity(word1,word2)
 #     print word1 + " - " + word2 + "\t" + str(vectorSim) + "\t" + str(wnSim) + "\t" + source
 
-word1 = "voted"
-word2 = "favour"
+word1 = "an"
+word2 = "the"
 vectorSim = distributionalSimilarity(word1, word2)
 wnSim = wordnetSimilarity(word1, word2)
 print "Distributional Similarity = " + str(vectorSim)
 print "WordNet Path Similarity = " + str(wnSim)
+
+
 

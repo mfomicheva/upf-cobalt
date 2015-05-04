@@ -1029,7 +1029,7 @@ class Aligner(object):
 
             penaltyNormalized += (1/(1 + math.exp(-penaltyDifferenceMean)))
 
-        return penaltyDifferenceMean
+        return penaltyWeighted
 
     def calculateContextDiffMean(self, sourceDiff, targetDiff, sourceLength, targetLength, config):
 
