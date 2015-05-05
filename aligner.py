@@ -260,6 +260,11 @@ class Aligner(object):
                 posAlignments.append(indexPairWithStrongestTieForCurrentPass)
                 sourceWordIndicesAlreadyAligned.append(indexPairWithStrongestTieForCurrentPass[0])
                 targetWordIndicesAlreadyAligned.append(indexPairWithStrongestTieForCurrentPass[1])
+                for item in relativeAlignmentsMatrix[(indexPairWithStrongestTieForCurrentPass[0], indexPairWithStrongestTieForCurrentPass[1])]:
+                    if item[0] != 0 and item[1] != 0 and item[0] not in sourceWordIndicesAlreadyAligned and item[1] not in targetWordIndicesAlreadyAligned:
+                        posAlignments.append(item)
+                        sourceWordIndicesAlreadyAligned.append(item[0])
+                        targetWordIndicesAlreadyAligned.append(item[1])
             else:
                 break
 
@@ -979,6 +984,7 @@ class Aligner(object):
         penaltyDifferenceTarget = 0.0
         penaltyDifferenceMean = 0.0
         penaltyNormalized = 0.0
+        penaltyPrevious = 0.0
 
         pos = ''
         if sourceWord[4].lower().startswith('v'):
@@ -1021,15 +1027,17 @@ class Aligner(object):
         totalContextTargetSimple += (len(targetWordChildren) + len(targetWordParents))
 
         if totalContextTargetSimple > 0:
-            penaltySimple += 1 - contextSimilarity/totalContextTargetSimple
-            penaltyWeighted += (1 - contextSimilarity/totalContextTargetSimple) * (math.log(totalContextTargetSimple) + 1)
 
-            penaltyDifferenceTarget += contextDiffTarget/totalContextTargetWeighted * (math.log(totalContextTargetSimple) + 1)
-            penaltyDifferenceMean += self.calculateContextDiffMean(contextDiffSource, contextDiffTarget, totalContextSourceWeighted, totalContextTargetWeighted, self.config) * (math.log(totalContextTargetSimple)+1)
+            penaltySimple += 1.0 - contextSimilarity/totalContextTargetSimple
+            penaltyWeighted += (1.0 - contextSimilarity/totalContextTargetSimple) * (math.log(totalContextTargetSimple) + 1)
+            penaltyPrevious += (1.0 - contextSimilarity/(totalContextTargetSimple + 1.0)) * math.log(totalContextTargetSimple  + 1.0)
 
-            penaltyNormalized += (1/(1 + math.exp(-penaltyDifferenceMean)))
+            penaltyDifferenceTarget += contextDiffTarget/totalContextTargetWeighted * (math.log(totalContextTargetSimple) + 1.0)
+            penaltyDifferenceMean += self.calculateContextDiffMean(contextDiffSource, contextDiffTarget, totalContextSourceWeighted, totalContextTargetWeighted, self.config) * (math.log(totalContextTargetSimple) + 1.0)
 
-        return penaltyWeighted
+            penaltyNormalized += (1.0/(1.0 + math.exp(-penaltyDifferenceMean)))
+
+        return penaltyPrevious
 
     def calculateContextDiffMean(self, sourceDiff, targetDiff, sourceLength, targetLength, config):
 

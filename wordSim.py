@@ -209,4 +209,4 @@ def comparePos (pos1, pos2, scorer):
 
 
 loadPPDB()
-loadWordVectors()
+#loadWordVectors()

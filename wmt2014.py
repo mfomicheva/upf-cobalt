@@ -14,7 +14,7 @@ referenceDir = home + '/Dropbox/workspace/dataSets/wmt14-metrics-task/baselines/
 testDir = home + '/Dropbox/workspace/dataSets/wmt14-metrics-task/baselines/data/parsed/system-outputs'
 outputDir = home + '/Dropbox/workspace/dataSets/wmt14-metrics-task/submissions/MWA/testCS'
 dataset = 'newstest2014'
-metric = 'POS'
+metric = 'ppdb.forms+lemmas'
 
 
 def main(args):
