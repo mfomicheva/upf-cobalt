@@ -5,25 +5,7 @@ import math
 from types import *
 from nltk.corpus import wordnet
 
-def wordnetSimilarity(word1, word2):
-
-    synsets1 = wordnet.synsets(word1)
-    synsets2 = wordnet.synsets(word2)
-
-    max_similarity = 0
-
-    for synset1 in synsets1:
-        for synset2 in synsets2:
-            if synset1._pos == synset2._pos:
-                similarity = wordnet.path_similarity(synset1, synset2)
-            else:
-                similarity = 0
-            if max_similarity < similarity:
-                max_similarity = similarity
-
-    return max_similarity
-
-def distributionalSimilarity(word1,word2):
+def distributionalSimilarity(word1, word2):
 
     vectorSimilarity = 0
 
@@ -35,19 +17,23 @@ def distributionalSimilarity(word1,word2):
         for i in range(len(vector1)):
             x = float(vector1[i])
             y = float(vector2[i])
-            sumxx += x*x
-            sumyy += y*y
-            sumxy += x*y
-        vectorSimilarity = sumxy/math.sqrt(sumxx*sumyy)
+            sumxx += x * x
+            sumyy += y * y
+            sumxy += x * y
+        vectorSimilarity = sumxy/math.sqrt(sumxx * sumyy)
     return vectorSimilarity
 
 
-def loadWordVectors(vectorsFileName = '/Users/MarinaFomicheva/workspace/resources/distribSim/deps.words'):
+def loadVectors(fileName = '/Users/MarinaFomicheva/workspace/resources/distribSim/vectors_dep'):
 
-    vectorFile = open (vectorsFileName, 'r')
+    vectorFile = open (fileName, 'r')
 
     for line in vectorFile:
         if line == '\n':
+        # here line = {str} 'version https://git-lfs.github.com/spec/v1\n'
+        # next line = 'oid sha256:e256c308eb8510d98240926363be4e5d80dd0a343f53877c83e1243a5bf52cac'
+        # next line = 'size 860005638'
+
             continue
 
         match = re.match(r'^([^ ]+) (.+)',line)
@@ -60,24 +46,13 @@ def loadWordVectors(vectorsFileName = '/Users/MarinaFomicheva/workspace/resource
         wordVector[word] = vector
 
 wordVector = {}
-loadWordVectors()
+loadVectors()
 
-# testFile = open('Data/wordSimTest.txt','r')
-# for line in testFile:
-#     data = line.split("\t")
-#     word1 = data[0].lower()
-#     word2 = data[1].lower()
-#     source = data[2].strip()
-#     vectorSim = distributionalSimilarity(word1,word2)
-#     wnSim = wordnetSimilarity(word1,word2)
-#     print word1 + " - " + word2 + "\t" + str(vectorSim) + "\t" + str(wnSim) + "\t" + source
-
-word1 = "an"
-word2 = "the"
+word1 = "dog"
+word2 = "animal"
 vectorSim = distributionalSimilarity(word1, word2)
-wnSim = wordnetSimilarity(word1, word2)
 print "Distributional Similarity = " + str(vectorSim)
-print "WordNet Path Similarity = " + str(wnSim)
+
 
 
 

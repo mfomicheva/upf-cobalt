@@ -1,287 +1,46 @@
-Sentence #109 (39 tokens):
-the invisible hand of Adam Smith (the idea that the markets are taking to the efficiency as if handled an invisible hand them) is invisible, at least in part, because it is not there.
-[Text=the CharacterOffsetBegin=15756 CharacterOffsetEnd=15759 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=invisible CharacterOffsetBegin=15760 CharacterOffsetEnd=15769 PartOfSpeech=JJ Lemma=invisible NamedEntityTag=O] [Text=hand CharacterOffsetBegin=15770 CharacterOffsetEnd=15774 PartOfSpeech=NN Lemma=hand NamedEntityTag=O] [Text=of CharacterOffsetBegin=15775 CharacterOffsetEnd=15777 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=Adam CharacterOffsetBegin=15778 CharacterOffsetEnd=15782 PartOfSpeech=NNP Lemma=Adam NamedEntityTag=PERSON] [Text=Smith CharacterOffsetBegin=15783 CharacterOffsetEnd=15788 PartOfSpeech=NNP Lemma=Smith NamedEntityTag=PERSON] [Text=-LRB- CharacterOffsetBegin=15789 CharacterOffsetEnd=15790 PartOfSpeech=-LRB- Lemma=-lrb- NamedEntityTag=O] [Text=the CharacterOffsetBegin=15790 CharacterOffsetEnd=15793 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=idea CharacterOffsetBegin=15794 CharacterOffsetEnd=15798 PartOfSpeech=NN Lemma=idea NamedEntityTag=O] [Text=that CharacterOffsetBegin=15799 CharacterOffsetEnd=15803 PartOfSpeech=IN Lemma=that NamedEntityTag=O] [Text=the CharacterOffsetBegin=15804 CharacterOffsetEnd=15807 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=markets CharacterOffsetBegin=15808 CharacterOffsetEnd=15815 PartOfSpeech=NNS Lemma=market NamedEntityTag=O] [Text=are CharacterOffsetBegin=15816 CharacterOffsetEnd=15819 PartOfSpeech=VBP Lemma=be NamedEntityTag=O] [Text=taking CharacterOffsetBegin=15820 CharacterOffsetEnd=15826 PartOfSpeech=VBG Lemma=take NamedEntityTag=O] [Text=to CharacterOffsetBegin=15827 CharacterOffsetEnd=15829 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=the CharacterOffsetBegin=15830 CharacterOffsetEnd=15833 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=efficiency CharacterOffsetBegin=15834 CharacterOffsetEnd=15844 PartOfSpeech=NN Lemma=efficiency NamedEntityTag=O] [Text=as CharacterOffsetBegin=15845 CharacterOffsetEnd=15847 PartOfSpeech=IN Lemma=as NamedEntityTag=O] [Text=if CharacterOffsetBegin=15848 CharacterOffsetEnd=15850 PartOfSpeech=IN Lemma=if NamedEntityTag=O] [Text=handled CharacterOffsetBegin=15851 CharacterOffsetEnd=15858 PartOfSpeech=VBN Lemma=handle NamedEntityTag=O] [Text=an CharacterOffsetBegin=15859 CharacterOffsetEnd=15861 PartOfSpeech=DT Lemma=a NamedEntityTag=O] [Text=invisible CharacterOffsetBegin=15862 CharacterOffsetEnd=15871 PartOfSpeech=JJ Lemma=invisible NamedEntityTag=O] [Text=hand CharacterOffsetBegin=15872 CharacterOffsetEnd=15876 PartOfSpeech=NN Lemma=hand NamedEntityTag=O] [Text=them CharacterOffsetBegin=15877 CharacterOffsetEnd=15881 PartOfSpeech=PRP Lemma=they NamedEntityTag=O] [Text=-RRB- CharacterOffsetBegin=15881 CharacterOffsetEnd=15882 PartOfSpeech=-RRB- Lemma=-rrb- NamedEntityTag=O] [Text=is CharacterOffsetBegin=15883 CharacterOffsetEnd=15885 PartOfSpeech=VBZ Lemma=be NamedEntityTag=O] [Text=invisible CharacterOffsetBegin=15886 CharacterOffsetEnd=15895 PartOfSpeech=JJ Lemma=invisible NamedEntityTag=O] [Text=, CharacterOffsetBegin=15895 CharacterOffsetEnd=15896 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=at CharacterOffsetBegin=15897 CharacterOffsetEnd=15899 PartOfSpeech=IN Lemma=at NamedEntityTag=O] [Text=least CharacterOffsetBegin=15900 CharacterOffsetEnd=15905 PartOfSpeech=JJS Lemma=least NamedEntityTag=O] [Text=in CharacterOffsetBegin=15906 CharacterOffsetEnd=15908 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=part CharacterOffsetBegin=15909 CharacterOffsetEnd=15913 PartOfSpeech=NN Lemma=part NamedEntityTag=O] [Text=, CharacterOffsetBegin=15913 CharacterOffsetEnd=15914 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=because CharacterOffsetBegin=15915 CharacterOffsetEnd=15922 PartOfSpeech=IN Lemma=because NamedEntityTag=O] [Text=it CharacterOffsetBegin=15923 CharacterOffsetEnd=15925 PartOfSpeech=PRP Lemma=it NamedEntityTag=O] [Text=is CharacterOffsetBegin=15926 CharacterOffsetEnd=15928 PartOfSpeech=VBZ Lemma=be NamedEntityTag=O] [Text=not CharacterOffsetBegin=15929 CharacterOffsetEnd=15932 PartOfSpeech=RB Lemma=not NamedEntityTag=O] [Text=there CharacterOffsetBegin=15933 CharacterOffsetEnd=15938 PartOfSpeech=RB Lemma=there NamedEntityTag=O] [Text=. CharacterOffsetBegin=15938 CharacterOffsetEnd=15939 PartOfSpeech=. Lemma=. NamedEntityTag=O]
+Sentence #54 (22 tokens):
+They believe that the United States of America is determined to undermine the safety of Iran and damage their national interests.
+[Text=They CharacterOffsetBegin=7511 CharacterOffsetEnd=7515 PartOfSpeech=PRP Lemma=they NamedEntityTag=O] [Text=believe CharacterOffsetBegin=7516 CharacterOffsetEnd=7523 PartOfSpeech=VBP Lemma=believe NamedEntityTag=O] [Text=that CharacterOffsetBegin=7524 CharacterOffsetEnd=7528 PartOfSpeech=IN Lemma=that NamedEntityTag=O] [Text=the CharacterOffsetBegin=7529 CharacterOffsetEnd=7532 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=United CharacterOffsetBegin=7533 CharacterOffsetEnd=7539 PartOfSpeech=NNP Lemma=United NamedEntityTag=LOCATION] [Text=States CharacterOffsetBegin=7540 CharacterOffsetEnd=7546 PartOfSpeech=NNPS Lemma=States NamedEntityTag=LOCATION] [Text=of CharacterOffsetBegin=7547 CharacterOffsetEnd=7549 PartOfSpeech=IN Lemma=of NamedEntityTag=LOCATION] [Text=America CharacterOffsetBegin=7550 CharacterOffsetEnd=7557 PartOfSpeech=NNP Lemma=America NamedEntityTag=LOCATION] [Text=is CharacterOffsetBegin=7558 CharacterOffsetEnd=7560 PartOfSpeech=VBZ Lemma=be NamedEntityTag=O] [Text=determined CharacterOffsetBegin=7561 CharacterOffsetEnd=7571 PartOfSpeech=VBN Lemma=determine NamedEntityTag=O] [Text=to CharacterOffsetBegin=7572 CharacterOffsetEnd=7574 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=undermine CharacterOffsetBegin=7575 CharacterOffsetEnd=7584 PartOfSpeech=VB Lemma=undermine NamedEntityTag=O] [Text=the CharacterOffsetBegin=7585 CharacterOffsetEnd=7588 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=safety CharacterOffsetBegin=7589 CharacterOffsetEnd=7595 PartOfSpeech=NN Lemma=safety NamedEntityTag=O] [Text=of CharacterOffsetBegin=7596 CharacterOffsetEnd=7598 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=Iran CharacterOffsetBegin=7599 CharacterOffsetEnd=7603 PartOfSpeech=NNP Lemma=Iran NamedEntityTag=LOCATION] [Text=and CharacterOffsetBegin=7604 CharacterOffsetEnd=7607 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=damage CharacterOffsetBegin=7608 CharacterOffsetEnd=7614 PartOfSpeech=VB Lemma=damage NamedEntityTag=O] [Text=their CharacterOffsetBegin=7615 CharacterOffsetEnd=7620 PartOfSpeech=PRP$ Lemma=they NamedEntityTag=O] [Text=national CharacterOffsetBegin=7621 CharacterOffsetEnd=7629 PartOfSpeech=JJ Lemma=national NamedEntityTag=O] [Text=interests CharacterOffsetBegin=7630 CharacterOffsetEnd=7639 PartOfSpeech=NNS Lemma=interest NamedEntityTag=O] [Text=. CharacterOffsetBegin=7639 CharacterOffsetEnd=7640 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
 (ROOT
   (S
-    (NP
-      (NP
-        (NP (DT the) (JJ invisible) (NN hand))
-        (PP (IN of)
-          (NP (NNP Adam) (NNP Smith))))
-      (PRN (-LRB- -LRB-)
-        (NP
-          (NP (DT the) (NN idea))
-          (SBAR (IN that)
-            (S
-              (NP (DT the) (NNS markets))
-              (VP (VBP are)
-                (VP (VBG taking)
-                  (PP (TO to)
-                    (NP (DT the) (NN efficiency)))
-                  (SBAR (IN as) (IN if)
-                    (S
-                      (VP (VBN handled)
-                        (S
-                          (NP (DT an) (JJ invisible) (NN hand))
-                          (NP (PRP them)))))))))))
-        (-RRB- -RRB-)))
-    (VP (VBZ is)
-      (ADJP (JJ invisible))
-      (, ,)
-      (ADVP
-        (ADVP (IN at) (JJS least))
-        (PP (IN in)
-          (NP (NN part))))
-      (, ,)
-      (SBAR (IN because)
+    (NP (PRP They))
+    (VP (VBP believe)
+      (SBAR (IN that)
         (S
-          (NP (PRP it))
-          (VP (VBZ is) (RB not)
-            (NP (RB there))))))
-    (. .)))
-
-root(ROOT-0, invisible-27)
-det(hand-3, the-1)
-amod(hand-3, invisible-2)
-nsubj(invisible-27, hand-3)
-nn(Smith-6, Adam-5)
-prep_of(hand-3, Smith-6)
-det(idea-9, the-8)
-dep(hand-3, idea-9)
-mark(taking-14, that-10)
-det(markets-12, the-11)
-nsubj(taking-14, markets-12)
-aux(taking-14, are-13)
-dep(idea-9, taking-14)
-det(efficiency-17, the-16)
-prep_to(taking-14, efficiency-17)
-mark(handled-20, as-18)
-mark(handled-20, if-19)
-advcl(taking-14, handled-20)
-det(hand-23, an-21)
-amod(hand-23, invisible-22)
-nsubj(them-24, hand-23)
-xcomp(handled-20, them-24)
-cop(invisible-27, is-26)
-advmod(invisible-27, at-29)
-pobj(at-29, least-30)
-prep_in(at-29, part-32)
-mark(there-38, because-34)
-nsubj(there-38, it-35)
-cop(there-38, is-36)
-neg(there-38, not-37)
-advcl(invisible-27, there-38)
-
-Sentence #121 (26 tokens):
-Mr President, Commissioner, ladies and gentlemen, I should like to begin by congratulating Mrs Maij-Weggen on the excellent work he has done.
-[Text=Mr CharacterOffsetBegin=20766 CharacterOffsetEnd=20768 PartOfSpeech=NNP Lemma=Mr NamedEntityTag=O] [Text=President CharacterOffsetBegin=20769 CharacterOffsetEnd=20778 PartOfSpeech=NNP Lemma=President NamedEntityTag=O] [Text=, CharacterOffsetBegin=20778 CharacterOffsetEnd=20779 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=Commissioner CharacterOffsetBegin=20780 CharacterOffsetEnd=20792 PartOfSpeech=NNP Lemma=Commissioner NamedEntityTag=O] [Text=, CharacterOffsetBegin=20792 CharacterOffsetEnd=20793 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=ladies CharacterOffsetBegin=20794 CharacterOffsetEnd=20800 PartOfSpeech=NNS Lemma=lady NamedEntityTag=O] [Text=and CharacterOffsetBegin=20801 CharacterOffsetEnd=20804 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=gentlemen CharacterOffsetBegin=20805 CharacterOffsetEnd=20814 PartOfSpeech=NNS Lemma=gentleman NamedEntityTag=O] [Text=, CharacterOffsetBegin=20814 CharacterOffsetEnd=20815 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=I CharacterOffsetBegin=20816 CharacterOffsetEnd=20817 PartOfSpeech=PRP Lemma=I NamedEntityTag=O] [Text=should CharacterOffsetBegin=20818 CharacterOffsetEnd=20824 PartOfSpeech=MD Lemma=should NamedEntityTag=O] [Text=like CharacterOffsetBegin=20825 CharacterOffsetEnd=20829 PartOfSpeech=VB Lemma=like NamedEntityTag=O] [Text=to CharacterOffsetBegin=20830 CharacterOffsetEnd=20832 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=begin CharacterOffsetBegin=20833 CharacterOffsetEnd=20838 PartOfSpeech=VB Lemma=begin NamedEntityTag=O] [Text=by CharacterOffsetBegin=20839 CharacterOffsetEnd=20841 PartOfSpeech=IN Lemma=by NamedEntityTag=O] [Text=congratulating CharacterOffsetBegin=20842 CharacterOffsetEnd=20856 PartOfSpeech=NN Lemma=congratulating NamedEntityTag=O] [Text=Mrs CharacterOffsetBegin=20857 CharacterOffsetEnd=20860 PartOfSpeech=NNP Lemma=Mrs NamedEntityTag=PERSON] [Text=Maij-Weggen CharacterOffsetBegin=20861 CharacterOffsetEnd=20872 PartOfSpeech=NNP Lemma=Maij-Weggen NamedEntityTag=PERSON] [Text=on CharacterOffsetBegin=20873 CharacterOffsetEnd=20875 PartOfSpeech=IN Lemma=on NamedEntityTag=O] [Text=the CharacterOffsetBegin=20876 CharacterOffsetEnd=20879 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=excellent CharacterOffsetBegin=20880 CharacterOffsetEnd=20889 PartOfSpeech=JJ Lemma=excellent NamedEntityTag=O] [Text=work CharacterOffsetBegin=20890 CharacterOffsetEnd=20894 PartOfSpeech=NN Lemma=work NamedEntityTag=O] [Text=he CharacterOffsetBegin=20895 CharacterOffsetEnd=20897 PartOfSpeech=PRP Lemma=he NamedEntityTag=O] [Text=has CharacterOffsetBegin=20898 CharacterOffsetEnd=20901 PartOfSpeech=VBZ Lemma=have NamedEntityTag=O] [Text=done CharacterOffsetBegin=20902 CharacterOffsetEnd=20906 PartOfSpeech=VBN Lemma=do NamedEntityTag=O] [Text=. CharacterOffsetBegin=20906 CharacterOffsetEnd=20907 PartOfSpeech=. Lemma=. NamedEntityTag=O]
-(ROOT
-  (S
-    (NP
-      (NP (NNP Mr) (NNP President))
-      (, ,)
-      (NP
-        (NP (NNP Commissioner))
-        (, ,)
-        (NP (NNS ladies))
-        (CC and)
-        (NP (NNS gentlemen)))
-      (, ,))
-    (PRN
-      (S
-        (NP (PRP I))
-        (VP (MD should)
-          (VP (VB like)
-            (S
-              (VP (TO to)
-                (VP (VB begin)
-                  (PP (IN by)
-                    (NP
-                      (NP (NN congratulating) (NNP Mrs) (NNP Maij-Weggen))
-                      (PP (IN on)
-                        (NP (DT the) (JJ excellent) (NN work))))))))))))
-    (NP (PRP he))
-    (VP (VBZ has)
-      (VP (VBN done)))
-    (. .)))
-
-root(ROOT-0, done-25)
-nn(President-2, Mr-1)
-nsubj(done-25, President-2)
-appos(President-2, Commissioner-4)
-conj_and(Commissioner-4, ladies-6)
-conj_and(Commissioner-4, gentlemen-8)
-nsubj(like-12, I-10)
-aux(like-12, should-11)
-parataxis(done-25, like-12)
-aux(begin-14, to-13)
-xcomp(like-12, begin-14)
-nn(Maij-Weggen-18, congratulating-16)
-nn(Maij-Weggen-18, Mrs-17)
-prep_by(begin-14, Maij-Weggen-18)
-det(work-22, the-20)
-amod(work-22, excellent-21)
-prep_on(Maij-Weggen-18, work-22)
-nsubj(done-25, he-23)
-aux(done-25, has-24)
-
-Sentence #145 (24 tokens):
-Mr President, ladies and gentlemen, I would like to speak in favour of the joint resolution on which we shall vote.
-[Text=Mr CharacterOffsetBegin=24821 CharacterOffsetEnd=24823 PartOfSpeech=NNP Lemma=Mr NamedEntityTag=O] [Text=President CharacterOffsetBegin=24824 CharacterOffsetEnd=24833 PartOfSpeech=NNP Lemma=President NamedEntityTag=O] [Text=, CharacterOffsetBegin=24833 CharacterOffsetEnd=24834 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=ladies CharacterOffsetBegin=24835 CharacterOffsetEnd=24841 PartOfSpeech=NNS Lemma=lady NamedEntityTag=O] [Text=and CharacterOffsetBegin=24842 CharacterOffsetEnd=24845 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=gentlemen CharacterOffsetBegin=24846 CharacterOffsetEnd=24855 PartOfSpeech=NNS Lemma=gentleman NamedEntityTag=O] [Text=, CharacterOffsetBegin=24855 CharacterOffsetEnd=24856 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=I CharacterOffsetBegin=24857 CharacterOffsetEnd=24858 PartOfSpeech=PRP Lemma=I NamedEntityTag=O] [Text=would CharacterOffsetBegin=24859 CharacterOffsetEnd=24864 PartOfSpeech=MD Lemma=would NamedEntityTag=O] [Text=like CharacterOffsetBegin=24865 CharacterOffsetEnd=24869 PartOfSpeech=VB Lemma=like NamedEntityTag=O] [Text=to CharacterOffsetBegin=24870 CharacterOffsetEnd=24872 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=speak CharacterOffsetBegin=24873 CharacterOffsetEnd=24878 PartOfSpeech=VB Lemma=speak NamedEntityTag=O] [Text=in CharacterOffsetBegin=24879 CharacterOffsetEnd=24881 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=favour CharacterOffsetBegin=24882 CharacterOffsetEnd=24888 PartOfSpeech=NN Lemma=favour NamedEntityTag=O] [Text=of CharacterOffsetBegin=24889 CharacterOffsetEnd=24891 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=the CharacterOffsetBegin=24892 CharacterOffsetEnd=24895 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=joint CharacterOffsetBegin=24896 CharacterOffsetEnd=24901 PartOfSpeech=JJ Lemma=joint NamedEntityTag=O] [Text=resolution CharacterOffsetBegin=24902 CharacterOffsetEnd=24912 PartOfSpeech=NN Lemma=resolution NamedEntityTag=O] [Text=on CharacterOffsetBegin=24913 CharacterOffsetEnd=24915 PartOfSpeech=IN Lemma=on NamedEntityTag=O] [Text=which CharacterOffsetBegin=24916 CharacterOffsetEnd=24921 PartOfSpeech=WDT Lemma=which NamedEntityTag=O] [Text=we CharacterOffsetBegin=24922 CharacterOffsetEnd=24924 PartOfSpeech=PRP Lemma=we NamedEntityTag=O] [Text=shall CharacterOffsetBegin=24925 CharacterOffsetEnd=24930 PartOfSpeech=MD Lemma=shall NamedEntityTag=O] [Text=vote CharacterOffsetBegin=24931 CharacterOffsetEnd=24935 PartOfSpeech=VB Lemma=vote NamedEntityTag=O] [Text=. CharacterOffsetBegin=24935 CharacterOffsetEnd=24936 PartOfSpeech=. Lemma=. NamedEntityTag=O]
-(ROOT
-  (S
-    (S
-      (NP
-        (NP (NNP Mr) (NNP President))
-        (, ,)
-        (NP (NNS ladies))
-        (CC and)
-        (NP (NNS gentlemen))))
-    (, ,)
-    (NP (PRP I))
-    (VP (MD would)
-      (VP (VB like)
-        (S
-          (VP (TO to)
-            (VP (VB speak)
-              (PP (IN in)
-                (NP
-                  (NP (NN favour))
-                  (PP (IN of)
-                    (NP
-                      (NP (DT the) (JJ joint) (NN resolution))
-                      (SBAR
-                        (WHPP (IN on)
-                          (WHNP (WDT which)))
-                        (S
-                          (NP (PRP we))
-                          (VP (MD shall)
-                            (VP (VB vote))))))))))))))
-    (. .)))
-
-root(ROOT-0, like-10)
-nn(President-2, Mr-1)
-ccomp(like-10, President-2)
-conj_and(President-2, ladies-4)
-conj_and(President-2, gentlemen-6)
-nsubj(like-10, I-8)
-aux(like-10, would-9)
-aux(speak-12, to-11)
-xcomp(like-10, speak-12)
-prep_in(speak-12, favour-14)
-det(resolution-18, the-16)
-amod(resolution-18, joint-17)
-prep_of(favour-14, resolution-18)
-prep_on(vote-23, which-20)
-nsubj(vote-23, we-21)
-aux(vote-23, shall-22)
-rcmod(resolution-18, vote-23)
-
-Sentence #10 (3 tokens):
-The doors authoritarian
-[Text=The CharacterOffsetBegin=1559 CharacterOffsetEnd=1562 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=doors CharacterOffsetBegin=1563 CharacterOffsetEnd=1568 PartOfSpeech=NNS Lemma=door NamedEntityTag=O] [Text=authoritarian CharacterOffsetBegin=1569 CharacterOffsetEnd=1582 PartOfSpeech=JJ Lemma=authoritarian NamedEntityTag=O]
-(ROOT
-  (ADJP
-    (NP (DT The) (NNS doors))
-    (JJ authoritarian)))
-
-root(ROOT-0, authoritarian-3)
-det(doors-2, The-1)
-npadvmod(authoritarian-3, doors-2)
-
-Sentence #65 (34 tokens):
-By avoiding the Ukraine and Poland, and, of course, the Baltic countries, new gaseoducto promises to give more weight to the Kremlin in its desire to be replaced regionally.
-[Text=By CharacterOffsetBegin=9600 CharacterOffsetEnd=9602 PartOfSpeech=IN Lemma=by NamedEntityTag=O] [Text=avoiding CharacterOffsetBegin=9603 CharacterOffsetEnd=9611 PartOfSpeech=VBG Lemma=avoid NamedEntityTag=O] [Text=the CharacterOffsetBegin=9612 CharacterOffsetEnd=9615 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=Ukraine CharacterOffsetBegin=9616 CharacterOffsetEnd=9623 PartOfSpeech=NNP Lemma=Ukraine NamedEntityTag=LOCATION] [Text=and CharacterOffsetBegin=9624 CharacterOffsetEnd=9627 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=Poland CharacterOffsetBegin=9628 CharacterOffsetEnd=9634 PartOfSpeech=NNP Lemma=Poland NamedEntityTag=LOCATION] [Text=, CharacterOffsetBegin=9634 CharacterOffsetEnd=9635 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=and CharacterOffsetBegin=9636 CharacterOffsetEnd=9639 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=, CharacterOffsetBegin=9639 CharacterOffsetEnd=9640 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=of CharacterOffsetBegin=9641 CharacterOffsetEnd=9643 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=course CharacterOffsetBegin=9644 CharacterOffsetEnd=9650 PartOfSpeech=NN Lemma=course NamedEntityTag=O] [Text=, CharacterOffsetBegin=9650 CharacterOffsetEnd=9651 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=the CharacterOffsetBegin=9652 CharacterOffsetEnd=9655 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=Baltic CharacterOffsetBegin=9656 CharacterOffsetEnd=9662 PartOfSpeech=JJ Lemma=baltic NamedEntityTag=MISC] [Text=countries CharacterOffsetBegin=9663 CharacterOffsetEnd=9672 PartOfSpeech=NNS Lemma=country NamedEntityTag=O] [Text=, CharacterOffsetBegin=9672 CharacterOffsetEnd=9673 PartOfSpeech=, Lemma=, NamedEntityTag=O] [Text=new CharacterOffsetBegin=9674 CharacterOffsetEnd=9677 PartOfSpeech=JJ Lemma=new NamedEntityTag=O] [Text=gaseoducto CharacterOffsetBegin=9678 CharacterOffsetEnd=9688 PartOfSpeech=NN Lemma=gaseoducto NamedEntityTag=O] [Text=promises CharacterOffsetBegin=9689 CharacterOffsetEnd=9697 PartOfSpeech=VBZ Lemma=promise NamedEntityTag=O] [Text=to CharacterOffsetBegin=9698 CharacterOffsetEnd=9700 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=give CharacterOffsetBegin=9701 CharacterOffsetEnd=9705 PartOfSpeech=VB Lemma=give NamedEntityTag=O] [Text=more CharacterOffsetBegin=9706 CharacterOffsetEnd=9710 PartOfSpeech=JJR Lemma=more NamedEntityTag=O] [Text=weight CharacterOffsetBegin=9711 CharacterOffsetEnd=9717 PartOfSpeech=NN Lemma=weight NamedEntityTag=O] [Text=to CharacterOffsetBegin=9718 CharacterOffsetEnd=9720 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=the CharacterOffsetBegin=9721 CharacterOffsetEnd=9724 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=Kremlin CharacterOffsetBegin=9725 CharacterOffsetEnd=9732 PartOfSpeech=NNP Lemma=Kremlin NamedEntityTag=LOCATION] [Text=in CharacterOffsetBegin=9733 CharacterOffsetEnd=9735 PartOfSpeech=IN Lemma=in NamedEntityTag=O] [Text=its CharacterOffsetBegin=9736 CharacterOffsetEnd=9739 PartOfSpeech=PRP$ Lemma=its NamedEntityTag=O] [Text=desire CharacterOffsetBegin=9740 CharacterOffsetEnd=9746 PartOfSpeech=NN Lemma=desire NamedEntityTag=O] [Text=to CharacterOffsetBegin=9747 CharacterOffsetEnd=9749 PartOfSpeech=TO Lemma=to NamedEntityTag=O] [Text=be CharacterOffsetBegin=9750 CharacterOffsetEnd=9752 PartOfSpeech=VB Lemma=be NamedEntityTag=O] [Text=replaced CharacterOffsetBegin=9753 CharacterOffsetEnd=9761 PartOfSpeech=VBN Lemma=replace NamedEntityTag=O] [Text=regionally CharacterOffsetBegin=9762 CharacterOffsetEnd=9772 PartOfSpeech=RB Lemma=regionally NamedEntityTag=O] [Text=. CharacterOffsetBegin=9772 CharacterOffsetEnd=9773 PartOfSpeech=. Lemma=. NamedEntityTag=O]
-(ROOT
-  (S
-    (PP (IN By)
-      (S
-        (VP (VBG avoiding)
           (NP
-            (NP
-              (NP (DT the) (NNP Ukraine))
-              (CC and)
-              (NP (NNP Poland))
-              (, ,))
-            (CC and)
-            (, ,)
+            (NP (DT the) (NNP United) (NNPS States))
             (PP (IN of)
-              (NP (NN course)))))))
-    (, ,)
-    (NP (DT the) (JJ Baltic) (NNS countries) (, ,) (JJ new) (NN gaseoducto))
-    (VP (VBZ promises)
-      (S
-        (VP (TO to)
-          (VP (VB give)
-            (NP (JJR more) (NN weight))
-            (PP (TO to)
-              (NP (DT the) (NNP Kremlin)))
-            (PP (IN in)
-              (NP (PRP$ its) (NN desire)
-                (S
-                  (VP (TO to)
-                    (VP (VB be)
-                      (VP (VBN replaced)
-                        (ADVP (RB regionally))))))))))))
+              (NP (NNP America))))
+          (VP (VBZ is)
+            (VP (VBN determined)
+              (S
+                (VP (TO to)
+                  (VP
+                    (VP (VB undermine)
+                      (NP
+                        (NP (DT the) (NN safety))
+                        (PP (IN of)
+                          (NP (NNP Iran)))))
+                    (CC and)
+                    (VP (VB damage)
+                      (NP (PRP$ their) (JJ national) (NNS interests)))))))))))
     (. .)))
 
-root(ROOT-0, promises-19)
-prepc_by(promises-19, avoiding-2)
-det(Ukraine-4, the-3)
-dobj(avoiding-2, Ukraine-4)
-conj_and(Ukraine-4, Poland-6)
-conj_and(Ukraine-4, of-10)
-pobj(of-10, course-11)
-det(gaseoducto-18, the-13)
-amod(gaseoducto-18, Baltic-14)
-nn(gaseoducto-18, countries-15)
-amod(gaseoducto-18, new-17)
-nsubj(promises-19, gaseoducto-18)
-aux(give-21, to-20)
-xcomp(promises-19, give-21)
-amod(weight-23, more-22)
-dobj(give-21, weight-23)
-det(Kremlin-26, the-25)
-prep_to(give-21, Kremlin-26)
-poss(desire-29, its-28)
-prep_in(give-21, desire-29)
-aux(replaced-32, to-30)
-auxpass(replaced-32, be-31)
-vmod(desire-29, replaced-32)
-advmod(replaced-32, regionally-33)
-
-Sentence #15 (19 tokens):
-And this process has increased a great deal with the development of the identification based on the DNA.
-[Text=And CharacterOffsetBegin=2038 CharacterOffsetEnd=2041 PartOfSpeech=CC Lemma=and NamedEntityTag=O] [Text=this CharacterOffsetBegin=2042 CharacterOffsetEnd=2046 PartOfSpeech=DT Lemma=this NamedEntityTag=O] [Text=process CharacterOffsetBegin=2047 CharacterOffsetEnd=2054 PartOfSpeech=NN Lemma=process NamedEntityTag=O] [Text=has CharacterOffsetBegin=2055 CharacterOffsetEnd=2058 PartOfSpeech=VBZ Lemma=have NamedEntityTag=O] [Text=increased CharacterOffsetBegin=2059 CharacterOffsetEnd=2068 PartOfSpeech=VBN Lemma=increase NamedEntityTag=O] [Text=a CharacterOffsetBegin=2069 CharacterOffsetEnd=2070 PartOfSpeech=DT Lemma=a NamedEntityTag=O] [Text=great CharacterOffsetBegin=2071 CharacterOffsetEnd=2076 PartOfSpeech=JJ Lemma=great NamedEntityTag=O] [Text=deal CharacterOffsetBegin=2077 CharacterOffsetEnd=2081 PartOfSpeech=NN Lemma=deal NamedEntityTag=O] [Text=with CharacterOffsetBegin=2082 CharacterOffsetEnd=2086 PartOfSpeech=IN Lemma=with NamedEntityTag=O] [Text=the CharacterOffsetBegin=2087 CharacterOffsetEnd=2090 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=development CharacterOffsetBegin=2091 CharacterOffsetEnd=2102 PartOfSpeech=NN Lemma=development NamedEntityTag=O] [Text=of CharacterOffsetBegin=2103 CharacterOffsetEnd=2105 PartOfSpeech=IN Lemma=of NamedEntityTag=O] [Text=the CharacterOffsetBegin=2106 CharacterOffsetEnd=2109 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=identification CharacterOffsetBegin=2110 CharacterOffsetEnd=2124 PartOfSpeech=NN Lemma=identification NamedEntityTag=O] [Text=based CharacterOffsetBegin=2125 CharacterOffsetEnd=2130 PartOfSpeech=VBN Lemma=base NamedEntityTag=O] [Text=on CharacterOffsetBegin=2131 CharacterOffsetEnd=2133 PartOfSpeech=IN Lemma=on NamedEntityTag=O] [Text=the CharacterOffsetBegin=2134 CharacterOffsetEnd=2137 PartOfSpeech=DT Lemma=the NamedEntityTag=O] [Text=DNA CharacterOffsetBegin=2138 CharacterOffsetEnd=2141 PartOfSpeech=NN Lemma=dna NamedEntityTag=O] [Text=. CharacterOffsetBegin=2141 CharacterOffsetEnd=2142 PartOfSpeech=. Lemma=. NamedEntityTag=O] 
-(ROOT
-  (S (CC And)
-    (NP (DT this) (NN process))
-    (VP (VBZ has)
-      (VP (VBN increased)
-        (NP (DT a) (JJ great) (NN deal))
-        (PP (IN with)
-          (NP
-            (NP (DT the) (NN development))
-            (PP (IN of)
-              (NP
-                (NP (DT the) (NN identification))
-                (VP (VBN based)
-                  (PP (IN on)
-                    (NP (DT the) (NN DNA))))))))))
-    (. .)))
-
-root(ROOT-0, increased-5)
-cc(increased-5, And-1)
-det(process-3, this-2)
-nsubj(increased-5, process-3)
-aux(increased-5, has-4)
-det(deal-8, a-6)
-amod(deal-8, great-7)
-dobj(increased-5, deal-8)
-det(development-11, the-10)
-prep_with(increased-5, development-11)
-det(identification-14, the-13)
-prep_of(development-11, identification-14)
-vmod(identification-14, based-15)
-det(DNA-18, the-17)
-prep_on(based-15, DNA-18)
+root(ROOT-0, believe-2)
+nsubj(believe-2, They-1)
+mark(determined-10, that-3)
+det(States-6, the-4)
+nn(States-6, United-5)
+nsubjpass(determined-10, States-6)
+prep_of(States-6, America-8)
+auxpass(determined-10, is-9)
+ccomp(believe-2, determined-10)
+aux(undermine-12, to-11)
+xcomp(determined-10, undermine-12)
+det(safety-14, the-13)
+dobj(undermine-12, safety-14)
+prep_of(safety-14, Iran-16)
+conj_and(undermine-12, damage-18)
+poss(interests-21, their-19)
+amod(interests-21, national-20)
+dobj(damage-18, interests-21)

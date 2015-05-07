@@ -39,7 +39,7 @@ class Aligner(object):
                 word1 = Word(ktem[0], ktem[1], sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], ktem[2])
                 word2 = Word(ltem[0], ltem[1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1], ltem[2])
 
-                if ((ktem[0], ltem[0]) in existingAlignments or wordRelatednessContext(word1, word2, self.config) >= self.config.context_similarity_threshold) and (
+                if ([ktem[0], ltem[0]] in existingAlignments or wordRelatednessAlignment(word1, word2, self.config) >= self.config.context_similarity_threshold) and (
                     (ktem[2] == ltem[2]) or
                         ((pos != '' and relationDirection != 'child_parent') and (
                             self.is_similar(ktem[2], ltem[2], pos, 'noun', opposite, relationDirection) or
@@ -53,7 +53,42 @@ class Aligner(object):
                             self.is_similar(ltem[2], ktem[2], pos, 'adverb', opposite, relationDirection)))):
 
                     relativeAlignments.append([ktem[0], ltem[0]])
-                    wordSimilarities.append(wordRelatednessContext(word1, word2, self.config))
+                    wordSimilarities.append(wordRelatednessAlignment(word1, word2, self.config))
+
+        alignmentResults = {}
+
+        for i, alignment in enumerate(relativeAlignments):
+            alignmentResults[(alignment[0], alignment[1])] = wordSimilarities[i]
+
+        return alignmentResults
+
+    def compareNodesScoring(self, sourceNodes, targetNodes, pos, opposite, relationDirection, existingAlignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas):
+        # search for nodes in common or equivalent function
+
+        relativeAlignments = []
+        wordSimilarities = []
+
+        for ktem in sourceNodes:
+            for ltem in targetNodes:
+
+                word1 = Word(ktem[0], ktem[1], sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], ktem[2])
+                word2 = Word(ltem[0], ltem[1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1], ltem[2])
+
+                if ([ktem[0], ltem[0]] in existingAlignments or (ktem[0] == 0 and ltem[0] == 0)) and (
+                    (ktem[2] == ltem[2]) or
+                        ((pos != '' and relationDirection != 'child_parent') and (
+                            self.is_similar(ktem[2], ltem[2], pos, 'noun', opposite, relationDirection) or
+                            self.is_similar(ktem[2], ltem[2], pos, 'verb', opposite, relationDirection) or
+                            self.is_similar(ktem[2], ltem[2], pos, 'adjective', opposite, relationDirection) or
+                            self.is_similar(ktem[2], ltem[2], pos, 'adverb', opposite, relationDirection))) or
+                        ((pos != '' and relationDirection == 'child_parent') and (
+                            self.is_similar(ltem[2], ktem[2], pos, 'noun', opposite, relationDirection) or
+                            self.is_similar(ltem[2], ktem[2], pos, 'verb', opposite, relationDirection) or
+                            self.is_similar(ltem[2], ktem[2], pos, 'adjective', opposite, relationDirection) or
+                            self.is_similar(ltem[2], ktem[2], pos, 'adverb', opposite, relationDirection)))):
+
+                    relativeAlignments.append([ktem[0], ltem[0]])
+                    wordSimilarities.append(wordRelatednessAlignment(word1, word2, self.config))
 
         alignmentResults = {}
 
@@ -113,7 +148,7 @@ class Aligner(object):
         wordSimilarities = {}
 
         for alignment in comparisonResult.keys():
-            alignments.append(alignment)
+            alignments.append([alignment[0], alignment[1]])
             wordSimilarities[alignment] = comparisonResult[alignment]
 
         return [self.calculateAbsoluteScore(wordSimilarities),
@@ -126,10 +161,10 @@ class Aligner(object):
         targetWordParents = findParents(targetDParse, targetIndex, target)
         targetWordChildren = findChildren(targetDParse, targetIndex, target)
 
-        compareParents = self.compareNodes(sourceWordParents, targetWordParents, pos, False, 'parent', existingAlignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)
-        compareChildren = self.compareNodes(sourceWordChildren, targetWordChildren, pos, False, 'child', existingAlignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)
-        compareParentChildren = self.compareNodes(sourceWordParents, targetWordChildren, pos, True, 'parent_child', existingAlignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)
-        compareChildrenParent = self.compareNodes(sourceWordParents, targetWordChildren, pos, True, 'child_parent', existingAlignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)
+        compareParents = self.compareNodesScoring(sourceWordParents, targetWordParents, pos, False, 'parent', existingAlignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)
+        compareChildren = self.compareNodesScoring(sourceWordChildren, targetWordChildren, pos, False, 'child', existingAlignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)
+        compareParentChildren = self.compareNodesScoring(sourceWordParents, targetWordChildren, pos, True, 'parent_child', existingAlignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)
+        compareChildrenParent = self.compareNodesScoring(sourceWordParents, targetWordChildren, pos, True, 'child_parent', existingAlignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)
 
         diffSourceScore = 0.0
         diffTargetScore = 0.0
@@ -687,8 +722,8 @@ class Aligner(object):
                     for l in xrange(len(targetNeighborhood[0])):
                         neighbor1 = Word(sourceNeighborhood[0][k], sourceNeighborhood[1][k], sourceLemmas[sourceNeighborhood[0][k]-1], sourcePosTags[sourceNeighborhood[0][k]-1], '')
                         neighbor2 = Word(targetNeighborhood[0][l], targetNeighborhood[1][l], targetLemmas[targetNeighborhood[0][l]-1], targetPosTags[targetNeighborhood[0][l]-1], '')
-                        if (sourceNeighborhood[1][k] not in stopwords + punctuations) and ((sourceNeighborhood[0][k], targetNeighborhood[0][l]) in alignments or (wordRelatednessContext(neighbor1, neighbor2, self.config) >= self.config.context_similarity_threshold)):
-                            evidence += wordRelatednessContext(neighbor1, neighbor2, self.config)
+                        if (sourceNeighborhood[1][k] not in stopwords + punctuations) and ((sourceNeighborhood[0][k], targetNeighborhood[0][l]) in alignments or (wordRelatednessAlignment(neighbor1, neighbor2, self.config) >= self.config.context_similarity_threshold)):
+                            evidence += wordRelatednessAlignment(neighbor1, neighbor2, self.config)
                 textualNeighborhoodSimilarities[(i, j)] = evidence
 
         numOfUnalignedWordsInSource = len(set(sourceWordIndicesBeingConsidered))
@@ -985,6 +1020,7 @@ class Aligner(object):
         penaltyDifferenceMean = 0.0
         penaltyNormalized = 0.0
         penaltyPrevious = 0.0
+        penaltyMinMax = 0.0
 
         pos = ''
         if sourceWord[4].lower().startswith('v'):
@@ -1029,15 +1065,19 @@ class Aligner(object):
         if totalContextTargetSimple > 0:
 
             penaltySimple += 1.0 - contextSimilarity/totalContextTargetSimple
-            penaltyWeighted += (1.0 - contextSimilarity/totalContextTargetSimple) * (math.log(totalContextTargetSimple) + 1)
-            penaltyPrevious += (1.0 - contextSimilarity/(totalContextTargetSimple + 1.0)) * math.log(totalContextTargetSimple  + 1.0)
+            penaltyWeighted += (1.0 - contextSimilarity/totalContextTargetSimple) * math.log(totalContextTargetSimple + 1.0)
+            penaltyPrevious += (1.0 - contextSimilarity/(totalContextTargetSimple + 1.0)) * math.log(totalContextTargetSimple + 1.0)
 
-            penaltyDifferenceTarget += contextDiffTarget/totalContextTargetWeighted * (math.log(totalContextTargetSimple) + 1.0)
-            penaltyDifferenceMean += self.calculateContextDiffMean(contextDiffSource, contextDiffTarget, totalContextSourceWeighted, totalContextTargetWeighted, self.config) * (math.log(totalContextTargetSimple) + 1.0)
+            penaltyDifferenceTarget += contextDiffTarget/totalContextTargetWeighted * math.log(totalContextTargetSimple + 1.0)
+            penaltyDifferenceMean += self.calculateContextDiffMean(contextDiffSource, contextDiffTarget, totalContextSourceWeighted, totalContextTargetWeighted, self.config) * math.log(totalContextTargetSimple + 1.0)
 
-            penaltyNormalized += (1.0/(1.0 + math.exp(-penaltyDifferenceMean)))
+            penaltyNormalized += (1.0/(1.0 + math.exp(-penaltyPrevious)))
+            min = 0.5
+            max = 1.0
+            penaltyMinMax += (penaltyNormalized - min)/(max - min)
 
-        return penaltyPrevious
+
+        return penaltyDifferenceMean
 
     def calculateContextDiffMean(self, sourceDiff, targetDiff, sourceLength, targetLength, config):
 
@@ -1050,7 +1090,9 @@ class Aligner(object):
             precision += sourceDiff/sourceLength
             recall += targetDiff/targetLength
 
-            if precision > 0 or recall > 0:
+            if precision == 0 or recall == 0:
+                return max(precision, recall)
+            else:
                 fscore += (1 + math.pow(self.config.beta, 2)) * (precision * recall/((precision * math.pow(self.config.beta, 2)) + recall))
 
         return fscore
