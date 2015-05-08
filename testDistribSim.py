@@ -24,7 +24,7 @@ def distributionalSimilarity(word1, word2):
     return vectorSimilarity
 
 
-def loadVectors(fileName = '/Users/MarinaFomicheva/workspace/resources/distribSim/vectors_dep'):
+def loadVectors(fileName = '/Users/MarinaFomicheva/workspace/resources/distribSim/vectors_200_ukwac_tagged_NEW.txt'):
 
     vectorFile = open (fileName, 'r')
 
