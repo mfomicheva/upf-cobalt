@@ -24,16 +24,12 @@ def distributionalSimilarity(word1, word2):
     return vectorSimilarity
 
 
-def loadVectors(fileName = '/Users/MarinaFomicheva/workspace/resources/distribSim/vectors_200_ukwac_tagged_NEW.txt'):
+def loadVectors(fileName = '/home/u88591/Workspace/distributional-similarity/deps.words'):
 
     vectorFile = open (fileName, 'r')
 
     for line in vectorFile:
         if line == '\n':
-        # here line = {str} 'version https://git-lfs.github.com/spec/v1\n'
-        # next line = 'oid sha256:e256c308eb8510d98240926363be4e5d80dd0a343f53877c83e1243a5bf52cac'
-        # next line = 'size 860005638'
-
             continue
 
         match = re.match(r'^([^ ]+) (.+)',line)

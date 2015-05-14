@@ -16,6 +16,12 @@ for i, sentence in enumerate(sentencesRef):
     ## print alignment and context information
 
     for index in xrange(len(alignments[0])):
-          print str(alignments[0][index]) + "\t" + str(alignments[1][index]) + "\t" + str(alignments[2][index])
+        print str(alignments[0][index]) + "\t" + str(alignments[1][index]) + "\t" + str(alignments[2][index])
+        for labelList in alignments[3][index].keys():
+            if len(alignments[3][index][labelList]) > 0:
+                print labelList + ': ' + ', '.join(alignments[3][index][labelList])
+            else:
+                print labelList + ': ' + 'None'
+
 
     print scorer.calculateScore(sentencesTest[i], sentence, alignments)

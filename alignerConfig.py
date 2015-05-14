@@ -19,10 +19,6 @@ class AlignerConfig(object):
         self.related = self.config.getfloat('Aligner', 'related')
         self.related_threshold = self.config.getfloat('Aligner', 'related_threshold')
 
-        self.posExact = self.config.getfloat('Aligner', 'posExact')
-        self.posGramCat = self.config.getfloat('Aligner', 'posGramCat')
-        self.posNone = self.config.getfloat('Aligner', 'posNone')
-
         self.theta = self.config.getfloat('Aligner', 'theta')
         self.beta = self.config.getfloat('Aligner', 'beta')
 
