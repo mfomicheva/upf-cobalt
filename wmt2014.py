@@ -14,7 +14,7 @@ referenceDir = home + '/Dropbox/workspace/dataSets/wmt14-metrics-task/baselines/
 testDir = home + '/Dropbox/workspace/dataSets/wmt14-metrics-task/baselines/data/parsed/system-outputs'
 outputDir = home + '/Dropbox/workspace/dataSets/wmt14-metrics-task/submissions/MWA/testCS'
 dataset = 'newstest2014'
-metric = 'test'
+metric = 'combo4'
 
 def main(args):
 
@@ -49,7 +49,7 @@ def main(args):
         system = t.split('.')[1] + '.' + t.split('.')[2]
         sentencesTest = readSentences(codecs.open(testDir + '/' + dataset + '/' + languagePair + '/' + t, encoding='UTF-8'))
 
-        if (writeAlignments):
+        if writeAlignments:
             outputFileAlign = open(outputDir + '/' + dataset + '.' + system + '.' + languagePair + '.align.out', 'w')
 
         for i, sentence in enumerate(sentencesRef):
@@ -59,18 +59,24 @@ def main(args):
 
             # calculating alignment and score test to reference
             alignments1 = aligner.align(sentencesTest[i], sentence)
-            score1 = scorer.calculateScore(sentencesTest[i], sentence, alignments1)
+            score1 = scorer.calculate_score(sentencesTest[i], sentence, alignments1)
 
-            if (writeAlignments):
+            if writeAlignments:
                 outputFileAlign.write('Sentence #' + str(phrase) + '\n')
                 for index in xrange(len(alignments1[0])):
-                    outputFileAlign.write(str(alignments1[0][index]) + " : " + str(alignments1[1][index]) + " : " + str(alignments1[2][index])+'\n')
+                    outputFileAlign.write(str(alignments1[0][index]) + " : " + str(alignments1[1][index]) + '\n')
+
+                    for labelList in alignments1[2][index].keys():
+                        if len(alignments1[2][index][labelList]) > 0:
+                            outputFileAlign.write(str(labelList) + ': ' + ', '.join(alignments1[2][index][labelList]).encode('utf-8') + '\n')
+                        else:
+                            outputFileAlign.write(str(labelList) + ': ' + 'None' + '\n')
 
             outputFileScoring.write(str(metric) + '\t' + str(languagePair) + '\t' + str(dataset) + '\t' + str(system) + '\t' + str(phrase) + '\t' + str(score1) + '\n')
 
-
-        if (writeAlignments):
+        if writeAlignments:
             outputFileAlign.close()
+
     outputFileScoring.close()
 
 if __name__ == "__main__":

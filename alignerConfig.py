@@ -20,11 +20,6 @@ class AlignerConfig(object):
         self.related_threshold = self.config.getfloat('Aligner', 'related_threshold')
 
         self.theta = self.config.getfloat('Aligner', 'theta')
-        self.beta = self.config.getfloat('Aligner', 'beta')
-
-        self.arguments = self.config.getfloat('Dependency Weights', 'arguments')
-        self.modifiers = self.config.getfloat('Dependency Weights', 'modifiers')
-        self.function = self.config.getfloat('Dependency Weights', 'function')
 
 
     def get_similar_group(self, pos_source, pos_target, is_opposite, relation):
@@ -33,12 +28,3 @@ class AlignerConfig(object):
         for line in self.config.get('Similar Groups', group_name).splitlines():
             similar_group.append(loads(line.strip()))
         return similar_group
-
-    def get_dependency_types(self, dependency_label):
-
-        if dependency_label.split('_')[0] in loads(self.config.get('Dependency Types','arguments')):
-            return self.arguments
-        elif dependency_label.split('_')[0] in loads(self.config.get('Dependency Types','modifiers')):
-            return self.modifiers
-        else:
-            return self.function

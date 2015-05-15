@@ -5,9 +5,16 @@ class Reader(object):
         values = line.split(' : ')
         return [
             int(values[0].split(',')[0].replace('[', '')),
-            int(values[0].split(',')[1].replace(']', '')),
-            float(values[2])
+            int(values[0].split(',')[1].replace(']', ''))
         ]
+
+    @staticmethod
+    def read_difference_line(line):
+        values = line.strip().split(': ')
+        if values[1] == 'None':
+            return values[0], []
+        else:
+            return values[0], values[1].split(', ')
 
     def read(self, alignment_file):
         phrase = 0
@@ -18,14 +25,18 @@ class Reader(object):
             if line.startswith('Sentence #'):
                 phrase = int(line.replace('Sentence #', ''))
                 if phrase > 1:
-                    alignments[phrase - 1] = [alignment, [], similarities]
+                    alignments[phrase - 1] = [alignment, [], differences]
                 alignment = []
-                similarities = []
+                differences = []
+            elif line.startswith('['):
+                v = Reader.read_alignment_line(line)
+                alignment.append([v[0], v[1]])
+                difference = {}
+                differences.append(difference)
             else:
-                values = Reader.read_alignment_line(line)
-                alignment.append([values[0], values[1]])
-                similarities.append(values[2])
+                v = Reader.read_difference_line(line)
+                difference[v[0]] = v[1]
 
-        alignments[phrase] = [alignment, [], similarities]
+        alignments[phrase] = [alignment, [], differences]
 
         return alignments

@@ -2,12 +2,14 @@ from wordSim import *
 from ConfigParser import ConfigParser
 from coreNlpUtil import *
 import wordSim
+import math
 from json import *
 
 
 class Scorer(object):
 
     alpha = 1
+    beta = 1
     delta = 1
 
     exact = 1
@@ -22,11 +24,20 @@ class Scorer(object):
     context_importance = 1
     minimal_aligned_relatedness = 1
 
+    arguments = 1
+    modifiers = 1
+    function = 1
+
+    argument_types = []
+    modifier_types = []
+    function_types = []
+
     def __init__(self):
         config = ConfigParser()
         config.readfp(open('Config/scorer.cfg'))
 
         self.alpha = config.getfloat('Scorer', 'alpha')
+        self.beta = config.getfloat('Scorer', 'beta')
         self.delta = config.getfloat('Scorer', 'delta')
 
         self.exact = config.getfloat('Scorer', 'exact')
@@ -39,50 +50,108 @@ class Scorer(object):
         self.context_importance = config.getfloat('Scorer', 'context_importance')
         self.minimal_aligned_relatedness = config.getfloat('Scorer', 'minimal_aligned_relatedness')
 
+        self.arguments = config.getfloat('Dependency Weights', 'arguments')
+        self.modifiers = config.getfloat('Dependency Weights', 'modifiers')
+        self.function = config.getfloat('Dependency Weights', 'function')
+
+        self.argument_types = loads(config.get('Dependency Types', 'arguments'))
+        self.modifier_types = loads(config.get('Dependency Types', 'modifiers'))
+        self.function_types = loads(config.get('Dependency Types', 'function'))
+
+    def get_dependency_weight(self, dependency_type):
+        if dependency_type in self.argument_types:
+            return self.arguments
+
+        if dependency_type in self.modifier_types:
+            return self.modifiers
+
+        if dependency_type in self.function_types:
+            return self.function
+
+        return 0
+
+    def sum_dependency_weights(self, dependencies):
+        result = 0
+        for d in dependencies:
+            result += self.get_dependency_weight(d)
+
+        return result
+
+    def calculate_context_penalty(self, context_info):
+        source_diff = self.sum_dependency_weights(context_info['srcDiff'])
+        target_diff = self.sum_dependency_weights(context_info['tgtDiff'])
+        source_length = self.sum_dependency_weights(context_info['srcCon'])
+        target_length = self.sum_dependency_weights(context_info['tgtCon'])
+
+        penalty = self.calculate_context_difference_mean(source_diff, target_diff, source_length, target_length) * math.log(target_length + 1.0)
+        penalty = (1.0/(1.0 + math.exp(-penalty)))
+        penalty = 2*penalty - 1
+
+        return penalty
+
+
+    def calculate_context_difference_mean(self, source_diff, target_diff, source_length, target_length):
+
+        precision = 0.0
+        recall = 0.0
+        fscore = 0.0
+
+        if source_length > 0 and target_length > 0:
+
+            precision += source_diff/source_length
+            recall += target_diff/target_length
+
+            if precision == 0 or recall == 0:
+                return max(precision, recall)
+            else:
+                fscore += (1 + math.pow(self.beta, 2)) * \
+                          (precision * recall/((precision * math.pow(self.beta, 2)) + recall))
+
+        return fscore
 
     # receives alignments structure as an input - alignments[0] is the aligned pair indexes,
-    # alignments[1] is the aligned pair words, alignments[2] is the aligned pair dependency similarity score
-
-    def calculateScore(self, sentence1, sentence2, alignments):
+    # alignments[1] is the aligned pair words, alignments[2] is the aligned pair dependency difference structure
+    def calculate_score(self, sentence1, sentence2, alignments):
         sentence1 = prepareSentence2(sentence1)
         sentence2 = prepareSentence2(sentence2)
 
-        functionalWords1 = filter(lambda x: wordSim.functionWord(x.form), sentence1)
-        functionalWords2 = filter(lambda x: wordSim.functionWord(x.form), sentence2)
+        functional_words1 = filter(lambda x: wordSim.functionWord(x.form), sentence1)
+        functional_words2 = filter(lambda x: wordSim.functionWord(x.form), sentence2)
 
-        weightedLength1 = self.delta * (len(sentence1) - len(functionalWords1)) + ((1.0 - self.delta) * len(functionalWords1))
-        weightedLength2 = self.delta * (len(sentence2) - len(functionalWords2)) + ((1.0 - self.delta) * len(functionalWords2))
+        weighted_length1 = self.delta * (len(sentence1) - len(functional_words1)) + ((1.0 - self.delta) * len(functional_words1))
+        weighted_length2 = self.delta * (len(sentence2) - len(functional_words2)) + ((1.0 - self.delta) * len(functional_words2))
 
-        weightedMatches1 = 0
-        weightedMatches2 = 0
+        weighted_matches1 = 0
+        weighted_matches2 = 0
 
         for i, a in enumerate(alignments[0]):
+            penalty = self.calculate_context_penalty(alignments[2][i])
 
             if not wordSim.functionWord(sentence1[a[0] - 1].form):
-                weightedMatches1 += self.delta * wordSim.wordRelatednessScoring(sentence1[a[0] - 1], sentence2[a[1] - 1], self, alignments[2][i])
+                weighted_matches1 += self.delta * wordSim.wordRelatednessScoring(sentence1[a[0] - 1], sentence2[a[1] - 1], self, penalty)
             else:
-                weightedMatches1 += (1 - self.delta) * wordSim.wordRelatednessScoring(sentence1[a[0] - 1], sentence2[a[1] - 1], self, alignments[2][i])
+                weighted_matches1 += (1 - self.delta) * wordSim.wordRelatednessScoring(sentence1[a[0] - 1], sentence2[a[1] - 1], self, penalty)
 
             if not wordSim.functionWord(sentence2[a[1] - 1].form):
-                weightedMatches2 += self.delta * wordSim.wordRelatednessScoring(sentence1[a[0] - 1], sentence2[a[1] - 1], self, alignments[2][i])
+                weighted_matches2 += self.delta * wordSim.wordRelatednessScoring(sentence1[a[0] - 1], sentence2[a[1] - 1], self, penalty)
             else:
-                weightedMatches2 += (1 - self.delta) * wordSim.wordRelatednessScoring(sentence1[a[0] - 1], sentence2[a[1] - 1], self, alignments[2][i])
+                weighted_matches2 += (1 - self.delta) * wordSim.wordRelatednessScoring(sentence1[a[0] - 1], sentence2[a[1] - 1], self, penalty)
 
-        if weightedLength1 == 0:
-            precision = weightedMatches1
+        if weighted_length1 == 0:
+            precision = weighted_matches1
         else:
-            precision = weightedMatches1 / weightedLength1
+            precision = weighted_matches1 / weighted_length1
 
-        if weightedLength2 == 0:
-            recall = weightedMatches2
+        if weighted_length2 == 0:
+            recall = weighted_matches2
         else:
-            recall = weightedMatches2 / weightedLength2
+            recall = weighted_matches2 / weighted_length2
 
         if precision == 0 or recall == 0 or (((1.0 - self.alpha) / precision) + (self.alpha / recall)) == 0:
-            fMean = 0
+            fmean = 0
         else:
-            fMean = 1.0 / (((1.0 - self.alpha) / precision) + (self.alpha / recall))
+            fmean = 1.0 / (((1.0 - self.alpha) / precision) + (self.alpha / recall))
 
-        score = fMean
+        score = fmean
 
         return score

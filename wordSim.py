@@ -108,7 +108,7 @@ def wordnetPathSimilarity(word1, word2):
 
     return max_similarity
 
-def loadWordVectors(vectorsFileName = '/home/u88591/Workspace/distributional-similarity/deps.words'):
+def loadWordVectors(vectorsFileName = '/home/tos/workspace/distributed-similarity/deps.words'):
 
     global wordVector
     vectorFile = open (vectorsFileName, 'r')
