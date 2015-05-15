@@ -18,14 +18,14 @@ from pyevolve import Initializators, Mutators
 
 
 home = expanduser("~")
-reference_dir = home + '/Dropbox/dataSets/wmt14-metrics-task/baselines/data/parsed/references'
-test_dir = home + '/Dropbox/dataSets/wmt14-metrics-task/baselines/data/parsed/system-outputs'
-output_dir = home + '/Dropbox/dataSets/wmt14-metrics-task/submissions/MWA/training'
-correlation_script_dir = home + '/Dropbox/dataSets/wmt14-metrics-task'
+reference_dir = home + '/Dropbox/workspace/dataSets/wmt14-metrics-task/baselines/data/parsed/references'
+test_dir = home + '/Dropbox/workspace/dataSets/wmt14-metrics-task/baselines/data/parsed/system-outputs'
+output_dir = home + '/Dropbox/workspace/dataSets/wmt14-metrics-task/submissions/MWA/training'
+correlation_script_dir = home + '/Dropbox/workspace/dataSets/wmt14-metrics-task'
 dataset = 'newstest2014'
 metric = 'combo4'
 language_pairs = ['de-en', 'fr-en', 'hi-en', 'cs-en', 'ru-en']
-training_values = open(home + '/Dropbox/dataSets/wmt14-metrics-task/submissions/MWA/training/training.values', 'w')
+training_values = open(home + '/Dropbox/workspace/dataSets/wmt14-metrics-task/submissions/MWA/training/training.values', 'w')
 
 
 def calculate_correlation():
