@@ -87,25 +87,6 @@ def wordRelatednessScoring(word1, word2, scorer, contextPenalty):
 
     return max(result, scorer.minimal_aligned_relatedness)
 
-
-def loadWordVectors(vectorsFileName = '/home/tos/workspace/distributed-similarity/deps.words'):
-
-    global wordVector
-    vectorFile = open (vectorsFileName, 'r')
-
-    for line in vectorFile:
-        if line == '\n':
-            continue
-
-        match = re.match(r'^([^ ]+) (.+)',line)
-        if type(match) is NoneType:
-            continue
-
-        word = match.group(1)
-        vector = match.group(2)
-
-        wordVector[word] = vector
-
 def cosineSimilarity(word1, word2):
 
     global wordVector
@@ -124,22 +105,6 @@ def cosineSimilarity(word1, word2):
         return sumxy/math.sqrt(sumxx * sumyy)
     else:
         return 0
-
-def loadPPDB(ppdbFileName = 'Resources/ppdb-1.0-xxxl-lexical.extended.synonyms.uniquepairs'):
-
-    global ppdbDict
-
-    count = 0
-
-    ppdbFile = open(ppdbFileName, 'r')
-    for line in ppdbFile:
-        if line == '\n':
-            continue
-        tokens = line.split()
-        tokens[1] = tokens[1].strip()
-        ppdbDict[(tokens[0], tokens[1])] = 0.6
-        count += 1
-
 
 def presentInPPDB(word1, word2):
     global ppdbDict
@@ -164,7 +129,3 @@ def canonize_word(word):
         canonical_form = word.lower()
 
     return canonical_form
-
-
-loadPPDB()
-loadWordVectors()
