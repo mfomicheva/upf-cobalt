@@ -64,7 +64,7 @@ def main(args):
             if (writeAlignments):
                 outputFileAlign.write('Sentence #' + str(phrase) + '\n')
                 for index in xrange(len(alignments1[0])):
-                    outputFileAlign.write(str(alignments1[0][index]) + " : " + str(alignments1[1][index]) + " : " + str(alignments1[2][index]) + '\n')
+                    outputFileAlign.write(str(alignments1[0][index]) + " : " + str(alignments1[1][index]) + '\n')
                     for labelList in alignments1[3][index].keys():
                         if len(alignments1[3][index][labelList]) > 0:
                             outputFileAlign.write(str(labelList) + ': ' + ', '.join(alignments1[3][index][labelList]).encode('utf-8') + '\n')

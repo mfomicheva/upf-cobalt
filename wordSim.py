@@ -87,25 +87,8 @@ def wordRelatednessScoring(word1, word2, scorer, contextPenalty):
 
     return max(result, scorer.minimal_aligned_relatedness)
 
-def wordnetPathSimilarity(word1, word2):
 
-    synsets1 = wordnet.synsets(word1)
-    synsets2 = wordnet.synsets(word2)
-
-    max_similarity = 0
-
-    for synset1 in synsets1:
-        for synset2 in synsets2:
-            if synset1._pos == synset2._pos:
-                similarity = wordnet.path_similarity(synset1, synset2)
-            else:
-                similarity = 0
-            if max_similarity < similarity:
-                max_similarity = similarity
-
-    return max_similarity
-
-def loadWordVectors(vectorsFileName = '/Users/MarinaFomicheva/workspace/resources/distribSim/vectors_dep'):
+def loadWordVectors(vectorsFileName = '/home/tos/workspace/distributed-similarity/deps.words'):
 
     global wordVector
     vectorFile = open (vectorsFileName, 'r')
@@ -135,76 +118,6 @@ def cosineSimilarity(word1, word2):
         for i in range(len(vector1)):
             x = float(vector1[i])
             y = float(vector2[i])
-            sumxx += x * x
-            sumyy += y * y
-            sumxy += x * y
-        return sumxy/math.sqrt(sumxx * sumyy)
-    else:
-        return 0
-
-def loadPosWordVectors(vectorsFileName = '/home/u88591/Workspace/distributional-similarity/vectors_ukwac_tagged.txt'):
-
-    global posVector
-    vectorFile = open(vectorsFileName, 'r')
-
-    for line in vectorFile:
-        if line == '\n':
-            continue
-
-        match = re.match(r'^([^ ]+) (.+)',line)
-        if type(match) is NoneType:
-            continue
-
-        wordExpression = match.group(1).split('/')
-
-        if len(wordExpression) != 2 or len(wordExpression[1]) == 0:
-            continue
-
-        pos = wordExpression[1][0].lower()
-        word = wordExpression[0]
-
-        if not pos in posVector:
-            posVector[pos] = {}
-
-        wordVector = posVector[pos]
-        wordVector[word] = match.group(2)
-
-def posCosineSimilarity(word1, word2):
-
-    global posVector
-    global punctuations
-
-    pos1 = word1.pos[0].lower()
-    pos2 = word2.pos[0].lower()
-    if pos1 in punctuations or pos2 in punctuations:
-        return 0
-
-    wordVector1 = posVector[pos1]
-    wordVector2 = posVector[pos2]
-
-    if word1.lemma.lower() in wordVector1 and word2.lemma.lower() in wordVector2:
-        vector1 = wordVector1[word1.lemma.lower()]
-        vector2 = wordVector2[word2.lemma.lower()]
-
-        if not type(vector1) is list:
-            vector = []
-            for v in vector1.split():
-                vector.append(float(v))
-            wordVector1[word1.lemma.lower()] = vector
-            vector1 = vector
-
-        if not type(vector2) is list:
-            vector = []
-            for v in vector2.split():
-                vector.append(float(v))
-            wordVector2[word2.lemma.lower()] = vector
-            vector2 = vector
-
-        sumxx, sumxy, sumyy = 0, 0, 0
-
-        for i in range(len(vector1)):
-            x = vector1[i]
-            y = vector2[i]
             sumxx += x * x
             sumyy += y * y
             sumxy += x * y
@@ -251,18 +164,6 @@ def canonize_word(word):
         canonical_form = word.lower()
 
     return canonical_form
-
-
-def comparePos (pos1, pos2, scorer):
-
-    if pos1 == pos2:
-        posSim = scorer.posExact
-    elif pos1[0] == pos2[0]:
-        posSim = scorer.posGramCat
-    else:
-        posSim = scorer.posNone
-
-    return posSim
 
 
 loadPPDB()

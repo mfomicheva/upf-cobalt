@@ -39,7 +39,7 @@ class Aligner(object):
                 word1 = Word(ktem[0], ktem[1], sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], ktem[2])
                 word2 = Word(ltem[0], ltem[1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1], ltem[2])
 
-                if ([ktem[0], ltem[0]] in existingAlignments or wordRelatednessAlignment(word1, word2, self.config) >= self.config.alignment_similarity_threshold) and (
+                if ([ktem[0], ltem[0]] in existingAlignments or wordRelatednessAlignment(word1, word2, self.config) >= self.config.context_similarity_threshold) and (
                     (ktem[2] == ltem[2]) or
                         ((pos != '' and relationDirection != 'child_parent') and (
                             self.is_similar(ktem[2], ltem[2], pos, 'noun', opposite, relationDirection) or
@@ -274,7 +274,7 @@ class Aligner(object):
 
                 dependencySimilarity = self.findDependencySimilarity(pos, source, i, target, j, sourceDParse, targetDParse, existingAlignments + posAlignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)
 
-                if dependencySimilarity[0] >= self.config.alignment_similarity_threshold:
+                if dependencySimilarity[0] >= self.config.context_similarity_threshold:
                     evidenceCountsMatrix[(i, j)] = dependencySimilarity[0]
                     relativeAlignmentsMatrix[(i, j)] = dependencySimilarity[1]
 
@@ -725,7 +725,7 @@ class Aligner(object):
                     for l in xrange(len(targetNeighborhood[0])):
                         neighbor1 = Word(sourceNeighborhood[0][k], sourceNeighborhood[1][k], sourceLemmas[sourceNeighborhood[0][k]-1], sourcePosTags[sourceNeighborhood[0][k]-1], '')
                         neighbor2 = Word(targetNeighborhood[0][l], targetNeighborhood[1][l], targetLemmas[targetNeighborhood[0][l]-1], targetPosTags[targetNeighborhood[0][l]-1], '')
-                        if (sourceNeighborhood[1][k] not in stopwords + punctuations) and ((sourceNeighborhood[0][k], targetNeighborhood[0][l]) in alignments or (wordRelatednessAlignment(neighbor1, neighbor2, self.config) >= self.config.alignment_similarity_threshold)):
+                        if (sourceNeighborhood[1][k] not in stopwords + punctuations) and ((sourceNeighborhood[0][k], targetNeighborhood[0][l]) in alignments or (wordRelatednessAlignment(neighbor1, neighbor2, self.config) >= self.config.context_similarity_threshold)):
                             evidence += wordRelatednessAlignment(neighbor1, neighbor2, self.config)
                 textualNeighborhoodSimilarities[(i, j)] = evidence
 
@@ -987,19 +987,16 @@ class Aligner(object):
 
         myWordAlignments = self.alignWords(sentence1LemmasAndPosTags, sentence2LemmasAndPosTags, sentence1ParseResult, sentence2ParseResult)
         myWordAlignmentTokens = [[sentence1LemmasAndPosTags[item[0]-1][2], sentence2LemmasAndPosTags[item[1]-1][2]] for item in myWordAlignments]
-        myWordContextPenalty = []
-        penaltyInfo = []
+        contextInfo = []
 
         for pair in myWordAlignments:
             sourceWord = sentence1LemmasAndPosTags[pair[0] - 1]
             targetWord = sentence2LemmasAndPosTags[pair[1] - 1]
-            myWordContextPenalty.append(self.calculateContextPenalty(sourceWord,  pair[0], targetWord, pair[1], sentence1LemmasAndPosTags, sentence2LemmasAndPosTags, sentence1ParseResult, sentence2ParseResult, myWordAlignments)[0])
-            penaltyInfo.append(self.calculateContextPenalty(sourceWord,  pair[0], targetWord, pair[1], sentence1LemmasAndPosTags, sentence2LemmasAndPosTags, sentence1ParseResult, sentence2ParseResult, myWordAlignments)[1])
+            contextInfo.append(self.compileContextInfo(sourceWord,  pair[0], targetWord, pair[1], sentence1LemmasAndPosTags, sentence2LemmasAndPosTags, sentence1ParseResult, sentence2ParseResult, myWordAlignments))
 
-        return [myWordAlignments, myWordAlignmentTokens, myWordContextPenalty, penaltyInfo]
+        return [myWordAlignments, myWordAlignmentTokens, contextInfo]
 
-    def calculateContextPenalty(self, sourceWord, sourceIndex, targetWord, targetIndex, sourceSentence, targetSentence, sourceParseResult, targetParseResult, alignments):
-
+    def compileContextInfo(self, sourceWord, sourceIndex, targetWord, targetIndex, sourceSentence, targetSentence, sourceParseResult, targetParseResult, alignments):
         sourceLemmas = [item[3] for item in sourceSentence]
         targetLemmas = [item[3] for item in targetSentence]
 
@@ -1009,32 +1006,14 @@ class Aligner(object):
         sourceDParse = dependencyParseAndPutOffsets(sourceParseResult)
         targetDParse = dependencyParseAndPutOffsets(targetParseResult)
 
-
-        contextSimilarity = 0.0
         contextDiffSource = 0.0
         contextDiffTarget = 0.0
-
-        totalContextSourceWeighted = 0.0
-        totalContextTargetWeighted = 0.0
-
-        totalContextSourceSimple = 0.0
-        totalContextTargetSimple = 0.0
 
         totalContextSourceLabels = []
         totalContextTargetLabels = []
 
-        penaltySimple = 0.0
-        penaltyWeighted = 0.0
-        penaltyDifferenceTarget = 0.0
-        penaltyDifferenceMean = 0.0
-        penaltyNormalized = 0.0
-        penaltyPrevious = 0.0
-        penaltyMinMax = 0.0
-        penaltyDifferenceLogWeighted = 0.0
-        penaltyNormalizedDep = 0.0
-        penaltyMinMaxDep = 0.0
 
-        info_for_training = {}
+        contextInfo = {}
 
         pos = ''
         if sourceWord[4].lower().startswith('v'):
@@ -1051,73 +1030,18 @@ class Aligner(object):
         targetWordParents = findParents(targetDParse, targetIndex, targetWord[2])
         targetWordChildren = findChildren(targetDParse, targetIndex, targetWord[2])
 
-        if len(pos) > 0:
-            contextSimilarity += self.findDependencySimilarity(pos, sourceWord[2], sourceIndex, targetWord[2], targetIndex, sourceDParse, targetDParse, alignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)[0]
-        else:
-            for item in sourceWordParents:
-                for jtem in targetWordParents:
-                    if [item[0], jtem[0]] in alignments:
-                        contextSimilarity += 1
-
-            for item in sourceWordChildren:
-                for jtem in targetWordChildren:
-                    if [item[0], jtem[0]] in alignments:
-                        contextSimilarity += 1
-
         contextDiffSource += self.findDependencyDifference(pos, sourceWord[2], sourceIndex, targetWord[2], targetIndex, sourceDParse, targetDParse, alignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)[0]
         contextDiffTarget += self.findDependencyDifference(pos, sourceWord[2], sourceIndex, targetWord[2], targetIndex, sourceDParse, targetDParse, alignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)[1]
 
         for item in sourceWordChildren + sourceWordParents:
-            totalContextSourceWeighted += self.config.get_dependency_types(item[2])
             totalContextSourceLabels.append(item[2])
 
         for item in targetWordChildren + targetWordParents:
-            totalContextTargetWeighted += self.config.get_dependency_types(item[2])
             totalContextTargetLabels.append(item[2])
 
-        totalContextSourceSimple += (len(sourceWordChildren) + len(sourceWordParents))
-        totalContextTargetSimple += (len(targetWordChildren) + len(targetWordParents))
+        contextInfo['srcDiff'] = self.findDependencyDifference(pos, sourceWord[2], sourceIndex, targetWord[2], targetIndex, sourceDParse, targetDParse, alignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)[2]
+        contextInfo['tgtDiff'] = self.findDependencyDifference(pos, sourceWord[2], sourceIndex, targetWord[2], targetIndex, sourceDParse, targetDParse, alignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)[3]
+        contextInfo['srcCon'] = totalContextSourceLabels
+        contextInfo['tgtCon'] = totalContextTargetLabels
 
-        if totalContextTargetSimple > 0:
-
-            penaltySimple += 1.0 - contextSimilarity/totalContextTargetSimple
-            penaltyWeighted += (1.0 - contextSimilarity/totalContextTargetSimple) * math.log(totalContextTargetSimple + 1.0)
-            penaltyPrevious += (1.0 - contextSimilarity/(totalContextTargetSimple + 1.0)) * math.log(totalContextTargetSimple + 1.0)
-
-            penaltyDifferenceTarget += contextDiffTarget/totalContextTargetWeighted * math.log(totalContextTargetSimple + 1.0)
-            penaltyDifferenceMean += self.calculateContextDiffMean(contextDiffSource, contextDiffTarget, totalContextSourceWeighted, totalContextTargetWeighted, self.config) * math.log(totalContextTargetSimple + 1.0)
-            penaltyDifferenceLogWeighted += self.calculateContextDiffMean(contextDiffSource, contextDiffTarget, totalContextSourceWeighted, totalContextTargetWeighted, self.config) * math.log(totalContextTargetWeighted + 1.0)
-
-            penaltyNormalized += (1.0/(1.0 + math.exp(-penaltyPrevious)))
-            penaltyNormalizedDep += (1.0/(1.0 + math.exp(-penaltyDifferenceLogWeighted)))
-            min = 0.5
-            max = 1.0
-            penaltyMinMax += (penaltyNormalized - min)/(max - min)
-            penaltyMinMaxDep += (penaltyNormalizedDep - min)/(max - min)
-
-
-        info_for_training['srcDiff'] = self.findDependencyDifference(pos, sourceWord[2], sourceIndex, targetWord[2], targetIndex, sourceDParse, targetDParse, alignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)[2]
-        info_for_training['tgtDiff'] = self.findDependencyDifference(pos, sourceWord[2], sourceIndex, targetWord[2], targetIndex, sourceDParse, targetDParse, alignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)[3]
-        info_for_training['srcCon'] = totalContextSourceLabels
-        info_for_training['tgtCon'] = totalContextTargetLabels
-
-        return [penaltyMinMaxDep, info_for_training]
-
-    def calculateContextDiffMean(self, sourceDiff, targetDiff, sourceLength, targetLength, config):
-
-        precision = 0.0
-        recall = 0.0
-        fscore = 0.0
-
-        if sourceLength > 0 and targetLength > 0:
-
-            precision += sourceDiff/sourceLength
-            recall += targetDiff/targetLength
-
-            if precision == 0 or recall == 0:
-                return max(precision, recall)
-            else:
-                fscore += (1 + math.pow(self.config.beta, 2)) * (precision * recall/((precision * math.pow(self.config.beta, 2)) + recall))
-
-        return fscore
-
+        return contextInfo
