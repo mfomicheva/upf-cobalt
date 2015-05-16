@@ -1,10 +1,9 @@
-from scorer import Scorer
 from synonymDictionary import SynonymDictionary
 from contractionDictionary import ContractionDictionary
 
 ppdbDict = {}
 wordVector = {}
-theta1 = 0.9
+posVector = {}
 
 from nltk.corpus import stopwords
 from nltk import SnowballStemmer

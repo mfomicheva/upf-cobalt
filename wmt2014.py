@@ -8,14 +8,12 @@ from os import listdir
 from os.path import isfile, join
 from os.path import expanduser
 
-
 home = expanduser("~")
 referenceDir = home + '/Dropbox/workspace/dataSets/wmt14-metrics-task/baselines/data/parsed/references'
 testDir = home + '/Dropbox/workspace/dataSets/wmt14-metrics-task/baselines/data/parsed/system-outputs'
 outputDir = home + '/Dropbox/workspace/dataSets/wmt14-metrics-task/submissions/MWA/testCS'
 dataset = 'newstest2014'
-metric = 'pos.context(a)'
-
+metric = 'trained_values'
 
 def main(args):
 
@@ -53,6 +51,7 @@ def main(args):
         if (writeAlignments):
             outputFileAlign = open(outputDir + '/' + dataset + '.' + system + '.' + languagePair + '.align.out', 'w')
 
+
         for i, sentence in enumerate(sentencesRef):
             phrase = i + 1
             if maxSegments != 0 and phrase > maxSegments:
@@ -65,7 +64,12 @@ def main(args):
             if (writeAlignments):
                 outputFileAlign.write('Sentence #' + str(phrase) + '\n')
                 for index in xrange(len(alignments1[0])):
-                    outputFileAlign.write(str(alignments1[0][index]) + " : " + str(alignments1[1][index]) + " : " + str(alignments1[2][index])+'\n')
+                    outputFileAlign.write(str(alignments1[0][index]) + " : " + str(alignments1[1][index]) + " : " + str(alignments1[2][index]) + '\n')
+                    for labelList in alignments1[3][index].keys():
+                        if len(alignments1[3][index][labelList]) > 0:
+                            outputFileAlign.write(str(labelList) + ': ' + ', '.join(alignments1[3][index][labelList]).encode('utf-8') + '\n')
+                        else:
+                            outputFileAlign.write(str(labelList) + ': ' + 'None' + '\n')
 
             outputFileScoring.write(str(metric) + '\t' + str(languagePair) + '\t' + str(dataset) + '\t' + str(system) + '\t' + str(phrase) + '\t' + str(score1) + '\n')
 

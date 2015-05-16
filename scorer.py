@@ -1,4 +1,3 @@
-from wordSim import *
 from ConfigParser import ConfigParser
 from coreNlpUtil import *
 import wordSim
@@ -33,9 +32,6 @@ class Scorer(object):
         self.stem = config.getfloat('Scorer', 'stem')
         self.synonym = config.getfloat('Scorer', 'synonym')
         self.paraphrase = config.getfloat('Scorer', 'paraphrase')
-        self.posExact = config.getfloat('Scorer', 'posExact')
-        self.posGramCat = config.getfloat('Scorer', 'posGramCat')
-        self.posNone = config.getfloat('Scorer', 'posNone')
         self.related = config.getfloat('Scorer', 'related')
         self.related_threshold = config.getfloat('Scorer', 'related_threshold')
         self.context_importance = config.getfloat('Scorer', 'context_importance')

@@ -44,79 +44,15 @@ def wordRelatednessAlignment(word1, word2, config):
     elif presentInPPDB(canonical_word1, canonical_word2):
         lexSim = config.paraphrase
 
-    elif presentInPPDB(word1.lemma, word2.lemma):
-        lexSim = config.paraphrase
+    elif ((not functionWord(word1.form) and not functionWord(word2.form)) or word1.pos[0] == word2.pos[0]) and cosineSimilarity(word1.form, word2.form) > config.related_threshold:
 
-    # elif not functionWord(canonical_word1) and not functionWord(canonical_word1) and wordnetPathSimilarity(word1.lemma, word2.lemma) > config.related_threshold:
-    #     return config.related
-    #
-    # elif cosineSimilarity(word1.lemma, word2.lemma) > 0 and ((canonical_word1 not in stopwords and canonical_word2 not in stopwords) or word1.pos[0] == word2.pos[0]):
-    #     lexSim = config.related
+        if word1.form not in punctuations and word2.form not in punctuations:
+            lexSim = config.related
 
     else:
         lexSim = 0.0
-
-    posSim = comparePos(word1.pos, word2.pos, config)
-    wordSim = lexSim + (posSim - 1)
 
     return lexSim
-
-def wordRelatednessContext(word1, word2, config):
-
-    global stemmer
-    global punctuations
-
-    canonical_word1 = canonize_word(word1.form)
-    canonical_word2 = canonize_word(word2.form)
-
-    if canonical_word1.isdigit() and canonical_word2.isdigit() and canonical_word1 != canonical_word2:
-        return 0
-
-    if word1.pos.lower() == 'cd' and word2.pos.lower() == 'cd' and (not canonical_word1.isdigit() and not canonical_word2.isdigit()) and canonical_word1 <> canonical_word2:
-        return 0
-
-    # stopwords can be similar to only stopwords
-    if (canonical_word1 in stopwords and canonical_word2 not in stopwords) or (canonical_word1 not in stopwords and canonical_word2 in stopwords):
-        return 0
-
-    # punctuations can only be either identical or totally dissimilar
-    if canonical_word1 in punctuations or canonical_word2 in punctuations:
-        return 0
-
-    if canonical_word1 == canonical_word2:
-        lexSim = config.exact
-
-    elif contractionDictionary.check_contraction(canonical_word1, canonical_word2):
-        lexSim = config.exact
-
-    elif stemmer.stem(canonical_word1) == stemmer.stem(canonical_word2):
-        lexSim = config.exact
-
-    elif word1.lemma == word2.lemma:
-        lexSim = config.exact
-
-    elif synonymDictionary.checkSynonymByLemma(word1.lemma, word2.lemma):
-        lexSim = config.synonym
-
-    elif presentInPPDB(canonical_word1, canonical_word2):
-        lexSim = config.paraphrase
-
-    elif presentInPPDB(word1.lemma, word2.lemma):
-        lexSim = config.paraphrase
-
-    # elif not functionWord(canonical_word1) and not functionWord(canonical_word1) and wordnetPathSimilarity(word1.lemma, word2.lemma) > config.related_threshold:
-    #     return config.related
-    #
-    # elif cosineSimilarity(word1.lemma, word2.lemma) > 0 and ((canonical_word1 not in stopwords and canonical_word2 not in stopwords) or word1.pos[0] == word2.pos[0]):
-    #     lexSim = config.related
-
-    else:
-        lexSim = 0.0
-
-    posSim = comparePos(word1.pos, word2.pos, config)
-    wordSim = lexSim + (posSim - 1)
-
-    return wordSim
 
 def wordRelatednessScoring(word1, word2, scorer, contextPenalty):
 
@@ -144,23 +80,12 @@ def wordRelatednessScoring(word1, word2, scorer, contextPenalty):
     elif presentInPPDB(canonical_word1, canonical_word2):
         lexSim = scorer.paraphrase
 
-    elif presentInPPDB(word1.lemma, word2.lemma):
-        lexSim = scorer.paraphrase
-
-    # elif not functionWord(canonical_word1) and not functionWord(canonical_word1) and wordnetPathSimilarity(word1.lemma, word2.lemma) > scorer.related_threshold:
-    #     lexSim = scorer.related
-
-    # elif cosineSimilarity(word1.lemma, word2.lemma) > scorer.related_threshold and ((canonical_word1 not in stopwords and canonical_word2 not in stopwords) or word1.pos[0] == word2.pos[0]):
-    #     lexSim = scorer.related
-
     else:
-        lexSim = 0.0
+        lexSim = scorer.related
 
-    posSim = comparePos(word1.pos, word2.pos, scorer)
-    wordSim = lexSim + (posSim - 1)
     result = lexSim - contextPenalty * scorer.context_importance
 
-    return result
+    return max(result, scorer.minimal_aligned_relatedness)
 
 def wordnetPathSimilarity(word1, word2):
 
@@ -180,7 +105,7 @@ def wordnetPathSimilarity(word1, word2):
 
     return max_similarity
 
-def loadWordVectors(vectorsFileName = '/Users/MarinaFomicheva/workspace/resources/distribSim/deps.words'):
+def loadWordVectors(vectorsFileName = '/Users/MarinaFomicheva/workspace/resources/distribSim/vectors_dep'):
 
     global wordVector
     vectorFile = open (vectorsFileName, 'r')
@@ -210,6 +135,76 @@ def cosineSimilarity(word1, word2):
         for i in range(len(vector1)):
             x = float(vector1[i])
             y = float(vector2[i])
+            sumxx += x * x
+            sumyy += y * y
+            sumxy += x * y
+        return sumxy/math.sqrt(sumxx * sumyy)
+    else:
+        return 0
+
+def loadPosWordVectors(vectorsFileName = '/home/u88591/Workspace/distributional-similarity/vectors_ukwac_tagged.txt'):
+
+    global posVector
+    vectorFile = open(vectorsFileName, 'r')
+
+    for line in vectorFile:
+        if line == '\n':
+            continue
+
+        match = re.match(r'^([^ ]+) (.+)',line)
+        if type(match) is NoneType:
+            continue
+
+        wordExpression = match.group(1).split('/')
+
+        if len(wordExpression) != 2 or len(wordExpression[1]) == 0:
+            continue
+
+        pos = wordExpression[1][0].lower()
+        word = wordExpression[0]
+
+        if not pos in posVector:
+            posVector[pos] = {}
+
+        wordVector = posVector[pos]
+        wordVector[word] = match.group(2)
+
+def posCosineSimilarity(word1, word2):
+
+    global posVector
+    global punctuations
+
+    pos1 = word1.pos[0].lower()
+    pos2 = word2.pos[0].lower()
+    if pos1 in punctuations or pos2 in punctuations:
+        return 0
+
+    wordVector1 = posVector[pos1]
+    wordVector2 = posVector[pos2]
+
+    if word1.lemma.lower() in wordVector1 and word2.lemma.lower() in wordVector2:
+        vector1 = wordVector1[word1.lemma.lower()]
+        vector2 = wordVector2[word2.lemma.lower()]
+
+        if not type(vector1) is list:
+            vector = []
+            for v in vector1.split():
+                vector.append(float(v))
+            wordVector1[word1.lemma.lower()] = vector
+            vector1 = vector
+
+        if not type(vector2) is list:
+            vector = []
+            for v in vector2.split():
+                vector.append(float(v))
+            wordVector2[word2.lemma.lower()] = vector
+            vector2 = vector
+
+        sumxx, sumxy, sumyy = 0, 0, 0
+
+        for i in range(len(vector1)):
+            x = vector1[i]
+            y = vector2[i]
             sumxx += x * x
             sumyy += y * y
             sumxy += x * y
@@ -271,4 +266,4 @@ def comparePos (pos1, pos2, scorer):
 
 
 loadPPDB()
-#loadWordVectors()
+loadWordVectors()
