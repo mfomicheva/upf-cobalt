@@ -34,6 +34,8 @@ class ParsedSentencesLoader(object):
         temp = {}
         # Substitute XML tags, to replace them later
         for i, tag in enumerate(re.findall(r"(<[^<>]+>.*<\/[^<>]+>)", s)):
+            if '</s>' in tag or '</S>' in tag:
+                continue
             temp["^^^%d^^^" % i] = tag
             s = s.replace(tag, "^^^%d^^^" % i)
         # Load key-value pairs, substituting as necessary

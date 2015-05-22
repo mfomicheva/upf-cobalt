@@ -58,17 +58,17 @@ class Scorer(object):
         self.modifier_types = loads(config.get('Dependency Types', 'modifiers'))
         self.function_types = loads(config.get('Dependency Types', 'function'))
 
-    def get_dependency_weight(self, dependency_type):
-        if dependency_type in self.argument_types:
+
+    def get_dependency_weight(self, dependency_label):
+
+        if dependency_label.split('_')[0] in self.argument_types:
             return self.arguments
 
-        if dependency_type in self.modifier_types:
+        elif dependency_label.split('_')[0] in self.modifier_types:
             return self.modifiers
 
-        if dependency_type in self.function_types:
+        else:
             return self.function
-
-        return 0
 
     def sum_dependency_weights(self, dependencies):
         result = 0

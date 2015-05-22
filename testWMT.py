@@ -8,8 +8,6 @@ from os import listdir
 from os.path import isfile, join
 from os.path import expanduser
 
-home = expanduser("~")
-
 def loadPPDB(ppdbFileName):
 
     global ppdbDict
@@ -49,8 +47,9 @@ def main(args):
     languagePair = ''
     maxSegments = 0
     writeAlignments = False
+    writePenalty = False
 
-    opts, args = getopt.getopt(args, 'hc:l:m:a:', ['configurationfile=', 'language=', 'maxsegments=', 'writealignments='])
+    opts, args = getopt.getopt(args, 'hc:l:m:a:p:', ['configurationfile=', 'language=', 'maxsegments=', 'writealignments=', 'writepenalty='])
 
     for opt, arg in opts:
         if opt == '-h':
@@ -64,6 +63,8 @@ def main(args):
             maxSegments = int(arg)
         elif opt in ('-a', '--writealignments'):
             writeAlignments = bool(arg)
+        elif opt in ('-p', '--writepenalty'):
+            writePenalty = bool(arg)
 
     config = ConfigParser()
     config.readfp(open(config_file_name))
@@ -77,28 +78,34 @@ def main(args):
     vectorsFileName = config.get('Paths', 'vectorsFileName')
 
 
+    sourceLanguage = languagePair.split('-')[0]
+    targetLanguage = languagePair.split('-')[1]
     if dataset == 'newstest2013':
-        targetLanguage = languagePair.split('-')[1]
-        sentencesRef = readSentences(codecs.open(home + reference_dir + '/' + dataset + '/' + dataset + '-ref.' + targetLanguage + '.out', encoding='UTF-8'))
+        sentencesRef = readSentences(codecs.open(reference_dir + '/' + dataset + '/' + dataset + '-ref.' + targetLanguage + '.out', encoding='UTF-8'))
+    elif dataset == 'newstest2015' or dataset == 'newsdiscusstest2015':
+        sentencesRef = readSentences(codecs.open(reference_dir + '/' + dataset + '/' + dataset + '-' + sourceLanguage + targetLanguage + '-ref.' + targetLanguage + '.out', encoding='UTF-8'))
     else:
-        sentencesRef = readSentences(codecs.open(home + reference_dir + '/' + dataset + '/' + dataset + '-ref.' + languagePair + '.out', encoding='UTF-8'))
+        sentencesRef = readSentences(codecs.open(reference_dir + '/' + dataset + '-ref.' + languagePair + '.out', encoding='UTF-8'))
 
-    output_scoring = open(home + output_dir + '/' + metric + '.' + languagePair + '.' + 'seg.score', 'w')
+    output_scoring = open(output_dir + '/' + metric + '.' + languagePair + '.' + 'seg.score', 'w')
 
-    testFiles = [f for f in listdir(home + test_dir + '/' + dataset + '/' + languagePair) if isfile(join(home + test_dir + '/' + dataset + '/' + languagePair, f))]
+    testFiles = [f for f in listdir(test_dir + '/' + dataset + '/' + languagePair) if isfile(join(test_dir + '/' + dataset + '/' + languagePair, f))]
 
-    loadPPDB(home + ppdbFileName)
-    loadWordVectors(home + vectorsFileName)
+    loadPPDB(ppdbFileName)
+    loadWordVectors(vectorsFileName)
     scorer = Scorer()
     aligner = Aligner('english')
 
     for t in testFiles:
+        if t[0] == '.':
+            continue
         print t
+        #check system names in the dataset!
         system = t.split('.')[1] + '.' + t.split('.')[2]
-        sentencesTest = readSentences(codecs.open(home + test_dir + '/' + dataset + '/' + languagePair + '/' + t, encoding='UTF-8'))
+        sentencesTest = readSentences(codecs.open(test_dir + '/' + dataset + '/' + languagePair + '/' + t, encoding='UTF-8'))
 
         if (writeAlignments):
-            output_alignment = open(home + output_dir + '/' + dataset + '.' + system + '.' + languagePair + '.align.out', 'w')
+            output_alignment = open(output_dir + '/' + dataset + '.' + system + '.' + languagePair + '.align.out', 'w')
 
         for i, sentence in enumerate(sentencesRef):
             phrase = i + 1
@@ -111,13 +118,13 @@ def main(args):
 
             if (writeAlignments):
                 output_alignment.write('Sentence #' + str(phrase) + '\n')
+
                 for index in xrange(len(alignments1[0])):
-                    output_alignment.write(str(alignments1[0][index]) + " : " + str(alignments1[1][index]) + " : " + str(alignments1[2][index]) + '\n')
-                    for labelList in alignments1[3][index].keys():
-                        if len(alignments1[3][index][labelList]) > 0:
-                            output_alignment.write(str(labelList) + ': ' + ', '.join(alignments1[3][index][labelList]).encode('utf-8') + '\n')
-                        else:
-                            output_alignment.write(str(labelList) + ': ' + 'None' + '\n')
+
+                    if (writePenalty):
+                        output_alignment.write(str(alignments1[0][index]) + " : " + str(alignments1[1][index]) + " : " + str(scorer.calculate_context_penalty(alignments1[2][index])) + '\n')
+                    else:
+                        output_alignment.write(str(alignments1[0][index]) + " : " + str(alignments1[1][index]) + " : " + str(alignments1[2][index]) + '\n')
 
             output_scoring.write(str(metric) + '\t' + str(languagePair) + '\t' + str(dataset) + '\t' + str(system) + '\t' + str(phrase) + '\t' + str(score1) + '\n')
 
