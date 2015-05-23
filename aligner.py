@@ -39,7 +39,7 @@ class Aligner(object):
                 word1 = Word(ktem[0], ktem[1], sourceLemmas[ktem[0]-1], sourcePosTags[ktem[0]-1], ktem[2])
                 word2 = Word(ltem[0], ltem[1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1], ltem[2])
 
-                if ([ktem[0], ltem[0]] in existingAlignments or wordRelatednessAlignment(word1, word2, self.config) >= self.config.context_similarity_threshold) and (
+                if ([ktem[0], ltem[0]] in existingAlignments or wordRelatednessAlignment(word1, word2, self.config) >= self.config.alignment_similarity_threshold) and (
                     (ktem[2] == ltem[2]) or
                         ((pos != '' and relationDirection != 'child_parent') and (
                             self.is_similar(ktem[2], ltem[2], pos, 'noun', opposite, relationDirection) or
@@ -166,9 +166,6 @@ class Aligner(object):
         compareParentChildren = self.compareNodesScoring(sourceWordParents, targetWordChildren, pos, True, 'parent_child', existingAlignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)
         compareChildrenParent = self.compareNodesScoring(sourceWordParents, targetWordChildren, pos, True, 'child_parent', existingAlignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)
 
-        diffSourceScore = 0.0
-        diffTargetScore = 0.0
-
         labelsSource = []
         labelsTarget = []
 
@@ -199,25 +196,21 @@ class Aligner(object):
 
         for item in targetWordChildren:
             if item[0] not in childrenMatchedTarget:
-                diffTargetScore += self.config.get_dependency_types(item[2])
                 labelsTarget.append(item[2])
 
         for item in targetWordParents:
             if item[0] not in parentsMatchedTarget:
-                diffTargetScore += self.config.get_dependency_types(item[2])
                 labelsTarget.append(item[2])
 
         for item in sourceWordChildren:
             if item[0] not in childrenMatchedSource:
-                diffSourceScore += self.config.get_dependency_types(item[2])
                 labelsSource.append(item[2])
 
         for item in sourceWordParents:
             if item[0] not in parentsMatchedSource:
-                diffSourceScore += self.config.get_dependency_types(item[2])
                 labelsSource.append(item[2])
 
-        return [diffSourceScore, diffTargetScore, labelsSource, labelsTarget]
+        return [labelsSource, labelsTarget]
 
     ##############################################################################################################################
     def alignPos(self, pos, posCode, source, target, sourceParseResult, targetParseResult, existingAlignments):
@@ -274,7 +267,7 @@ class Aligner(object):
 
                 dependencySimilarity = self.findDependencySimilarity(pos, source, i, target, j, sourceDParse, targetDParse, existingAlignments + posAlignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)
 
-                if dependencySimilarity[0] >= self.config.context_similarity_threshold:
+                if dependencySimilarity[0] >= self.config.alignment_similarity_threshold:
                     evidenceCountsMatrix[(i, j)] = dependencySimilarity[0]
                     relativeAlignmentsMatrix[(i, j)] = dependencySimilarity[1]
 
@@ -725,7 +718,7 @@ class Aligner(object):
                     for l in xrange(len(targetNeighborhood[0])):
                         neighbor1 = Word(sourceNeighborhood[0][k], sourceNeighborhood[1][k], sourceLemmas[sourceNeighborhood[0][k]-1], sourcePosTags[sourceNeighborhood[0][k]-1], '')
                         neighbor2 = Word(targetNeighborhood[0][l], targetNeighborhood[1][l], targetLemmas[targetNeighborhood[0][l]-1], targetPosTags[targetNeighborhood[0][l]-1], '')
-                        if (sourceNeighborhood[1][k] not in stopwords + punctuations) and ((sourceNeighborhood[0][k], targetNeighborhood[0][l]) in alignments or (wordRelatednessAlignment(neighbor1, neighbor2, self.config) >= self.config.context_similarity_threshold)):
+                        if (sourceNeighborhood[1][k] not in stopwords + punctuations) and ((sourceNeighborhood[0][k], targetNeighborhood[0][l]) in alignments or (wordRelatednessAlignment(neighbor1, neighbor2, self.config) >= self.config.alignment_similarity_threshold)):
                             evidence += wordRelatednessAlignment(neighbor1, neighbor2, self.config)
                 textualNeighborhoodSimilarities[(i, j)] = evidence
 
@@ -1006,12 +999,8 @@ class Aligner(object):
         sourceDParse = dependencyParseAndPutOffsets(sourceParseResult)
         targetDParse = dependencyParseAndPutOffsets(targetParseResult)
 
-        contextDiffSource = 0.0
-        contextDiffTarget = 0.0
-
         totalContextSourceLabels = []
         totalContextTargetLabels = []
-
 
         contextInfo = {}
 
@@ -1030,17 +1019,14 @@ class Aligner(object):
         targetWordParents = findParents(targetDParse, targetIndex, targetWord[2])
         targetWordChildren = findChildren(targetDParse, targetIndex, targetWord[2])
 
-        contextDiffSource += self.findDependencyDifference(pos, sourceWord[2], sourceIndex, targetWord[2], targetIndex, sourceDParse, targetDParse, alignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)[0]
-        contextDiffTarget += self.findDependencyDifference(pos, sourceWord[2], sourceIndex, targetWord[2], targetIndex, sourceDParse, targetDParse, alignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)[1]
-
         for item in sourceWordChildren + sourceWordParents:
             totalContextSourceLabels.append(item[2])
 
         for item in targetWordChildren + targetWordParents:
             totalContextTargetLabels.append(item[2])
 
-        contextInfo['srcDiff'] = self.findDependencyDifference(pos, sourceWord[2], sourceIndex, targetWord[2], targetIndex, sourceDParse, targetDParse, alignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)[2]
-        contextInfo['tgtDiff'] = self.findDependencyDifference(pos, sourceWord[2], sourceIndex, targetWord[2], targetIndex, sourceDParse, targetDParse, alignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)[3]
+        contextInfo['srcDiff'] = self.findDependencyDifference(pos, sourceWord[2], sourceIndex, targetWord[2], targetIndex, sourceDParse, targetDParse, alignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)[0]
+        contextInfo['tgtDiff'] = self.findDependencyDifference(pos, sourceWord[2], sourceIndex, targetWord[2], targetIndex, sourceDParse, targetDParse, alignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)[1]
         contextInfo['srcCon'] = totalContextSourceLabels
         contextInfo['tgtCon'] = totalContextTargetLabels
 

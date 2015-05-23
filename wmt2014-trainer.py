@@ -107,6 +107,9 @@ def evaluate(values):
 
     training_values.flush()
 
+    if correlation < 0:
+        correlation = 0
+
     return correlation
 
 

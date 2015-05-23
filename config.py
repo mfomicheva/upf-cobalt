@@ -1,4 +1,3 @@
-from scorer import Scorer
 from synonymDictionary import SynonymDictionary
 from contractionDictionary import ContractionDictionary
 

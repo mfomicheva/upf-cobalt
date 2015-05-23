@@ -10,7 +10,6 @@ class AlignerConfig(object):
     def __init__(self, language):
         self.config.readfp(open('Config/' + language + '.cfg'))
         self.alignment_similarity_threshold = self.config.getfloat('Aligner', 'alignment_similarity_threshold')
-        self.context_similarity_threshold = self.config.getfloat('Aligner', 'context_similarity_threshold')
 
         self.exact = self.config.getfloat('Aligner', 'exact')
         self.stem = self.config.getfloat('Aligner', 'stem')
