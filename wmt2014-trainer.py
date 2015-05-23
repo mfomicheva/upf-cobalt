@@ -52,7 +52,7 @@ def calculate_correlation():
         row = reader.next()
         value += float(row[pair])
 
-    return value / len(language_pairs)
+    return max(value / len(language_pairs), 0)
 
 
 def calculate_scores(scorer):

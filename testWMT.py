@@ -101,7 +101,10 @@ def main(args):
             continue
         print t
         #check system names in the dataset!
-        system = t.split('.')[1] + '.' + t.split('.')[2]
+        if dataset == 'newstest2013':
+            system = t.split('.')[2] + '.' + t.split('.')[3]
+        else:
+            system = t.split('.')[1] + '.' + t.split('.')[2]
         sentencesTest = readSentences(codecs.open(test_dir + '/' + dataset + '/' + languagePair + '/' + t, encoding='UTF-8'))
 
         if (writeAlignments):

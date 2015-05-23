@@ -267,6 +267,9 @@ class Aligner(object):
 
                 dependencySimilarity = self.findDependencySimilarity(pos, source, i, target, j, sourceDParse, targetDParse, existingAlignments + posAlignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)
 
+                if wordSimilarities[(i, j)] == self.config.alignment_similarity_threshold and wordSimilarities[(i, j)] + dependencySimilarity[0] <= 1.0:
+                    continue
+
                 if dependencySimilarity[0] >= self.config.alignment_similarity_threshold:
                     evidenceCountsMatrix[(i, j)] = dependencySimilarity[0]
                     relativeAlignmentsMatrix[(i, j)] = dependencySimilarity[1]
