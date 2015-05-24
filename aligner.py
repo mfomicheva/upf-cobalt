@@ -745,6 +745,9 @@ class Aligner(object):
                     if (i, j) not in wordSimilarities:
                         continue
 
+                    if wordSimilarities[(i, j)] == self.config.alignment_similarity_threshold and wordSimilarities[(i, j)] + textualNeighborhoodSimilarities[(i, j)] <= 1.0:
+                        continue
+
                     if self.config.theta * wordSimilarities[(i, j)] + (1 - self.config.theta) * textualNeighborhoodSimilarities[(i, j)] > highestWeightedSim:
                         highestWeightedSim = self.config.theta * wordSimilarities[(i, j)] + (1 - self.config.theta) * textualNeighborhoodSimilarities[(i, j)]
                         bestSourceIndex = i
