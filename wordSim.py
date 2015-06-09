@@ -18,6 +18,9 @@ def wordRelatednessAlignment(word1, word2, config):
     if word1.pos.lower() == 'cd' and word2.pos.lower() == 'cd' and (not canonical_word1.isdigit() and not canonical_word2.isdigit()) and canonical_word1 <> canonical_word2:
         return 0
 
+    if contractionDictionary.check_contraction(canonical_word1, canonical_word2):
+        return config.exact
+
     # stopwords can be similar to only stopwords
     if (canonical_word1 in stopwords and canonical_word2 not in stopwords) or (canonical_word1 not in stopwords and canonical_word2 in stopwords):
         return 0
@@ -27,9 +30,6 @@ def wordRelatednessAlignment(word1, word2, config):
         return 0
 
     if canonical_word1 == canonical_word2:
-        lexSim = config.exact
-
-    elif contractionDictionary.check_contraction(canonical_word1, canonical_word2):
         lexSim = config.exact
 
     elif stemmer.stem(canonical_word1) == stemmer.stem(canonical_word2):
