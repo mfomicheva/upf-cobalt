@@ -287,11 +287,11 @@ class Aligner(object):
             indexPairWithStrongestTieForCurrentPass = [-1, -1]
 
             for i in sourceWordIndices:
-                if i in sourceWordIndicesAlreadyAligned or sourcePosTags[i-1][0].lower() != posCode or sourceLemmas[i-1] in stopwords:
+                if i in sourceWordIndicesAlreadyAligned or sourcePosTags[i-1][0].lower() != posCode or sourceLemmas[i-1].lower() in stopwords:
                     continue
 
                 for j in targetWordIndices:
-                    if j in targetWordIndicesAlreadyAligned or targetPosTags[j-1][0].lower() != posCode or targetLemmas[j-1] in stopwords:
+                    if j in targetWordIndicesAlreadyAligned or targetPosTags[j-1][0].lower() != posCode or targetLemmas[j-1].lower() in stopwords:
                         continue
 
                     if (i, j) in evidenceCountsMatrix and self.config.theta * wordSimilarities[(i, j)] + (1 - self.config.theta) * evidenceCountsMatrix[(i, j)] > maxOverallValueForCurrentPass:
@@ -703,11 +703,11 @@ class Aligner(object):
         targetWordIndicesBeingConsidered = []
 
         for i in sourceWordIndices:
-            if i in sourceWordIndicesAlreadyAligned or sourceLemmas[i-1] in stopwords + punctuations + ['\'s', '\'d', '\'ll']:
+            if i in sourceWordIndicesAlreadyAligned or sourceLemmas[i-1].lower() in stopwords + punctuations + ['\'s', '\'d', '\'ll']:
                 continue
 
             for j in targetWordIndices:
-                if j in targetWordIndicesAlreadyAligned or targetLemmas[j-1] in stopwords + punctuations + ['\'s', '\'d', '\'ll']:
+                if j in targetWordIndicesAlreadyAligned or targetLemmas[j-1].lower() in stopwords + punctuations + ['\'s', '\'d', '\'ll']:
                     continue
 
                 word1 = Word(i, sourceWords[i-1], sourceLemmas[i-1], sourcePosTags[i-1], '')
@@ -763,7 +763,7 @@ class Aligner(object):
                         bestTextNeighborhoodSim = textualNeighborhoodSimilarities[(i, j)]
 
             if bestWordSim >= self.config.alignment_similarity_threshold and [bestSourceIndex, bestTargetIndex] not in alignments and bestSourceIndex not in sourceWordIndicesAlreadyAligned and bestTargetIndex not in targetWordIndicesAlreadyAligned:
-                if sourceLemmas[bestSourceIndex-1] not in stopwords:
+                if sourceLemmas[bestSourceIndex-1].lower() not in stopwords:
                     alignments.append([bestSourceIndex, bestTargetIndex])
                     sourceWordIndicesAlreadyAligned.append(bestSourceIndex)
                     targetWordIndicesAlreadyAligned.append(bestTargetIndex)
@@ -809,11 +809,11 @@ class Aligner(object):
         targetWordIndicesBeingConsidered = []
 
         for i in sourceWordIndices:
-            if sourceLemmas[i-1] not in stopwords or i in sourceWordIndicesAlreadyAligned:
+            if sourceLemmas[i-1].lower() not in stopwords or i in sourceWordIndicesAlreadyAligned:
                 continue
 
             for j in targetWordIndices:
-                if targetLemmas[j-1] not in stopwords or j in targetWordIndicesAlreadyAligned:
+                if targetLemmas[j-1].lower() not in stopwords or j in targetWordIndicesAlreadyAligned:
                     continue
 
                 word1 = Word(i, sourceWords[i-1], sourceLemmas[i-1], sourcePosTags[i-1], '')
@@ -883,11 +883,11 @@ class Aligner(object):
         targetWordIndicesBeingConsidered = []
 
         for i in sourceWordIndices:
-            if (sourceLemmas[i-1] not in stopwords + punctuations + ['\'s', '\'d', '\'ll']) or i in sourceWordIndicesAlreadyAligned:
+            if (sourceLemmas[i-1].lower() not in stopwords + punctuations + ['\'s', '\'d', '\'ll']) or i in sourceWordIndicesAlreadyAligned:
                 continue
 
             for j in targetWordIndices:
-                if (targetLemmas[j-1] not in stopwords + punctuations + ['\'s', '\'d', '\'ll']) or j in targetWordIndicesAlreadyAligned:
+                if (targetLemmas[j-1].lower() not in stopwords + punctuations + ['\'s', '\'d', '\'ll']) or j in targetWordIndicesAlreadyAligned:
                     continue
 
                 word1 = Word(i, sourceWords[i-1], sourceLemmas[i-1], sourcePosTags[i-1], '')
@@ -909,12 +909,12 @@ class Aligner(object):
                 l = j
 
                 while k > 0:
-                    if sourceLemmas[k-1] in stopwords + punctuations + ['\'s', '\'d', '\'ll']:
+                    if sourceLemmas[k-1].lower() in stopwords + punctuations + ['\'s', '\'d', '\'ll']:
                         k -= 1
                     else:
                         break
                 while l > 0:
-                    if targetLemmas[l-1] in stopwords + punctuations + ['\'s', '\'d', '\'ll']:
+                    if targetLemmas[l-1].lower() in stopwords + punctuations + ['\'s', '\'d', '\'ll']:
                         l -= 1
                     else:
                         break
@@ -924,13 +924,13 @@ class Aligner(object):
 
 
                 while m < len(sourceLemmas) - 1:
-                    if sourceLemmas[m - 1] in stopwords + punctuations + ['\'s', '\'d', '\'ll']:
+                    if sourceLemmas[m - 1].lower() in stopwords + punctuations + ['\'s', '\'d', '\'ll']:
 
                         m += 1
                     else:
                         break
                 while n < len(targetLemmas) - 1:
-                    if targetLemmas[n - 1] in stopwords + punctuations + ['\'s', '\'d', '\'ll']:
+                    if targetLemmas[n - 1].lower() in stopwords + punctuations + ['\'s', '\'d', '\'ll']:
                         n += 1
                     else:
                         break
