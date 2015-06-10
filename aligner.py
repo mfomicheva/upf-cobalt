@@ -40,6 +40,7 @@ class Aligner(object):
                 word2 = Word(ltem[0], ltem[1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1], ltem[2])
 
                 if ([ktem[0], ltem[0]] in existingAlignments or wordRelatednessAlignment(word1, word2, self.config) >= self.config.alignment_similarity_threshold) and (
+                    #(ktem[2] == ltem[2])):
                     (ktem[2] == ltem[2]) or
                         ((pos != '' and relationDirection != 'child_parent') and (
                             self.is_similar(ktem[2], ltem[2], pos, 'noun', opposite, relationDirection) or
@@ -75,6 +76,7 @@ class Aligner(object):
                 word2 = Word(ltem[0], ltem[1], targetLemmas[ltem[0]-1], targetPosTags[ltem[0]-1], ltem[2])
 
                 if ([ktem[0], ltem[0]] in existingAlignments or (ktem[0] == 0 and ltem[0] == 0)) and (
+                    #(ktem[2] == ltem[2])):
                     (ktem[2] == ltem[2]) or
                         ((pos != '' and relationDirection != 'child_parent') and (
                             self.is_similar(ktem[2], ltem[2], pos, 'noun', opposite, relationDirection) or
@@ -267,12 +269,15 @@ class Aligner(object):
 
                 dependencySimilarity = self.findDependencySimilarity(pos, source, i, target, j, sourceDParse, targetDParse, existingAlignments + posAlignments, sourcePosTags, targetPosTags, sourceLemmas, targetLemmas)
 
-                if wordSimilarities[(i, j)] == self.config.alignment_similarity_threshold and wordSimilarities[(i, j)] + dependencySimilarity[0] <= 1.0:
-                    continue
+                if wordSimilarities[(i, j)] == self.config.alignment_similarity_threshold:
+                    if wordSimilarities[(i, j)] + dependencySimilarity[0] <= 1.0:
+                        continue
 
                 if dependencySimilarity[0] >= self.config.alignment_similarity_threshold:
                     evidenceCountsMatrix[(i, j)] = dependencySimilarity[0]
                     relativeAlignmentsMatrix[(i, j)] = dependencySimilarity[1]
+                else:
+                    evidenceCountsMatrix[(i, j)] = 0
 
         # now use the collected stats to align
         for n in xrange(numberOfPosWordsInSource):
@@ -294,7 +299,8 @@ class Aligner(object):
                         maxEvidenceCountForCurrentPass = evidenceCountsMatrix[(i, j)]
                         indexPairWithStrongestTieForCurrentPass = [i, j]
 
-            if maxEvidenceCountForCurrentPass > 0:
+            #if maxEvidenceCountForCurrentPass > 0:
+            if maxOverallValueForCurrentPass > 0:
                 posAlignments.append(indexPairWithStrongestTieForCurrentPass)
                 sourceWordIndicesAlreadyAligned.append(indexPairWithStrongestTieForCurrentPass[0])
                 targetWordIndicesAlreadyAligned.append(indexPairWithStrongestTieForCurrentPass[1])
@@ -745,8 +751,9 @@ class Aligner(object):
                     if (i, j) not in wordSimilarities:
                         continue
 
-                    if wordSimilarities[(i, j)] == self.config.alignment_similarity_threshold and wordSimilarities[(i, j)] + textualNeighborhoodSimilarities[(i, j)] <= 1.0:
-                        continue
+                    if wordSimilarities[(i, j)] == self.config.alignment_similarity_threshold:
+                        if wordSimilarities[(i, j)] + textualNeighborhoodSimilarities[(i, j)] <= 1.0:
+                            continue
 
                     if self.config.theta * wordSimilarities[(i, j)] + (1 - self.config.theta) * textualNeighborhoodSimilarities[(i, j)] > highestWeightedSim:
                         highestWeightedSim = self.config.theta * wordSimilarities[(i, j)] + (1 - self.config.theta) * textualNeighborhoodSimilarities[(i, j)]

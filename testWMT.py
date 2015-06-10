@@ -48,8 +48,10 @@ def main(args):
     maxSegments = 0
     writeAlignments = False
     writePenalty = False
+    phrase_user = -1
+    system_user = ''
 
-    opts, args = getopt.getopt(args, 'hc:l:m:a:p:', ['configurationfile=', 'language=', 'maxsegments=', 'writealignments=', 'writepenalty='])
+    opts, args = getopt.getopt(args, 'hc:l:m:a:p:s:n:', ['configurationfile=', 'language=', 'maxsegments=', 'writealignments=', 'writepenalty=', 'system=', 'phrase='])
 
     for opt, arg in opts:
         if opt == '-h':
@@ -65,6 +67,10 @@ def main(args):
             writeAlignments = bool(arg)
         elif opt in ('-p', '--writepenalty'):
             writePenalty = bool(arg)
+        elif opt in ('-n', '--phrase'):
+            phrase_user = int(arg)
+        elif opt in ('-s', '--system'):
+            system_user = arg
 
     config = ConfigParser()
     config.readfp(open(config_file_name))
@@ -105,6 +111,10 @@ def main(args):
             system = t.split('.')[2] + '.' + t.split('.')[3]
         else:
             system = t.split('.')[1] + '.' + t.split('.')[2]
+
+        if len(system_user) > 0 and not system == system_user:
+            continue
+
         sentencesTest = readSentences(codecs.open(test_dir + '/' + dataset + '/' + languagePair + '/' + t, encoding='UTF-8'))
 
         if (writeAlignments):
@@ -113,6 +123,8 @@ def main(args):
         for i, sentence in enumerate(sentencesRef):
             phrase = i + 1
             if maxSegments != 0 and phrase > maxSegments:
+                continue
+            if phrase_user != -1 and phrase != phrase_user:
                 continue
 
             # calculating alignment and score test to reference
