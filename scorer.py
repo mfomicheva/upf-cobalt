@@ -85,7 +85,7 @@ class Scorer(object):
 
         penalty = self.calculate_context_difference_mean(source_diff, target_diff, source_length, target_length) * math.log(target_length + 1.0)
         penalty = (1.0/(1.0 + math.exp(-penalty)))
-        penalty = 2*penalty - 1
+        penalty = 2 * penalty - 1
 
         return penalty
 
