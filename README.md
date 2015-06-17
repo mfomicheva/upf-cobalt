@@ -11,9 +11,8 @@ UPF-Cobalt is a MT evaluation metric that exploits alignment and syntactic conte
 To use the metric, run evaluate.py with the following parameters:
 
 |**Parameter**|**Description**|
-|:-------------:|:-------------:|
-|-r|parsed reference file|
 |:-------------|:-------------|
+|-r|parsed reference file|
 |-t|parsed system output file|
 |-v|file containing word vectors - optional|
 |-a|output alignments - optional|
