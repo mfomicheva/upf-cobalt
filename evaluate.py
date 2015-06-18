@@ -100,7 +100,7 @@ def main(args):
             output_alignment.write('Sentence #' + str(phrase) + '\n')
 
             for index in xrange(len(alignments1[0])):
-                output_alignment.write(str(alignments1[0][index]) + " : " + str(alignments1[1][index]) + " : " + str(scorer.calculate_context_penalty(alignments1[2][index])) + '\n')
+                output_alignment.write("{} \t {} \t {:.2f} \n".format(alignments1[0][index], alignments1[1][index], scorer.calculate_context_penalty(alignments1[2][index])))
 
         output_scoring.write(str(phrase) + '\t' + str(score1) + '\n')
 
