@@ -104,10 +104,10 @@ def main(args):
 
         output_scoring.write(str(phrase) + '\t' + str(score1) + '\n')
 
-        if (writeAlignments):
-            output_alignment.close()
+    if (writeAlignments):
+        output_alignment.close()
 
-        output_scoring.close()
+    output_scoring.close()
 
 if __name__ == "__main__":
     main(sys.argv[1:])
