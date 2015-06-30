@@ -54,7 +54,7 @@ def wordRelatednessAlignment(word1, word2, config):
 
     return lexSim
 
-def wordRelatednessScoring(word1, word2, scorer, contextPenalty):
+def wordRelatednessScoring(word1, word2, scorer):
 
     global stemmer
     global punctuations
@@ -83,9 +83,7 @@ def wordRelatednessScoring(word1, word2, scorer, contextPenalty):
     else:
         lexSim = scorer.related
 
-    result = lexSim - contextPenalty * scorer.context_importance
-
-    return max(result, scorer.minimal_aligned_relatedness)
+    return lexSim
 
 def cosineSimilarity(word1, word2):
 

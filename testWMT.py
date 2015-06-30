@@ -129,7 +129,8 @@ def main(args):
 
             # calculating alignment and score test to reference
             alignments1 = aligner.align(sentencesTest[i], sentence)
-            score1 = scorer.calculate_score(sentencesTest[i], sentence, alignments1)
+            word_level_scores = scorer.word_level_scores(sentencesTest[i], sentence, alignments1)
+            sentence_level_score = scorer.sentence_level_score(sentencesTest[i], sentence, alignments1, word_level_scores)
 
             if (writeAlignments):
                 output_alignment.write('Sentence #' + str(phrase) + '\n')
@@ -137,11 +138,11 @@ def main(args):
                 for index in xrange(len(alignments1[0])):
 
                     if (writePenalty):
-                        output_alignment.write(str(alignments1[0][index]) + " : " + str(alignments1[1][index]) + " : " + str(scorer.calculate_context_penalty(alignments1[2][index])) + '\n')
+                        output_alignment.write(str(alignments1[0][index]) + " : " + str(alignments1[1][index]) + " : " + str(word_level_scores[0][index]) + " : " + str(word_level_scores[1][index]) + '\n')
                     else:
                         output_alignment.write(str(alignments1[0][index]) + " : " + str(alignments1[1][index]) + " : " + str(alignments1[2][index]) + '\n')
 
-            output_scoring.write(str(metric) + '\t' + str(languagePair) + '\t' + str(dataset) + '\t' + str(system) + '\t' + str(phrase) + '\t' + str(score1) + '\n')
+            output_scoring.write(str(metric) + '\t' + str(languagePair) + '\t' + str(dataset) + '\t' + str(system) + '\t' + str(phrase) + '\t' + str(sentence_level_score) + '\n')
 
 
         if (writeAlignments):
@@ -150,6 +151,3 @@ def main(args):
 
 if __name__ == "__main__":
     main(sys.argv[1:])
-
-
-

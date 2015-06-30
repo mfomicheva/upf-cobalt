@@ -111,7 +111,21 @@ class Scorer(object):
 
     # receives alignments structure as an input - alignments[0] is the aligned pair indexes,
     # alignments[1] is the aligned pair words, alignments[2] is the aligned pair dependency difference structure
-    def calculate_score(self, sentence1, sentence2, alignments):
+    def word_level_scores(self, sentence1, sentence2, alignments):
+        lexsimilarities = []
+        penalties = []
+
+        sentence1 = prepareSentence2(sentence1)
+        sentence2 = prepareSentence2(sentence2)
+
+        for i, a in enumerate(alignments[0]):
+            lexsimilarities.append(wordSim.wordRelatednessScoring(sentence1[a[0] - 1], sentence2[a[1] - 1], self))
+            penalties.append(self.calculate_context_penalty(alignments[2][i]))
+
+        return [lexsimilarities, penalties]
+
+    def sentence_level_score(self, sentence1, sentence2, alignments, word_level_scores):
+
         sentence1 = prepareSentence2(sentence1)
         sentence2 = prepareSentence2(sentence2)
 
@@ -125,17 +139,16 @@ class Scorer(object):
         weighted_matches2 = 0
 
         for i, a in enumerate(alignments[0]):
-            penalty = self.calculate_context_penalty(alignments[2][i])
 
             if not wordSim.functionWord(sentence1[a[0] - 1].form):
-                weighted_matches1 += self.delta * wordSim.wordRelatednessScoring(sentence1[a[0] - 1], sentence2[a[1] - 1], self, penalty)
+                weighted_matches1 += self.delta * (max(word_level_scores[0][i] - word_level_scores[1][i], self.minimal_aligned_relatedness))
             else:
-                weighted_matches1 += (1 - self.delta) * wordSim.wordRelatednessScoring(sentence1[a[0] - 1], sentence2[a[1] - 1], self, penalty)
+                weighted_matches1 += (1 - self.delta) * (max(word_level_scores[0][i] - word_level_scores[1][i], self.minimal_aligned_relatedness))
 
             if not wordSim.functionWord(sentence2[a[1] - 1].form):
-                weighted_matches2 += self.delta * wordSim.wordRelatednessScoring(sentence1[a[0] - 1], sentence2[a[1] - 1], self, penalty)
+                weighted_matches2 += self.delta * (max(word_level_scores[0][i] - word_level_scores[1][i], self.minimal_aligned_relatedness))
             else:
-                weighted_matches2 += (1 - self.delta) * wordSim.wordRelatednessScoring(sentence1[a[0] - 1], sentence2[a[1] - 1], self, penalty)
+                weighted_matches2 += (1 - self.delta) * (max(word_level_scores[0][i] - word_level_scores[1][i], self.minimal_aligned_relatedness))
 
         if weighted_length1 == 0:
             precision = weighted_matches1
