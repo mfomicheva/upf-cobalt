@@ -111,6 +111,10 @@ class Scorer(object):
 
     # receives alignments structure as an input - alignments[0] is the aligned pair indexes,
     # alignments[1] is the aligned pair words, alignments[2] is the aligned pair dependency difference structure
+
+    def sentence_length(self, sentence):
+        return len(prepareSentence2(sentence))
+
     def word_level_scores(self, sentence1, sentence2, alignments):
         lexsimilarities = []
         penalties = []
