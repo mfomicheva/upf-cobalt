@@ -26,7 +26,7 @@ def wordRelatednessAlignment(word1, word2, config):
         return 0
 
     # punctuations can only be either identical or totally dissimilar
-    if canonical_word1 in punctuations or canonical_word2 in punctuations:
+    if (canonical_word1 in punctuations or canonical_word2 in punctuations) and (not canonical_word1 == canonical_word2):
         return 0
 
     if canonical_word1 == canonical_word2:
@@ -50,6 +50,7 @@ def wordRelatednessAlignment(word1, word2, config):
             lexSim = config.related
 
     else:
+
         lexSim = 0.0
 
     return lexSim
