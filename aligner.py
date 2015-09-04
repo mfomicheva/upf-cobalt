@@ -3,6 +3,7 @@ from alignerConfig import AlignerConfig
 from wordSim import *
 from util import *
 from coreNlpUtil import *
+from operator import itemgetter
 
 
 class Aligner(object):
@@ -991,7 +992,7 @@ class Aligner(object):
         sentence1LemmasAndPosTags = prepareSentence(sentence1)
         sentence2LemmasAndPosTags = prepareSentence(sentence2)
 
-        myWordAlignments = self.alignWords(sentence1LemmasAndPosTags, sentence2LemmasAndPosTags, sentence1ParseResult, sentence2ParseResult)
+        myWordAlignments = sorted(self.alignWords(sentence1LemmasAndPosTags, sentence2LemmasAndPosTags, sentence1ParseResult, sentence2ParseResult), key = itemgetter(0))
         myWordAlignmentTokens = [[sentence1LemmasAndPosTags[item[0]-1][2], sentence2LemmasAndPosTags[item[1]-1][2]] for item in myWordAlignments]
         contextInfo = []
 
