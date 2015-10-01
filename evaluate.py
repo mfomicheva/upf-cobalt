@@ -93,14 +93,18 @@ def main(args):
     for i, sentence in enumerate(sentences_ref):
         phrase = i + 1
 
-        alignments1 = aligner.align(sentences_test[i], sentence)
-        score1 = scorer.calculate_score(sentences_test[i], sentence, alignments1)
+        sentence1 = prepareSentence2(sentences_test[i])
+        sentence2 = prepareSentence2(sentence)
+
+        alignments = aligner.align(sentences_test[i], sentence)
+        word_level_scores = scorer.word_scores(sentence1, sentence2, alignments)
+        score1 = scorer.sentence_score_cobalt(sentence1, sentence2, alignments, word_level_scores)
 
         if (writeAlignments):
             output_alignment.write('Sentence #' + str(phrase) + '\n')
 
-            for index in xrange(len(alignments1[0])):
-                output_alignment.write("{} \t {} \t {:.2f} \n".format(alignments1[0][index], alignments1[1][index], scorer.calculate_context_penalty(alignments1[2][index])))
+            for index in xrange(len(alignments[0])):
+                output_alignment.write("{} \t {} \t {:.2f} \n".format(alignments[0][index], alignments[1][index], word_level_scores[index].penalty_mean))
 
         output_scoring.write(str(phrase) + '\t' + str(score1) + '\n')
 

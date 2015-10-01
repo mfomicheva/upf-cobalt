@@ -5,6 +5,14 @@ import wordSim
 import math
 from json import *
 
+class WordInformation(object):
+
+    def __init__(self):
+        self.similarity = 0.0
+        self.penalty_test = 0.0
+        self.penalty_ref = 0.0
+        self.penalty_mean = 0.0
+
 
 class Scorer(object):
 
@@ -77,61 +85,58 @@ class Scorer(object):
 
         return result
 
-    def calculate_context_penalty(self, context_info):
+    def get_penalties(self, context_info, type):
+
         source_diff = self.sum_dependency_weights(context_info['srcDiff'])
         target_diff = self.sum_dependency_weights(context_info['tgtDiff'])
         source_length = self.sum_dependency_weights(context_info['srcCon'])
         target_length = self.sum_dependency_weights(context_info['tgtCon'])
 
-        penalty = self.calculate_context_difference_mean(source_diff, target_diff, source_length, target_length) * math.log(target_length + 1.0)
-        penalty = (1.0/(1.0 + math.exp(-penalty)))
-        penalty = 2 * penalty - 1
+        pen = 0.0
 
-        return penalty
+        if type == 'test':
+            if source_length > 0:
+                pen = source_diff/source_length * math.log(source_length + 1.0)
+        elif type == 'ref':
+            if target_length > 0:
+                pen = target_diff/target_length * math.log(target_length + 1.0)
+        else:
+            if source_length > 0 and target_length > 0:
+                pen = self.get_penalty_mean(source_diff/source_length, target_diff/target_length) * math.log(target_length + 1.0)
 
+        return self.normalize_penalty(pen)
 
-    def calculate_context_difference_mean(self, source_diff, target_diff, source_length, target_length):
+    def get_penalty_mean(self, pen_test, pen_ref):
 
-        precision = 0.0
-        recall = 0.0
-        fscore = 0.0
+        if pen_ref == 0 or pen_test == 0:
+            return max(pen_ref, pen_test)
+        else:
+            return (1 + math.pow(self.beta, 2)) * (pen_test * pen_ref/((pen_test * math.pow(self.beta, 2)) + pen_ref))
 
-        if source_length > 0 and target_length > 0:
+    def normalize_penalty(self, penalty):
 
-            precision += source_diff/source_length
-            recall += target_diff/target_length
+        return 2 * (1.0/(1.0 + math.exp(-penalty))) - 1
 
-            if precision == 0 or recall == 0:
-                return max(precision, recall)
-            else:
-                fscore += (1 + math.pow(self.beta, 2)) * \
-                          (precision * recall/((precision * math.pow(self.beta, 2)) + recall))
-
-        return fscore
-
-    # receives alignments structure as an input - alignments[0] is the aligned pair indexes,
-    # alignments[1] is the aligned pair words, alignments[2] is the aligned pair dependency difference structure
 
     def sentence_length(self, sentence):
         return len(prepareSentence2(sentence))
 
-    def word_level_scores(self, sentence1, sentence2, alignments):
-        lexsimilarities = []
-        penalties = []
+    def word_scores(self, sentence1, sentence2, alignments):
 
-        sentence1 = prepareSentence2(sentence1)
-        sentence2 = prepareSentence2(sentence2)
+        word_scores = []
 
         for i, a in enumerate(alignments[0]):
-            lexsimilarities.append(wordSim.wordRelatednessScoring(sentence1[a[0] - 1], sentence2[a[1] - 1], self))
-            penalties.append(self.calculate_context_penalty(alignments[2][i]))
+            word_info = WordInformation()
+            word_info.similarity = wordSim.wordRelatednessScoring(sentence1[a[0] - 1], sentence2[a[1] - 1], self)
+            word_info.penalty_test = self.get_penalties(alignments[2][i], 'test')
+            word_info.penalty_ref = self.get_penalties(alignments[2][i], 'ref')
+            word_info.penalty_mean = self.get_penalties(alignments[2][i], 'mean')
 
-        return [lexsimilarities, penalties]
+            word_scores.append(word_info)
 
-    def sentence_level_score(self, sentence1, sentence2, alignments, word_level_scores):
+        return word_scores
 
-        sentence1 = prepareSentence2(sentence1)
-        sentence2 = prepareSentence2(sentence2)
+    def sentence_score_cobalt(self, sentence1, sentence2, alignments, word_level_scores):
 
         functional_words1 = filter(lambda x: wordSim.functionWord(x.form), sentence1)
         functional_words2 = filter(lambda x: wordSim.functionWord(x.form), sentence2)
@@ -145,14 +150,14 @@ class Scorer(object):
         for i, a in enumerate(alignments[0]):
 
             if not wordSim.functionWord(sentence1[a[0] - 1].form):
-                weighted_matches1 += self.delta * (max(word_level_scores[0][i] - word_level_scores[1][i], self.minimal_aligned_relatedness))
+                weighted_matches1 += self.delta * (max(word_level_scores[i].similarity - word_level_scores[i].penalty_mean, self.minimal_aligned_relatedness))
             else:
-                weighted_matches1 += (1 - self.delta) * (max(word_level_scores[0][i] - word_level_scores[1][i], self.minimal_aligned_relatedness))
+                weighted_matches1 += (1 - self.delta) * (max(word_level_scores[i].similarity - word_level_scores[i].penalty_mean, self.minimal_aligned_relatedness))
 
             if not wordSim.functionWord(sentence2[a[1] - 1].form):
-                weighted_matches2 += self.delta * (max(word_level_scores[0][i] - word_level_scores[1][i], self.minimal_aligned_relatedness))
+                weighted_matches2 += self.delta * (max(word_level_scores[i].similarity - word_level_scores[i].penalty_mean, self.minimal_aligned_relatedness))
             else:
-                weighted_matches2 += (1 - self.delta) * (max(word_level_scores[0][i] - word_level_scores[1][i], self.minimal_aligned_relatedness))
+                weighted_matches2 += (1 - self.delta) * (max(word_level_scores[i].similarity - word_level_scores[i].penalty_mean, self.minimal_aligned_relatedness))
 
         if weighted_length1 == 0:
             precision = weighted_matches1
