@@ -86,6 +86,39 @@ def wordRelatednessScoring(word1, word2, scorer):
 
     return lexSim
 
+def wordRelatednessFeature(word1, word2):
+
+    ## Distributional similarity is excluded here
+
+    global stemmer
+    global punctuations
+
+    canonical_word1 = canonize_word(word1.form)
+    canonical_word2 = canonize_word(word2.form)
+
+    if canonical_word1 == canonical_word2:
+        lexSim = 'Exact'
+
+    elif contractionDictionary.check_contraction(canonical_word1, canonical_word2):
+        lexSim = 'Exact'
+
+    elif word1.lemma == word2.lemma:
+        lexSim = 'Exact'
+
+    elif stemmer.stem(canonical_word1) == stemmer.stem(canonical_word2):
+        lexSim = 'Exact'
+
+    elif synonymDictionary.checkSynonymByLemma(word1.lemma, word2.lemma):
+        lexSim = 'Synonym'
+
+    elif presentInPPDB(canonical_word1, canonical_word2):
+        lexSim = 'Paraphrase'
+
+    else:
+        lexSim = 'None'
+
+    return lexSim
+
 def cosineSimilarity(word1, word2):
 
     global wordVector
@@ -128,3 +161,14 @@ def canonize_word(word):
         canonical_form = word.lower()
 
     return canonical_form
+
+def comparePos (pos1, pos2):
+
+    if pos1 == pos2:
+        posSim = 'Exact'
+    elif pos1[0] == pos2[0]:
+        posSim = 'Coarse'
+    else:
+        posSim = 'None'
+
+    return posSim
