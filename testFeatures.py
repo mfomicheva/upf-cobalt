@@ -3,7 +3,7 @@ __author__ = 'u88591'
 import Features
 import inspect
 
-def computeFeatures(candidate, reference, alignments):
+def computeFeatures(candidate, reference, candidate_parsed, reference_parsed, alignments):
 
     for name, my_class in inspect.getmembers(Features):
 
@@ -11,7 +11,6 @@ def computeFeatures(candidate, reference, alignments):
             continue
 
         instance = my_class()
-        instance.run(candidate, reference, alignments)
+        instance.run(candidate, reference, candidate_parsed, reference_parsed, alignments)
 
-        print(instance.getDescription())
-        print(instance.getValue())
+        print(instance.getIndex() + ' ' + instance.getDescription() + ' ' + str(instance.getValue()))

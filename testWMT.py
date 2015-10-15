@@ -10,9 +10,8 @@ from os.path import isfile, join
 import argparse
 import numpy
 from collections import OrderedDict
-from operator import itemgetter
-
 from coreNlpUtil import *
+import testFeatures
 
 
 def loadPPDB(ppdbFileName):
@@ -292,6 +291,8 @@ def main():
                                 print(str(alignments[0][index]) + " : " + str(alignments[1][index]) + " : " + str(word_level_scores[index].similarity) + " : " + str(word_level_scores[index].penalty_mean), file = align_file)
 
                     if (parameters.statistics):
+
+                        testFeatures.computeFeatures(test_data[i], phrase_ref, sentence1, sentence2, alignments)
 
                         ref_feats.get_feats(system, num_phrase, scorer.sentence_length(phrase_ref), alignments, word_level_scores, sentence_level_score, 'ref')
                         test_feats.get_feats(system, num_phrase, scorer.sentence_length(test_data[i]), alignments, word_level_scores, sentence_level_score, 'test')
