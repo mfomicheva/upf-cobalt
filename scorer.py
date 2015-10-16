@@ -65,6 +65,7 @@ class Scorer(object):
         self.argument_types = loads(config.get('Dependency Types', 'arguments'))
         self.modifier_types = loads(config.get('Dependency Types', 'modifiers'))
         self.function_types = loads(config.get('Dependency Types', 'function'))
+        self.noisy_types = loads(config.get('Dependency Types', 'noise'))
 
 
     def get_dependency_weight(self, dependency_label):

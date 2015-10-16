@@ -114,8 +114,11 @@ def wordRelatednessFeature(word1, word2):
     elif presentInPPDB(canonical_word1, canonical_word2):
         lexSim = 'Paraphrase'
 
+    elif presentInPPDB(canonical_word1, canonical_word2):
+        lexSim = 'Paraphrase'
+
     else:
-        lexSim = 'None'
+        lexSim = 'Distributional'
 
     return lexSim
 

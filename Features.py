@@ -1,9 +1,10 @@
 __author__ = 'u88591'
 
-import coreNlpUtil
 import wordSim
 import config
 import scorer
+import math
+import numpy
 
 class Abstract(object):
 
@@ -484,7 +485,7 @@ class Feature024(Abstract):
 
      def __init__(self):
         Abstract.__init__(self)
-        Abstract.setIndex(self, '020')
+        Abstract.setIndex(self, '024')
         Abstract.setDescription(self, "Average CP(group 1) for aligned words with non-exact match in the candidate")
 
      def run(self, candidate, reference, candidate_parsed, reference_parsed, alignments):
@@ -1165,7 +1166,7 @@ class Feature043(Abstract):
              word_candidate = candidate_parsed[index[0] - 1]
              word_reference = reference_parsed[index[1] - 1]
 
-             if wordSim.functionWord(word_candidate.form):
+             if wordSim.functionWord(word_reference.form):
 
                  counter_words += 1
 
@@ -1177,3 +1178,220 @@ class Feature043(Abstract):
          else:
              Abstract.setValue(self, 0.0)
 
+class Feature044(Abstract):
+
+     def __init__(self):
+        Abstract.__init__(self)
+        Abstract.setIndex(self, '044')
+        Abstract.setDescription(self, "Proportion of aligned words with distributional similarity and exact POS match")
+
+     def run(self, candidate, reference, candidate_parsed, reference_parsed, alignments):
+
+         count = 0
+
+         for index in alignments[0]:
+             word_candidate = candidate_parsed[index[0] - 1]
+             word_reference = reference_parsed[index[1] - 1]
+
+             if wordSim.comparePos(word_candidate.pos, word_reference.pos) == 'Exact' and wordSim.wordRelatednessFeature(word_candidate, word_reference) == 'Distributional':
+                 count += 1
+
+         Abstract.setValue(self, count / float(len(alignments[0])))
+
+class Feature045(Abstract):
+
+     def __init__(self):
+        Abstract.__init__(self)
+        Abstract.setIndex(self, '045')
+        Abstract.setDescription(self, "Proportion of aligned words with distributional similarity and coarse POS match")
+
+     def run(self, candidate, reference, candidate_parsed, reference_parsed, alignments):
+
+         count = 0
+
+         for index in alignments[0]:
+             word_candidate = candidate_parsed[index[0] - 1]
+             word_reference = reference_parsed[index[1] - 1]
+
+             if wordSim.comparePos(word_candidate.pos, word_reference.pos) == 'Coarse' and wordSim.wordRelatednessFeature(word_candidate, word_reference) == 'Distributional':
+                 count += 1
+
+         Abstract.setValue(self, count / float(len(alignments[0])))
+
+class Feature046(Abstract):
+
+     def __init__(self):
+        Abstract.__init__(self)
+        Abstract.setIndex(self, '046')
+        Abstract.setDescription(self, "Proportion of aligned words with distributional similarity and different POS")
+
+     def run(self, candidate, reference, candidate_parsed, reference_parsed, alignments):
+
+         count = 0
+
+         for index in alignments[0]:
+             word_candidate = candidate_parsed[index[0] - 1]
+             word_reference = reference_parsed[index[1] - 1]
+
+             if wordSim.comparePos(word_candidate.pos, word_reference.pos) == 'None' and wordSim.wordRelatednessFeature(word_candidate, word_reference) == 'Distributional':
+                 count += 1
+
+         Abstract.setValue(self, count / float(len(alignments[0])))
+
+
+class Feature047(Abstract):
+
+     def __init__(self):
+        Abstract.__init__(self)
+        Abstract.setIndex(self, '047')
+        Abstract.setDescription(self, "Average CP for aligned words with exact match in the candidate (considered only for the words with CP > 0)")
+
+     def run(self, candidate, reference, candidate_parsed, reference_parsed, alignments):
+
+         my_scorer = scorer.Scorer()
+         difference = 0.0
+         context = 0.0
+         penalties = []
+
+         for i, index in enumerate(alignments[0]):
+
+             word_candidate = candidate_parsed[index[0] - 1]
+             word_reference = reference_parsed[index[1] - 1]
+
+             if wordSim.wordRelatednessFeature(word_candidate, word_reference) == 'Exact' and not wordSim.comparePos(word_candidate.pos, word_reference.pos) == 'None':
+
+                 for dep_label in alignments[2][i]['srcDiff']:
+                     if not dep_label.split('_')[0] in my_scorer.noisy_types:
+                         difference += 1
+
+                 for dep_label in alignments[2][i]['srcCon']:
+                     if not dep_label.split('_')[0] in my_scorer.noisy_types:
+                         context += 1
+
+                 penalty = 0.0
+                 if context != 0:
+                    penalty = difference / context * math.log(context + 1.0)
+
+                 if penalty > 0:
+                    penalties.append(penalty)
+
+         if len(penalties) > 0:
+            Abstract.setValue(self, numpy.mean(penalties))
+
+class Feature048(Abstract):
+
+     def __init__(self):
+        Abstract.__init__(self)
+        Abstract.setIndex(self, '048')
+        Abstract.setDescription(self, "Average CP for aligned words with exact match in the reference (considered only for the words with CP > 0)")
+
+     def run(self, candidate, reference, candidate_parsed, reference_parsed, alignments):
+
+         my_scorer = scorer.Scorer()
+         difference = 0.0
+         context = 0.0
+         penalties = []
+
+         for i, index in enumerate(alignments[0]):
+
+             word_candidate = candidate_parsed[index[0] - 1]
+             word_reference = reference_parsed[index[1] - 1]
+
+             if wordSim.wordRelatednessFeature(word_candidate, word_reference) == 'Exact' and not wordSim.comparePos(word_candidate.pos, word_reference.pos) == 'None':
+
+                 for dep_label in alignments[2][i]['tgtDiff']:
+                     if not dep_label.split('_')[0] in my_scorer.noisy_types:
+                         difference += 1
+
+                 for dep_label in alignments[2][i]['tgtCon']:
+                     if not dep_label.split('_')[0] in my_scorer.noisy_types:
+                         context += 1
+
+                 penalty = 0.0
+                 if context != 0:
+                    penalty = difference / context * math.log(context + 1.0)
+
+                 if penalty > 0:
+                    penalties.append(penalty)
+
+         if len(penalties) > 0:
+            Abstract.setValue(self, numpy.mean(penalties))
+
+
+class Feature049(Abstract):
+
+     def __init__(self):
+        Abstract.__init__(self)
+        Abstract.setIndex(self, '049')
+        Abstract.setDescription(self, "Average CP for aligned words with non-exact match in the candidate (considered only for the words with CP > 0)")
+
+     def run(self, candidate, reference, candidate_parsed, reference_parsed, alignments):
+
+         my_scorer = scorer.Scorer()
+         difference = 0.0
+         context = 0.0
+         penalties = []
+
+         for i, index in enumerate(alignments[0]):
+
+             word_candidate = candidate_parsed[index[0] - 1]
+             word_reference = reference_parsed[index[1] - 1]
+
+             if not wordSim.wordRelatednessFeature(word_candidate, word_reference) == 'Exact' and not wordSim.comparePos(word_candidate.pos, word_reference.pos) == 'Exact':
+
+                 for dep_label in alignments[2][i]['srcDiff']:
+                     if not dep_label.split('_')[0] in my_scorer.noisy_types:
+                         difference += 1
+
+                 for dep_label in alignments[2][i]['srcCon']:
+                     if not dep_label.split('_')[0] in my_scorer.noisy_types:
+                         context += 1
+
+                 penalty = 0.0
+                 if context != 0:
+                    penalty = difference / context * math.log(context + 1.0)
+
+                 if penalty > 0:
+                    penalties.append(penalty)
+
+         if len(penalties) > 0:
+            Abstract.setValue(self, numpy.mean(penalties))
+
+class Feature050(Abstract):
+
+     def __init__(self):
+        Abstract.__init__(self)
+        Abstract.setIndex(self, '050')
+        Abstract.setDescription(self, "Average CP for aligned words with non-exact match in the reference (considered only for the words with CP > 0)")
+
+     def run(self, candidate, reference, candidate_parsed, reference_parsed, alignments):
+
+         my_scorer = scorer.Scorer()
+         difference = 0.0
+         context = 0.0
+         penalties = []
+
+         for i, index in enumerate(alignments[0]):
+
+             word_candidate = candidate_parsed[index[0] - 1]
+             word_reference = reference_parsed[index[1] - 1]
+
+             if not wordSim.wordRelatednessFeature(word_candidate, word_reference) == 'Exact' and not wordSim.comparePos(word_candidate.pos, word_reference.pos) == 'Exact':
+
+                 for dep_label in alignments[2][i]['tgtDiff']:
+                     if not dep_label.split('_')[0] in my_scorer.noisy_types:
+                         difference += 1
+
+                 for dep_label in alignments[2][i]['tgtCon']:
+                     if not dep_label.split('_')[0] in my_scorer.noisy_types:
+                         context += 1
+
+                 penalty = 0.0
+                 if context != 0:
+                    penalty = difference / context * math.log(context + 1.0)
+
+                 if penalty > 0:
+                    penalties.append(penalty)
+
+         if len(penalties) > 0:
+            Abstract.setValue(self, numpy.mean(penalties))
