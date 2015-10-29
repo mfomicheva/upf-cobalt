@@ -1,8 +1,5 @@
 __author__ = 'MarinaFomicheva'
 
-from human_data import *
-from feature_extractor import *
-
 class TrainingSet(object):
 
     def __init__(self):
@@ -21,27 +18,17 @@ class TrainingSet(object):
                 self.training_instances.append(self.get_positive_instance(good_system, bad_system))
                 self.training_instances.append(self.get_negative_instance(good_system, bad_system))
 
-    def build_from_scratch(self, paths, dataset, directions, output_directory, judgments, max_segments):
+    def build_from_file(self, features_data, human_data, dataset, direction, output_directory, max_segments):
 
-        human_data = HumanData()
-        human_data.add_human_data(judgments, directions, max_segments)
-        features_data = FeatureExtractor()
-        features_data.extract_features(paths, dataset, directions, max_segments)
-        features_data.print_features(output_directory, dataset)
+        output_file_name = 'training_set.' + dataset + '.' + direction + '.arff'
+        self.cross_human_metric(human_data, features_data, [direction])
+        self.make_arff(features_data.get_feature_names(), dataset, output_directory, output_file_name)
+
+    def merge_from_files(self, features_data, human_data, dataset, directions, output_directory):
+
+        file_name = 'training_set.' + dataset + '.' + '_all.arff'
         self.cross_human_metric(human_data, features_data, directions)
-        self.make_arff(features_data.get_feature_names(), dataset, directions, output_directory)
-
-    def build_from_files(self, files, dataset, directions, output_directory, judgments, max_segments):
-
-        human_data = HumanData()
-        human_data.add_human_data(judgments, directions, max_segments)
-        features_data = FeatureExtractor()
-
-        for file in files:
-            features_data.get_from_file(file)
-
-        self.cross_human_metric(human_data, features_data, directions)
-        self.make_arff(features_data.get_feature_names(), dataset, directions, output_directory)
+        self.make_arff(features_data.get_feature_names(), dataset, output_directory, file_name)
 
     def find_winner(self, case):
 
@@ -81,21 +68,19 @@ class TrainingSet(object):
         new_feature_vector.append('negative')
         return new_feature_vector
 
-    def make_arff(self, feature_names, dataset, directions, output_directory):
+    def make_arff(self, feature_names, dataset, output_directory, file_name):
 
-        for direction in directions:
+        file = open(output_directory + '/' + file_name, 'w')
 
-            file = open(output_directory + '/' + 'training_set.' + dataset + '.' + direction + '.arff', 'w')
+        print >>file, '@relation ' + dataset
 
-            print >>file, '@relation ' + dataset
+        for name in feature_names:
+            print >>file, '@attribute ' + name + ' real'
 
-            for name in feature_names:
-                print >>file, '@attribute ' + name + ' real'
+        print >>file, '@attribute ' + 'class' + ' {positive, negative}'
+        print >>file, '@data'
 
-            print >>file, '@attribute ' + 'class' + ' {positive, negative}'
-            print >>file, '@data'
+        for instance in self.training_instances:
+            print >>file, ','.join([str(x) for x in instance])
 
-            for instance in self.training_instances:
-                print >>file, ','.join([str(x) for x in instance])
-
-            file.close()
+        file.close()

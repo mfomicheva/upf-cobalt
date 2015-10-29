@@ -18,7 +18,7 @@ class FeatureExtractor(defaultdict):
     def __init__(self):
         defaultdict.__init__(self, dict)
 
-    def extract_features(self, paths, dataset, directions, max_segments):
+    def extract_features(self, paths, dataset, direction, max_segments):
 
         config = ConfigParser()
         config.readfp(open(paths))
@@ -32,27 +32,26 @@ class FeatureExtractor(defaultdict):
         loadWordVectors(vectorsFileName)
         aligner = Aligner('english')
 
-        for direction in directions:
-            ref_file_name = self.norm_ref_file_name(reference_dir, dataset, direction)
-            ref_data = readSentences(codecs.open(ref_file_name, encoding='UTF-8'))
-            testFiles = [f for f in listdir(test_dir + '/' + dataset + '/' + direction) if isfile(join(test_dir + '/' + dataset + '/' + direction, f))]
+        ref_file_name = self.norm_ref_file_name(reference_dir, dataset, direction)
+        ref_data = readSentences(codecs.open(ref_file_name, encoding='UTF-8'))
+        testFiles = [f for f in listdir(test_dir + '/' + dataset + '/' + direction) if isfile(join(test_dir + '/' + dataset + '/' + direction, f))]
 
-            for t in testFiles:
-                system = self.get_system_name(t, dataset, direction)
-                test_data = readSentences(codecs.open(test_dir + '/' + dataset + '/' + direction + '/' + t, encoding='UTF-8'))
+        for t in testFiles:
+            system = self.get_system_name(t, dataset, direction)
+            test_data = readSentences(codecs.open(test_dir + '/' + dataset + '/' + direction + '/' + t, encoding='UTF-8'))
 
-                for i, phrase_ref in enumerate(ref_data):
-                    num_phrase = i + 1
+            for i, phrase_ref in enumerate(ref_data):
+                num_phrase = i + 1
 
-                    if max_segments != 0 and num_phrase > max_segments:
-                        break
+                if max_segments != 0 and num_phrase > max_segments:
+                    break
 
-                    alignments = aligner.align(test_data[i], phrase_ref)
-                    candidate_parsed = prepareSentence2(test_data[i])
-                    reference_parsed = prepareSentence2(phrase_ref)
-                    sentence_features = self.compute_features(test_data[i], phrase_ref, candidate_parsed, reference_parsed, alignments)
-                    self[direction][(system, num_phrase)] = sentence_features
-                    print direction + ',' + system + ',' + str(num_phrase)
+                alignments = aligner.align(test_data[i], phrase_ref)
+                candidate_parsed = prepareSentence2(test_data[i])
+                reference_parsed = prepareSentence2(phrase_ref)
+                sentence_features = self.compute_features(test_data[i], phrase_ref, candidate_parsed, reference_parsed, alignments)
+                self[direction][(system, num_phrase)] = sentence_features
+                print direction + ',' + system + ',' + str(num_phrase)
 
     def get_from_file(self, file):
 
@@ -127,10 +126,9 @@ class FeatureExtractor(defaultdict):
 
         return fileName
 
-    def print_features(self, dir, dataset):
+    def print_features(self, dir, dataset, lang_pair):
 
-        for lang_pair in self.keys():
-            file = open(dir + '/cobalt_features.' + dataset + '.' + lang_pair, 'w')
-            for (system, phrase) in self[lang_pair].keys():
-                print >>file, lang_pair + ',' + system + ',' + str(phrase) + ',' + ','.join(self[lang_pair][system, phrase])
-            file.close()
+        file = open(dir + '/cobalt_features.' + dataset + '.' + lang_pair, 'w')
+        for (system, phrase) in self[lang_pair].keys():
+            print >>file, lang_pair + ',' + system + ',' + str(phrase) + ',' + ','.join(self[lang_pair][system, phrase])
+        file.close()

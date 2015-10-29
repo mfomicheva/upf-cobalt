@@ -40,7 +40,7 @@ class Logistic(Classifier):
 
         return result
 
-    def save_model(self, output_directory, dataset):
-        file = open(output_directory + '/' + dataset + '.test.out', 'w')
+    def save_model(self, output_directory, dataset, lang_pair):
+        file = open(output_directory + '/' + dataset + '.' + lang_pair + '-test.out', 'w')
         print >>file, self
 
