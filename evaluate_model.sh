@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TRAINING=$(dirname $0)/test.py
+TRAINING=$(dirname $0)/training_testing.py
 MODEL_FILES_DIRECTORY=$1
 DATA_FILES_DIRECTORY=$2
 OUTPUT_DIRECTORY=$3

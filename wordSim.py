@@ -38,19 +38,20 @@ def wordRelatednessAlignment(word1, word2, config):
     elif word1.lemma == word2.lemma:
         lexSim = config.stem
 
-    elif synonymDictionary.checkSynonymByLemma(word1.lemma, word2.lemma):
+    elif synonymDictionary.checkSynonymByLemma(word1.lemma, word2.lemma) and 'synonyms' in config.selected_lexical_resources:
         lexSim = config.synonym
 
-    elif presentInPPDB(canonical_word1, canonical_word2):
+    elif presentInPPDB(canonical_word1, canonical_word2) and 'paraphrases' in config.selected_lexical_resources:
         lexSim = config.paraphrase
 
-    elif ((not functionWord(word1.form) and not functionWord(word2.form)) or word1.pos[0] == word2.pos[0]) and cosineSimilarity(word1.form, word2.form) > config.related_threshold:
+    elif ((not functionWord(word1.form) and not functionWord(word2.form)) or word1.pos[0] == word2.pos[0]) and cosineSimilarity(word1.form, word2.form) > config.related_threshold and 'distributional' in config.selected_lexical_resources:
 
         if word1.form not in punctuations and word2.form not in punctuations:
             lexSim = config.related
+        else:
+            lexSim = 0.0
 
     else:
-
         lexSim = 0.0
 
     return lexSim
@@ -88,8 +89,6 @@ def wordRelatednessScoring(word1, word2, scorer):
 
 def wordRelatednessFeature(word1, word2):
 
-    ## Distributional similarity is excluded here
-
     global stemmer
     global punctuations
 
@@ -110,9 +109,6 @@ def wordRelatednessFeature(word1, word2):
 
     elif synonymDictionary.checkSynonymByLemma(word1.lemma, word2.lemma):
         lexSim = 'Synonym'
-
-    elif presentInPPDB(canonical_word1, canonical_word2):
-        lexSim = 'Paraphrase'
 
     elif presentInPPDB(canonical_word1, canonical_word2):
         lexSim = 'Paraphrase'
@@ -165,7 +161,7 @@ def canonize_word(word):
 
     return canonical_form
 
-def comparePos (pos1, pos2):
+def comparePos(pos1, pos2):
 
     if pos1 == pos2:
         posSim = 'Exact'

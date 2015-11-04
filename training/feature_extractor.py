@@ -18,7 +18,7 @@ class FeatureExtractor(defaultdict):
     def __init__(self):
         defaultdict.__init__(self, dict)
 
-    def extract_features(self, paths, dataset, direction, max_segments):
+    def extract_features(self, paths, dataset, direction, max_segments, selected_features):
 
         config = ConfigParser()
         config.readfp(open(paths))
@@ -49,9 +49,16 @@ class FeatureExtractor(defaultdict):
                 alignments = aligner.align(test_data[i], phrase_ref)
                 candidate_parsed = prepareSentence2(test_data[i])
                 reference_parsed = prepareSentence2(phrase_ref)
-                sentence_features = self.compute_features(test_data[i], phrase_ref, candidate_parsed, reference_parsed, alignments)
+                sentence_features = self.compute_features(test_data[i], phrase_ref, candidate_parsed, reference_parsed, alignments, selected_features)
                 self[direction][(system, num_phrase)] = sentence_features
                 print direction + ',' + system + ',' + str(num_phrase)
+
+    def print_features(self, dir, dataset, lang_pair):
+
+        file = open(dir + '/cobalt_features.' + dataset + '.' + lang_pair, 'w')
+        for (system, phrase) in self[lang_pair].keys():
+            print >>file, lang_pair + ',' + system + ',' + str(phrase) + ',' + ','.join(self[lang_pair][system, phrase])
+        file.close()
 
     def get_from_file(self, file):
 
@@ -70,13 +77,30 @@ class FeatureExtractor(defaultdict):
             self[lang_pair][(system, phrase)] = feature_tuples
             print lang_pair + ',' + system + ',' + str(phrase)
 
-    def compute_features(self, candidate, reference, candidate_parsed, reference_parsed, alignments):
+    @staticmethod
+    def read_features_from_file(file_like):
+
+        selected_features = []
+
+        for line in file_like:
+            selected_features.append(line.strip())
+
+        return selected_features
+
+    @staticmethod
+    def compute_features(candidate, reference, candidate_parsed, reference_parsed, alignments, selected_features):
 
         feature_vector = []
 
         for name, my_class in inspect.getmembers(features):
 
-            if 'Abstract' in name or not inspect.isclass(my_class):
+            if 'Abstract' in name:
+                continue
+
+            if not inspect.isclass(my_class):
+                continue
+
+            if not name in selected_features:
                 continue
 
             instance = my_class()
@@ -85,7 +109,8 @@ class FeatureExtractor(defaultdict):
 
         return feature_vector
 
-    def get_feature_names(self):
+    @staticmethod
+    def get_feature_names():
 
         names = []
 
@@ -98,37 +123,32 @@ class FeatureExtractor(defaultdict):
             names.append(instance.get_name())
         return names
 
-    def get_system_name(self, testFileName, dataset, langPair):
+    @staticmethod
+    def get_system_name(test_file, dataset, lang_pair):
 
         if dataset == 'newstest2013':
-            sysName = re.sub('^%s\.%s\.(?P<name>.+)\.%s$' % (dataset, langPair, 'out'), '\g<name>', testFileName)
+            sys_name = re.sub('^%s\.%s\.(?P<name>.+)\.%s$' % (dataset, lang_pair, 'out'), '\g<name>', test_file)
         elif '2007' in dataset:
-            sysName = testFileName.split('.')[0]
+            sys_name = test_file.split('.')[0]
         elif 'eamt' in dataset:
-            sysName = 'smt'
+            sys_name = 'smt'
         else:
-            sysName = testFileName.split('.')[1] + '.' + testFileName.split('.')[2]
+            sys_name = test_file.split('.')[1] + '.' + test_file.split('.')[2]
 
-        return sysName
+        return sys_name
 
-    def norm_ref_file_name(self, ref_dir, dataset, langPair):
+    @staticmethod
+    def norm_ref_file_name(ref_dir, dataset, lang_pair):
 
         if dataset == 'newstest2013':
-            fileName = ref_dir + '/' + dataset + '/' + dataset + '-ref.' + langPair.split('-')[1] + '.out'
+            file_name = ref_dir + '/' + dataset + '/' + dataset + '-ref.' + lang_pair.split('-')[1] + '.out'
         elif dataset == 'newstest2015' or dataset == 'newsdiscusstest2015':
-            fileName = ref_dir + '/' + dataset + '/' + dataset + '-' + langPair.split('-')[0] + langPair.split('-')[1] + '-ref.' + langPair.split('-')[1] + '.out'
+            file_name = ref_dir + '/' + dataset + '/' + dataset + '-' + lang_pair.split('-')[0] + lang_pair.split('-')[1] + '-ref.' + lang_pair.split('-')[1] + '.out'
         elif '2007' in dataset:
-            fileName = ref_dir + '/' + dataset + '/' + dataset + '.' + langPair.split('-')[1] + '.out'
+            file_name = ref_dir + '/' + dataset + '/' + dataset + '.' + lang_pair.split('-')[1] + '.out'
         elif 'ce_eamt' in dataset:
-            fileName = ref_dir + '/' + dataset + '/' + langPair + '/target_postedited.out'
+            file_name = ref_dir + '/' + dataset + '/' + lang_pair + '/target_postedited.out'
         else:
-            fileName = ref_dir + '/' + dataset + '-ref.' + langPair + '.out'
+            file_name = ref_dir + '/' + dataset + '-ref.' + lang_pair + '.out'
 
-        return fileName
-
-    def print_features(self, dir, dataset, lang_pair):
-
-        file = open(dir + '/cobalt_features.' + dataset + '.' + lang_pair, 'w')
-        for (system, phrase) in self[lang_pair].keys():
-            print >>file, lang_pair + ',' + system + ',' + str(phrase) + ',' + ','.join(self[lang_pair][system, phrase])
-        file.close()
+        return file_name

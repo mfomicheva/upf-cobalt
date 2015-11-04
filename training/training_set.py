@@ -26,7 +26,7 @@ class TrainingSet(object):
 
     def merge_from_files(self, features_data, human_data, dataset, directions, output_directory):
 
-        file_name = 'training_set.' + dataset + '.' + '_all.arff'
+        file_name = 'training_set.' + dataset + '.' + 'all.arff'
         self.cross_human_metric(human_data, features_data, directions)
         self.make_arff(features_data.get_feature_names(), dataset, output_directory, file_name)
 
