@@ -100,10 +100,9 @@ class FeatureExtractor(defaultdict):
             if not inspect.isclass(my_class):
                 continue
 
-            if not name in selected_features:
-                continue
-
             instance = my_class()
+            if instance.get_name() not in selected_features:
+                continue
             instance.run(candidate, reference, candidate_parsed, reference_parsed, alignments)
             feature_vector.append(instance.get_name() + ':' + str(instance.get_value()))
 
