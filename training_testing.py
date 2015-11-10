@@ -112,9 +112,9 @@ def main():
         training_data.merge_from_files(features_data, human_data, args.dataset, args.directions, args.output_directory)
 
     elif args.options == 'train_model':
-        jvm.start()
+        jvm.start(max_heap_size='1500m')
         model = Logistic()
-        loader = Loader(classname = "weka.core.converters.ArffLoader")
+        loader = Loader(classname="weka.core.converters.ArffLoader")
         data = loader.load_file(args.training_set)
         data.class_is_last()
         model.build_classifier(data)
