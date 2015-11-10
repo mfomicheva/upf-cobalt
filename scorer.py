@@ -52,9 +52,9 @@ class Scorer(object):
         self.stem = config.getfloat('Scorer', 'stem')
         self.synonym = config.getfloat('Scorer', 'synonym')
         self.paraphrase = config.getfloat('Scorer', 'paraphrase')
-
         self.related = config.getfloat('Scorer', 'related')
         self.related_threshold = config.getfloat('Scorer', 'related_threshold')
+
         self.context_importance = config.getfloat('Scorer', 'context_importance')
         self.minimal_aligned_relatedness = config.getfloat('Scorer', 'minimal_aligned_relatedness')
 

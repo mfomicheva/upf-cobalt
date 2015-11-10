@@ -1,6 +1,5 @@
 __author__ = 'MarinaFomicheva'
 
-import re
 from feature_extractor import *
 
 class Evaluator(object):

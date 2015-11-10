@@ -20,6 +20,12 @@ def parse_args():
             type=str
             )
 
+    parser.add_argument("--features_file",
+            metavar="FILE",
+            type=argparse.FileType('r'),
+            default=None
+            )
+
     parser.add_argument("--model_file",
             help="File with the trained model coefficients",
             type=str
@@ -85,8 +91,14 @@ def main():
 
     if args.options == 'extract_features':
         features_data = FeatureExtractor()
+
+        if args.features_file is not None:
+            selected_features = features_data.read_features_from_file(args.features_file)
+        else:
+            selected_features = features_data.get_feature_names()
+
         for direction in args.directions:
-            features_data.extract_features(args.paths, args.dataset, direction, args.max_segments)
+            features_data.extract_features(args.paths, args.dataset, direction, args.max_segments, selected_features)
             features_data.print_features(args.output_directory, args.dataset, direction)
             print 'Features extracted for language pair ' + direction
 
@@ -123,6 +135,10 @@ def main():
     elif args.options == 'evaluate':
         evaluator = Evaluator()
         evaluator.evaluate(args.test_file, args.model_file, args.output_directory)
+    elif args.options == 'show_feature_names':
+        features_data = FeatureExtractor()
+        for name in features_data.get_feature_names():
+            print name
     else:
         pass
 

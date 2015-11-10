@@ -17,6 +17,7 @@ class AlignerConfig(object):
         self.paraphrase = self.config.getfloat('Aligner', 'paraphrase')
         self.related = self.config.getfloat('Aligner', 'related')
         self.related_threshold = self.config.getfloat('Aligner', 'related_threshold')
+        self.selected_lexical_resources = loads(self.config.get('Aligner', 'selected_lexical_resources'))
 
         self.theta = self.config.getfloat('Aligner', 'theta')
 
