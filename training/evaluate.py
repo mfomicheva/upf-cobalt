@@ -22,13 +22,13 @@ class Evaluator(object):
 
         self.coefficients = coefficients
 
-    def evaluate(self, data_file, model_file, output_directory):
+    def evaluate(self, data_file, model_file, output_directory, feature_set):
 
         features = FeatureExtractor()
         features.get_from_file(data_file)
         self.get_coefficients(model_file)
 
-        output_file = open(output_directory + '/' + 'train_' + '.'.join(model_file.split('.')[1:3]) + '.test_' + '.'.join(data_file.split('.')[1:3]), 'w')
+        output_file = open(output_directory + '/' + feature_set + '.' + '.'.join(model_file.split('.')[1:3]) + '.' + '.'.join(data_file.split('.')[1:3]), 'w')
 
         for lang_pair in sorted(features.keys()):
 
@@ -41,4 +41,4 @@ class Evaluator(object):
                         continue
                     score += float(feat[1]) * self.coefficients[feat[0]]
                 scores.append(score)
-                print>>output_file, 'cobalt_' + '_'.join(model_file.split('.')[1:3]) + '\t' + lang_pair + '\t' + data_file.split('.')[1] + '\t' + system + '\t' + str(phrase) + '\t' + str(score)
+                print >> output_file, '_'.join(model_file.split('.')[1:3]) + '\t' + lang_pair + '\t' + data_file.split('.')[1] + '\t' + system + '\t' + str(phrase) + '\t' + str(score)

@@ -53,18 +53,15 @@ class FeatureExtractor(defaultdict):
                 self[direction][(system, num_phrase)] = sentence_features
                 print direction + ',' + system + ',' + str(num_phrase)
 
-    def print_features(self, dir, dataset, lang_pair):
+    def print_features(self, output_file, lang_pair):
 
-        file = open(dir + '/cobalt_features.' + dataset + '.' + lang_pair, 'w')
         for (system, phrase) in self[lang_pair].keys():
-            print >>file, lang_pair + ',' + system + ',' + str(phrase) + ',' + ','.join(self[lang_pair][system, phrase])
-        file.close()
 
-    def get_from_file(self, file):
+            print >>output_file, lang_pair + ',' + system + ',' + str(phrase) + ',' + ','.join([':'.join((x[0], str(x[1]))) for x in self[lang_pair][system, phrase]])
 
-        data = open(file, 'r')
+    def get_from_file(self, my_file, selected_features):
 
-        for line in data:
+        for line in my_file:
             translation = line.strip()
             lang_pair = translation.split(',')[0]
             system = translation.split(',')[1]
@@ -72,10 +69,35 @@ class FeatureExtractor(defaultdict):
             features = translation.split(',')[3:]
             feature_tuples = []
             for feature in features:
-                tuple = feature.split(':')
-                feature_tuples.append(tuple)
+
+                attr = feature.split(':')[0]
+                value = float(feature.split(':')[1])
+
+                if len(selected_features) > 0 and attr not in selected_features:
+                    continue
+
+                feature_tuple = tuple([attr, value])
+                feature_tuples.append(feature_tuple)
             self[lang_pair][(system, phrase)] = feature_tuples
             print lang_pair + ',' + system + ',' + str(phrase)
+
+    def combine(self, feature_extractors):
+
+        segments = []
+
+        for lang_pair in feature_extractors[0].keys():
+
+            for (system, phrase) in feature_extractors[0][lang_pair].keys():
+                segments.append((lang_pair, system, phrase))
+
+        for lp, sys, phr in segments:
+            combined_features = []
+
+            for feature_extractor in feature_extractors:
+                combined_features += feature_extractor[lp][sys, phr]
+
+            self[lp][sys, phr] = combined_features
+
 
     @staticmethod
     def read_features_from_file(file_like):
@@ -101,15 +123,17 @@ class FeatureExtractor(defaultdict):
                 continue
 
             instance = my_class()
-            if instance.get_name() not in selected_features:
+
+            if len(selected_features) > 0 and instance.get_name() not in selected_features:
                 continue
+
             instance.run(candidate, reference, candidate_parsed, reference_parsed, alignments)
-            feature_vector.append(instance.get_name() + ':' + str(instance.get_value()))
+            feature_vector.append((instance.get_name(), instance.get_value()))
 
         return feature_vector
 
     @staticmethod
-    def get_feature_names():
+    def get_feature_names_cobalt():
 
         names = []
 
@@ -125,7 +149,7 @@ class FeatureExtractor(defaultdict):
     @staticmethod
     def get_system_name(test_file, dataset, lang_pair):
 
-        if dataset == 'newstest2013':
+        if 'newstest2013' in dataset:
             sys_name = re.sub('^%s\.%s\.(?P<name>.+)\.%s$' % (dataset, lang_pair, 'out'), '\g<name>', test_file)
         elif '2007' in dataset:
             sys_name = test_file.split('.')[0]
@@ -139,13 +163,13 @@ class FeatureExtractor(defaultdict):
     @staticmethod
     def norm_ref_file_name(ref_dir, dataset, lang_pair):
 
-        if dataset == 'newstest2013':
+        if 'newstest2013' in dataset:
             file_name = ref_dir + '/' + dataset + '/' + dataset + '-ref.' + lang_pair.split('-')[1] + '.out'
         elif dataset == 'newstest2015' or dataset == 'newsdiscusstest2015':
             file_name = ref_dir + '/' + dataset + '/' + dataset + '-' + lang_pair.split('-')[0] + lang_pair.split('-')[1] + '-ref.' + lang_pair.split('-')[1] + '.out'
         elif '2007' in dataset:
             file_name = ref_dir + '/' + dataset + '/' + dataset + '.' + lang_pair.split('-')[1] + '.out'
-        elif 'ce_eamt' in dataset:
+        elif 'eamt' in dataset:
             file_name = ref_dir + '/' + dataset + '/' + lang_pair + '/target_postedited.out'
         else:
             file_name = ref_dir + '/' + dataset + '-ref.' + lang_pair + '.out'

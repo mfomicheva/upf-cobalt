@@ -8,10 +8,7 @@ import codecs
 from os import listdir
 from os.path import isfile, join
 import argparse
-import numpy
-from collections import OrderedDict
 from coreNlpUtil import *
-import testFeatures
 
 
 def loadPPDB(ppdbFileName):
@@ -28,6 +25,7 @@ def loadPPDB(ppdbFileName):
         tokens[1] = tokens[1].strip()
         ppdbDict[(tokens[0], tokens[1])] = 0.6
         count += 1
+
 
 def loadWordVectors(vectorsFileName):
 
@@ -122,60 +120,8 @@ def parse_args():
 
 parameters = parse_args()
 
-class Features(object):
 
-    def __init__(self, metric, dataset, langPair):
-        self.data = OrderedDict()
-        self.data['metric'] = metric
-        self.data['dataset'] = dataset
-        self.data['langPair'] = langPair
-        self.data['system'] = ''
-        self.data['phrase'] = 0
-        self.data['bad_prop'] = 0.0
-        self.data['good_prop'] = 0.0
-        self.data['pen_count'] = 0.0
-        self.data['pen_mean'] = 0.0
-        self.data['pen_max'] = 0.0
-        self.data['sim_mean'] = 0.0
-        self.data['seg_len'] = 0.0
-        self.data['score'] = 0.0
-
-    def get_feats(self, system, phrase, length, alignments, word_level_scores, score, side):
-
-        if side == 'test':
-            len_aligned = len(set([x[0] for x in alignments[0]]))
-        else:
-            len_aligned = len(set([x[1] for x in alignments[0]]))
-
-        self.data['system'] = system
-        self.data['phrase'] = phrase
-        self.data['bad_prop'] = (length - len_aligned) / length
-        self.data['good_prop'] = len_aligned / length
-
-        self.data['pen_count'] = len([getattr(item, 'penalty_' + side) for item in word_level_scores if getattr(item, 'penalty_' + side) > 0])
-        if self.data['pen_count'] > 0:
-            self.data['pen_mean'] = numpy.mean([getattr(item, 'penalty_' + side) for item in word_level_scores if getattr(item, 'penalty_' + side) > 0])
-            self.data['pen_max'] = numpy.max([getattr(item, 'penalty_' + side) for item in word_level_scores if getattr(item, 'penalty_' + side) > 0])
-        else:
-            self.data['pen_mean'] = 0.0
-            self.data['pen_max'] = 0.0
-
-        if self.data['good_prop'] > 0:
-            self.data['sim_mean'] = numpy.mean([getattr(item, 'similarity') for item in word_level_scores if getattr(item, 'similarity') > 0])
-        else:
-            self.data['sim_mean'] = 0.0
-
-
-        self.data['seg_len'] = length
-        self.data['score'] = score
-
-
-def output(metric, output_dir, output_type, results):
-    file = open(output_dir + '/' + metric + output_type, 'w')
-    for line in results:
-        file.write(line + '\n')
-
-def normRefFile(ref_dir, dataset, langPair):
+def norm_ref_file_name(ref_dir, dataset, langPair):
 
     if dataset == 'newstest2013':
         fileName = ref_dir + '/' + dataset + '/' + dataset + '-ref.' + langPair.split('-')[1] + '.out'
@@ -190,7 +136,7 @@ def normRefFile(ref_dir, dataset, langPair):
 
     return fileName
 
-def getSysName(testFileName, dataset, langPair):
+def get_sys_name(testFileName, dataset, langPair):
 
     if dataset == 'newstest2013':
         sysName = re.sub('^%s\.%s\.(?P<name>.+)\.%s$' % (dataset, langPair, 'out'), '\g<name>', testFileName)
@@ -202,11 +148,6 @@ def getSysName(testFileName, dataset, langPair):
         sysName = testFileName.split('.')[1] + '.' + testFileName.split('.')[2]
 
     return sysName
-
-def makeHeaderScores():
-
-    scores = ['metric', 'languagePair', 'dataset', 'system', 'phrase', 'score']
-    return '\t'.join(str(x) for x in scores)
 
 def main():
 
@@ -230,20 +171,7 @@ def main():
         for languagePair in parameters.directions:
 
             scores_file = open(output_dir + '/' + metric + '.' + languagePair + '.' + 'seg.score', 'w')
-            feats_file_ref = open(output_dir + '/' + metric + '.' + languagePair + '.' + 'seg.feats.ref', 'w')
-            feats_file_test = open(output_dir + '/' + metric + '.' + languagePair + '.' + 'seg.feats.test', 'w')
-
-            makeHeaderScores()
-
-            if (parameters.statistics):
-
-                ref_feats = Features(metric, dataset, languagePair)
-                test_feats = Features(metric, dataset, languagePair)
-
-                print('\t'.join(str(x) for x in ref_feats.data.keys()), file = feats_file_ref)
-                print('\t'.join(str(x) for x in ref_feats.data.keys()), file = feats_file_test)
-
-            refFileName = normRefFile(reference_dir, dataset, languagePair)
+            refFileName = norm_ref_file_name(reference_dir, dataset, languagePair)
             ref_data = readSentences(codecs.open(refFileName, encoding='UTF-8'))
 
             testFiles = [f for f in listdir(test_dir + '/' + dataset + '/' + languagePair) if isfile(join(test_dir + '/' + dataset + '/' + languagePair, f))]
@@ -254,7 +182,7 @@ def main():
                     continue
                 print(t)
 
-                system = getSysName(t, dataset, languagePair)
+                system = get_sys_name(t, dataset, languagePair)
 
                 if (parameters.system_name) and not system == parameters.system_name:
                     continue
@@ -290,24 +218,12 @@ def main():
                             else:
                                 print(str(alignments[0][index]) + " : " + str(alignments[1][index]) + " : " + str(word_level_scores[index].similarity) + " : " + str(word_level_scores[index].penalty_mean), file = align_file)
 
-                    if (parameters.statistics):
-
-                        testFeatures.computeFeatures(test_data[i], phrase_ref, sentence1, sentence2, alignments)
-
-                        ref_feats.get_feats(system, num_phrase, scorer.sentence_length(phrase_ref), alignments, word_level_scores, sentence_level_score, 'ref')
-                        test_feats.get_feats(system, num_phrase, scorer.sentence_length(test_data[i]), alignments, word_level_scores, sentence_level_score, 'test')
-
-                        print('\t'.join(format_item(x[1]) for x in ref_feats.data.items()), file = feats_file_ref)
-                        print('\t'.join(format_item(x[1]) for x in test_feats.data.items()), file = feats_file_test)
-
                     print(str(metric) + '\t' + str(languagePair) + '\t' + str(dataset) + '\t' + str(system) + '\t' + str(num_phrase) + '\t' + str(sentence_level_score), file = scores_file)
 
                 if (parameters.alignments):
                     align_file.close()
 
             scores_file.close()
-            feats_file_ref.close()
-            feats_file_test.close()
 
 def format_item(item):
     if isinstance(item, float):
