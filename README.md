@@ -20,3 +20,16 @@ To use the metric, run evaluate.py with the following parameters:
 |-o|specify output directory - optional (default is "./Data")|
 
 If no parameters are specified the metric will process the example files stored in Data folder.
+
+### Citation
+
+```bibtex
+@inproceedings{fomicheva2016cobaltf,
+  title={CobaltF: a fluent metric for MT evaluation},
+  author={Fomicheva, Marina and Bel Rafecas, N{\'u}ria and Specia, Lucia and da Cunha Fanego, Iria and Malinovsiy, Anton},
+  booktitle={The 54th Annual Meeting of the Association for Computational Linguistics. Proceedings of the First Conference on Machine Translation (WMT); 2016 Aug 7-12; Berlin, Germany},
+  year={2016},
+  pages={483--490},
+  organization={ACL (Association for Computational Linguistics)}
+}
+```
