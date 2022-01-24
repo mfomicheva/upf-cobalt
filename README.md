@@ -1,14 +1,14 @@
-##UPF-Cobalt Metric for Machine Translation Evaluation
+## UPF-Cobalt Metric for Machine Translation Evaluation
 UPF-Cobalt is a MT evaluation metric that exploits alignment and syntactic context to assess MT quality.
 
-###Installation
+### Installation
 1. Install Stanford Parser (http://nlp.stanford.edu/software/corenlp.shtml)
 2. Download dependency-based word vectors from https://levyomer.wordpress.com/2014/04/25/dependency-based-word-embeddings/ (optional)
 3. Download upf-cobalt
 
-`git clone https://github.com/amalinovskiy/upf-cobalt.git`
+`git clone https://github.com/mfomicheva/upf-cobalt.git`
 
-###Usage
+### Usage
 To use the metric, run evaluate.py with the following parameters:
 
 |**Parameter**|**Description**|
